@@ -1,3 +1,5 @@
+![](logo.jpg)
+
 react-contextual is a tiny store/hoc pattern around React 16's new context API. It makes dealing with multiple contexts easier and provides a simple setState/redux-like store-pattern, also driven by context.
 
 It currently relies on ReactTraining/react-broadcast until the official context API is officially published.
