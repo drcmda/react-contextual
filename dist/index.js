@@ -42,7 +42,7 @@ function (_React$Component) {
   return RenderOnce;
 }(React.Component);
 
-export var StoreContext = React.createContext({});
+export var StoreContext = createContext({});
 export var StoreProvider =
 /*#__PURE__*/
 function (_React$Component2) {
