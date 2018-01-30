@@ -36,7 +36,7 @@ React.Render(
         }}>
         <TestStore />
     </StoreProvider>,
-    document.getelementbyid('app'),
+    document.getElementById('app'),
 )
 ```
 
