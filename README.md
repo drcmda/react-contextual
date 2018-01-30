@@ -65,32 +65,36 @@ class Test extends React.PureComponent {
 
 `context` can be used as a functionwrapper or decorator, it generally works with any Context, it isn't bound to to contextuals store model.
 
-Mapping a single context value as a prop, that will be available to the receiving component:
+Mapping a single context value as a prop, now available to the receiving component:
 
 ```js
-import { conext } from 'react-contextual'
+import { context } from 'react-contextual'
 
 @context(ThemeProvider.Context, theme => ({ theme }))
+class ReceivingComponent extends React.PureComponent { ... }
 ```
 
-Mapping several contexts. (the components own props can always be used as well, just like in Redux):
+Mapping several contexts is also possible. mapContextToProps behaves like in Redux, that means the components own props can always be used as well:
 
 ```js
 @context([ThemeProvider.Context, CounterProvider.Context], ([theme, count], props) => ({ theme, count }))
+class ReceivingComponent extends React.PureComponent { ... }
 ```
 
 ## @connectStore(mapContextToProps)
 
-`connectStore` is short hand for:
+`connectStore` is sugar for:
 
 ```js
 import { connect, StoreProvider, StoreContext } from 'react-contextual'
+
 @context(StoreProvider, ...)
+class ReceivingComponent extends React.PureComponent { ... }
 ```
 
 ## StoreProvider
 
-Provides a minimal redux-like store. Provide the initial state via the `initialState` prop, and actions via the `action` prop. That's it, both the state and the actions will be distributed by the provider and can be consumed either with Reacts default api, or by contextuals HOC. StoreProvider will only render once to prevent re-rendering the entire sub-tree on every occuring change. Inside of course components behave normally. Any change to the store, caused by an action, will trigger consuming components.
+Provides a minimal redux-like store. Declare the initial state with the `initialState` prop, and actions with the `action` prop. That's it, state and actions will be distributed through the provider and can be consumed either by Reacts default API, or by contextuals HOC. StoreProvider will only render once to prevent re-rendering the entire sub-tree on every occuring change. Inside of course components behave normally. Any change to the store, caused by an action, will trigger consuming components.
 
 Simple actions get merged into the state:
 
