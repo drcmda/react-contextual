@@ -28,7 +28,7 @@ class RenderOnce extends React.Component {
     }
 }
 
-export const StoreContext = React.createContext({})
+export const StoreContext = createContext({})
 export class StoreProvider extends React.Component {
     constructor(props) {
         super()
