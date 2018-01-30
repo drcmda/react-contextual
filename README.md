@@ -44,7 +44,7 @@ you can also use `context` for any or several regular React context object(s):
 
 ```js
 import React from 'react'
-import { connect } from 'react-contextual'
+import { context } from 'react-contextual'
 
 @context([ThemeContext, CounterContext], ([theme, count], props) => ({ theme, count }))
 class Test extends React.PureComponent {
