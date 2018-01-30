@@ -90,7 +90,7 @@ import { connect, StoreProvider, StoreContext } from 'react-contextual'
 
 ## StoreProvider
 
-Provides a minimal redux-like store. Provide the initial state via the `initialState` prop, and actions via the `action` prop. That's it, both the state and the actions will be distributed by the provider and can be consumed either with Reacts default api, or by contextuals HOC.
+Provides a minimal redux-like store. Provide the initial state via the `initialState` prop, and actions via the `action` prop. That's it, both the state and the actions will be distributed by the provider and can be consumed either with Reacts default api, or by contextuals HOC. StoreProvider will only render once to prevent re-rendering the entire sub-tree on every occuring change. Inside of course components behave normally. Any change to the store, caused by an action, will trigger consuming components.
 
 Simple actions get merged into the state:
 
