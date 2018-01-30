@@ -12,7 +12,7 @@ It currently relies on ReactTraining/react-broadcast until the official context 
 
 ```js
 import React from 'react'
-import { connectStore, StoreProvider, StoreContext } from 'react-contextual'
+import { connectStore, StoreProvider } from 'react-contextual'
 
 @connectStore(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
 class TestStore extends React.PureComponent {
@@ -40,7 +40,7 @@ React.Render(
 )
 ```
 
-you can also use `context` for any or several regular React context object(s):
+You can also use `context` for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates.
 
 ```js
 import React from 'react'
