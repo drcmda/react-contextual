@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'  
 import { createContext } from 'react-broadcast'
 
 export const context = (targets, mapContextToProps) => Wrapped => props => {
@@ -29,7 +30,11 @@ class RenderOnce extends React.Component {
 }
 
 export const StoreContext = createContext({})
+
+export const connectStore = mapContextToProps => context(StoreContext, mapContextToProps)
+
 export class StoreProvider extends React.Component {
+    propTypes = { initialState: PropTypes.object.isRequired, actions: PropTypes.object.isRequired }
     constructor(props) {
         super()
         this.state = props.initialState || {}

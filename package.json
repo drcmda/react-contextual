@@ -30,5 +30,10 @@
     "@babel/preset-env": "^7.0.0-beta.39",
     "@babel/preset-react": "^7.0.0-beta.39",
     "@babel/preset-stage-0": "^7.0.0-beta.39"
+  },
+  "peerDependencies": {
+    "prop-types": "15.x.x",
+    "react": "16.x.x",
+    "react-dom": "16.x.x"
   }
 }

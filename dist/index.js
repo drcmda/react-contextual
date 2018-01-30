@@ -1,8 +1,11 @@
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { createContext } from 'react-broadcast';
 export var context = function context(targets, mapContextToProps) {
   return function (Wrapped) {
@@ -43,6 +46,9 @@ function (_React$Component) {
 }(React.Component);
 
 export var StoreContext = createContext({});
+export var connectStore = function connectStore(mapContextToProps) {
+  return context(StoreContext, mapContextToProps);
+};
 export var StoreProvider =
 /*#__PURE__*/
 function (_React$Component2) {
@@ -52,6 +58,15 @@ function (_React$Component2) {
     var _this;
 
     _this = _React$Component2.call(this) || this;
+    Object.defineProperty(_assertThisInitialized(_this), "propTypes", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {
+        initialState: PropTypes.object.isRequired,
+        actions: PropTypes.object.isRequired
+      }
+    });
     _this.state = props.initialState || {};
     _this.actions = Object.keys(props.actions).reduce(function (acc, name) {
       var _extends2;

@@ -10,9 +10,9 @@ It currently relies on ReactTraining/react-broadcast until the official context 
 
 ```js
 import React from 'react'
-import { context, StoreProvider, StoreContext } from 'react-contextual'
+import { connectStore, StoreProvider, StoreContext } from 'react-contextual'
 
-@context(StoreContext, ({ state, actions }) => ({ name: state.name, age: state.age, actions }))
+@connectStore(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
 class TestStore extends React.PureComponent {
     render() {
         const { name, age, actions } = this.props
@@ -38,6 +38,25 @@ React.Render(
 )
 ```
 
+you can also use `context` for any or several regular React context object(s):
+
+```js
+import React from 'react'
+import { connect } from 'react-contextual'
+
+@context([ThemeContext, CounterContext], ([theme, count], props) => ({ theme, count }))
+class Test extends React.PureComponent {
+    render() {
+        const { theme, count } = this.props
+        return (
+            <h1 style={{ color: theme === 'light' ? '#000' : '#ddd' }}>
+                Theme: {theme} Count: {count}
+            </h1>
+        )
+    }
+}
+```
+
 # API
 
 ## @context(contexts, mapContextToProps)
@@ -47,13 +66,24 @@ React.Render(
 Mapping a single context value as a prop, that will be available to the receiving component:
 
 ```js
+import { conext } from 'react-contextual'
+
 @context(ThemeProvider.Context, theme => ({ theme }))
 ```
 
-Mapping several contexts. (the components own props can always be used as well, just like as in Redux):
+Mapping several contexts. (the components own props can always be used as well, just like in Redux):
 
 ```js
 @context([ThemeProvider.Context, CounterProvider.Context], ([theme, count], props) => ({ theme, count }))
+```
+
+## @connectStore(mapContextToProps)
+
+`connectStore` is short hand for:
+
+```js
+import { connect, StoreProvider, StoreContext } from 'react-contextual'
+@context(StoreProvider, ...)
 ```
 
 ## StoreProvider
