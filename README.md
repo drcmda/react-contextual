@@ -56,8 +56,8 @@ class TestStore extends React.PureComponent {
     }
 }
 
-export default connectStore(TestStore)(({ state, actions }) =>
-    ({ name: state.name, age: state.age, actions }))
+export default connectStore(({ state, actions }) => 
+    ({ name: state.name, age: state.age, actions }))(TestStore)
 ```
 
 The es-next `@` decorator works like in react-redux. Be careful as the spec can still change any time!
@@ -92,8 +92,8 @@ class Test extends React.PureComponent {
     }
 }
 
-export default context(Test)([ThemeContext, CounterContext], ([theme, count], props) => 
-    ({ theme, count }))
+export default context([ThemeContext, CounterContext], ([theme, count], props) => 
+    ({ theme, count }))(Test)
 ```
 
 Again, the decorator would work here as well, given that you want to risk its use:
@@ -120,13 +120,13 @@ import { context } from 'react-contextual'
 Example 1: Mapping a single context value as a prop, now available to the receiving component under any name you choose.
 
 ```js
-context(Component)(ThemeContext, theme => ({ theme }))
+context(ThemeContext, theme => ({ theme }))(Component)
 ```
 
 Example 2: Mapping several contexts is also possible, just wrap them into an array. mapContextToProps behaves similar to Reduxes otherwise, the components own props can always be used as well.
 
 ```js
-context(Component)([ThemeContext, CountContext], ([theme, count], props) => ({ theme, count }))
+context([ThemeContext, CountContext], ([theme, count], props) => ({ theme, count }))(Component)
 ```
 
 ## connectStore(mapContextToProps)
@@ -140,7 +140,7 @@ import { connectStore } from 'react-contextual'
 ```js
 import { context, StoreContext } from 'react-contextual'
 
-context(Component)(StoreContext, ({ state, actions }) => ({ ... }))
+context(StoreContext, ({ state, actions }) => ({ ... }))(Component)
 ```
 
 ## StoreProvider
