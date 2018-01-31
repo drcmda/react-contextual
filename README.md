@@ -64,7 +64,7 @@ The es-next `@` decorator works like in react-redux. Be careful as the spec can 
 
 ```js
 @connectStore(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
-export default class TestStore extends React.PureComponent {
+export default class extends React.PureComponent {
     render() {
         ...
     }
@@ -100,7 +100,7 @@ Again, the decorator would work here as well, given that you want to risk its us
 
 ```js
 @context([ThemeContext, CounterContext], ([theme, count], props) => ({ theme, count }))
-class Test extends React.PureComponent {
+export default class extends React.PureComponent {
     render() {
         ...
     }
