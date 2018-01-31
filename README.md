@@ -137,7 +137,7 @@ They can be simple ...
 }
 ```
 
-Or slightly more complex when you pass a functions instead, which allows you to access the stores state which you could use to compute/derive props, compose, deep-merge or memoize:
+Or slightly more complex when you pass functions instead, which allow you to access the stores state, useful for computed/derived props, composition, deep-merging or memoization:
 
 ```js
 {
