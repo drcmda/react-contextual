@@ -55,8 +55,8 @@ class TestStore extends React.PureComponent {
         const { name, count, actions } = this.props
         return (
             <div>
-                <button onClick={() => actions.setName('harry')}>{name}</button>
-                <button onClick={() => actions.increaseCount(1)}>{count}</button>
+                <input type="text" onChange={e => actions.setName(e.target.value)} />
+                <button onClick={() => actions.increaseCount(1)}>{name}: {count}</button>
             </div>
         )
     }
