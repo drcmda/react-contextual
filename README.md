@@ -135,7 +135,7 @@ context(Component)([ThemeContext, CountContext], ([theme, count], props) => ({ t
 import { connectStore } from 'react-contextual'
 ```
 
-`connectStore` is sugar for `connect`. You don't need to worry about the actual context in that case, but you could use `connect` if you supply it and even mix with other contexts:
+`connectStore` is sugar for `connect`. You don't need to worry about the actual context in that case, but you could use `connect` if you supply it, then you could even mix it with other contexts:
 
 ```js
 import { context, StoreContext } from 'react-contextual'
