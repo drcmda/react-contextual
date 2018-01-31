@@ -21,14 +21,14 @@ Another obstacle is that a provider will re-render its sub-tree when its value c
 
 Using react-contextual is very simple. It provides two things:
 
-1. [a minimal flux store with setState semantics](https://codesandbox.io/s/ko1nz4j2r)
-2. [helping you to deal with context in general](https://codesandbox.io/s/5v7n6k8j5p)
+1. a minimal flux store with setState semantics
+2. helping you to deal with context in general
 
 ## 1. If you just need a light-weight store ...
 
 Example: https://codesandbox.io/s/ko1nz4j2r
 
-Provide state:
+Provide your state, wrap everything that is supposed to access or mutate it within.
 
 ```js
 import React from 'react'
@@ -49,7 +49,7 @@ ReactDOM.render(
 )
 ```
 
-Now consume anywhere within the provider, as deeply nested as you wish. The semantics are very similar to Redux.
+Consume anywhere within the provider, as deeply nested as you wish. The semantics are similar to Redux.
 
 ```js
 import React from 'react'
@@ -73,7 +73,7 @@ export default connectStore(
 )(TestStore)
 ```
 
-### As decorator
+### With decorator
 
 Makes it a little more tidy, but use with care, as the spec may still change any time!
 
@@ -115,7 +115,7 @@ export default context(
 )(Test)
 ```
 
-### As decorator
+### With decorator
 
 ```js
 @context([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))
