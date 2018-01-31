@@ -11,7 +11,7 @@ Currently it relies on [react-trainings polyfill](https://github.com/ReactTraini
 
 # Why
 
-In the upcoming version React is going to have a new low-level API for dynamic context distribution. The API is built on render props. While they are very powerful they can make the codebase unwieldy, especially when multiple providers cover context-consumers in scores of nested blobs. `react-contextual` can fix that by mapping context values to component props, similar to how Redux operates.
+In the upcoming version React is going to have a new low-level API for dynamic context distribution. The API is built on render props. While they are very powerful they can make the codebase unwieldy, especially when multiple providers cover context-consumers in scores of nested blobs. `react-contextual` can fix that by mapping context values to component props, similar to how Redux operates. It also allows consumers to listen to multiple providers.
 
 Likewise, context makes flux patterns possible that previously would have meant larger dependencies and boilerplate. Context can carry setState to new heights by allowing it to freely distribute. `react-contextual` builds a small flux pattern around that premise but lets React do all the work, which perhaps leads to what could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
 
@@ -23,7 +23,7 @@ Likewise, context makes flux patterns possible that previously would have meant 
 
 Example: https://codesandbox.io/s/ko1nz4j2r
 
-Provide your state, wrap everything that is supposed to access or mutate it within.
+Provide state and actions, wrap everything that is supposed to access or mutate it within.
 
 ```js
 import React from 'react'
@@ -33,10 +33,10 @@ import TestStore from './TestStore.js'
 
 ReactDOM.render(
     <StoreProvider
-        initialState={{ name: 'max', age: 99,  }}
+        initialState={{ name: 'max', count: 0 }}
         actions={{
             setName: name => ({ name }), // simple merge
-            setAge: age => state => ({ age: state.age + 1 }), // functional merge with more access
+            increaseCount: factor => state => ({ count: state.count + factor }), // functional merge
         }}>
         <TestStore />
     </StoreProvider>,
@@ -52,11 +52,11 @@ import { connectStore } from 'react-contextual'
 
 class TestStore extends React.PureComponent {
     render() {
-        const { name, age, actions } = this.props
+        const { name, count, actions } = this.props
         return (
             <div>
-                <button onClick={() => actions.setName('paul')}>{name}</button>
-                <button onClick={() => actions.setAge(28)}>{age}</button>
+                <button onClick={() => actions.setName('harry')}>{name}</button>
+                <button onClick={() => actions.increaseCount(1)}>{count}</button>
             </div>
         )
     }
@@ -64,7 +64,7 @@ class TestStore extends React.PureComponent {
 
 export default connectStore(
     // Pick your state, map it to the components props, provide actions ...
-    ({ state, actions }) => ({ name: state.name, age: state.age, actions })
+    ({ state, actions }) => ({ name: state.name, count: state.count, actions })
 )(TestStore)
 ```
 
