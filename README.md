@@ -60,7 +60,7 @@ export default connectStore(TestStore)(({ state, actions }) =>
     ({ name: state.name, age: state.age, actions }))
 ```
 
-The es-next `@` decorator works like in react-redux, but please be careful as the spec can still change any time!
+The es-next `@` decorator works like in react-redux. Be careful as the spec can still change any time!
 
 ```js
 @connectStore(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
@@ -96,7 +96,7 @@ export default context(Test)([ThemeContext, CounterContext], ([theme, count], pr
     ({ theme, count }))
 ```
 
-Again, the decorator would work here as will, given that you want to risk its use:
+Again, the decorator would work here as well, given that you want to risk its use:
 
 ```js
 @context([ThemeContext, CounterContext], ([theme, count], props) => ({ theme, count }))
