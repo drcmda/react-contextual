@@ -12,7 +12,7 @@ It currently relies on [ReactTraining/react-broadcast](https://github.com/ReactT
 
 Using react-contextual is very simple. It basically provides two things:
 
-1. It offers a minimal redux-like store with setState semantics
+1. [It offers a minimal redux-like store with setState semantics](https://codesandbox.io/s/ko1nz4j2r)
 2. It can help you dealing with context in general, especially multiple contexts without deep nesting
 
 ## 1. If you just need a simple, redux-like store ...
@@ -30,7 +30,7 @@ ReactDOM.render(
         initialState={{ name: 'max', age: 99,  }}
         actions={{
             setName: name => ({ name }), // simple merge
-            setAge: age => state => ({ age: state.age }), // functional merge with more access
+            setAge: age => state => ({ age: state.age + 1 }), // functional merge with more access
         }}>
         <TestStore />
     </StoreProvider>,
