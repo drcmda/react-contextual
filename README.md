@@ -12,7 +12,7 @@ It currently relies on ReactTraining/react-broadcast until the official context 
 
 Using react-contextual is very simple ...
 
-## A contextual store
+## If you just need a simple, redux-like store ...
 
 Provide state:
 
