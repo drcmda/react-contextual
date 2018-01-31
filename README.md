@@ -126,20 +126,22 @@ class ReceivingComponent extends React.PureComponent { ... }
 
 Provides a minimal redux-like store. Declare the initial state with the `initialState` prop, and actions with the `action` prop. That's it, state and actions will be distributed through the provider and can be consumed either by Reacts default API, or by contextuals HOC. StoreProvider will only render once to prevent re-rendering the entire sub-tree on every occuring change. Inside of course components behave normally. Any change to the store, caused by an action, will trigger consuming components.
 
-Simple actions get merged into the state:
+The Provider will distribute `{ state, actions }` to listening consumers. Actions are declared by the `actions` prop. They're made of a collection of functions which return an object that is going to be merged back into the state using `setState` semantics.
+
+They can be simple ...
 
 ```js
-actions={{
+{
     setName: name => ({ name }),
     setAge: age => ({ age }),
-}}>
+}
 ```
 
-More complex actions can pass a function instead and access the stores state:
+Or slightly more complex when you pass a functions instead, which allows you to access the stores state:
 
 ```js
-actions={{
+{
     setName: name => state => ({ name: state.name + state.surname },
     setAge: age => state => ({ age: state.somethingElse }),
-}}>
+}
 ```
