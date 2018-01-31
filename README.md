@@ -177,6 +177,6 @@ Or slightly more complex when you pass functions instead, which allow you to acc
 ```js
 {
     setName: name => state => ({ name: `${state.title} ${state.surname}` },
-    setAge: age => state => ({ age: state.somethingElse }),
+    setAge: age => state => ({ age: state.age + 1 }),
 }
 ```
