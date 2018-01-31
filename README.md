@@ -67,12 +67,12 @@ export default connectStore(store =>
     ({ name: store.state.name, count: store.state.count, actions: store.actions }))(TestStore)
 ```
 
-### With decorator
+### Making it a little shorter using the es-next decorator
 
-Makes it a little more tidy, but use with care, as the spec may still change any time!
+But use with care as the spec may still change any time!
 
 ```js
-@connectStore(store => ({ name: store.state.name, count: store.state.count, actions: store.actions }))
+@connectStore(({ state, actions }) => ({ name: state.name, count: state.count, actions }))
 export default class TestStore extends React.PureComponent {
     render() {
         ...
