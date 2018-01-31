@@ -1,13 +1,13 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports.default = context;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function context(targets, mapContextToProps) {
   return function (Wrapped) {
@@ -18,7 +18,7 @@ function context(targets, mapContextToProps) {
       return array.concat([Wrapped]).reduceRight(function (accumulator, Context) {
         return _react.default.createElement(Context.Consumer, null, function (value) {
           isArray && values.push(value);
-          return accumulator !== Wrapped ? accumulator : _react.default.createElement(Wrapped, (0, _extends2.default)({}, props, mapContextToProps(isArray ? values : value, props)));
+          return accumulator !== Wrapped ? accumulator : _react.default.createElement(Wrapped, _extends({}, props, mapContextToProps(isArray ? values : value, props)));
         });
       });
     };

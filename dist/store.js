@@ -1,13 +1,7 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports.StoreProvider = exports.connectStore = exports.StoreContext = exports.RenderOnce = void 0;
-
-var _extends3 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -17,10 +11,16 @@ var _reactBroadcast = require("react-broadcast");
 
 var _context = _interopRequireDefault(require("./context"));
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
 var RenderOnce =
 /*#__PURE__*/
 function (_React$Component) {
-  (0, _inheritsLoose2.default)(RenderOnce, _React$Component);
+  _inheritsLoose(RenderOnce, _React$Component);
 
   function RenderOnce() {
     return _React$Component.apply(this, arguments) || this;
@@ -52,7 +52,7 @@ exports.connectStore = connectStore;
 var StoreProvider =
 /*#__PURE__*/
 function (_React$Component2) {
-  (0, _inheritsLoose2.default)(StoreProvider, _React$Component2);
+  _inheritsLoose(StoreProvider, _React$Component2);
 
   function StoreProvider(props) {
     var _this;
@@ -62,7 +62,7 @@ function (_React$Component2) {
     _this.actions = Object.keys(props.actions).reduce(function (acc, name) {
       var _extends2;
 
-      return (0, _extends3.default)({}, acc, (_extends2 = {}, _extends2[name] = function () {
+      return _extends({}, acc, (_extends2 = {}, _extends2[name] = function () {
         var _props$actions;
 
         var result = (_props$actions = props.actions)[name].apply(_props$actions, arguments);
