@@ -7,8 +7,6 @@ exports.StoreProvider = exports.connectStore = exports.StoreContext = exports.Re
 
 var _extends3 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _react = _interopRequireDefault(require("react"));
@@ -60,15 +58,6 @@ function (_React$Component2) {
     var _this;
 
     _this = _React$Component2.call(this) || this;
-    Object.defineProperty((0, _assertThisInitialized2.default)(_this), "propTypes", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {
-        initialState: _propTypes.default.object.isRequired,
-        actions: _propTypes.default.object.isRequired
-      }
-    });
     _this.state = props.initialState || {};
     _this.actions = Object.keys(props.actions).reduce(function (acc, name) {
       var _extends2;
@@ -102,3 +91,12 @@ function (_React$Component2) {
 }(_react.default.Component);
 
 exports.StoreProvider = StoreProvider;
+Object.defineProperty(StoreProvider, "propTypes", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: {
+    initialState: _propTypes.default.object.isRequired,
+    actions: _propTypes.default.object.isRequired
+  }
+});
