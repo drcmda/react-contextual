@@ -1,6 +1,6 @@
 {
   "name": "react-contextual",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "store and hoc patterns for react 16s new context model",
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
