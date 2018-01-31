@@ -13,7 +13,7 @@ It currently relies on [ReactTraining/react-broadcast](https://github.com/ReactT
 Using react-contextual is very simple. It basically provides two things:
 
 1. [It offers a minimal redux-like store with setState semantics](https://codesandbox.io/s/ko1nz4j2r)
-2. It can help you dealing with context in general, especially multiple contexts without deep nesting
+2. [It can help you dealing with context in general, especially multiple contexts without deep nesting](https://codesandbox.io/s/5v7n6k8j5p)
 
 ## 1. If you just need a simple, redux-like store ...
 
@@ -73,6 +73,8 @@ export default class extends React.PureComponent {
 }
 ```
 
+Example: https://codesandbox.io/s/ko1nz4j2r
+
 ## 2. Raw contexts of any kind
 
 You can also use the `context` HOC for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates. This makes it easy to deal with multiple contexts which would cause nesting otherwise. You provide these contexts as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
@@ -110,6 +112,8 @@ export default class extends React.PureComponent {
     }
 }
 ```
+
+Example: https://codesandbox.io/s/5v7n6k8j5p
 
 # API
 
