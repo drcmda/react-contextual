@@ -3,15 +3,17 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports.StoreProvider = exports.StoreContext = exports.RenderOnce = exports.connectStore = void 0;
+exports.default = void 0;
 
-var _context2 = _interopRequireDefault(require("./context"));
-
-exports.context = _context2.default;
+var _context = _interopRequireDefault(require("./context"));
 
 var _store = require("./store");
 
-exports.connectStore = _store.connectStore;
-exports.RenderOnce = _store.RenderOnce;
-exports.StoreContext = _store.StoreContext;
-exports.StoreProvider = _store.StoreProvider;
+var _default = {
+  context: _context.default,
+  connectStore: _store.connectStore,
+  RenderOnce: _store.RenderOnce,
+  StoreContext: _store.StoreContext,
+  StoreProvider: _store.StoreProvider
+};
+exports.default = _default;

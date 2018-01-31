@@ -3,13 +3,13 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports.context = void 0;
+exports.default = context;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _react = _interopRequireDefault(require("react"));
 
-var context = function context(targets, mapContextToProps) {
+function context(targets, mapContextToProps) {
   return function (Wrapped) {
     return function (props) {
       var isArray = Array.isArray(targets);
@@ -23,6 +23,4 @@ var context = function context(targets, mapContextToProps) {
       });
     };
   };
-};
-
-exports.context = context;
+}
