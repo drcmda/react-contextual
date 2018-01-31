@@ -55,17 +55,16 @@ class TestStore extends React.PureComponent {
         const { name, count, actions } = this.props
         return (
             <div>
-                <input type="text" onChange={e => actions.setName(e.target.value)} />
+                <input type="text" value={name} onChange={e => actions.setName(e.target.value)} />
                 <button onClick={() => actions.increaseCount(1)}>{name}: {count}</button>
             </div>
         )
     }
 }
 
-export default connectStore(
-    // Pick your state, map it to the components props, provide actions ...
-    ({ state, actions }) => ({ name: state.name, count: state.count, actions })
-)(TestStore)
+// Pick your state, map it to the components props, provide actions ...
+export default connectStore(store => 
+    ({ name: store.state.name, count: store.state.count, store.actions }))(TestStore)
 ```
 
 ### With decorator
@@ -104,10 +103,8 @@ class Test extends React.PureComponent {
     }
 }
 
-export default context(
-    // Pick one or several contexts, then map the values to the components props ...
-    [ThemeContext, CounterContext], ([theme, count]) => ({ theme, count })
-)(Test)
+// Pick one or several contexts, then map the values to the components props ...
+export default context([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(Test)
 ```
 
 ### With decorator
