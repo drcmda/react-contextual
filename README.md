@@ -70,6 +70,8 @@ export default class TestStore extends React.PureComponent {
 
 You can also use `context` HOC for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates. This makes it easy to deal with multiple contexts which would cause nesting otherwise. You provide these contexts as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
 
+Make the consuming component a PureComponent and you get shallowEqual prop-checking for free, in other words, it only renders when the props you have mapped change.
+
 ```js
 import React from 'react'
 import { context } from 'react-contextual'
