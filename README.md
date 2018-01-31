@@ -1,11 +1,13 @@
 ![](contextual.jpg)
 
-`react-contextual` is a tiny (~1KB) [at least when React 16.3.0 drops] store/higher-order pattern around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md). 
+`react-contextual` is a tiny (~1KB) store/higher-order pattern around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md).
 
 It provides two things:
 
 1. a minimal redux-like store with setState semantics and central actions
 2. helping you to deal with context in general, listening to multiple providers without the nesting, etc.
+
+Currently it relies on [react-trainings polyfill](https://github.com/ReactTraining/react-broadcast/tree/next), which will be removed once React 16.3.0 is out.
 
 # Why
 
