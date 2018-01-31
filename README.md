@@ -64,7 +64,7 @@ class TestStore extends React.PureComponent {
 
 // Pick your state, map it to the components props, provide actions ...
 export default connectStore(store => 
-    ({ name: store.state.name, count: store.state.count, store.actions }))(TestStore)
+    ({ name: store.state.name, count: store.state.count, actions: store.actions }))(TestStore)
 ```
 
 ### With decorator
@@ -72,7 +72,7 @@ export default connectStore(store =>
 Makes it a little more tidy, but use with care, as the spec may still change any time!
 
 ```js
-@connectStore(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
+@connectStore(store => ({ name: store.state.name, count: store.state.count, actions: store.actions }))
 export default class TestStore extends React.PureComponent {
     render() {
         ...
