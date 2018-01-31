@@ -25,7 +25,7 @@ import ReactDOM from 'react-dom'
 import { StoreProvider } from 'react-contextual'
 import TestStore from './TestStore.js'
 
-ReactDOM.Render(
+ReactDOM.render(
     <StoreProvider
         initialState={{ name: 'max', age: 99,  }}
         actions={{
