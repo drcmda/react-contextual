@@ -10,22 +10,13 @@ It currently relies on ReactTraining/react-broadcast until the official context 
 
 # How to use ...
 
+Provide state:
+
 ```js
 import React from 'react'
-import { connectStore, StoreProvider } from 'react-contextual'
-
-@connectStore(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
-class TestStore extends React.PureComponent {
-    render() {
-        const { name, age, actions } = this.props
-        return (
-            <div>
-                <button onClick={() => actions.setName('paul')}>{name}</button>
-                <button onClick={() => actions.setAge(28)}>{age}</button>
-            </div>
-        )
-    }
-}
+import ReactDOM from 'react-dom'
+import { storeProvider } from 'react-contextual'
+import TestStore from './TestStore.js'
 
 React.Render(
     <StoreProvider
@@ -38,6 +29,36 @@ React.Render(
     </StoreProvider>,
     document.getElementById('app'),
 )
+```
+
+Then consume ...
+
+```js
+import React from 'react'
+import { connectStore } from 'react-contextual'
+
+class TestStore extends React.PureComponent {
+    render() {
+        const { name, age, actions } = this.props
+        return (
+            <div>
+                <button onClick={() => actions.setName('paul')}>{name}</button>
+                <button onClick={() => actions.setAge(28)}>{age}</button>
+            </div>
+        )
+    }
+}
+
+export default connectStore(TestStore)(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
+```
+
+Or using the es-next `@` decorator, which is still unstable:
+
+```js
+@connectStore(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
+export default class TestStore extends React.PureComponent {
+    ...
+}
 ```
 
 You can also use `context` for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates.
