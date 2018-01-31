@@ -2,7 +2,7 @@
 
 react-contextual is a tiny store/hoc pattern around React 16's new context API. It makes dealing with multiple contexts easier and provides a simple setState/redux-like store-pattern, also driven by context.
 
-It currently relies on ReactTraining/react-broadcast until the official context API is officially published.
+It currently relies on [ReactTraining/react-broadcast](https://github.com/ReactTraining/react-broadcast/tree/next) until the official context API is officially published.
 
 # Installation
 
@@ -68,7 +68,7 @@ export default class TestStore extends React.PureComponent {
 
 ## Raw contexts of any kind
 
-You can also use `context` HOC for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates. This makes it easy to deal with multiple contexts which would cause nesting otherwise.
+You can also use `context` HOC for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates. This makes it easy to deal with multiple contexts which would cause nesting otherwise. You provide these contexts as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
 
 ```js
 import React from 'react'
