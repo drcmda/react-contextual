@@ -26,8 +26,8 @@ React.Render(
     <StoreProvider
         initialState={{ name: 'max', age: 99,  }}
         actions={{
-            setName: name => ({ name }),
-            setAge: age => state => ({ age: state.age }),
+            setName: name => ({ name }), // simple merge ...
+            setAge: age => state => ({ age: state.age }), // functional merge with more access ...
         }}>
         <TestStore />
     </StoreProvider>,
