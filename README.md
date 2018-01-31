@@ -107,7 +107,7 @@ class ReceivingComponent extends React.PureComponent { ... }
 Example 2: Mapping several contexts is also possible, just wrap them into an array. mapContextToProps behaves similar to Reduxes otherwise, the components own props can always be used as well.
 
 ```js
-@context([ThemeProvider.Context, CounterProvider.Context], ([theme, count], props) => ({ theme, count }))
+@context([ThemeProvider.Context, CountProvider.Context], ([theme, count], props) => ({ theme, count }))
 class ReceivingComponent extends React.PureComponent { ... }
 ```
 
