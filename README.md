@@ -52,7 +52,7 @@ class TestStore extends React.PureComponent {
 export default connectStore(TestStore)(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
 ```
 
-Or using the es-next `@` decorator, which is still unstable:
+Or using the es-next `@` decorator, though it is still unstable. Please be careful as the spec can still change!
 
 ```js
 @connectStore(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
@@ -82,7 +82,7 @@ class Test extends React.PureComponent {
 
 # API
 
-## @context(contexts, mapContextToProps)
+## context(contexts, mapContextToProps)
 
 `context` can be used as a functionwrapper or decorator, it generally works with any Context, it isn't bound to to contextuals store model.
 
@@ -102,7 +102,7 @@ Mapping several contexts is also possible. mapContextToProps behaves like in Red
 class ReceivingComponent extends React.PureComponent { ... }
 ```
 
-## @connectStore(mapContextToProps)
+## connectStore(mapContextToProps)
 
 `connectStore` is sugar for:
 
