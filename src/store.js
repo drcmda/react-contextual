@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import { createContext } from 'react-broadcast'
 import context from './context'
 
+export const StoreContext = createContext({})
+export const connectStore = mapContextToProps => context(StoreContext, mapContextToProps)
+
 export class RenderOnce extends React.Component {
     shouldComponentUpdate() {
         return false
@@ -11,10 +14,6 @@ export class RenderOnce extends React.Component {
         return this.props.children
     }
 }
-
-export const StoreContext = createContext({})
-
-export const connectStore = mapContextToProps => context(StoreContext, mapContextToProps)
 
 export class StoreProvider extends React.Component {
     static propTypes = {
@@ -27,10 +26,10 @@ export class StoreProvider extends React.Component {
         super()
         this.state = props.initialState || {}
         this.actions = Object.keys(props.actions).reduce(
-            (acc, name) => ({
-                ...acc,
-                [name]: (...args) => {
-                    const result = props.actions[name](...args)
+            (accumulator, action) => ({
+                ...accumulator,
+                [action]: (...args) => {
+                    const result = props.actions[action](...args)
                     this.setState(typeof result === 'function' ? result(this.state) : result)
                 },
             }),

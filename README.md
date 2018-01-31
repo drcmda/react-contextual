@@ -4,7 +4,7 @@ react-contextual is a tiny store/hoc pattern around [React 16's new context API]
 
 * Very small (~1KB), [at least when React 16.3.0 drops]
 * Makes dealing with Reacts new context straight forward
-* Listening to multiple providers without nesting or render props
+* Listening to multiple providers without nesting
 * Powerful Redux-like store pattern without any boilerplate
 
 # Why
