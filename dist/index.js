@@ -8,9 +8,9 @@ exports.context = _context.default;
 
 var _store = require("./store");
 
-exports.connectStore = _store.connectStore;
+exports.connect = _store.connect;
 exports.RenderOnce = _store.RenderOnce;
-exports.StoreContext = _store.StoreContext;
-exports.StoreProvider = _store.StoreProvider;
+exports.Consumer = _store.Consumer;
+exports.Provider = _store.Provider;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

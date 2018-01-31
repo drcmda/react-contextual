@@ -3,19 +3,16 @@ import PropTypes from 'prop-types'
 import { createContext } from 'react-broadcast'
 import context from './context'
 
-export const StoreContext = createContext({})
-export const connectStore = mapContextToProps => context(StoreContext, mapContextToProps)
+const StoreContext = createContext({})
+export const Consumer = StoreContext.Consumer
+export const connect = mapContextToProps => context(Consumer, mapContextToProps)
 
 export class RenderOnce extends React.Component {
-    shouldComponentUpdate() {
-        return false
-    }
-    render() {
-        return this.props.children
-    }
+    shouldComponentUpdate() { return false }
+    render() { return this.props.children }
 }
 
-export class StoreProvider extends React.Component {
+export class Provider extends React.Component {
     static propTypes = {
         initialState: PropTypes.object.isRequired,
         actions: PropTypes.object.isRequired,

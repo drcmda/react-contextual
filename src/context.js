@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default function context(targets, mapContextToProps) {
+export default function context(consumers, mapContextToProps) {
     return Wrapped => props => {
-        const isArray = Array.isArray(targets)
-        const array = isArray ? targets : [targets]
+        const isArray = Array.isArray(consumers)
+        const array = isArray ? consumers : [consumers]
         const values = []
-        return [...array, Wrapped].reduceRight((accumulator, Context) => (
-            <Context.Consumer>
+        return [...array, Wrapped].reduceRight((accumulator, Consumer) => (
+            <Consumer>
                 {value => {
                     isArray && values.push(value)
                     return accumulator !== Wrapped ? (
@@ -15,7 +15,7 @@ export default function context(targets, mapContextToProps) {
                         <Wrapped {...props} {...mapContextToProps(isArray ? values : value, props)} />
                     )
                 }}
-            </Context.Consumer>
+            </Consumer>
         ))
     }
 }

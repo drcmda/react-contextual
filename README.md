@@ -28,18 +28,18 @@ Provide state and actions, wrap everything that is supposed to access or mutate 
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { StoreProvider } from 'react-contextual'
+import { Provider } from 'react-contextual'
 import TestStore from './TestStore.js'
 
 ReactDOM.render(
-    <StoreProvider
+    <Provider
         initialState={{ name: 'max', count: 0 }}
         actions={{
             setName: name => ({ name }), // simple merge
             increaseCount: factor => state => ({ count: state.count + factor }), // functional merge
         }}>
         <TestStore />
-    </StoreProvider>,
+    </Provider>,
     document.getElementById('app'),
 )
 ```
@@ -48,7 +48,7 @@ Consume anywhere within the provider, as deeply nested as you wish. The semantic
 
 ```js
 import React from 'react'
-import { connectStore } from 'react-contextual'
+import { connect } from 'react-contextual'
 
 class TestStore extends React.PureComponent {
     render() {
@@ -63,7 +63,7 @@ class TestStore extends React.PureComponent {
 }
 
 // Pick your state, map it to the components props, provide actions ...
-export default connectStore(store => 
+export default connect(store => 
     ({ name: store.state.name, count: store.state.count, actions: store.actions }))(TestStore)
 ```
 
@@ -72,7 +72,7 @@ export default connectStore(store =>
 But use with care as the spec may still change any time!
 
 ```js
-@connectStore(({ state, actions }) => ({ name: state.name, count: state.count, actions }))
+@connect(({ state, actions }) => ({ name: state.name, count: state.count, actions }))
 export default class TestStore extends React.PureComponent {
     render() {
         ...
@@ -104,13 +104,13 @@ class Test extends React.PureComponent {
 }
 
 // Pick one or several contexts, then map the values to the components props ...
-export default context([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(Test)
+export default context([ThemeConsumer, CounterConsumer], ([theme, count]) => ({ theme, count }))(Test)
 ```
 
 ### With decorator
 
 ```js
-@context([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))
+@context([ThemeConsumer, CounterConsumer], ([theme, count]) => ({ theme, count }))
 export default class Test extends React.PureComponent {
     render() {
         ...

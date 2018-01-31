@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.StoreProvider = exports.connectStore = exports.StoreContext = exports.RenderOnce = void 0;
+exports.Provider = exports.RenderOnce = exports.connect = exports.Consumer = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -16,6 +16,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+var StoreContext = (0, _reactBroadcast.createContext)({});
+var Consumer = StoreContext.Consumer;
+exports.Consumer = Consumer;
+
+var connect = function connect(mapContextToProps) {
+  return (0, _context.default)(Consumer, mapContextToProps);
+};
+
+exports.connect = connect;
 
 var RenderOnce =
 /*#__PURE__*/
@@ -40,32 +50,24 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.RenderOnce = RenderOnce;
-var StoreContext = (0, _reactBroadcast.createContext)({});
-exports.StoreContext = StoreContext;
 
-var connectStore = function connectStore(mapContextToProps) {
-  return (0, _context.default)(StoreContext, mapContextToProps);
-};
-
-exports.connectStore = connectStore;
-
-var StoreProvider =
+var Provider =
 /*#__PURE__*/
 function (_React$Component2) {
-  _inheritsLoose(StoreProvider, _React$Component2);
+  _inheritsLoose(Provider, _React$Component2);
 
-  function StoreProvider(props) {
+  function Provider(props) {
     var _this;
 
     _this = _React$Component2.call(this) || this;
     _this.state = props.initialState || {};
-    _this.actions = Object.keys(props.actions).reduce(function (acc, name) {
+    _this.actions = Object.keys(props.actions).reduce(function (accumulator, action) {
       var _extends2;
 
-      return _extends({}, acc, (_extends2 = {}, _extends2[name] = function () {
+      return _extends({}, accumulator, (_extends2 = {}, _extends2[action] = function () {
         var _props$actions;
 
-        var result = (_props$actions = props.actions)[name].apply(_props$actions, arguments);
+        var result = (_props$actions = props.actions)[action].apply(_props$actions, arguments);
 
         _this.setState(typeof result === 'function' ? result(_this.state) : result);
       }, _extends2));
@@ -73,7 +75,7 @@ function (_React$Component2) {
     return _this;
   }
 
-  var _proto2 = StoreProvider.prototype;
+  var _proto2 = Provider.prototype;
 
   _proto2.render = function render() {
     var value = {
@@ -87,11 +89,11 @@ function (_React$Component2) {
     }) : this.props.children);
   };
 
-  return StoreProvider;
+  return Provider;
 }(_react.default.Component);
 
-exports.StoreProvider = StoreProvider;
-Object.defineProperty(StoreProvider, "propTypes", {
+exports.Provider = Provider;
+Object.defineProperty(Provider, "propTypes", {
   configurable: true,
   enumerable: true,
   writable: true,
@@ -101,7 +103,7 @@ Object.defineProperty(StoreProvider, "propTypes", {
     renderOnce: _propTypes.default.bool
   }
 });
-Object.defineProperty(StoreProvider, "defaultProps", {
+Object.defineProperty(Provider, "defaultProps", {
   configurable: true,
   enumerable: true,
   writable: true,
