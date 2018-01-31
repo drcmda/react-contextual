@@ -1,8 +1,8 @@
 ![](logo.jpg)
 
-react-contextual is a tiny store/hoc pattern around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md). It makes dealing with multiple contexts easier and provides a simple setState/redux-like store-pattern, also driven by context.
+react-contextual is a tiny store/hoc pattern around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md).
 
-It currently relies on [ReactTraining/react-broadcast](https://github.com/ReactTraining/react-broadcast/tree/next) until the official context API is officially published.
+It currently relies on [ReactTraining/react-broadcast](https://github.com/ReactTraining/react-broadcast/tree/next) until the official API is published.
 
 # Installation
 
@@ -10,9 +10,12 @@ It currently relies on [ReactTraining/react-broadcast](https://github.com/ReactT
 
 # How to use ...
 
-Using react-contextual is very simple ...
+Using react-contextual is very simple. It basically provides two things:
 
-## If you just need a simple, redux-like store ...
+1. It offers a minimal redux-like store with setState semantics
+2. It can help you dealing with context in general, especially multiple contexts without deep nesting
+
+## 1. If you just need a simple, redux-like store ...
 
 Provide state:
 
@@ -66,7 +69,7 @@ export default class TestStore extends React.PureComponent {
 }
 ```
 
-## Raw contexts of any kind
+## 2. Raw contexts of any kind
 
 You can also use the `context` HOC for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates. This makes it easy to deal with multiple contexts which would cause nesting otherwise. You provide these contexts as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
 
