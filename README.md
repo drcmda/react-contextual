@@ -1,8 +1,11 @@
 ![](logo.jpg)
 
-react-contextual is a tiny store/hoc pattern around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md).
+react-contextual is a tiny store/hoc pattern around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md). It currently relies on [ReactTraining/react-broadcast](https://github.com/ReactTraining/react-broadcast/tree/next) until the official API is published.
 
-It currently relies on [ReactTraining/react-broadcast](https://github.com/ReactTraining/react-broadcast/tree/next) until the official API is published.
+* Very small (~1KB), [at least when React 16.3.0 drops]
+* Makes dealing with Reacts new context straight forward
+* Listening to multiple providers without nesting or render props
+* Powerful Redux-like store pattern without any boilerplate
 
 # Installation
 
@@ -10,12 +13,12 @@ It currently relies on [ReactTraining/react-broadcast](https://github.com/ReactT
 
 # How to use ...
 
-Using react-contextual is very simple. It basically provides two things:
+Using react-contextual is very simple. It provides two things:
 
-1. [It offers a minimal redux-like store with setState semantics](https://codesandbox.io/s/ko1nz4j2r)
-2. [It can help you dealing with context in general, especially multiple contexts without deep nesting](https://codesandbox.io/s/5v7n6k8j5p)
+1. [a minimal flux store with setState semantics](https://codesandbox.io/s/ko1nz4j2r)
+2. [helping you to deal with context in general](https://codesandbox.io/s/5v7n6k8j5p)
 
-## 1. If you just need a simple, redux-like store ...
+## 1. If you just need a light-weight store ...
 
 Provide state:
 
@@ -38,7 +41,7 @@ ReactDOM.render(
 )
 ```
 
-Then consume anywhere within the provider, as deeply nested as you wish ...
+Now consume anywhere within the provider, as deeply nested as you wish. The semantics are very similar to Redux.
 
 ```js
 import React from 'react'
@@ -57,7 +60,7 @@ class TestStore extends React.PureComponent {
 }
 
 export default connectStore(
-    // Fetch state & actions, then pick any state you want, map it to the components props ...
+    // Pick your state, map it to the components props, provide actions ...
     ({ state, actions }) => ({ name: state.name, age: state.age, actions })
 )(TestStore)
 ```
@@ -75,9 +78,9 @@ export default class extends React.PureComponent {
 
 Example: https://codesandbox.io/s/ko1nz4j2r
 
-## 2. Raw contexts of any kind
+## 2. Dealing with raw context providers of any kind
 
-You can also use the `context` HOC for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates. This makes it easy to deal with multiple contexts which would cause nesting otherwise. You provide these contexts as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
+You can use contextuals `context` HOC to listen to one or multiple React context providers. Their values will be mapped to regular props, similar to how Redux operates. You provide context as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
 
 Make the consuming component a PureComponent and you get shallowEqual prop-checking for free, in other words, it only renders when the props you have mapped change.
 
@@ -102,7 +105,7 @@ export default context(
 )(Test)
 ```
 
-Again, the decorator would work here as well, given that you want to risk its use:
+Again, the decorator would work here as well:
 
 ```js
 @context([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))
@@ -125,16 +128,22 @@ import { context } from 'react-contextual'
 
 `context` can be used as a functionwrapper or decorator, it generally works with any Context, it isn't bound to contextuals store model.
 
-Example 1: Mapping a single context value as a prop, now available to the receiving component under any name you choose.
+Example 1: Mapping a single context value as a prop.
 
 ```js
 context(ThemeContext, theme => ({ theme }))(Component)
 ```
 
-Example 2: Mapping several contexts is also possible, just wrap them into an array. mapContextToProps behaves similar to Reduxes otherwise, the components own props can always be used as well.
+Example 2: mapContextToProps behaves similar to Reduxes mapStateToProps, the components own props can always be used as well.
 
 ```js
-context([ThemeContext, CountContext], ([theme, count], props) => ({ theme, count }))(Component)
+context(UsersContext, (users, props) => ({ user: users[props.id] }))(Component)
+```
+
+Example 3: Mapping several contexts is also possible, just wrap them into an array.
+
+```js
+context([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(Component)
 ```
 
 ## connectStore(mapContextToProps)
