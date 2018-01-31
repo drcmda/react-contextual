@@ -17,7 +17,7 @@ export const StoreContext = createContext({})
 export const connectStore = mapContextToProps => context(StoreContext, mapContextToProps)
 
 export class StoreProvider extends React.Component {
-    propTypes = { initialState: PropTypes.object.isRequired, actions: PropTypes.object.isRequired }
+    static propTypes = { initialState: PropTypes.object.isRequired, actions: PropTypes.object.isRequired }
     constructor(props) {
         super()
         this.state = props.initialState || {}
