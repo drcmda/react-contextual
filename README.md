@@ -141,7 +141,7 @@ Or slightly more complex when you pass a functions instead, which allows you to 
 
 ```js
 {
-    setName: name => state => ({ name: state.name + state.surname },
+    setName: name => state => ({ name: `${state.name} ${state.surname}` },
     setAge: age => state => ({ age: state.somethingElse }),
 }
 ```
