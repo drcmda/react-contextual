@@ -1,26 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'  
 import { createContext } from 'react-broadcast'
+import context from './context'
 
-export const context = (targets, mapContextToProps) => Wrapped => props => {
-    const isArray = Array.isArray(targets)
-    const array = isArray ? targets : [targets]
-    const values = []
-    return [...array, Wrapped].reduceRight((accumulator, Context) => (
-        <Context.Consumer>
-            {value => {
-                isArray && values.push(value)
-                return accumulator !== Wrapped ? (
-                    accumulator
-                ) : (
-                    <Wrapped {...props} {...mapContextToProps(isArray ? values : value, props)} />
-                )
-            }}
-        </Context.Consumer>
-    ))
-}
-
-class RenderOnce extends React.Component {
+export class RenderOnce extends React.Component {
     shouldComponentUpdate() {
         return false
     }

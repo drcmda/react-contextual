@@ -1,100 +1,17 @@
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+"use strict";
 
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+exports.__esModule = true;
+exports.StoreProvider = exports.StoreContext = exports.RenderOnce = exports.connectStore = void 0;
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { createContext } from 'react-broadcast';
-export var context = function context(targets, mapContextToProps) {
-  return function (Wrapped) {
-    return function (props) {
-      var isArray = Array.isArray(targets);
-      var array = isArray ? targets : [targets];
-      var values = [];
-      return array.concat([Wrapped]).reduceRight(function (accumulator, Context) {
-        return React.createElement(Context.Consumer, null, function (value) {
-          isArray && values.push(value);
-          return accumulator !== Wrapped ? accumulator : React.createElement(Wrapped, _extends({}, props, mapContextToProps(isArray ? values : value, props)));
-        });
-      });
-    };
-  };
-};
+var _context2 = _interopRequireDefault(require("./context"));
 
-var RenderOnce =
-/*#__PURE__*/
-function (_React$Component) {
-  _inheritsLoose(RenderOnce, _React$Component);
+exports.context = _context2.default;
 
-  function RenderOnce() {
-    return _React$Component.apply(this, arguments) || this;
-  }
+var _store = require("./store");
 
-  var _proto = RenderOnce.prototype;
-
-  _proto.shouldComponentUpdate = function shouldComponentUpdate() {
-    return false;
-  };
-
-  _proto.render = function render() {
-    return this.props.children;
-  };
-
-  return RenderOnce;
-}(React.Component);
-
-export var StoreContext = createContext({});
-export var connectStore = function connectStore(mapContextToProps) {
-  return context(StoreContext, mapContextToProps);
-};
-export var StoreProvider =
-/*#__PURE__*/
-function (_React$Component2) {
-  _inheritsLoose(StoreProvider, _React$Component2);
-
-  function StoreProvider(props) {
-    var _this;
-
-    _this = _React$Component2.call(this) || this;
-    Object.defineProperty(_assertThisInitialized(_this), "propTypes", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {
-        initialState: PropTypes.object.isRequired,
-        actions: PropTypes.object.isRequired
-      }
-    });
-    _this.state = props.initialState || {};
-    _this.actions = Object.keys(props.actions).reduce(function (acc, name) {
-      var _extends2;
-
-      return _extends({}, acc, (_extends2 = {}, _extends2[name] = function () {
-        var _props$actions;
-
-        var result = (_props$actions = props.actions)[name].apply(_props$actions, arguments);
-
-        _this.setState(typeof result === 'function' ? result(_this.state) : result);
-      }, _extends2));
-    }, {});
-    return _this;
-  }
-
-  var _proto2 = StoreProvider.prototype;
-
-  _proto2.render = function render() {
-    var value = {
-      state: this.state,
-      actions: this.actions
-    };
-    return React.createElement(StoreContext.Provider, {
-      value: value
-    }, React.createElement(RenderOnce, {
-      children: this.props.children
-    }));
-  };
-
-  return StoreProvider;
-}(React.Component);
+exports.connectStore = _store.connectStore;
+exports.RenderOnce = _store.RenderOnce;
+exports.StoreContext = _store.StoreContext;
+exports.StoreProvider = _store.StoreProvider;
