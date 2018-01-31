@@ -7,6 +7,12 @@ react-contextual is a tiny store/hoc pattern around [React 16's new context API]
 * Listening to multiple providers without nesting or render props
 * Powerful Redux-like store pattern without any boilerplate
 
+# Why
+
+Reacts context API is built on render props. While they are very powerful, given that you work with several providers it will make your codebase unmanageable without breaking a sweat. Listening to several contexts will cover each and every consumer in scores of nested blobs. react-contextual can map providers into props, similar to react-reduxes `connect`.
+
+Another obstacle is that a provider will re-render its sub-tree when its value changes. Some providers wrap the entire app which is common in redux for instance. react-contextual prevents its StoreProvider from doing that. Your sub-tree is save from store mutations and consumers will still be triggered.
+
 # Installation
 
     npm install react-contextual
@@ -166,7 +172,7 @@ context(StoreContext, ({ state, actions }) => ({ ... }))(Component)
 import { StoreProvider } from 'react-contextual'
 ```
 
-Perhaps the worlds smallest Redux-like store. It pulls it off by letting React handle context distribution and state diffing. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. That's it! The Provider will distribute `{ state, actions }` to listening consumers, either using Reacts API directly or contextuals `connect` HOC.
+Perhaps the worlds smallest Redux-like store. It pulls it off by letting React handle context distribution and state diffing. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. That's it! The Provider will distribute `{ state, actions }` to listening consumers, either using Reacts API directly or contextuals `connect` HOC. There is an additional prop `renderOnce` that is `true` by default, it will prevent the sub-tree from rendering on state-changes so that you can safely wrap your app into the provider.
 
 StoreProvider will only render once to prevent sub-tree re-rendering on every occuring change. Children otherwise behave normally of course. Any change to the store caused by an action will trigger consuming components.
 

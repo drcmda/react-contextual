@@ -82,9 +82,9 @@ function (_React$Component2) {
     };
     return _react.default.createElement(StoreContext.Provider, {
       value: value
-    }, _react.default.createElement(RenderOnce, {
+    }, this.props.renderOnce ? _react.default.createElement(RenderOnce, {
       children: this.props.children
-    }));
+    }) : this.props.children);
   };
 
   return StoreProvider;
@@ -97,6 +97,15 @@ Object.defineProperty(StoreProvider, "propTypes", {
   writable: true,
   value: {
     initialState: _propTypes.default.object.isRequired,
-    actions: _propTypes.default.object.isRequired
+    actions: _propTypes.default.object.isRequired,
+    renderOnce: _propTypes.default.bool
+  }
+});
+Object.defineProperty(StoreProvider, "defaultProps", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: {
+    renderOnce: true
   }
 });

@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'  
+import PropTypes from 'prop-types'
 import { createContext } from 'react-broadcast'
 import context from './context'
 
@@ -17,7 +17,12 @@ export const StoreContext = createContext({})
 export const connectStore = mapContextToProps => context(StoreContext, mapContextToProps)
 
 export class StoreProvider extends React.Component {
-    static propTypes = { initialState: PropTypes.object.isRequired, actions: PropTypes.object.isRequired }
+    static propTypes = {
+        initialState: PropTypes.object.isRequired,
+        actions: PropTypes.object.isRequired,
+        renderOnce: PropTypes.bool,
+    }
+    static defaultProps = { renderOnce: true }
     constructor(props) {
         super()
         this.state = props.initialState || {}
@@ -36,7 +41,7 @@ export class StoreProvider extends React.Component {
         const value = { state: this.state, actions: this.actions }
         return (
             <StoreContext.Provider value={value}>
-                <RenderOnce children={this.props.children} />
+                {this.props.renderOnce ? <RenderOnce children={this.props.children} /> : this.props.children}
             </StoreContext.Provider>
         )
     }
