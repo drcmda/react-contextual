@@ -10,6 +10,8 @@ It currently relies on ReactTraining/react-broadcast until the official context 
 
 # How to use ...
 
+Using react-contextual is very simple ...
+
 ## A contextual store
 
 Provide state:
