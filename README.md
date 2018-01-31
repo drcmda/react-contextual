@@ -127,9 +127,11 @@ class ReceivingComponent extends React.PureComponent { ... }
 
 ## StoreProvider
 
-Provides a minimal redux-like store. Declare the initial state with the `initialState` prop, and actions with the `action` prop. That's it, state and actions will be distributed through the provider and can be consumed either by Reacts default API, or by contextuals HOC. StoreProvider will only render once to prevent re-rendering the entire sub-tree on every occuring change. Inside of course components behave normally. Any change to the store, caused by an action, will trigger consuming components.
+Provides a redux-like store. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. That's it! The Provider will distribute `{ state, actions }` to listening consumers, either using Reacts API directly or contextuals `connect` HOC.
 
-The Provider will distribute `{ state, actions }` to listening consumers. Actions are declared by the `actions` prop. They're made of a collection of functions which return an object that is going to be merged back into the state using `setState` semantics.
+StoreProvider will only render once to prevent sub-tree re-rendering on every occuring change. Children otherwise behave normally of course. Any change to the store caused by an action will trigger consuming components.
+
+Actions are made of a collection of functions which return an object that is going to be merged back into the state using regular `setState` semantics.
 
 They can be simple ...
 
