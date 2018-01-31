@@ -126,4 +126,4 @@ Example: https://codesandbox.io/s/5v7n6k8j5p
 
 # API
 
-Link: https://github.com/drcmda/react-contextual/blob/master/API.md
+https://github.com/drcmda/react-contextual/blob/master/API.md
