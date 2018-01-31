@@ -15,7 +15,7 @@ Provide state:
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { storeProvider } from 'react-contextual'
+import { StoreProvider } from 'react-contextual'
 import TestStore from './TestStore.js'
 
 React.Render(
