@@ -65,7 +65,9 @@ The es-next `@` decorator works like in react-redux, but please be careful as th
 ```js
 @connectStore(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
 export default class TestStore extends React.PureComponent {
-    ...
+    render() {
+        ...
+    }
 }
 ```
 
@@ -79,7 +81,6 @@ Make the consuming component a PureComponent and you get shallowEqual prop-check
 import React from 'react'
 import { context } from 'react-contextual'
 
-@context([ThemeContext, CounterContext], ([theme, count], props) => ({ theme, count }))
 class Test extends React.PureComponent {
     render() {
         const { theme, count } = this.props
@@ -90,42 +91,61 @@ class Test extends React.PureComponent {
         )
     }
 }
+
+export default context(Test)([ThemeContext, CounterContext], ([theme, count], props) => 
+    ({ theme, count }))
+```
+
+Again, the decorator would work here as will, given that you want to risk its use:
+
+```js
+@context([ThemeContext, CounterContext], ([theme, count], props) => ({ theme, count }))
+class Test extends React.PureComponent {
+    render() {
+        ...
+    }
+}
 ```
 
 # API
 
 ## context(contexts, mapContextToProps)
 
+```js
+import { context } from 'react-contextual'
+```
+
 `context` can be used as a functionwrapper or decorator, it generally works with any Context, it isn't bound to contextuals store model.
 
 Example 1: Mapping a single context value as a prop, now available to the receiving component under any name you choose.
 
 ```js
-import { context } from 'react-contextual'
-
-@context(ThemeContext, theme => ({ theme }))
-class ReceivingComponent extends React.PureComponent { ... }
+context(Component)(ThemeContext, theme => ({ theme }))
 ```
 
 Example 2: Mapping several contexts is also possible, just wrap them into an array. mapContextToProps behaves similar to Reduxes otherwise, the components own props can always be used as well.
 
 ```js
-@context([ThemeContext, CountContext], ([theme, count], props) => ({ theme, count }))
-class ReceivingComponent extends React.PureComponent { ... }
+context(Component)([ThemeContext, CountContext], ([theme, count], props) => ({ theme, count }))
 ```
 
 ## connectStore(mapContextToProps)
 
+```js
+import { context, StoreContext } from 'react-contextual'
+```
+
 `connectStore` is sugar for `connect`. You don't need to worry about the actual context in that case, but you could use `connect` if you supply it and even mix with other contexts.
 
 ```js
-import { context, StoreContext } from 'react-contextual'
-
-@context(StoreContext, ({ state, actions }) => ({ ... }))
-class ReceivingComponent extends React.PureComponent { ... }
+context(Component)(StoreContext, ({ state, actions }) => ({ ... }))
 ```
 
 ## StoreProvider
+
+```js
+import { StoreProvider } from 'react-contextual'
+```
 
 Provides a redux-like store. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. That's it! The Provider will distribute `{ state, actions }` to listening consumers, either using Reacts API directly or contextuals `connect` HOC.
 
