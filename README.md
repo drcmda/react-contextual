@@ -1,6 +1,6 @@
 ![](logo.jpg)
 
-react-contextual is a tiny store/hoc pattern around React 16's new context API. It makes dealing with multiple contexts easier and provides a simple setState/redux-like store-pattern, also driven by context.
+react-contextual is a tiny store/hoc pattern around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md). It makes dealing with multiple contexts easier and provides a simple setState/redux-like store-pattern, also driven by context.
 
 It currently relies on [ReactTraining/react-broadcast](https://github.com/ReactTraining/react-broadcast/tree/next) until the official context API is officially published.
 
@@ -100,14 +100,14 @@ Example 1: Mapping a single context value as a prop, now available to the receiv
 ```js
 import { context } from 'react-contextual'
 
-@context(ThemeProvider.Context, theme => ({ theme }))
+@context(ThemeContext, theme => ({ theme }))
 class ReceivingComponent extends React.PureComponent { ... }
 ```
 
 Example 2: Mapping several contexts is also possible, just wrap them into an array. mapContextToProps behaves similar to Reduxes otherwise, the components own props can always be used as well.
 
 ```js
-@context([ThemeProvider.Context, CountProvider.Context], ([theme, count], props) => ({ theme, count }))
+@context([ThemeContext, CountContext], ([theme, count], props) => ({ theme, count }))
 class ReceivingComponent extends React.PureComponent { ... }
 ```
 
