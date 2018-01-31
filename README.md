@@ -10,6 +10,8 @@ It currently relies on ReactTraining/react-broadcast until the official context 
 
 # How to use ...
 
+## A contextual store
+
 Provide state:
 
 ```js
@@ -31,7 +33,7 @@ React.Render(
 )
 ```
 
-Then consume ...
+Then consume anywhere within the provider, as deeply nested as you wish ...
 
 ```js
 import React from 'react'
@@ -52,7 +54,7 @@ class TestStore extends React.PureComponent {
 export default connectStore(TestStore)(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
 ```
 
-Or using the es-next `@` decorator, though it is still unstable. Please be careful as the spec can still change!
+The es-next `@` decorator works like in react-redux, but please be careful as the spec can still change any time!
 
 ```js
 @connectStore(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
@@ -61,7 +63,9 @@ export default class TestStore extends React.PureComponent {
 }
 ```
 
-You can also use `context` for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates.
+## Raw contexts of any kind
+
+You can also use `context` HOC for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates. This makes it super easy to deal with multiple contexts which would cause severe nesting otherwise.
 
 ```js
 import React from 'react'
