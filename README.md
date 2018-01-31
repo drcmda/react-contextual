@@ -11,11 +11,7 @@ It provides two things:
 
 In the upcoming version React is going to have a new, powerful low-level API for dynamic context distribution. The API is built on render props. While they are very powerful they can make the codebase unwieldy, especially if you work with several providers that will cover consumers in scores of nested blobs. react-contextual can fix that by mapping context values to component props, similar to how Redux operates.
 
-<<<<<<< HEAD
 Likewise, context makes flux patterns possible that previously would have meant larger dependencies and boilerplate. Context can carry setState to new heights by allowing it to freely distribute. react-contextual builds a small flux pattern around that premise but lets React do all the work, which perhaps leads to what could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
-=======
-Likewise, context makes flux patterns possible that before would have meant larger dependencies and boilerplate. Context can carry setState to new heights by allowing it to freely distribute. react-contextual builds a small flux pattern around that premise but lets React do all the work, which perhaps leads to what could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
->>>>>>> e99baabe0aa5a2cd81ee673cedb5259795c21329
 
 # Installation and usage
 
