@@ -113,12 +113,12 @@ class ReceivingComponent extends React.PureComponent { ... }
 
 ## connectStore(mapContextToProps)
 
-`connectStore` is sugar for. You don't need to worry about the actual context in that case, but you could use the store with `connect` and even mix it with foreign contexts.
+`connectStore` is sugar for `connect`. You don't need to worry about the actual context in that case, but you could use `connect` if you supply it and even mix with other contexts.
 
 ```js
 import { context, StoreContext } from 'react-contextual'
 
-@context(StoreProvider, ...)
+@context(StoreContext, ({ state, actions }) => ({ ... }))
 class ReceivingComponent extends React.PureComponent { ... }
 ```
 
