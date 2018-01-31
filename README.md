@@ -56,8 +56,10 @@ class TestStore extends React.PureComponent {
     }
 }
 
-export default connectStore(({ state, actions }) => 
-    ({ name: state.name, age: state.age, actions }))(TestStore)
+export default connectStore(
+    // Fetch state & actions, then pick any state you want, map it to the components props ...
+    ({ state, actions }) => ({ name: state.name, age: state.age, actions })
+)(TestStore)
 ```
 
 The es-next `@` decorator works like in react-redux. Be careful as the spec can still change any time!
@@ -92,14 +94,16 @@ class Test extends React.PureComponent {
     }
 }
 
-export default context([ThemeContext, CounterContext], ([theme, count], props) => 
-    ({ theme, count }))(Test)
+export default context(
+    // Pick one or several contexts, then map the values to the components props ...
+    [ThemeContext, CounterContext], ([theme, count]) => ({ theme, count })
+)(Test)
 ```
 
 Again, the decorator would work here as well, given that you want to risk its use:
 
 ```js
-@context([ThemeContext, CounterContext], ([theme, count], props) => ({ theme, count }))
+@context([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))
 export default class extends React.PureComponent {
     render() {
         ...
