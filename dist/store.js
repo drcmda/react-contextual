@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.Provider = exports.RenderOnce = exports.connect = exports.Consumer = void 0;
+exports.Provider = exports.RenderOnce = exports.connect = exports.StoreContext = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -18,11 +18,10 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
 var StoreContext = (0, _reactBroadcast.createContext)({});
-var Consumer = StoreContext.Consumer;
-exports.Consumer = Consumer;
+exports.StoreContext = StoreContext;
 
 var connect = function connect(mapContextToProps) {
-  return (0, _context.default)(Consumer, mapContextToProps);
+  return (0, _context.default)(StoreContext, mapContextToProps);
 };
 
 exports.connect = connect;

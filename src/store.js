@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import { createContext } from 'react-broadcast'
 import context from './context'
 
-const StoreContext = createContext({})
-export const Consumer = StoreContext.Consumer
-export const connect = mapContextToProps => context(Consumer, mapContextToProps)
+export const StoreContext = createContext({})
+export const connect = mapContextToProps => context(StoreContext, mapContextToProps)
 
 export class RenderOnce extends React.Component {
     shouldComponentUpdate() { return false }

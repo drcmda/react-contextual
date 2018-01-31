@@ -11,19 +11,19 @@ import { context } from 'react-contextual'
 Example 1: Mapping a single context value as a prop.
 
 ```js
-context(ThemeConsumer, theme => ({ theme }))(Component)
+context(ThemeContext, theme => ({ theme }))(Component)
 ```
 
 Example 2: mapContextToProps behaves similar to Reduxes mapStateToProps, the components own props can always be used as well.
 
 ```js
-context(UsersConsumer, (users, props) => ({ user: users[props.id] }))(Component)
+context(UsersContext, (users, props) => ({ user: users[props.id] }))(Component)
 ```
 
 Example 3: Mapping several contexts is also possible, just wrap them into an array.
 
 ```js
-context([ThemeConsumer, CountConsumer], ([theme, count]) => ({ theme, count }))(Component)
+context([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(Component)
 ```
 
 ## connect(mapContextToProps)
@@ -35,9 +35,9 @@ import { connect } from 'react-contextual'
 `connect` is sugar for `connect`. You don't need to worry about the actual context in that case, but you could use `connect` if you supply it, then you could even mix it with other contexts:
 
 ```js
-import { context, Consumer } from 'react-contextual'
+import { context, StoreContext } from 'react-contextual'
 
-context(Consumer, ({ state, actions }) => ({ ... }))(Component)
+context(StoreContext, ({ state, actions }) => ({ ... }))(Component)
 ```
 
 ## Provider

@@ -104,13 +104,13 @@ class Test extends React.PureComponent {
 }
 
 // Pick one or several contexts, then map the values to the components props ...
-export default context([ThemeConsumer, CounterConsumer], ([theme, count]) => ({ theme, count }))(Test)
+export default context([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(Test)
 ```
 
 ### With decorator
 
 ```js
-@context([ThemeConsumer, CounterConsumer], ([theme, count]) => ({ theme, count }))
+@context([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))
 export default class Test extends React.PureComponent {
     render() {
         ...
