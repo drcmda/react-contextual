@@ -26,8 +26,8 @@ React.Render(
     <StoreProvider
         initialState={{ name: 'max', age: 99,  }}
         actions={{
-            setName: name => ({ name }), // simple merge ...
-            setAge: age => state => ({ age: state.age }), // functional merge with more access ...
+            setName: name => ({ name }), // simple merge
+            setAge: age => state => ({ age: state.age }), // functional merge with more access
         }}>
         <TestStore />
     </StoreProvider>,
@@ -53,7 +53,8 @@ class TestStore extends React.PureComponent {
     }
 }
 
-export default connectStore(TestStore)(({ state, actions }) => ({ name: state.name, age: state.age, actions }))
+export default connectStore(TestStore)(({ state, actions }) =>
+    ({ name: state.name, age: state.age, actions }))
 ```
 
 The es-next `@` decorator works like in react-redux, but please be careful as the spec can still change any time!
@@ -67,7 +68,7 @@ export default class TestStore extends React.PureComponent {
 
 ## Raw contexts of any kind
 
-You can also use `context` HOC for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates. This makes it super easy to deal with multiple contexts which would cause severe nesting otherwise.
+You can also use `context` HOC for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates. This makes it easy to deal with multiple contexts which would cause nesting otherwise.
 
 ```js
 import React from 'react'
