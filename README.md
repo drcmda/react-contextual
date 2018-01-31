@@ -4,8 +4,8 @@
 
 It provides two things:
 
-1. a minimal redux-like store with setState semantics and central actions
-2. helping you to deal with context in general, listening to multiple providers without the nesting, etc.
+1. consuming context with ease, every kind of context, no matter which or whose or how many providers
+2. a minimal redux-like store pattern with setState semantics and central actions
 
 Currently it relies on [react-trainings polyfill](https://github.com/ReactTraining/react-broadcast/tree/next), which will be removed once React 16.3.0 is out.
 
@@ -19,7 +19,7 @@ Likewise, context makes flux patterns possible that previously would have meant 
 
     npm install react-contextual
 
-## 1. If you just need a light-weight store ...
+## 1. If you just need a simple, no-nonsense, light-weight store ...
 
 Example: https://codesandbox.io/s/ko1nz4j2r
 
@@ -81,7 +81,7 @@ export default class TestStore extends React.PureComponent {
 }
 ```
 
-## 2. Dealing with raw context providers of any kind
+## 2. If you're dealing with context providers of any kind
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
