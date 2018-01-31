@@ -137,11 +137,11 @@ They can be simple ...
 }
 ```
 
-Or slightly more complex when you pass a functions instead, which allows you to access the stores state:
+Or slightly more complex when you pass a functions instead, which allows you to access the stores state which you could use to compute/derive props, compose, deep-merge or memoize:
 
 ```js
 {
-    setName: name => state => ({ name: `${state.name} ${state.surname}` },
+    setName: name => state => ({ name: `${state.title} ${state.surname}` },
     setAge: age => state => ({ age: state.somethingElse }),
 }
 ```
