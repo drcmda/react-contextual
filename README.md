@@ -68,7 +68,7 @@ export default class TestStore extends React.PureComponent {
 
 ## Raw contexts of any kind
 
-You can also use `context` HOC for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates. This makes it easy to deal with multiple contexts which would cause nesting otherwise. You provide these contexts as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
+You can also use the `context` HOC for any or several regular React context object(s). The context values will be mapped to the components regular props very similar to how Redux operates. This makes it easy to deal with multiple contexts which would cause nesting otherwise. You provide these contexts as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
 
 Make the consuming component a PureComponent and you get shallowEqual prop-checking for free, in other words, it only renders when the props you have mapped change.
 
@@ -93,9 +93,9 @@ class Test extends React.PureComponent {
 
 ## context(contexts, mapContextToProps)
 
-`context` can be used as a functionwrapper or decorator, it generally works with any Context, it isn't bound to to contextuals store model.
+`context` can be used as a functionwrapper or decorator, it generally works with any Context, it isn't bound to contextuals store model.
 
-Mapping a single context value as a prop, now available to the receiving component:
+Example 1: Mapping a single context value as a prop, now available to the receiving component under any name you choose.
 
 ```js
 import { context } from 'react-contextual'
@@ -104,7 +104,7 @@ import { context } from 'react-contextual'
 class ReceivingComponent extends React.PureComponent { ... }
 ```
 
-Mapping several contexts is also possible. mapContextToProps behaves like in Redux, that means the components own props can always be used as well:
+Example 2: Mapping several contexts is also possible, just wrap them into an array. mapContextToProps behaves similar to Reduxes otherwise, the components own props can always be used as well.
 
 ```js
 @context([ThemeProvider.Context, CounterProvider.Context], ([theme, count], props) => ({ theme, count }))
@@ -113,10 +113,10 @@ class ReceivingComponent extends React.PureComponent { ... }
 
 ## connectStore(mapContextToProps)
 
-`connectStore` is sugar for:
+`connectStore` is sugar for. You don't need to worry about the actual context in that case, but you could use the store with `connect` and even mix it with foreign contexts.
 
 ```js
-import { connect, StoreProvider, StoreContext } from 'react-contextual'
+import { context, StoreContext } from 'react-contextual'
 
 @context(StoreProvider, ...)
 class ReceivingComponent extends React.PureComponent { ... }
