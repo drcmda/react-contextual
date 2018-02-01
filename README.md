@@ -120,7 +120,8 @@ export default class Test extends React.PureComponent {
 
 ### By composition
 
-Example: https://codesandbox.io/s/wo28o5y1y5
+Example 1: https://codesandbox.io/s/wo28o5y1y5 (Multiple providers)
+Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
 
 `subscribe` can be used as a component in the form of `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. The context that you have mapped to props will be passed as a render prop.
 
