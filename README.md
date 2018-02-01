@@ -21,7 +21,7 @@ Likewise, context can carry setState to new heights by allowing it to freely dis
 # How to use ...
 
 ```js
-import { subscribe, Provider, Subscribe } from 'react-contextual'
+import { subscribe, Subscribe, Provider } from 'react-contextual'
 ```
 
 1. `subscribe([providers,] selector)(AnyComponent)`
@@ -36,7 +36,7 @@ import { subscribe, Provider, Subscribe } from 'react-contextual'
 
 3. `<Provider initialState={state} actions={actions}>...</Provider>`
 
-   A handy little store that you can use to propagate state. Central actions allow components to cause mutations. If you don't want a store and just consume context, don't import it and use `subscribe/<Subscribe/>`.
+   A handy little store that you can use to propagate state. Central actions allow components to cause mutations. If you don't need a store and just consume context, don't import it and use `subscribe` or `<Subscribe/>`.
 
 # If you just need a simple, no-nonsense, light-weight store ...
 
