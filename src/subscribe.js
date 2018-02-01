@@ -38,7 +38,7 @@ export class Subscribe extends React.PureComponent {
     static defaultProps = { to: Context, select: props => props }
     render() {
         const { to, select, children } = this.props
-        const Sub = subscribe(to, select)(props => children(props))
+        const Sub = subscribe(...[to, select].filter(arg => arg !== undefined))(props => children(props))
         return <Sub />
     }
 }

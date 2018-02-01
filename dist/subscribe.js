@@ -60,7 +60,9 @@ function (_React$PureComponent) {
         to = _props.to,
         select = _props.select,
         children = _props.children;
-    var Sub = subscribe(to, select)(function (props) {
+    var Sub = subscribe.apply(void 0, [to, select].filter(function (arg) {
+      return arg !== undefined;
+    }))(function (props) {
       return children(props);
     });
     return _react.default.createElement(Sub, null);
