@@ -4,9 +4,9 @@
 
 It provides three things:
 
-1. a minimal redux-like store pattern with setState semantics and central actions
-2. consuming context with ease, every kind of context, no matter which or whose or how many providers
-3. dealing with render props without the deep nesting
+* a minimal redux-like store pattern with setState semantics and central actions
+* consuming context with ease, every kind of context, no matter which or whose or how many providers
+* dealing with render props without the deep nesting
 
 Currently it relies on [react-trainings polyfill](https://github.com/ReactTraining/react-broadcast/tree/next), which will be removed once React 16.3.0 is out.
 
@@ -20,7 +20,29 @@ Likewise, context makes flux patterns possible that previously would have meant 
 
     npm install react-contextual
 
-# 1. If you just need a simple, no-nonsense, light-weight store ...
+# How to use ...
+
+There are basically three things you might want to fetch from the default export:
+
+```js
+import { subscribe, Provider, Subscribe } from 'react-contextual'
+```
+
+1. `subscribe(providers, selector)`
+
+   is a higher order component that can wrap any other. It has two arguments, `providers` can point to one or many contexts that you're interested in. The `selector` then maps the values it gets from these providers into component props. The wrapped component will receive these props in addition to its own. 
+   
+   You may omitt `providers` and only supply the `selector`, in that case it will fetch `react-contextuals` default Provider Context.
+
+2. `<Subscribe to={providers} select={selector}>{state => ... }</Subscribe>`
+
+   is the same as above, only as a component. You consume selected props via render prop.
+
+3. `<Provider initialState={state} actions={actions}>...</Provider>`
+
+   is a handy little store that you can use to propagate state with. Central actions allow components to cause mutations.
+
+# If you just need a simple, no-nonsense, light-weight store ...
 
 Example: https://codesandbox.io/s/ywyr3q5n4z
 
@@ -81,7 +103,7 @@ export default class TestStore extends React.PureComponent {
 }
 ```
 
-# 2. If you're dealing with context providers of any kind
+# If you're dealing with context providers of any kind
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
@@ -121,7 +143,7 @@ export default class Test extends React.PureComponent {
 }
 ```
 
-# 3. If you like render props, but want to avoid the nesting
+# If you like render props, but want to avoid the nesting
 
 Example 1: https://codesandbox.io/s/wo28o5y1y5 (Multiple providers)
 
