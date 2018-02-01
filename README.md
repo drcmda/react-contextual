@@ -23,7 +23,7 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
 1. `subscribe([providers,] [selector])(AnyComponent)`
 
-    Higher-order component to consume context. `providers` points to one or many contexts. `selector` maps the provider values into component props. Ommit `providers` and it will use the Stores context (the one down below, number 3 in this list). Ommit `selector` and it will default to `props => props`.
+    Higher-order component to consume context. `providers` points to one or many contexts. `selector` maps the provider values into component props. Ommit `providers` and it will use `react-contextual`'s own context for the store (the one down below, number 3 in this list). Ommit `selector` and it will default to `props => props`, so all the contexts props will be merged to the wrapped components props.
 
 2. `<Subscribe [to={providers}] [select={selector}]>{renderFunction}</Subscribe>`
 
