@@ -136,7 +136,7 @@ ReactDOM.render(
             </Subscribe>
         </CounterProvider>
     </ThemeProvider>,
-  document.getElementById('root'),
+    document.getElementById('root'),
 )
 ```
 
