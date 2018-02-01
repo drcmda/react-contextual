@@ -28,7 +28,7 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
    A higher order component. `providers` points to one or many contexts (in that case as an array). `selector` maps the values it gets from these providers into component props. The wrapped component will receive these in addition to its own. 
    
-   If you only supply `selector` it will use the Providers context (the one down below, number 3. in this list).
+   If you only supply `selector` it will use the Providers context (the one down below, number 3 in this list).
 
 2. `<Subscribe [to={providers}] select={selector}>{state => <h>{state}</h> }</Subscribe>`
 
