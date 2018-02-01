@@ -44,11 +44,11 @@ function subscribe() {
 
 var Subscribe =
 /*#__PURE__*/
-function (_React$Component) {
-  _inheritsLoose(Subscribe, _React$Component);
+function (_React$PureComponent) {
+  _inheritsLoose(Subscribe, _React$PureComponent);
 
   function Subscribe() {
-    return _React$Component.apply(this, arguments) || this;
+    return _React$PureComponent.apply(this, arguments) || this;
   }
 
   var _proto = Subscribe.prototype;
@@ -65,7 +65,7 @@ function (_React$Component) {
   };
 
   return Subscribe;
-}(_react.default.Component);
+}(_react.default.PureComponent);
 
 exports.Subscribe = Subscribe;
 Object.defineProperty(Subscribe, "propTypes", {
