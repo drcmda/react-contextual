@@ -1,6 +1,6 @@
 ![](contextual.jpg)
 
-`react-contextual` is a tiny (~1KB) store/higher-order pattern around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md).
+`react-contextual` is a tiny (~1KB*) store/higher-order pattern around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md). *Until React 16.3.0 is out it relies on a [polyfill](https://github.com/ReactTraining/react-broadcast/tree/next).
 
 It provides three things:
 
@@ -8,13 +8,11 @@ It provides three things:
 * consuming context with ease, every kind of context, no matter which or whose or how many providers
 * dealing with render props without the deep nesting
 
-Currently it relies on [react-trainings polyfill](https://github.com/ReactTraining/react-broadcast/tree/next), which will be removed once React 16.3.0 is out.
-
 # Why
 
-In the upcoming version React is going to have a new low-level API for dynamic context distribution. The API is built on render props. While they are very powerful they can make the codebase unwieldy, especially when multiple providers cover context-consumers in scores of nested blobs. `react-contextual` can fix that by mapping context values to component props, similar to how Redux operates. It also allows consumers to listen to multiple providers.
+React new low-level API for dynamic context distribution is built on render props. While they are very powerful they often lead to unwieldy codebases when multiple providers cover consumers in scores of nested blobs. `react-contextual` can fix that by mapping context values to component props, similar to how Redux operates. It also allows consumers to listen to multiple providers.
 
-Likewise, context makes flux patterns possible that previously would have meant larger dependencies and boilerplate. Context can carry setState to new heights by allowing it to freely distribute. `react-contextual` builds a small flux pattern around that premise but lets React do all the work, which perhaps leads to what could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
+Likewise, context can carry setState to new heights by allowing it to freely distribute. `react-contextual` builds a small store around that premise but lets React do all the work. It could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
 
 # Installation
 
@@ -30,17 +28,17 @@ import { subscribe, Provider, Subscribe } from 'react-contextual'
 
 1. `subscribe([providers,] selector)(AnyComponent)`
 
-   is a higher order component that can wrap any other. It has two arguments, `providers` can point to one or many contexts (as an array) that you're interested in. The `selector` then maps the values it gets from these providers into component props. The wrapped component will receive these props in addition to its own. 
+   A higher order component. `providers` points to one or many contexts (in that case as an array). `selector` maps the values it gets from these providers into component props. The wrapped component will receive these in addition to its own. 
    
-   You can omitt `providers` and only supply the `selector`, in that case it will fetch `react-contextuals` default Provider Context (the one below, number 3 in this list).
+   If you only supply `selector` it will fetch `react-contextuals` default Provider Context (the one below, number 3. in this list).
 
 2. `<Subscribe [to={providers}] select={selector}>{state => <h>{state}</h> }</Subscribe>`
 
-   is the same as above, only as a component. You consume selected props via render prop. As with `subscribe` you can ommit the providers, or the `to` props in this case.
+   The same as above as a component. You consume selected props via render prop. As with `subscribe` you can ommit the providers, or the `to` prop in this case.
 
 3. `<Provider initialState={state} actions={actions}>...</Provider>`
 
-   is a handy little store that you can use to propagate state with. Central actions allow components to cause mutations.
+   A handy little store that you can use to propagate state. Central actions allow components to cause mutations.
 
 # If you just need a simple, no-nonsense, light-weight store ...
 
