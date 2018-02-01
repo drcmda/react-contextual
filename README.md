@@ -2,10 +2,11 @@
 
 `react-contextual` is a tiny (~1KB) store/higher-order pattern around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md).
 
-It provides two things:
+It provides three things:
 
-1. consuming context with ease, every kind of context, no matter which or whose or how many providers
-2. a minimal redux-like store pattern with setState semantics and central actions
+1. a minimal redux-like store pattern with setState semantics and central actions
+2. consuming context with ease, every kind of context, no matter which or whose or how many providers
+3. dealing with render props without the deep nesting
 
 Currently it relies on [react-trainings polyfill](https://github.com/ReactTraining/react-broadcast/tree/next), which will be removed once React 16.3.0 is out.
 
@@ -15,11 +16,11 @@ In the upcoming version React is going to have a new low-level API for dynamic c
 
 Likewise, context makes flux patterns possible that previously would have meant larger dependencies and boilerplate. Context can carry setState to new heights by allowing it to freely distribute. `react-contextual` builds a small flux pattern around that premise but lets React do all the work, which perhaps leads to what could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
 
-# Installation and usage
+# Installation
 
     npm install react-contextual
 
-## 1. If you just need a simple, no-nonsense, light-weight store ...
+# 1. If you just need a simple, no-nonsense, light-weight store ...
 
 Example: https://codesandbox.io/s/ko1nz4j2r
 
@@ -80,7 +81,7 @@ export default class TestStore extends React.PureComponent {
 }
 ```
 
-## 2. If you're dealing with context providers of any kind
+# 2. If you're dealing with context providers of any kind
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
@@ -118,7 +119,7 @@ export default class Test extends React.PureComponent {
 }
 ```
 
-## If you like render props
+# 3. If you like render props, but want to avoid the nesting
 
 Example 1: https://codesandbox.io/s/wo28o5y1y5 (Multiple providers)
 
