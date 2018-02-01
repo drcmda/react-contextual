@@ -24,15 +24,15 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
 1. `subscribe([providers,] selector)(AnyComponent)`
 
-   A higher order component. `providers` points to one or many contexts. `selector` maps the provider values into component props. The wrapped component will receive these in addition to its own. If you only supply `selector` it will use the Providers context (the one down below, number 3 in this list).
+    A higher order component. `providers` points to one or many contexts. `selector` maps the provider values into component props. The wrapped component will receive these in addition to its own. If you only supply `selector` it will use the Providers context (the one down below, number 3 in this list).
 
 2. `<Subscribe [to={providers}] select={selector}>{state => <h>{state}</h> }</Subscribe>`
 
-   The same as above as a component. You consume selected props via render function. As with `subscribe` you can ommit the providers (the `to` prop in this case).
+    The same as above as a component. You consume selected props via render function. As with `subscribe` you can ommit the providers (the `to` prop in this case).
 
 3. `<Provider initialState={state} actions={actions}>...</Provider>`
 
-   A handy little store that you can use to propagate state. Central actions allow components to cause mutations. If you don't need a store and just consume context, don't import it and use `subscribe` or `<Subscribe/>`.
+    A handy little store that you can use to propagate state. Central actions allow components to cause mutations. If you don't need a store and just consume context, don't import it and use `subscribe` or `<Subscribe/>`.
 
 # If you just need a light-weight, no-frills store ...
 
@@ -43,46 +43,26 @@ Provide state and actions, wrap everything that is supposed to access or mutate 
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-contextual'
-import TestStore from './TestStore.js'
+import { Provider, subscribe } from 'react-contextual'
+
+// Pick your state, map it to the components props, provide actions ...
+const Test = subscribe(store => ({ count: store.state.count, actions: store.actions }))(
+    ({ count, actions }) => <button onClick={() => actions.increaseCount()}>{count}</button>
+)
 
 ReactDOM.render(
     <Provider
-        initialState={{ name: 'max', count: 0 }}
+        initialState={{ count: 0 }}
         actions={{
-            setName: name => ({ name }), // simple merge
-            increaseCount: factor => state => ({ count: state.count + factor }), // functional merge
+            increaseCount: () => state => ({ count: state.count + 1 }),
         }}>
-        <TestStore />
+        <Test />
     </Provider>,
-    document.getElementById('app'),
+    document.getElementById('root'),
 )
 ```
 
-Consume anywhere within the provider, as deeply nested as you wish.
-
-```js
-import React from 'react'
-import { subscribe } from 'react-contextual'
-
-class TestStore extends React.PureComponent {
-    render() {
-        const { name, count, actions } = this.props
-        return (
-            <div>
-                <input type="text" value={name} onChange={e => actions.setName(e.target.value)} />
-                <button onClick={() => actions.increaseCount(1)}>{name}: {count}</button>
-            </div>
-        )
-    }
-}
-
-// Pick your state, map it to the components props, provide actions ...
-export default subscribe(({ state, actions }) =>
-    ({ name: state.name, count: state.count, actions }))(TestStore)
-```
-
-### Making it a little shorter using the es-next decorator
+### With decorator
 
 But use with care as the spec may still change any time!
 
@@ -102,22 +82,13 @@ Example: https://codesandbox.io/s/5v7n6k8j5p
 Use `subscribe` to consume any React context provider (or several). Make it a PureComponent and it only renders when props change.
 
 ```js
-import React from 'react'
-import { subscribe } from 'react-contextual'
-
-class Test extends React.PureComponent {
-    render() {
-        const { theme, count } = this.props
-        return (
-            <h1 style={{ color: theme === 'light' ? '#000' : '#ddd' }}>
-                Theme: {theme} Count: {count}
-            </h1>
-        )
-    }
-}
-
-// Pick one or several contexts, then map the values to the components props ...
-export default subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(Test)
+const Consumer = subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(
+    ({ theme, count }) => (
+        <h1 style={{ color: theme === 'light' ? '#000' : '#ddd' }}>
+            Theme: {theme} Count: {count}
+        </h1>
+    )
+)
 ```
 
 ### With decorator
