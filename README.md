@@ -22,7 +22,7 @@ Likewise, context makes flux patterns possible that previously would have meant 
 
 # 1. If you just need a simple, no-nonsense, light-weight store ...
 
-Example: https://codesandbox.io/s/ko1nz4j2r
+Example: https://codesandbox.io/s/ywyr3q5n4z
 
 Provide state and actions, wrap everything that is supposed to access or mutate it within.
 
