@@ -121,20 +121,20 @@ Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
 Use `<Subscribe to={} select={}/>` to do the same as above with render props.
 
 ```js
-import { Context as StoreContext } from 'react-contextual'
+import { Provider as Store, Context as StoreContext } from 'react-contextual'
 import { ThemeProvider, ThemeContext } from './theme'
 import { TimeProvider, TimeContext } from './count'
 
 ReactDOM.render(
     <ThemeProvider>
         <TimeProvider>
-            <Provider initialState={{ message: 'time' }}>
+            <Store initialState={{ message: 'time' }}>
                 <Subscribe
                     to={[ThemeContext, TimeContext, StoreContext]} 
                     select={([theme, time, store]) => ({ theme, time, message: store.message })}>
                     {({ theme, time, message }) => <h1 style={{ color: theme }}>{message}: {time}</h1>}
                 </Subscribe>
-            </Provider>
+            </Store>
         </TimeProvider>
     </ThemeProvider>,
     document.getElementById('root'),
