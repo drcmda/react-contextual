@@ -20,8 +20,6 @@ Likewise, context can carry setState to new heights by allowing it to freely dis
 
 # How to use ...
 
-There are basically three things you might want to fetch from the default export:
-
 ```js
 import { subscribe, Provider, Subscribe } from 'react-contextual'
 ```
@@ -38,7 +36,7 @@ import { subscribe, Provider, Subscribe } from 'react-contextual'
 
 3. `<Provider initialState={state} actions={actions}>...</Provider>`
 
-   A handy little store that you can use to propagate state. Central actions allow components to cause mutations.
+   A handy little store that you can use to propagate state. Central actions allow components to cause mutations. If you don't want a store and just consume context, don't import it and use `subscribe/<Subscribe/>`.
 
 # If you just need a simple, no-nonsense, light-weight store ...
 
