@@ -45,10 +45,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider, subscribe } from 'react-contextual'
 
+// No selector, defaults to store => store, which inserts { ...state, actions } as props
 const Test1 = subscribe()(
     ({ count, actions }) => <button onClick={() => actions.increaseCount()}>{count}</button>
 )
 
+// You can acces the components own props, as well as map context props
 const Test2 = subscribe((store, props) => ({ year: store.year * props.factor }))(
     ({ year }) => <div>{year}</div>
 )
@@ -71,7 +73,7 @@ ReactDOM.render(
 But use with care as the spec may still change any time!
 
 ```js
-@subscribe(store => ()
+@subscribe(store => ({ prop: store.selectedProp, actions: store.actions }))
 class Test extends React.PureComponent {
     render() {
         ...
