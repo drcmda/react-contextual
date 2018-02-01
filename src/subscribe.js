@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import Context from './context'
 
 export function subscribe(...args) {
-    let contextRefs = Context, mapContextToProps = store => store
-    if (args.length === 1) {
-        args[0] && (mapContextToProps = args[0])
+    let contextRefs = Context, mapContextToProps = props => props
+    if (args.length === 1 && typeof args[0] === 'function') {
+        mapContextToProps = args[0]
     } else if (args.length === 2) {
         contextRefs = args[0]
         args[1] && (mapContextToProps = args[1])
@@ -35,7 +35,7 @@ export class Subscribe extends React.PureComponent {
         select: PropTypes.func,
         children: PropTypes.func.isRequired,
     }
-    static defaultProps = { to: Context, select: store => store }
+    static defaultProps = { to: Context, select: props => props }
     render() {
         const { to, select, children } = this.props
         const Sub = subscribe(to, select)(props => children(props))

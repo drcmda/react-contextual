@@ -18,12 +18,12 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 function subscribe() {
   var contextRefs = _context.default,
-      mapContextToProps = function mapContextToProps(store) {
-    return store;
+      mapContextToProps = function mapContextToProps(props) {
+    return props;
   };
 
-  if (arguments.length === 1) {
-    (arguments.length <= 0 ? undefined : arguments[0]) && (mapContextToProps = arguments.length <= 0 ? undefined : arguments[0]);
+  if (arguments.length === 1 && typeof (arguments.length <= 0 ? undefined : arguments[0]) === 'function') {
+    mapContextToProps = arguments.length <= 0 ? undefined : arguments[0];
   } else if (arguments.length === 2) {
     contextRefs = arguments.length <= 0 ? undefined : arguments[0];
     (arguments.length <= 1 ? undefined : arguments[1]) && (mapContextToProps = arguments.length <= 1 ? undefined : arguments[1]);
@@ -86,8 +86,8 @@ Object.defineProperty(Subscribe, "defaultProps", {
   writable: true,
   value: {
     to: _context.default,
-    select: function select(store) {
-      return store;
+    select: function select(props) {
+      return props;
     }
   }
 });

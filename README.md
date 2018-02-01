@@ -23,7 +23,7 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
 1. `subscribe([providers,] [selector])(AnyComponent)`
 
-    Higher-order component to consume context. `providers` points to one or many contexts. `selector` maps the provider values into component props. Ommit `providers` and it will use the Stores context (the one down below, number 3 in this list). Ommit `selector` and it will default to `store => store`.
+    Higher-order component to consume context. `providers` points to one or many contexts. `selector` maps the provider values into component props. Ommit `providers` and it will use the Stores context (the one down below, number 3 in this list). Ommit `selector` and it will default to `props => props`.
 
 2. `<Subscribe [to={providers}] [select={selector}]>{renderFunction}</Subscribe>`
 
@@ -42,7 +42,7 @@ Provide state and actions, wrap everything that is supposed to access or mutate 
 ```js
 import { Provider, subscribe } from 'react-contextual'
 
-// No selector, defaults to store => store, which inserts { ...state, actions } as props
+// No selector, defaults to props => props
 const Test1 = subscribe()(
     ({ count, actions }) => <button onClick={() => actions.increaseCount()}>{count}</button>
 )
