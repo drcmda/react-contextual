@@ -79,7 +79,7 @@ export default class TestStore extends React.PureComponent {
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
-Use `subscribe` to consume any React context provider (or several). Make it a PureComponent and it only renders when props change.
+Use `subscribe` to consume any React context provider (or several).
 
 ```js
 const Consumer = subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(
