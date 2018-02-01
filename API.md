@@ -1,6 +1,6 @@
 # API
 
-## context(consumers, mapContextToProps)
+## subscribe(consumers, mapContextToProps)
 
 ```js
 import { subscribe } from 'react-contextual'
@@ -28,7 +28,7 @@ subscribe([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(
 
 ## subscribe(mapContextToProps)
 
-If you skip the context `subscribe` will fetch `react-contextuals` default context, which is used by its provider. It os basically a short cut for:
+If you skip the context `subscribe` will fetch `react-contextuals` default context, which is used by its provider. It is basically a short cut for:
 
 ```js
 import { subscribe, Context } from 'react-contextual'
