@@ -132,7 +132,9 @@ ReactDOM.render(
                 <Subscribe
                     to={[ThemeContext, TimeContext, StoreContext]} 
                     select={([theme, time, store]) => ({ theme, time, message: store.message })}>
-                    {({ theme, time, message }) => <h1 style={{ color: theme }}>{message}: {time}</h1>}
+                    {({ theme, time, message }) =>
+                        <h1 style={{ color: theme }}>{message}: {time}</h1>
+                    }
                 </Subscribe>
             </Store>
         </TimeProvider>
