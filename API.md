@@ -11,19 +11,19 @@ import { subscribe } from 'react-contextual'
 Example 1: Mapping a single context value as a prop.
 
 ```js
-subscribe(ThemeContext, theme => ({ theme }))(Component)
+subscribe(ThemeContext, theme => ({ theme }))(AnyComponent)
 ```
 
 Example 2: mapContextToProps behaves similar to Reduxes mapStateToProps, the components own props can always be used as well.
 
 ```js
-subscribe(UsersContext, (users, props) => ({ user: users[props.id] }))(Component)
+subscribe(UsersContext, (users, props) => ({ user: users[props.id] }))(AnyComponent)
 ```
 
 Example 3: Mapping several contexts is also possible, just wrap them into an array. The props you receive in the selector (the 2nd argument) will also be wrapped as an array, where the order of props matches the order of the providers.
 
 ```js
-subscribe([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(Component)
+subscribe([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(AnyComponent)
 ```
 
 ## subscribe(mapContextToProps)
@@ -33,7 +33,7 @@ If you skip the context `subscribe` will fetch `react-contextuals` default conte
 ```js
 import { subscribe, Context } from 'react-contextual'
 
-subscribe(Context, mapContextToProps)(Component)
+subscribe(Context, mapContextToProps)(AnyComponent)
 ```
 
 ## Subscribe
@@ -56,9 +56,7 @@ The same as the higher-order-component above, but as a component: `<Subscribe to
 import { Provider } from 'react-contextual'
 ```
 
-Perhaps the worlds smallest Redux-like store. It pulls it off by letting React handle context distribution and state diffing. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. That's it! The provider will distribute `{ state, actions }` to listening consumers, either using Reacts API directly or contextuals `connect` HOC. There is an additional prop `renderOnce` that is `true` by default, it will prevent the sub-tree from rendering on state-changes so that you can safely wrap your app into the provider.
-
-The provider will only render once to prevent sub-tree re-rendering on every occuring change. Children otherwise behave normally of course. Any change to the store caused by an action will trigger consuming components.
+A small Redux-like store. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. The provider will distribute `{ state, actions }` to listening components which either use Reacts API directly or contextuals `subscribe` hoc to consume it. There is an additional prop `renderOnce` that is `true` by default, it will prevent the sub-tree from rendering on state-changes so that you can safely wrap your app into the provider. Children otherwise behave normal. Any change to the store caused by an action will trigger consuming components.
 
 Actions are made of a collection of functions which return an object that is going to be merged back into the state using regular `setState` semantics.
 
