@@ -131,7 +131,7 @@ Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
 ReactDOM.render(
     <ThemeProvider>
         <CounterProvider>
-            <Subscribe to={[ThemeContext, CounterContext]} select={([theme, count]) => ({ theme, count })}>
+            <Subscribe to={[ThemeContext, CountContext]} select={([theme, count]) => ({ theme, count })}>
                 {({ theme, count }) => <h1 style={{ color: theme }}>{count}</h1>}
             </Subscribe>
         </CounterProvider>
