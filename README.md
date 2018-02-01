@@ -68,7 +68,7 @@ But use with care as the spec may still change any time!
 
 ```js
 @subscribe(({ state, actions }) => ({ count: state.count, actions }))
-export default class TestStore extends React.PureComponent {
+class Test extends React.PureComponent {
     render() {
         ...
     }
@@ -82,7 +82,7 @@ Example: https://codesandbox.io/s/5v7n6k8j5p
 Use `subscribe` to consume any React context provider (or several).
 
 ```js
-const Consumer = subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(
+const Test = subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(
     ({ theme, count }) => (
         <h1 style={{ color: theme === 'light' ? '#000' : '#ddd' }}>
             Theme: {theme} Count: {count}
@@ -95,7 +95,7 @@ const Consumer = subscribe([ThemeContext, CounterContext], ([theme, count]) => (
 
 ```js
 @subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))
-export default class Test extends React.PureComponent {
+class Test extends React.PureComponent {
     render() {
         ...
     }
