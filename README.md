@@ -82,8 +82,7 @@ class TestStore extends React.PureComponent {
 }
 
 // Pick your state, map it to the components props, provide actions ...
-export default subscribe(store => 
-    ({ name: store.state.name, count: store.state.count, actions: store.actions }))(TestStore)
+export default subscribe(({ state, actions }) => ({ name: state.name, count: state.count, actions }))(TestStore)
 ```
 
 ### Making it a little shorter using the es-next decorator
