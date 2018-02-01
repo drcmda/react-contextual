@@ -59,7 +59,7 @@ function (_React$Component) {
         select = _props.select,
         children = _props.children;
     var Sub = subscribe(to, select)(function (props) {
-      return console.log(props) || children(props);
+      return children(props);
     });
     return _react.default.createElement(Sub, null);
   };

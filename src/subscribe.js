@@ -39,7 +39,7 @@ export class Subscribe extends React.Component {
     static defaultProps = { to: Context }
     render() {
         const { to, select, children } = this.props
-        const Sub = subscribe(to, select)(props => console.log(props) || children(props))
+        const Sub = subscribe(to, select)(props => children(props))
         return <Sub />
     }
 }
