@@ -10,9 +10,7 @@ It provides three things:
 
 # Why
 
-Reacts new low-level API for dynamic context distribution is built on render props. While they are very powerful they often lead to unwieldy codebases when multiple providers cover consumers in scores of nested blobs. `react-contextual` can fix that by mapping context values to component props, similar to how Redux operates. It also allows consumers to listen to multiple providers.
-
-Likewise, context can carry setState to new heights by allowing it to freely distribute. `react-contextual` builds a small store around that premise but lets React do all the work. It could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
+Reacts new low-level API for dynamic context distribution is built on render props. While they are very powerful they can lead to unwieldy codebases. `react-contextual` can fix that by mapping context values to component props, similar to how Redux operates. It also provides a small store around context distribution. It could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
 
 # Installation
 
@@ -26,9 +24,7 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
 1. `subscribe([providers,] selector)(AnyComponent)`
 
-   A higher order component. `providers` points to one or many contexts (in that case as an array). `selector` maps the values it gets from these providers into component props. The wrapped component will receive these in addition to its own. 
-   
-   If you only supply `selector` it will use the Providers context (the one down below, number 3 in this list).
+   A higher order component. `providers` points to one or many contexts. `selector` maps the provider values into component props. The wrapped component will receive these in addition to its own. If you only supply `selector` it will use the Providers context (the one down below, number 3 in this list).
 
 2. `<Subscribe [to={providers}] select={selector}>{state => <h>{state}</h> }</Subscribe>`
 
@@ -63,7 +59,7 @@ ReactDOM.render(
 )
 ```
 
-Consume anywhere within the provider, as deeply nested as you wish. The semantics are similar to Redux.
+Consume anywhere within the provider, as deeply nested as you wish.
 
 ```js
 import React from 'react'
@@ -103,11 +99,7 @@ export default class TestStore extends React.PureComponent {
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
-You can use the `subscribe` higher-order component to listen to any one or multiple React context providers. Their values will be mapped to regular props. You provide context as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
-
-Make the consuming component a PureComponent and you get shallowEqual prop-checking for free, in other words, it only renders when the props you have mapped change.
-
-If you listen to multiple providers using an array as the first argument, then the props you receive in the selector (the 2nd argument) will also be wrapped as an array, where the order of props matches the order of the providers. 
+You can use `subscribe` to listen to any React context provider (or several). You provide context as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details. Make the consuming component a PureComponent and it only renders when the props you have mapped change.
 
 ```js
 import React from 'react'
@@ -145,7 +137,7 @@ Example 1: https://codesandbox.io/s/wo28o5y1y5 (Multiple providers)
 
 Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
 
-`subscribe` can be used as a component in the form of `<Subscribe to={} select={}/>`. The semantics are the same, it can digest any one or several contexts. The context that you have selected will be passed as a render prop. This allows you to react to providers without having to create a component for it.
+Use `<Subscribe to={} select={}/>` to do the same as above in the form of a component. The context that you have selected will be passed as a render prop.
 
 ```js
 ReactDOM.render(
