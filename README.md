@@ -67,7 +67,7 @@ ReactDOM.render(
 But use with care as the spec may still change any time!
 
 ```js
-@subscribe(({ state, actions }) => ({ name: state.name, count: state.count, actions }))
+@subscribe(({ state, actions }) => ({ count: state.count, actions }))
 export default class TestStore extends React.PureComponent {
     render() {
         ...
