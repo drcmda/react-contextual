@@ -32,7 +32,7 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
 2. `<Subscribe [to={providers}] select={selector}>{state => <h>{state}</h> }</Subscribe>`
 
-   The same as above as a component. You consume selected props via render prop. As with `subscribe` you can ommit the providers, or the `to` prop in this case.
+   The same as above as a component. You consume selected props via render function. As with `subscribe` you can ommit the providers (the `to` prop in this case).
 
 3. `<Provider initialState={state} actions={actions}>...</Provider>`
 
