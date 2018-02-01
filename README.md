@@ -48,7 +48,7 @@ Consume anywhere within the provider, as deeply nested as you wish. The semantic
 
 ```js
 import React from 'react'
-import { connect } from 'react-contextual'
+import { subscribe } from 'react-contextual'
 
 class TestStore extends React.PureComponent {
     render() {
@@ -63,7 +63,7 @@ class TestStore extends React.PureComponent {
 }
 
 // Pick your state, map it to the components props, provide actions ...
-export default connect(store => 
+export default subscribe(store => 
     ({ name: store.state.name, count: store.state.count, actions: store.actions }))(TestStore)
 ```
 
@@ -72,7 +72,7 @@ export default connect(store =>
 But use with care as the spec may still change any time!
 
 ```js
-@connect(({ state, actions }) => ({ name: state.name, count: state.count, actions }))
+@subscribe(({ state, actions }) => ({ name: state.name, count: state.count, actions }))
 export default class TestStore extends React.PureComponent {
     render() {
         ...
@@ -84,13 +84,13 @@ export default class TestStore extends React.PureComponent {
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
-You can use the `context` higher-order-component to listen to one or multiple React context providers. Their values will be mapped to regular props. You provide context as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
+You can use the `subscribe` higher-order-component to listen to any one or multiple React context providers. Their values will be mapped to regular props. You provide context as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
 
 Make the consuming component a PureComponent and you get shallowEqual prop-checking for free, in other words, it only renders when the props you have mapped change.
 
 ```js
 import React from 'react'
-import { context } from 'react-contextual'
+import { subscribe } from 'react-contextual'
 
 class Test extends React.PureComponent {
     render() {
@@ -104,18 +104,28 @@ class Test extends React.PureComponent {
 }
 
 // Pick one or several contexts, then map the values to the components props ...
-export default context([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(Test)
+export default subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(Test)
 ```
 
 ### With decorator
 
 ```js
-@context([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))
+@subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))
 export default class Test extends React.PureComponent {
     render() {
         ...
     }
 }
+```
+
+### By composition
+
+`subscribe` can be used as a component in the form of `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. The context that you have mapped to props will be passed as a render prop.
+
+```
+<Subscribe to={Context} select={({ state }) => state}>
+    {state => <div>hi there {state.name}</div>}
+</Subscribe>
 ```
 
 # API

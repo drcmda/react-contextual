@@ -1,13 +1,11 @@
 "use strict";
 
 exports.__esModule = true;
-exports.Provider = exports.RenderOnce = exports.connect = exports.StoreContext = void 0;
+exports.Provider = exports.RenderOnce = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _reactBroadcast = require("react-broadcast");
 
 var _context = _interopRequireDefault(require("./context"));
 
@@ -16,15 +14,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-var StoreContext = (0, _reactBroadcast.createContext)({});
-exports.StoreContext = StoreContext;
-
-var connect = function connect(mapContextToProps) {
-  return (0, _context.default)(StoreContext, mapContextToProps);
-};
-
-exports.connect = connect;
 
 var RenderOnce =
 /*#__PURE__*/
@@ -81,7 +70,7 @@ function (_React$Component2) {
       state: this.state,
       actions: this.actions
     };
-    return _react.default.createElement(StoreContext.Provider, {
+    return _react.default.createElement(_context.default.Provider, {
       value: value
     }, this.props.renderOnce ? _react.default.createElement(RenderOnce, {
       children: this.props.children

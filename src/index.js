@@ -1,3 +1,5 @@
-import context from './context'
-import { connect, RenderOnce, StoreContext, Provider } from './store'
-export { context, connect, RenderOnce, StoreContext, Provider }
+import Context from './context'
+import { subscribe, Subscribe } from './subscribe'
+import { RenderOnce, Provider } from './store'
+
+export { Context, subscribe, Subscribe, RenderOnce, Provider }

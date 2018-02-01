@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { createContext } from 'react-broadcast'
-import context from './context'
-
-export const StoreContext = createContext({})
-export const connect = mapContextToProps => context(StoreContext, mapContextToProps)
+import Context from './context'
 
 export class RenderOnce extends React.Component {
-    shouldComponentUpdate() { return false }
-    render() { return this.props.children }
+    shouldComponentUpdate() {
+        return false
+    }
+    render() {
+        return this.props.children
+    }
 }
 
 export class Provider extends React.Component {
@@ -35,9 +35,9 @@ export class Provider extends React.Component {
     render() {
         const value = { state: this.state, actions: this.actions }
         return (
-            <StoreContext.Provider value={value}>
+            <Context.Provider value={value}>
                 {this.props.renderOnce ? <RenderOnce children={this.props.children} /> : this.props.children}
-            </StoreContext.Provider>
+            </Context.Provider>
         )
     }
 }

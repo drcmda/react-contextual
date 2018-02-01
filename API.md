@@ -3,41 +3,51 @@
 ## context(consumers, mapContextToProps)
 
 ```js
-import { context } from 'react-contextual'
+import { subscribe } from 'react-contextual'
 ```
 
-`context` can be used as a functionwrapper or decorator, it generally works with any Context consumer, it isn't bound to contextuals store model.
+`subscribe` can be used as a functionwrapper or decorator, it generally works with any Context consumer, it isn't bound to contextuals store model.
 
 Example 1: Mapping a single context value as a prop.
 
 ```js
-context(ThemeContext, theme => ({ theme }))(Component)
+subscribe(ThemeContext, theme => ({ theme }))(Component)
 ```
 
 Example 2: mapContextToProps behaves similar to Reduxes mapStateToProps, the components own props can always be used as well.
 
 ```js
-context(UsersContext, (users, props) => ({ user: users[props.id] }))(Component)
+subscribe(UsersContext, (users, props) => ({ user: users[props.id] }))(Component)
 ```
 
 Example 3: Mapping several contexts is also possible, just wrap them into an array.
 
 ```js
-context([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(Component)
+subscribe([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(Component)
 ```
 
-## connect(mapContextToProps)
+## subscribe(mapContextToProps)
+
+If you skip the context `subscribe` will fetch `react-contextuals` default context, which is used by its provider. It os basically a short cut for:
 
 ```js
-import { connect } from 'react-contextual'
+import { subscribe, Context } from 'react-contextual'
+
+subscribe(Context, mapContextToProps)(Component)
 ```
 
-`connect` is sugar for `context`. You don't need to worry about the actual context in that case, but you could use `context` if you supply it, then you could even mix it with other contexts:
+## Subscribe
 
 ```js
-import { context, StoreContext } from 'react-contextual'
+import { Subscribe } from 'react-contextual'
+```
 
-context(StoreContext, ({ state, actions }) => ({ ... }))(Component)
+The same as the higher-order-component above, but as a component: `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. The context that you have mapped to props will be passed as a render prop.
+
+```
+<Subscribe to={Context} select={({ state }) => state}>
+    {state => <div>hi there {state.name}</div>}
+</Subscribe>
 ```
 
 ## Provider
