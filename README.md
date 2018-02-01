@@ -26,7 +26,7 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
     A higher order component. `providers` points to one or many contexts. `selector` maps the provider values into component props, if you ommit it it will default to `store => store`. The wrapped component will receive these in addition to its own. If you only supply `selector` it will use the Providers context (the one down below, number 3 in this list).
 
-2. `<Subscribe [to={providers}] [select={selector}]>{state => <h>{state}</h> }</Subscribe>`
+2. `<Subscribe [to={providers}] [select={selector}]>{renderFunction}</Subscribe>`
 
     The same as above as a component. You consume selected props via render function. As with `subscribe` you can ommit the providers (the `to` prop in this case) and the selector.
 
