@@ -78,3 +78,11 @@ Object.defineProperty(Subscribe, "propTypes", {
     children: _propTypes.default.func.isRequired
   }
 });
+Object.defineProperty(Subscribe, "defaultProps", {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  value: {
+    to: _context.default
+  }
+});

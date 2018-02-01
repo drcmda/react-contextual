@@ -42,7 +42,7 @@ subscribe(Context, mapContextToProps)(Component)
 import { Subscribe } from 'react-contextual'
 ```
 
-The same as the higher-order-component above, but as a component: `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. The context that you have mapped to props will be passed as a render prop.
+The same as the higher-order-component above, but as a component: `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. The context that you have mapped to props will be passed as a render prop. Just like `subscribe` can skip the first argument and use `react-contextuals` default context, so can `Subscribe` if you omitt the `to` property.
 
 ```
 <Subscribe to={Context} select={({ state }) => state}>

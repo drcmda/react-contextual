@@ -36,6 +36,7 @@ export class Subscribe extends React.Component {
         select: PropTypes.func.isRequired,
         children: PropTypes.func.isRequired,
     }
+    static defaultProps = { to: Context }
     render() {
         const { to, select, children } = this.props
         const Sub = subscribe(to, select)(props => console.log(props) || children(props))
