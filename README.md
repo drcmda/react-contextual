@@ -121,12 +121,12 @@ import { TimeProvider, TimeContext } from './time'
 ReactDOM.render(
     <ThemeProvider>
         <TimeProvider>
-            <Store initialState={{ message: 'time' }}>
+            <Store initialState={{ message: 'the time is:' }}>
                 <Subscribe
                     to={[ThemeContext, TimeContext, StoreContext]} 
                     select={([theme, time, store]) => ({ theme, time, message: store.message })}>
                     {({ theme, time, message }) =>
-                        <h1 style={{ color: theme }}>{message}: {time}</h1>
+                        <h1 style={{ color: theme }}>{message} {time}</h1>
                     }
                 </Subscribe>
             </Store>
