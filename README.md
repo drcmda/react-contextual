@@ -124,7 +124,7 @@ Example: https://codesandbox.io/s/wo28o5y1y5
 
 `subscribe` can be used as a component in the form of `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. The context that you have mapped to props will be passed as a render prop.
 
-```
+```js
 ReactDOM.render(
     <ThemeProvider>
         <CounterProvider>
