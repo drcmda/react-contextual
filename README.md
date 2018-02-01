@@ -123,7 +123,7 @@ Use `<Subscribe to={} select={}/>` to do the same as above with render props.
 ```js
 import { Provider as Store, Context as StoreContext } from 'react-contextual'
 import { ThemeProvider, ThemeContext } from './theme'
-import { TimeProvider, TimeContext } from './count'
+import { TimeProvider, TimeContext } from './time'
 
 ReactDOM.render(
     <ThemeProvider>
