@@ -99,7 +99,7 @@ export default class TestStore extends React.PureComponent {
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
-You can use `subscribe` to listen to any React context provider (or several). You provide context as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details. Make the consuming component a PureComponent and it only renders when the props you have mapped change.
+Use `subscribe` to consume any React context provider (or several). Make it a PureComponent and it only renders when props change.
 
 ```js
 import React from 'react'
@@ -131,13 +131,13 @@ export default class Test extends React.PureComponent {
 }
 ```
 
-# If you like render props, but want to avoid the nesting
+# If like to consume context but dislike HOC's
 
 Example 1: https://codesandbox.io/s/wo28o5y1y5 (Multiple providers)
 
 Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
 
-Use `<Subscribe to={} select={}/>` to do the same as above in the form of a component. The context that you have selected will be passed as a render prop.
+Use `<Subscribe to={} select={}/>` to do the same as above with render props.
 
 ```js
 ReactDOM.render(
