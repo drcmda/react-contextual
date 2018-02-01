@@ -51,13 +51,13 @@ const Test1 = subscribe()(
 )
 
 // You can acces the components own props, as well as map context props
-const Test2 = subscribe((store, props) => ({ year: store.year * props.factor }))(
+const Test2 = subscribe((store, props) => ({ year: store.year * props.factor + store.count }))(
     ({ year }) => <span>{year}</span>
 )
 
 ReactDOM.render(
     <Provider
-        initialState={{ count: 0, year: 1009 }}
+        initialState={{ count: 0, year: 1000 }}
         actions={{
             increaseCount: () => state => ({ count: state.count + 1 }),
         }}>
