@@ -1,6 +1,6 @@
 ![](contextual.jpg)
 
-`react-contextual` is a tiny (~1KB*) helper around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md). *relies on a [polyfill](https://github.com/ReactTraining/react-broadcast/tree/next) until React 16.3.0.
+`react-contextual` is a tiny (~1KB) helper around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md). *relies on a [polyfill](https://github.com/ReactTraining/react-broadcast/tree/next) until React 16.3.0's out.
 
 It provides three things:
 
@@ -10,7 +10,7 @@ It provides three things:
 
 # Why
 
-React new low-level API for dynamic context distribution is built on render props. While they are very powerful they often lead to unwieldy codebases when multiple providers cover consumers in scores of nested blobs. `react-contextual` can fix that by mapping context values to component props, similar to how Redux operates. It also allows consumers to listen to multiple providers.
+Reacts new low-level API for dynamic context distribution is built on render props. While they are very powerful they often lead to unwieldy codebases when multiple providers cover consumers in scores of nested blobs. `react-contextual` can fix that by mapping context values to component props, similar to how Redux operates. It also allows consumers to listen to multiple providers.
 
 Likewise, context can carry setState to new heights by allowing it to freely distribute. `react-contextual` builds a small store around that premise but lets React do all the work. It could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
 
