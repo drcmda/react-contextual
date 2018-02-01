@@ -28,15 +28,15 @@ There are basically three things you might want to fetch from the default export
 import { subscribe, Provider, Subscribe } from 'react-contextual'
 ```
 
-1. `subscribe(providers, selector)`
+1. `subscribe([providers,] selector)(AnyComponent)`
 
-   is a higher order component that can wrap any other. It has two arguments, `providers` can point to one or many contexts that you're interested in. The `selector` then maps the values it gets from these providers into component props. The wrapped component will receive these props in addition to its own. 
+   is a higher order component that can wrap any other. It has two arguments, `providers` can point to one or many contexts (as an array) that you're interested in. The `selector` then maps the values it gets from these providers into component props. The wrapped component will receive these props in addition to its own. 
    
-   You may omitt `providers` and only supply the `selector`, in that case it will fetch `react-contextuals` default Provider Context.
+   You can omitt `providers` and only supply the `selector`, in that case it will fetch `react-contextuals` default Provider Context (the one below, number 3 in this list).
 
-2. `<Subscribe to={providers} select={selector}>{state => ... }</Subscribe>`
+2. `<Subscribe [to={providers}] select={selector}>{state => <h>{state}</h> }</Subscribe>`
 
-   is the same as above, only as a component. You consume selected props via render prop.
+   is the same as above, only as a component. You consume selected props via render prop. As with `subscribe` you can ommit the providers, or the `to` props in this case.
 
 3. `<Provider initialState={state} actions={actions}>...</Provider>`
 
