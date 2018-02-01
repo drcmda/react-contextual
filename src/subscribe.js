@@ -10,7 +10,7 @@ export function subscribe(...args) {
     } else if (args.length === 2) {
         contextRefs = args[0]
         mapContextToProps = args[1]
-    } else throw 'subscribe called without argumnets'
+    } else throw 'subscribe called without arguments'
     return Wrapped => props => {
         const isArray = Array.isArray(contextRefs)
         const array = isArray ? contextRefs : [contextRefs]

@@ -25,7 +25,7 @@ function subscribe() {
   } else if (arguments.length === 2) {
     contextRefs = arguments.length <= 0 ? undefined : arguments[0];
     mapContextToProps = arguments.length <= 1 ? undefined : arguments[1];
-  } else throw 'subscribe called without argumnets';
+  } else throw 'subscribe called without arguments';
 
   return function (Wrapped) {
     return function (props) {
