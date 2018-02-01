@@ -52,7 +52,7 @@ const Test1 = subscribe()(
 
 // You can acces the components own props, as well as map context props
 const Test2 = subscribe((store, props) => ({ year: store.year * props.factor }))(
-    ({ year }) => <div>{year}</div>
+    ({ year }) => <span>{year}</span>
 )
 
 ReactDOM.render(
@@ -73,7 +73,7 @@ ReactDOM.render(
 But use with care as the spec may still change any time!
 
 ```js
-@subscribe(store => ({ prop: store.selectedProp, actions: store.actions }))
+@subscribe()
 class Test extends React.PureComponent {
     render() {
         ...
@@ -88,7 +88,11 @@ Example: https://codesandbox.io/s/5v7n6k8j5p
 Use `subscribe` to consume any React context provider (or several).
 
 ```js
-const Test = subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(
+const User = subscribe(UsersContext, ({ users }, props) => ({ user: users[props.id] }))(
+    ({ user }) => <span>hi there user: {user}</span>
+)
+
+const Header = subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(
     ({ theme, count }) => (
         <h1 style={{ color: theme === 'light' ? '#000' : '#ddd' }}>
             Theme: {theme} Count: {count}
