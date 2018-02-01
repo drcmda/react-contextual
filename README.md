@@ -118,20 +118,20 @@ export default class Test extends React.PureComponent {
 }
 ```
 
-### By composition
+## If you like render props
 
 Example 1: https://codesandbox.io/s/wo28o5y1y5 (Multiple providers)
 
 Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
 
-`subscribe` can be used as a component in the form of `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. The context that you have mapped to props will be passed as a render prop.
+`subscribe` can be used as a component in the form of `<Subscribe to={} select={}/>`. The semantics are the same, it can digest any one or several contexts. The context that you have selected will be passed as a render prop. This allows you to react to providers without having to create a component for it.
 
 ```js
 ReactDOM.render(
     <ThemeProvider>
         <CounterProvider>
             <Subscribe to={[ThemeContext, CounterContext]} select={([theme, count]) => ({ theme, count })}>
-                {({ theme, count }) => <h1 style={{ color: theme === 'light' ? '#000' : '#ddd' }}>{theme} {count}</h1>}
+                {({ theme, count }) => <h1 style={{ color: theme }}>{count}</h1>}
             </Subscribe>
         </CounterProvider>
     </ThemeProvider>,
