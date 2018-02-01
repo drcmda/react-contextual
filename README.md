@@ -85,9 +85,11 @@ export default class TestStore extends React.PureComponent {
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
-You can use the `subscribe` higher-order-component to listen to any one or multiple React context providers. Their values will be mapped to regular props. You provide context as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
+You can use the `subscribe` higher-order component to listen to any one or multiple React context providers. Their values will be mapped to regular props. You provide context as you normally would, look into Reacts [latest RFC](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md) for more details.
 
 Make the consuming component a PureComponent and you get shallowEqual prop-checking for free, in other words, it only renders when the props you have mapped change.
+
+If you listen to multiple providers using an array as the first argument, then the props you receive in the selector (the 2nd argument) will also be wrapped as an array, where the order of props matches the order of the providers. 
 
 ```js
 import React from 'react'

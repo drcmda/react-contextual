@@ -20,7 +20,7 @@ Example 2: mapContextToProps behaves similar to Reduxes mapStateToProps, the com
 subscribe(UsersContext, (users, props) => ({ user: users[props.id] }))(Component)
 ```
 
-Example 3: Mapping several contexts is also possible, just wrap them into an array.
+Example 3: Mapping several contexts is also possible, just wrap them into an array. The props you receive in the selector (the 2nd argument) will also be wrapped as an array, where the order of props matches the order of the providers.
 
 ```js
 subscribe([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(Component)
