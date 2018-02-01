@@ -34,7 +34,7 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
    A handy little store that you can use to propagate state. Central actions allow components to cause mutations. If you don't need a store and just consume context, don't import it and use `subscribe` or `<Subscribe/>`.
 
-# If you just need a simple, no-nonsense, light-weight store ...
+# If you just need a simple, no-frills, light-weight store ...
 
 Example: https://codesandbox.io/s/ywyr3q5n4z
 
@@ -131,7 +131,7 @@ export default class Test extends React.PureComponent {
 }
 ```
 
-# If like to consume context but dislike HOC's
+# If you like to consume context but dislike HOC's
 
 Example 1: https://codesandbox.io/s/wo28o5y1y5 (Multiple providers)
 
