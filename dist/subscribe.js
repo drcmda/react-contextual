@@ -17,15 +17,17 @@ function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.crea
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function subscribe() {
-  var contextRefs, mapContextToProps;
+  var contextRefs = _context.default,
+      mapContextToProps = function mapContextToProps(store) {
+    return store;
+  };
 
   if (arguments.length === 1) {
-    contextRefs = _context.default;
-    mapContextToProps = arguments.length <= 0 ? undefined : arguments[0];
+    (arguments.length <= 0 ? undefined : arguments[0]) && (mapContextToProps = arguments.length <= 0 ? undefined : arguments[0]);
   } else if (arguments.length === 2) {
     contextRefs = arguments.length <= 0 ? undefined : arguments[0];
-    mapContextToProps = arguments.length <= 1 ? undefined : arguments[1];
-  } else throw 'subscribe called without arguments';
+    (arguments.length <= 1 ? undefined : arguments[1]) && (mapContextToProps = arguments.length <= 1 ? undefined : arguments[1]);
+  }
 
   return function (Wrapped) {
     return function (props) {
@@ -74,7 +76,7 @@ Object.defineProperty(Subscribe, "propTypes", {
   writable: true,
   value: {
     to: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.object), _propTypes.default.object]),
-    select: _propTypes.default.func.isRequired,
+    select: _propTypes.default.func,
     children: _propTypes.default.func.isRequired
   }
 });
@@ -83,6 +85,9 @@ Object.defineProperty(Subscribe, "defaultProps", {
   enumerable: true,
   writable: true,
   value: {
-    to: _context.default
+    to: _context.default,
+    select: function select(store) {
+      return store;
+    }
   }
 });

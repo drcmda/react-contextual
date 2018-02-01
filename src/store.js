@@ -33,7 +33,7 @@ export class Provider extends React.Component {
         )
     }
     render() {
-        const value = { state: this.state, actions: this.actions }
+        const value = { ...this.state, actions: this.actions }
         return (
             <Context.Provider value={value}>
                 {this.props.renderOnce ? <RenderOnce children={this.props.children} /> : this.props.children}

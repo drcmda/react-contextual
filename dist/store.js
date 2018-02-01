@@ -66,10 +66,10 @@ function (_React$Component2) {
   var _proto2 = Provider.prototype;
 
   _proto2.render = function render() {
-    var value = {
-      state: this.state,
+    var value = _extends({}, this.state, {
       actions: this.actions
-    };
+    });
+
     return _react.default.createElement(_context.default.Provider, {
       value: value
     }, this.props.renderOnce ? _react.default.createElement(RenderOnce, {

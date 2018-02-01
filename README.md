@@ -22,13 +22,13 @@ Reacts new low-level API for dynamic context distribution is built on render pro
 import { subscribe, Subscribe, Provider } from 'react-contextual'
 ```
 
-1. `subscribe([providers,] selector)(AnyComponent)`
+1. `subscribe([providers,] [selector])(AnyComponent)`
 
-    A higher order component. `providers` points to one or many contexts. `selector` maps the provider values into component props. The wrapped component will receive these in addition to its own. If you only supply `selector` it will use the Providers context (the one down below, number 3 in this list).
+    A higher order component. `providers` points to one or many contexts. `selector` maps the provider values into component props, if you ommit it it will default to `store => store`. The wrapped component will receive these in addition to its own. If you only supply `selector` it will use the Providers context (the one down below, number 3 in this list).
 
-2. `<Subscribe [to={providers}] select={selector}>{state => <h>{state}</h> }</Subscribe>`
+2. `<Subscribe [to={providers}] [select={selector}]>{state => <h>{state}</h> }</Subscribe>`
 
-    The same as above as a component. You consume selected props via render function. As with `subscribe` you can ommit the providers (the `to` prop in this case).
+    The same as above as a component. You consume selected props via render function. As with `subscribe` you can ommit the providers (the `to` prop in this case) and the selector.
 
 3. `<Provider initialState={state} actions={actions}>...</Provider>`
 
@@ -45,18 +45,22 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider, subscribe } from 'react-contextual'
 
-// Pick your state, map it to the components props, provide actions ...
-const Test = subscribe(store => ({ count: store.state.count, actions: store.actions }))(
+const Test1 = subscribe()(
     ({ count, actions }) => <button onClick={() => actions.increaseCount()}>{count}</button>
+)
+
+const Test2 = subscribe((store, props) => ({ year: store.year * props.factor }))(
+    ({ year }) => <div>{year}</div>
 )
 
 ReactDOM.render(
     <Provider
-        initialState={{ count: 0 }}
+        initialState={{ count: 0, year: 1009 }}
         actions={{
             increaseCount: () => state => ({ count: state.count + 1 }),
         }}>
-        <Test />
+        <Test1 />
+        <Test2 factor={2} />
     </Provider>,
     document.getElementById('root'),
 )
@@ -67,7 +71,7 @@ ReactDOM.render(
 But use with care as the spec may still change any time!
 
 ```js
-@subscribe(({ state, actions }) => ({ count: state.count, actions }))
+@subscribe(store => ()
 class Test extends React.PureComponent {
     render() {
         ...
