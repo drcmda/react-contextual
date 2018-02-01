@@ -120,12 +120,21 @@ export default class Test extends React.PureComponent {
 
 ### By composition
 
+Example: https://codesandbox.io/s/wo28o5y1y5
+
 `subscribe` can be used as a component in the form of `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. The context that you have mapped to props will be passed as a render prop.
 
 ```
-<Subscribe to={Context} select={({ state }) => state}>
-    {state => <div>hi there {state.name}</div>}
-</Subscribe>
+ReactDOM.render(
+    <ThemeProvider>
+        <CounterProvider>
+            <Subscribe to={[ThemeContext, CounterContext]} select={([theme, count]) => ({ theme, count })}>
+                {({ theme, count }) => <h1 style={{ color: theme === 'light' ? '#000' : '#ddd' }}>{theme} {count}</h1>}
+            </Subscribe>
+        </CounterProvider>
+    </ThemeProvider>,
+  document.getElementById('root'),
+)
 ```
 
 # API
