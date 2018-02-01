@@ -49,26 +49,30 @@ function (_React$Component2) {
 
     _this = _React$Component2.call(this) || this;
     _this.state = props.initialState || {};
-    _this.actions = Object.keys(props.actions).reduce(function (accumulator, action) {
-      var _extends2;
 
-      return _extends({}, accumulator, (_extends2 = {}, _extends2[action] = function () {
-        var _props$actions;
+    if (props.actions) {
+      _this.actions = Object.keys(props.actions).reduce(function (accumulator, action) {
+        var _extends2;
 
-        var result = (_props$actions = props.actions)[action].apply(_props$actions, arguments);
+        return _extends({}, accumulator, (_extends2 = {}, _extends2[action] = function () {
+          var _props$actions;
 
-        _this.setState(typeof result === 'function' ? result(_this.state) : result);
-      }, _extends2));
-    }, {});
+          var result = (_props$actions = props.actions)[action].apply(_props$actions, arguments);
+
+          _this.setState(typeof result === 'function' ? result(_this.state) : result);
+        }, _extends2));
+      }, {});
+    }
+
     return _this;
   }
 
   var _proto2 = Provider.prototype;
 
   _proto2.render = function render() {
-    var value = _extends({}, this.state, {
+    var value = _extends({}, this.state, this.actions ? {
       actions: this.actions
-    });
+    } : {});
 
     return _react.default.createElement(_context.default.Provider, {
       value: value
@@ -87,7 +91,7 @@ Object.defineProperty(Provider, "propTypes", {
   writable: true,
   value: {
     initialState: _propTypes.default.object.isRequired,
-    actions: _propTypes.default.object.isRequired,
+    actions: _propTypes.default.object,
     renderOnce: _propTypes.default.bool
   }
 });

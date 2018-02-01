@@ -14,26 +14,28 @@ export class RenderOnce extends React.Component {
 export class Provider extends React.Component {
     static propTypes = {
         initialState: PropTypes.object.isRequired,
-        actions: PropTypes.object.isRequired,
+        actions: PropTypes.object,
         renderOnce: PropTypes.bool,
     }
     static defaultProps = { renderOnce: true }
     constructor(props) {
         super()
         this.state = props.initialState || {}
-        this.actions = Object.keys(props.actions).reduce(
-            (accumulator, action) => ({
-                ...accumulator,
-                [action]: (...args) => {
-                    const result = props.actions[action](...args)
-                    this.setState(typeof result === 'function' ? result(this.state) : result)
-                },
-            }),
-            {},
-        )
+        if (props.actions) {
+            this.actions = Object.keys(props.actions).reduce(
+                (accumulator, action) => ({
+                    ...accumulator,
+                    [action]: (...args) => {
+                        const result = props.actions[action](...args)
+                        this.setState(typeof result === 'function' ? result(this.state) : result)
+                    },
+                }),
+                {},
+            )
+        }
     }
     render() {
-        const value = { ...this.state, actions: this.actions }
+        const value = { ...this.state, ...(this.actions ? { actions: this.actions } : {}) }
         return (
             <Context.Provider value={value}>
                 {this.props.renderOnce ? <RenderOnce children={this.props.children} /> : this.props.children}

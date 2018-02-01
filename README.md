@@ -30,7 +30,7 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
     The same as above as a component. You consume selected props via render function. As with `subscribe` you can ommit the providers (the `to` prop in this case) and the selector.
 
-3. `<Provider initialState={state} actions={actions}>...</Provider>`
+3. `<Provider initialState={state} [actions={actions}]>...</Provider>`
 
     A handy little store that you can use to propagate state. Central actions allow components to cause mutations. If you don't need a store and just consume context, don't import it and use `subscribe` or `<Subscribe/>`.
 
@@ -124,9 +124,14 @@ Use `<Subscribe to={} select={}/>` to do the same as above with render props.
 ReactDOM.render(
     <ThemeProvider>
         <CounterProvider>
-            <Subscribe to={[ThemeCtx, CountCtx]} select={([theme, count]) => ({ theme, count })}>
-                {({ theme, count }) => <h1 style={{ color: theme }}>{count}</h1>}
-            </Subscribe>
+            <Provider initialState={{ message: 'hello' }}>
+                <Subscribe
+                    to={[ThemeCtx, CountCtx]} 
+                    select={([theme, count]) => ({ theme, count })}>
+                    {({ theme, count }) => <h1 style={{ color: theme }}>{count}</h1>}
+                </Subscribe>
+                <Subscribe>{({ message }) => <h1>{message}</h1>}</Subscribe>
+            </Provider>
         </CounterProvider>
     </ThemeProvider>,
     document.getElementById('root'),
