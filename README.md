@@ -9,7 +9,7 @@ It provides two things:
 
 # Why
 
-Reacts new low-level API for dynamic context distribution is built on render props. While they are very powerful they can lead to unwieldy codebases. `react-contextual` can fix that by mapping context values to component props, similar to how Redux operates. It also provides a small store around context distribution. It could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
+Reacts new low-level API for dynamic context distribution is built on render props. While they are very powerful they can lead to unwieldy codebases. `react-contextual` can fix that by mapping context values to component props, similar to how Redux operates. It also provides a small store for context distribution. It could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
 
 # Installation
 
