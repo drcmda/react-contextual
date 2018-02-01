@@ -73,7 +73,7 @@ Object.defineProperty(Subscribe, "propTypes", {
   enumerable: true,
   writable: true,
   value: {
-    to: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.object).isRequired, _propTypes.default.object.isRequired]),
+    to: _propTypes.default.oneOfType([_propTypes.default.arrayOf(_propTypes.default.object), _propTypes.default.object]),
     select: _propTypes.default.func.isRequired,
     children: _propTypes.default.func.isRequired
   }
