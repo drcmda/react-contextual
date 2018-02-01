@@ -2,11 +2,10 @@
 
 `react-contextual` is a tiny (~1KB) helper around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md).
 
-It provides three things:
+It provides two things:
 
-* a minimal redux-like store pattern with setState semantics and central actions
 * consuming context with ease, every kind of context, no matter which or whose or how many providers
-* dealing with render props without the deep nesting
+* a minimal redux-like store pattern with setState semantics and central actions
 
 # Why
 
@@ -24,15 +23,15 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
 1. `subscribe([providers,] [selector])(AnyComponent)`
 
-    A higher order component. `providers` points to one or many contexts. `selector` maps the provider values into component props, if you ommit it it will default to `store => store`. The wrapped component will receive these in addition to its own. If you only supply `selector` it will use the Providers context (the one down below, number 3 in this list).
+    Higher-order component to consume context. `providers` points to one or many contexts. `selector` maps the provider values into component props. Ommit `providers` and it will use the Stores context (the one down below, number 3 in this list). Ommit `selector` and it will default to `store => store`.
 
 2. `<Subscribe [to={providers}] [select={selector}]>{renderFunction}</Subscribe>`
 
-    The same as above as a component. You consume selected props via render function. As with `subscribe` you can ommit the providers (the `to` prop in this case) and the selector.
+    The same as above as a component that passes selected props via render function.
 
 3. `<Provider initialState={state} [actions={actions}]>...</Provider>`
 
-    A handy little store that you can use to propagate state. Central actions allow components to cause mutations. If you don't need a store and just consume context, don't import it and use `subscribe` or `<Subscribe/>`.
+    A small store with central actions.
 
 # If you just need a light-weight, no-frills store ...
 
@@ -41,8 +40,6 @@ Example: https://codesandbox.io/s/ywyr3q5n4z
 Provide state and actions, wrap everything that is supposed to access or mutate it within.
 
 ```js
-import React from 'react'
-import ReactDOM from 'react-dom'
 import { Provider, subscribe } from 'react-contextual'
 
 // No selector, defaults to store => store, which inserts { ...state, actions } as props
@@ -93,11 +90,7 @@ const User = subscribe(UsersContext, ({ users }, props) => ({ user: users[props.
 )
 
 const Header = subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))(
-    ({ theme, count }) => (
-        <h1 style={{ color: theme === 'light' ? '#000' : '#ddd' }}>
-            Theme: {theme} Count: {count}
-        </h1>
-    )
+    ({ theme, count }) => <h1 style={{ color: theme }}>{count}</h1>
 )
 ```
 
@@ -105,7 +98,7 @@ const Header = subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ 
 
 ```js
 @subscribe([ThemeContext, CounterContext], ([theme, count]) => ({ theme, count }))
-class Test extends React.PureComponent {
+class Header extends React.PureComponent {
     render() {
         ...
     }
