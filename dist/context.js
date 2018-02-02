@@ -5,6 +5,9 @@ exports.default = void 0;
 
 var _reactBroadcast = require("react-broadcast");
 
-var Context = (0, _reactBroadcast.createContext)();
+// Obsolete in React 16.3.0
+var Context =
+/*React.*/
+(0, _reactBroadcast.createContext)();
 var _default = Context;
 exports.default = _default;

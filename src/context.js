@@ -1,5 +1,5 @@
-import { createContext } from 'react-broadcast'
+import { createContext } from 'react-broadcast' // Obsolete in React 16.3.0
 
-const Context = createContext()
+const Context = /*React.*/createContext()
 
 export default Context

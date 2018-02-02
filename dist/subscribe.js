@@ -17,17 +17,25 @@ function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.crea
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function subscribe() {
-  var contextRefs = _context.default,
-      mapContextToProps = function mapContextToProps(props) {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  // Filter undefined args (can happen if Subscribe injects them)
+  args = args.filter(function (a) {
+    return a;
+  }); // Get context refs
+
+  var contextRefs = args.find(function (arg) {
+    return typeof arg !== 'function';
+  }) || _context.default; // Get mapping function
+
+
+  var mapContextToProps = args.find(function (arg) {
+    return typeof arg === 'function';
+  }) || function (props) {
     return props;
   };
-
-  if (arguments.length === 1 && typeof (arguments.length <= 0 ? undefined : arguments[0]) === 'function') {
-    mapContextToProps = arguments.length <= 0 ? undefined : arguments[0];
-  } else if (arguments.length === 2) {
-    contextRefs = arguments.length <= 0 ? undefined : arguments[0];
-    (arguments.length <= 1 ? undefined : arguments[1]) && (mapContextToProps = arguments.length <= 1 ? undefined : arguments[1]);
-  }
 
   return function (Wrapped) {
     return function (props) {
@@ -60,9 +68,7 @@ function (_React$PureComponent) {
         to = _props.to,
         select = _props.select,
         children = _props.children;
-    var Sub = subscribe.apply(void 0, [to, select].filter(function (arg) {
-      return arg !== undefined;
-    }))(function (props) {
+    var Sub = subscribe(to, select)(function (props) {
       return children(props);
     });
     return _react.default.createElement(Sub, null);
