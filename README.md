@@ -43,9 +43,9 @@ Provide state and actions, wrap everything that is supposed to access or mutate 
 import { Provider, subscribe } from 'react-contextual'
 
 // No selector, defaults to props => props
-const Counter = subscribe()(({ count, actions }) => (
-    <button onClick={() => actions.increaseCount()}>Click {count}</button>
-))
+const Counter = subscribe()(
+    ({ count, actions }) => <button onClick={() => actions.increaseCount()}>Click {count}</button>
+)
 
 // You can map context to props any way you like ...
 const Message = subscribe(({ message, actions }) => ({ message, set: actions.setMessage }))(
@@ -54,8 +54,9 @@ const Message = subscribe(({ message, actions }) => ({ message, set: actions.set
             <input value={message} onChange={e => set(e.target.value)} />
             {message}
         </span>
-    ),
+    )
 )
+
 ReactDOM.render(
     <Provider
         initialState={{ message: 'hello', count: 0 }}
