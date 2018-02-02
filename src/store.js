@@ -23,22 +23,17 @@ export class Provider extends React.Component {
         this.state = props.initialState || {}
         if (props.actions) {
             this.actions = Object.keys(props.actions).reduce(
-                (accumulator, action) => ({
-                    ...accumulator,
-                    [action]: (...args) => {
-                        const result = props.actions[action](...args)
-                        this.setState(typeof result === 'function' ? result(this.state) : result)
-                    },
-                }),
+                (acc, name) => ({ ...acc, [name]: (...args) => this.setState(props.actions[name](...args)) }),
                 {},
             )
         }
     }
     render() {
-        const value = { ...this.state, ...(this.actions ? { actions: this.actions } : {}) }
+        const { state, actions, props } = this
+        const value = { ...state, ...(actions ? { actions } : {}) }
         return (
             <Context.Provider value={value}>
-                {this.props.renderOnce ? <RenderOnce children={this.props.children} /> : this.props.children}
+                {props.renderOnce ? <RenderOnce children={props.children} /> : props.children}
             </Context.Provider>
         )
     }

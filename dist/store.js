@@ -51,15 +51,13 @@ function (_React$Component2) {
     _this.state = props.initialState || {};
 
     if (props.actions) {
-      _this.actions = Object.keys(props.actions).reduce(function (accumulator, action) {
+      _this.actions = Object.keys(props.actions).reduce(function (acc, name) {
         var _extends2;
 
-        return _extends({}, accumulator, (_extends2 = {}, _extends2[action] = function () {
+        return _extends({}, acc, (_extends2 = {}, _extends2[name] = function () {
           var _props$actions;
 
-          var result = (_props$actions = props.actions)[action].apply(_props$actions, arguments);
-
-          _this.setState(typeof result === 'function' ? result(_this.state) : result);
+          return _this.setState((_props$actions = props.actions)[name].apply(_props$actions, arguments));
         }, _extends2));
       }, {});
     }
@@ -70,15 +68,19 @@ function (_React$Component2) {
   var _proto2 = Provider.prototype;
 
   _proto2.render = function render() {
-    var value = _extends({}, this.state, this.actions ? {
-      actions: this.actions
+    var state = this.state,
+        actions = this.actions,
+        props = this.props;
+
+    var value = _extends({}, state, actions ? {
+      actions: actions
     } : {});
 
     return _react.default.createElement(_context.default.Provider, {
       value: value
-    }, this.props.renderOnce ? _react.default.createElement(RenderOnce, {
-      children: this.props.children
-    }) : this.props.children);
+    }, props.renderOnce ? _react.default.createElement(RenderOnce, {
+      children: props.children
+    }) : props.children);
   };
 
   return Provider;
