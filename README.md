@@ -43,23 +43,29 @@ Provide state and actions, wrap everything that is supposed to access or mutate 
 import { Provider, subscribe } from 'react-contextual'
 
 // No selector, defaults to props => props
-const Test1 = subscribe()(
-    ({ count, actions }) => <button onClick={() => actions.increaseCount()}>{count}</button>
+const Counter = subscribe()(
+    ({ count, actions }) => <button onClick={() => actions.increaseCount()}>Click {count}</button>
 )
 
-// You can acces the components own props, as well as map context props
-const Test2 = subscribe((store, props) => ({ year: store.year * props.factor + store.count }))(
-    ({ year }) => <span>{year}</span>
+// You can map context to props any way you like ...
+const Message = subscribe(({ message, actions }) => ({ message, set: actions.setMessage }))(
+    ({ message, set }) => (
+        <span>
+            <input value={message} onChange={e => set(e.target.value)} />
+            {message}
+        </span>
+    )
 )
 
 ReactDOM.render(
     <Provider
-        initialState={{ count: 0, year: 1000 }}
+        initialState={{ message: 'hello', count: 0 }}
         actions={{
+            setMessage: message => ({ message }),
             increaseCount: () => state => ({ count: state.count + 1 }),
         }}>
-        <Test1 />
-        <Test2 factor={2} />
+        <Counter />
+        <Message />
     </Provider>,
     document.getElementById('root'),
 )
