@@ -120,7 +120,7 @@ Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
 Use `<Subscribe to={} select={}/>` to do the same as above with render props.
 
 ```js
-import { Provider as Store, Context as StoreContext } from 'react-contextual'
+import { Provider as Store, Context as StoreContext, Subscribe } from 'react-contextual'
 import { ThemeProvider, ThemeContext } from './theme'
 import { TimeProvider, TimeContext } from './time'
 
