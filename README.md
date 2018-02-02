@@ -40,8 +40,6 @@ Example: https://codesandbox.io/s/ywyr3q5n4z
 Provide state and actions, wrap everything that is supposed to access or mutate it within.
 
 ```js
-import React from 'react'
-import ReactDOM from 'react-dom'
 import { Provider, subscribe } from 'react-contextual'
 
 // No selector, defaults to props => props
@@ -49,24 +47,24 @@ const Counter = subscribe()(({ count, actions }) => (
     <button onClick={() => actions.increaseCount()}>Click {count}</button>
 ))
 
-// You can acces the components own props, as well as map context props
-const Year = subscribe(({ title, year, actions }, props) => ({ title, year: year + props.add, actions }))(
-    ({ year, title, actions }) => (
+// You can map context to props any way you like ...
+const Message = subscribe(({ message, actions }) => ({ message, set: actions.setMessage }))(
+    ({ message, set }) => (
         <span>
-            <input value={title} onChange={e => actions.setTitle(e.target.value)} />
-            {title} {year}
+            <input value={message} onChange={e => set(e.target.value)} />
+            {message}
         </span>
     ),
 )
 ReactDOM.render(
     <Provider
-        initialState={{ title: 'the year is', count: 0, year: 2000 }}
+        initialState={{ message: 'hello', count: 0 }}
         actions={{
-            setTitle: title => ({ title }),
+            setMessage: message => ({ message }),
             increaseCount: () => state => ({ count: state.count + 1 }),
         }}>
         <Counter />
-        <Year add={18} />
+        <Message />
     </Provider>,
     document.getElementById('root'),
 )
