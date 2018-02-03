@@ -92,13 +92,14 @@ Example: https://codesandbox.io/s/p9p6jq60lx
 
 ```js
 const Message = subscribe("myKey", store => ({ reverse: store.message.split('').reverse().join('') }))(
-    ({ reverse }) => <span>{reverse}</span>)
+    ({ reverse }) => <span>{reverse}</span>
 )
 
 ReactDOM.render(
     <Provider id="myKey" initialState={{ message: 'hello' }}>
         <Message/>
-    </Provider>
+    </Provider>,
+    document.getElementById('root'),
 )
 ```
 
