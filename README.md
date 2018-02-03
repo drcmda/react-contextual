@@ -58,12 +58,12 @@ const Message = subscribe(({ message, actions }) => ({ message, set: actions.set
 )
 
 ReactDOM.render(
-    <Provider>
+    <Provider
         initialState={{ message: 'hello', count: 0 }}
         actions={{
             setMessage: message => ({ message }),
             increaseCount: () => state => ({ count: state.count + 1 }),
-        }}><Provider
+        }}>
         <Counter />
         <Message />
     </Provider>,
