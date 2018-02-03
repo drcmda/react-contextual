@@ -57,7 +57,7 @@ Example: https://codesandbox.io/s/p9p6jq60lx
 
 # If you're dealing with context providers of any kind
 
-Use `subscribe` to consume any React context provider (or several).
+`subscribe` helps you to consume *any* React context. Soon libs like react-router, redux, etc. will likely start serving context. Look into the examples to see how easy it is to create a context provider in order to distribute dynamic data.
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
