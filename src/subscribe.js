@@ -30,7 +30,11 @@ export function subscribe(...args) {
 
 export class Subscribe extends React.PureComponent {
     static propTypes = {
-        to: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object), PropTypes.object]),
+        to: PropTypes.oneOfType([
+            PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])), 
+            PropTypes.object, 
+            PropTypes.string
+        ]),
         select: PropTypes.func,
         children: PropTypes.func.isRequired,
     }
