@@ -86,7 +86,7 @@ class Message extends React.PureComponent {
 
 ### What about multiple stores?
 
-You can name them, just hand them an `id`. Be sure to refer to it in your subscribers.
+You can have as many as you like, just name them. `subscribe` also accepts your keys.
 
 Example: https://codesandbox.io/s/p9p6jq60lx
 
