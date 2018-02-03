@@ -76,8 +76,8 @@ ReactDOM.render(
 But use with care as the spec may still change any time!
 
 ```js
-@subscribe()
-class Test extends React.PureComponent {
+@subscribe(({ message, actions }) => ({ message, set: actions.setMessage }))
+class Message extends React.PureComponent {
     render() {
         ...
     }
