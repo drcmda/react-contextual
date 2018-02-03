@@ -21,8 +21,7 @@ var providers = new Map();
 var Context = (0, _reactBroadcast.createContext)();
 
 function createNamedContext(name, initialState) {
-  var context = _react.default.createContext(initialState);
-
+  var context = (0, _reactBroadcast.createContext)(initialState);
   providers.set(name, context);
   return context;
 }

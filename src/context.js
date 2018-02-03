@@ -5,7 +5,7 @@ const providers = new Map()
 const Context = createContext()
 
 export function createNamedContext(name, initialState) {
-    const context = React.createContext(initialState)
+    const context = createContext(initialState)
     providers.set(name, context)
     return context
 }
