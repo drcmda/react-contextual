@@ -35,9 +35,9 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
 # If you just need a light-weight, no-frills store ...
 
-Example: https://codesandbox.io/s/ywyr3q5n4z
-
 Provide state and actions, wrap everything that is supposed to access or mutate it within.
+
+Example: https://codesandbox.io/s/ywyr3q5n4z
 
 ```js
 import { Provider, subscribe } from 'react-contextual'
@@ -58,12 +58,12 @@ const Message = subscribe(({ message, actions }) => ({ message, set: actions.set
 )
 
 ReactDOM.render(
-    <Provider
+    <Provider>
         initialState={{ message: 'hello', count: 0 }}
         actions={{
             setMessage: message => ({ message }),
             increaseCount: () => state => ({ count: state.count + 1 }),
-        }}>
+        }}><Provider
         <Counter />
         <Message />
     </Provider>,
@@ -84,11 +84,29 @@ class Test extends React.PureComponent {
 }
 ```
 
+### What about multiple stores?
+
+You can name them, just hand them an `id`. Be sure to refer to it in your subscribers.
+
+Example: https://codesandbox.io/s/p9p6jq60lx
+
+```js
+const Message = subscribe("myKey", store => ({ reverse: store.message.split('').reverse().join('') }))(
+    ({ reverse }) => <span>{reverse}</span>)
+)
+
+ReactDOM.render(
+    <Provider id="myKey" initialState={{ message: 'hello' }}>
+        <Message/>
+    </Provider>
+)
+```
+
 # If you're dealing with context providers of any kind
 
-Example: https://codesandbox.io/s/5v7n6k8j5p
-
 Use `subscribe` to consume any React context provider (or several).
+
+Example: https://codesandbox.io/s/5v7n6k8j5p
 
 ```js
 const User = subscribe(UsersContext, ({ users }, props) => ({ user: users[props.id] }))(
@@ -120,16 +138,16 @@ Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
 Use `<Subscribe to={} select={}/>` to do the same as above with render props.
 
 ```js
-import { Provider as Store, Context as StoreContext, Subscribe } from 'react-contextual'
+import { Provider as Store, Subscribe } from 'react-contextual'
 import { ThemeProvider, ThemeContext } from './theme'
 import { TimeProvider, TimeContext } from './time'
 
 ReactDOM.render(
     <ThemeProvider>
         <TimeProvider>
-            <Store initialState={{ message: 'the time is:' }}>
+            <Store id="testStore" initialState={{ message: 'the time is:' }}>
                 <Subscribe
-                    to={[ThemeContext, TimeContext, StoreContext]} 
+                    to={[ThemeContext, TimeContext, "testStore"]} 
                     select={([theme, time, store]) => ({ theme, time, message: store.message })}>
                     {({ theme, time, message }) =>
                         <h1 style={{ color: theme }}>{message} {time}</h1>

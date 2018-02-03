@@ -7,7 +7,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _context = _interopRequireDefault(require("./context"));
+var _context = _interopRequireWildcard(require("./context"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49,6 +51,7 @@ function (_React$Component2) {
 
     _this = _React$Component2.call(this) || this;
     _this.state = props.initialState || {};
+    _this.Context = props.id ? (0, _context.createNamedContext)(props.id) : _context.default;
 
     if (props.actions) {
       _this.actions = Object.keys(props.actions).reduce(function (acc, name) {
@@ -67,16 +70,21 @@ function (_React$Component2) {
 
   var _proto2 = Provider.prototype;
 
+  _proto2.componentWillUnmount = function componentWillUnmount() {
+    if (props.id) (0, _context.removeNamedContext)(this.props.id);
+  };
+
   _proto2.render = function render() {
     var state = this.state,
         actions = this.actions,
-        props = this.props;
+        props = this.props,
+        Context = this.Context;
 
     var value = _extends({}, state, actions ? {
       actions: actions
     } : {});
 
-    return _react.default.createElement(_context.default.Provider, {
+    return _react.default.createElement(Context.Provider, {
       value: value
     }, props.renderOnce ? _react.default.createElement(RenderOnce, {
       children: props.children
@@ -92,6 +100,7 @@ Object.defineProperty(Provider, "propTypes", {
   enumerable: true,
   writable: true,
   value: {
+    id: _propTypes.default.string,
     initialState: _propTypes.default.object.isRequired,
     actions: _propTypes.default.object,
     renderOnce: _propTypes.default.bool

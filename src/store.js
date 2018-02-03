@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Context from './context'
+import DefaultContext, { createNamedContext, removeNamedContext } from './context'
 
 export class RenderOnce extends React.Component {
     shouldComponentUpdate() {
@@ -13,6 +13,7 @@ export class RenderOnce extends React.Component {
 
 export class Provider extends React.Component {
     static propTypes = {
+        id: PropTypes.string,
         initialState: PropTypes.object.isRequired,
         actions: PropTypes.object,
         renderOnce: PropTypes.bool,
@@ -21,6 +22,7 @@ export class Provider extends React.Component {
     constructor(props) {
         super()
         this.state = props.initialState || {}
+        this.Context = props.id ? createNamedContext(props.id) : DefaultContext
         if (props.actions) {
             this.actions = Object.keys(props.actions).reduce(
                 (acc, name) => ({ ...acc, [name]: (...args) => this.setState(props.actions[name](...args)) }),
@@ -28,8 +30,11 @@ export class Provider extends React.Component {
             )
         }
     }
+    componentWillUnmount() {
+        if (props.id) removeNamedContext(this.props.id)
+    }
     render() {
-        const { state, actions, props } = this
+        const { state, actions, props, Context } = this
         const value = { ...state, ...(actions ? { actions } : {}) }
         return (
             <Context.Provider value={value}>

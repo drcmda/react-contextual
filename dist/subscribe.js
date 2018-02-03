@@ -8,7 +8,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _context = _interopRequireDefault(require("./context"));
+var _context = _interopRequireWildcard(require("./context"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40,7 +42,9 @@ function subscribe() {
   return function (Wrapped) {
     return function (props) {
       var isArray = Array.isArray(contextRefs);
-      var array = isArray ? contextRefs : [contextRefs];
+      var array = (isArray ? contextRefs : [contextRefs]).map(function (context) {
+        return typeof context === 'string' ? (0, _context.getNamedContext)(context) : context;
+      });
       var values = [];
       return array.concat([Wrapped]).reduceRight(function (accumulator, Context) {
         return _react.default.createElement(Context.Consumer, null, function (value) {
