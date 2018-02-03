@@ -69,11 +69,11 @@ Example: https://codesandbox.io/s/5v7n6k8j5p
 
 # If you like to consume context but dislike HOC's
 
+Use `<Subscribe to={} select={}/>` to do the same as above with render props.
+
 Example 1: https://codesandbox.io/s/wo28o5y1y5 (Multiple providers)
 
 Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
-
-Use `<Subscribe to={} select={}/>` to do the same as above with render props.
 
 ![](assets/example-6.jpg)
 
