@@ -71,7 +71,7 @@ function (_React$Component2) {
   var _proto2 = Provider.prototype;
 
   _proto2.componentWillUnmount = function componentWillUnmount() {
-    if (props.id) (0, _context.removeNamedContext)(this.props.id);
+    if (this.props.id) (0, _context.removeNamedContext)(this.props.id);
   };
 
   _proto2.render = function render() {

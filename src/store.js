@@ -31,7 +31,7 @@ export class Provider extends React.Component {
         }
     }
     componentWillUnmount() {
-        if (props.id) removeNamedContext(this.props.id)
+        if (this.props.id) removeNamedContext(this.props.id)
     }
     render() {
         const { state, actions, props, Context } = this
