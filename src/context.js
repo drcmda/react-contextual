@@ -1,11 +1,10 @@
 import React from 'react'
-import { createContext } from 'react-broadcast'
 
 const providers = new Map()
-const Context = createContext()
+const Context = React.createContext()
 
 export function createNamedContext(name, initialState) {
-    const context = createContext(initialState)
+    const context = React.createContext(initialState)
     providers.set(name, context)
     return context
 }
