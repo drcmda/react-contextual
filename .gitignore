@@ -1,4 +1,5 @@
 /node_modules/
+/dist/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
