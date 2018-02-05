@@ -6,7 +6,11 @@
 import { subscribe } from 'react-contextual'
 ```
 
-`subscribe` can be used as a functionwrapper or decorator, it generally works with any Context consumer, it isn't bound to contextuals store model.
+`subscribe` can be used as a functionwrapper or decorator, it generally works with any Context consumer, it isn't bound to contextuals store model. A consumer can be the following:
+
+1. ObjectContext - any React context
+2. "myContextId" - any string id of a regeistered provider
+3. props => props.id - a function that returns a context object
 
 Example 1: Mapping a single context value as a prop.
 

@@ -4,12 +4,12 @@
 
 It provides two things:
 
-* consuming context with ease, every kind of context, no matter which or whose or how many providers
+* consuming (and creating) context with ease, every kind of context, no matter which or whose or how many providers
 * a minimal redux-like store pattern with setState semantics and central actions
 
 # Why
 
-Reacts new API for dynamic context distribution is built on render props. While it is very powerful it may be a little too low-level due to nesting and efficiency. `react-contextual` maps context values to component props, similar to how Redux operates. That takes cares of nesting and allows you to render only when necessary. It also provides a small store for state distribution. It could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js).
+Reacts new API for dynamic context distribution is built on render props. While it is very powerful it may be a little too low-level due to nesting and efficiency. `react-contextual` maps context values to component props, similar to how Redux operates. That takes cares of nesting and allows you to render only when necessary. It also provides a small store for state distribution. It could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js). `react-contextual` also takes care of context creation, which is harder with the default api due to the singleton pattern.
 
 # Installation
 
@@ -23,7 +23,7 @@ import { subscribe, Subscribe, Provider } from 'react-contextual'
 
 1. `subscribe([providers,] [selector])(AnyComponent)`
 
-    Higher-order component to consume context. `providers` points to one or many contexts. `selector` maps the provider values into component props. Ommit `providers` and it will use `react-contextual`'s own context for the store (the one down below, number 3 in this list). Ommit `selector` and it will default to `props => props`, so all the contexts props will be merged to the wrapped components props.
+    Higher-order component to consume context. `providers` points to one or many contexts (can be context objects, string-id's, or functions that take component props and return a context object). `selector` maps the provider values into component props. Ommit `providers` and it will use `react-contextual`'s own context for the store (the one down below, number 3 in this list). Ommit `selector` and it will default to `props => props`, so all the contexts props will be merged to the wrapped components props.
 
 2. `<Subscribe [to={providers}] [select={selector}]>{renderFunction}</Subscribe>`
 
