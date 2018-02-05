@@ -24,7 +24,7 @@ export function namedContext(name = uuid(), initialState) {
         const context = createNamedContext(name, initialState)
         const hoc = class extends React.PureComponent {
             componentWillUnmount() {
-                removeNamedContext(Wrapped.Context)
+                removeNamedContext(name)
             }
             render() {
                 return <Wrapped {...this.props} context={context} />
