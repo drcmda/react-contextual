@@ -1,6 +1,6 @@
 # API
 
-## subscribe(consumers, mapContextToProps)
+## subscribe(consumers, mapContextToProps)(AnyComponent)
 
 ```js
 import { subscribe } from 'react-contextual'
@@ -30,7 +30,7 @@ Example 3: Mapping several contexts is also possible, just wrap them into an arr
 subscribe([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(AnyComponent)
 ```
 
-## subscribe(mapContextToProps)
+## subscribe(mapContextToProps)(AnyComponent)
 
 If you skip the context `subscribe` will fetch `react-contextuals` default context, which is used by its provider. It is basically a short cut for:
 
@@ -81,3 +81,13 @@ Or slightly more complex when you pass functions instead, which allow you to acc
     setAge: age => state => ({ age: state.age + 1 }),
 }
 ```
+
+## namedContext(name, defaultValue)(AnyComponent)
+
+```js
+import { namedContext } from 'react-contextual'
+```
+
+`name` can either be a string, in that case a context will be created under that name and you can refer it as such in `subscribe`. You can also pass a function, for instance `props => props.id`. It has to return a string which will be the name of the created context.
+
+The context will be dynamically created when the wrapped component mounts and will be removed once it unmounts. The actual context will be inject as prop (`context`) so it is available for the wrapped component which can now render its Provider.

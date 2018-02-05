@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DefaultContext, { getNamedContext } from './context'
+import DefaultContext, { getNamedContext, resolveContext } from './context'
 
 export function subscribe(...args) {
     // Filter undefined args (can happen if Subscribe injects them)
@@ -18,11 +18,7 @@ export function subscribe(...args) {
 
     return Wrapped => props => {
         const isArray = Array.isArray(contextRefs)
-        const array = (isArray ? contextRefs : [contextRefs]).map(context => {
-            if (typeof context === 'string') return getNamedContext(context)
-            else if (typeof context === 'function') return getNamedContext(context(props))
-            else return context
-        })
+        const array = (isArray ? contextRefs : [contextRefs]).map(context => resolveContext(context, props))
         const values = []
         return [...array, Wrapped].reduceRight((accumulator, Context) => (
             <Context.Consumer>

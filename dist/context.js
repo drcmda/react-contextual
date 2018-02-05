@@ -4,6 +4,7 @@ exports.__esModule = true;
 exports.createNamedContext = createNamedContext;
 exports.getNamedContext = getNamedContext;
 exports.removeNamedContext = removeNamedContext;
+exports.resolveContext = resolveContext;
 exports.namedContext = namedContext;
 exports.default = void 0;
 
@@ -34,41 +35,44 @@ function removeNamedContext(name) {
   providers.delete(name);
 }
 
-function namedContext(getName, initialState) {
+function resolveContext(context, props) {
+  if (typeof context === 'string') return getNamedContext(context) || context;else if (typeof context === 'function') return resolveContext(context(props));else return context;
+}
+
+function namedContext(contextName, initialState) {
   return function (Wrapped) {
-    var Hoc =
-    /*#__PURE__*/
-    function (_React$PureComponent) {
-      _inheritsLoose(Hoc, _React$PureComponent);
+    return (
+      /*#__PURE__*/
+      function (_React$PureComponent) {
+        _inheritsLoose(_class, _React$PureComponent);
 
-      function Hoc(props) {
-        var _this;
+        function _class(props) {
+          var _this;
 
-        _this = _React$PureComponent.call(this) || this;
-        var name = getName(props);
-        _this.state = {
-          context: createNamedContext(name, initialState),
-          name: name
+          _this = _React$PureComponent.call(this) || this;
+          var name = resolveContext(contextName, props);
+          _this.state = {
+            context: createNamedContext(name, initialState),
+            name: name
+          };
+          return _this;
+        }
+
+        var _proto = _class.prototype;
+
+        _proto.componentWillUnmount = function componentWillUnmount() {
+          removeNamedContext(this.state.name);
         };
-        return _this;
-      }
 
-      var _proto = Hoc.prototype;
+        _proto.render = function render() {
+          return _react.default.createElement(Wrapped, _extends({}, this.props, {
+            context: this.state.context
+          }));
+        };
 
-      _proto.componentWillUnmount = function componentWillUnmount() {
-        removeNamedContext(this.state.name);
-      };
-
-      _proto.render = function render() {
-        return _react.default.createElement(Wrapped, _extends({}, this.props, {
-          context: this.state.context
-        }));
-      };
-
-      return Hoc;
-    }(_react.default.PureComponent);
-
-    return Hoc;
+        return _class;
+      }(_react.default.PureComponent)
+    );
   };
 }
 

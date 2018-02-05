@@ -46,7 +46,7 @@ function subscribe() {
     return function (props) {
       var isArray = Array.isArray(contextRefs);
       var array = (isArray ? contextRefs : [contextRefs]).map(function (context) {
-        if (typeof context === 'string') return (0, _context.getNamedContext)(context);else if (typeof context === 'function') return (0, _context.getNamedContext)(context(props));else return context;
+        return (0, _context.resolveContext)(context, props);
       });
       var values = [];
       return array.concat([Wrapped]).reduceRight(function (accumulator, Context) {
