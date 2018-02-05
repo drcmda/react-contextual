@@ -9,6 +9,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _tinyUuid = _interopRequireDefault(require("tiny-uuid"));
+
 var _reactBroadcast = require("react-broadcast");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -35,22 +37,26 @@ function removeNamedContext(name) {
 }
 
 function namedContext(name, initialState) {
+  if (name === void 0) {
+    name = (0, _tinyUuid.default)();
+  }
+
   return function (Wrapped) {
     var context = createNamedContext(name, initialState);
 
-    var hoc =
+    var Hoc =
     /*#__PURE__*/
     function (_React$PureComponent) {
-      _inheritsLoose(hoc, _React$PureComponent);
+      _inheritsLoose(Hoc, _React$PureComponent);
 
-      function hoc() {
+      function Hoc() {
         return _React$PureComponent.apply(this, arguments) || this;
       }
 
-      var _proto = hoc.prototype;
+      var _proto = Hoc.prototype;
 
       _proto.componentWillUnmount = function componentWillUnmount() {
-        removeNamedContext(Wrapped.Context);
+        removeNamedContext(name);
       };
 
       _proto.render = function render() {
@@ -59,11 +65,11 @@ function namedContext(name, initialState) {
         }));
       };
 
-      return hoc;
+      return Hoc;
     }(_react.default.PureComponent);
 
-    hoc.Context = context;
-    return hoc;
+    Wrapped.Context = Hoc.Context = context;
+    return Hoc;
   };
 }
 

@@ -22,7 +22,7 @@ export function removeNamedContext(name) {
 export function namedContext(name = uuid(), initialState) {
     return Wrapped => {
         const context = createNamedContext(name, initialState)
-        const hoc = class extends React.PureComponent {
+        const Hoc = class extends React.PureComponent {
             componentWillUnmount() {
                 removeNamedContext(name)
             }
@@ -30,8 +30,8 @@ export function namedContext(name = uuid(), initialState) {
                 return <Wrapped {...this.props} context={context} />
             }
         }
-        Wrapped.Context = hoc.Context = context
-        return hoc
+        Wrapped.Context = Hoc.Context = context
+        return Hoc
     }
 }
 
