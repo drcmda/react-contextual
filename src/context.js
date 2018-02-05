@@ -19,8 +19,8 @@ export function removeNamedContext(name) {
 }
 
 export function namedContext(getName, initialState) {
-    return Wrapped => {
-        const Hoc = class extends React.PureComponent {
+    return Wrapped =>
+        class extends React.PureComponent {
             constructor(props) {
                 super()
                 const name = getName(props)
@@ -33,8 +33,6 @@ export function namedContext(getName, initialState) {
                 return <Wrapped {...this.props} context={this.state.context} />
             }
         }
-        return Hoc
-    }
 }
 
 export default Context

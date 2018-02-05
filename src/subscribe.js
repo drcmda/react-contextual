@@ -28,11 +28,9 @@ export function subscribe(...args) {
             <Context.Consumer>
                 {value => {
                     isArray && values.push(value)
-                    return accumulator !== Wrapped ? (
-                        accumulator
-                    ) : (
-                        <Wrapped {...props} {...mapContextToProps(isArray ? values : value, props)} />
-                    )
+                    return accumulator !== Wrapped 
+                        ? accumulator
+                        : <Wrapped {...props} {...mapContextToProps(isArray ? values : value, props)} />
                 }}
             </Context.Consumer>
         ))
