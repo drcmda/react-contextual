@@ -1,4 +1,5 @@
 import React from 'react'
+import uuid from 'tiny-uuid'
 import { createContext } from 'react-broadcast'
 
 const providers = new Map()
@@ -18,7 +19,7 @@ export function removeNamedContext(name) {
     providers.delete(name)
 }
 
-export function namedContext(name, initialState) {
+export function namedContext(name = uuid(), initialState) {
     return Wrapped => {
         const context = createNamedContext(name, initialState)
         const hoc = class extends React.PureComponent {
@@ -29,7 +30,7 @@ export function namedContext(name, initialState) {
                 return <Wrapped {...this.props} context={context} />
             }
         }
-        hoc.Context = context
+        Wrapped.Context = hoc.Context = context
         return hoc
     }
 }

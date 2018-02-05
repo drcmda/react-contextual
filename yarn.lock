@@ -504,12 +504,6 @@
   dependencies:
     regenerator-transform "^0.12.3"
 
-"@babel/plugin-transform-runtime@^7.0.0-beta.39":
-  version "7.0.0-beta.39"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.0.0-beta.39.tgz#5769f081a36b1cd437aaa0ecb5f3ae85bd3b1255"
-  dependencies:
-    "@babel/helper-module-imports" "7.0.0-beta.39"
-
 "@babel/plugin-transform-shorthand-properties@7.0.0-beta.39":
   version "7.0.0-beta.39"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-shorthand-properties/-/plugin-transform-shorthand-properties-7.0.0-beta.39.tgz#caa480ecb159481df8e1c405aaac865a54781630"
@@ -633,13 +627,6 @@
     "@babel/plugin-proposal-unicode-property-regex" "7.0.0-beta.39"
     "@babel/plugin-syntax-dynamic-import" "7.0.0-beta.39"
     "@babel/plugin-syntax-import-meta" "7.0.0-beta.39"
-
-"@babel/runtime@^7.0.0-beta.39":
-  version "7.0.0-beta.39"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.39.tgz#e4b763b78d31a2c209165bae2772f103594a8972"
-  dependencies:
-    core-js "^2.5.3"
-    regenerator-runtime "^0.11.1"
 
 "@babel/template@7.0.0-beta.39":
   version "7.0.0-beta.39"
@@ -883,10 +870,6 @@ convert-source-map@^1.1.0:
 core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
-
-core-js@^2.5.3:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.3.tgz#8acc38345824f16d8365b7c9b4259168e8ed603e"
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -1602,10 +1585,6 @@ regenerate@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.3.tgz#0c336d3980553d755c39b586ae3b20aa49c82b7f"
 
-regenerator-runtime@^0.11.1:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
-
 regenerator-transform@^0.12.3:
   version "0.12.3"
   resolved "https://registry.yarnpkg.com/regenerator-transform/-/regenerator-transform-0.12.3.tgz#459adfb64f6a27164ab991b7873f45ab969eca8b"
@@ -1796,6 +1775,10 @@ tar@^2.2.1:
     block-stream "*"
     fstream "^1.0.2"
     inherits "2"
+
+tiny-uuid@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/tiny-uuid/-/tiny-uuid-1.0.0.tgz#aea34a2f89c7b71435eb38af3139aa3a025351ca"
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
