@@ -67,6 +67,14 @@ Example: https://codesandbox.io/s/5v7n6k8j5p
 
 ![](assets/example-5.jpg)
 
+# If you like to create unique context providers
+
+Reacts default api works with singletons, that makes it tough to create multi-purpose, nestable providers. Use the `namedContext` HOC to fix it. `subscribe` can also accept a function, so you can pass one or many dynamic context objects.
+
+Example: https://codesandbox.io/s/m7q5z407p9
+
+![](assets/example-7.jpg)
+
 # If you like to consume context but dislike HOC's
 
 Use `<Subscribe to={} select={}/>` to do the same as above with render props.

@@ -5,23 +5,34 @@ import DefaultContext, { getNamedContext } from './context'
 export function subscribe(...args) {
     // Filter undefined args (can happen if Subscribe injects them)
     args = args.filter(a => a)
-    // Get context refs
-    const contextRefs = args.find(arg => typeof arg !== 'function') || DefaultContext
-    // Get mapping function
-    const mapContextToProps = args.find(arg => typeof arg === 'function') || (props => props)
+    let contextRefs = DefaultContext,
+        mapContextToProps = props => props
+    if (args.length === 1) {
+        // subscribe(mapContextToProps): default context, custom mapContextToProps
+        mapContextToProps = args[0]
+    } else if (args.length === 2) {
+        // subscribe(Context, mapContextToProps): custom context, custom mapContextToProps
+        contextRefs = args[0]
+        mapContextToProps = args[1]
+    }
+
     return Wrapped => props => {
         const isArray = Array.isArray(contextRefs)
-        const array = (isArray ? contextRefs : [contextRefs]).map(
-            context => (typeof context === 'string' ? getNamedContext(context) : context),
-        )
+        const array = (isArray ? contextRefs : [contextRefs]).map(context => {
+            if (typeof context === 'string') return getNamedContext(context)
+            else if (typeof context === 'function') return getNamedContext(context(props))
+            else return context
+        })
         const values = []
         return [...array, Wrapped].reduceRight((accumulator, Context) => (
             <Context.Consumer>
                 {value => {
                     isArray && values.push(value)
-                    return accumulator !== Wrapped 
-                        ? accumulator
-                        : <Wrapped {...props} {...mapContextToProps(isArray ? values : value, props)} />
+                    return accumulator !== Wrapped ? (
+                        accumulator
+                    ) : (
+                        <Wrapped {...props} {...mapContextToProps(isArray ? values : value, props)} />
+                    )
                 }}
             </Context.Consumer>
         ))
@@ -31,9 +42,9 @@ export function subscribe(...args) {
 export class Subscribe extends React.PureComponent {
     static propTypes = {
         to: PropTypes.oneOfType([
-            PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])), 
-            PropTypes.object, 
-            PropTypes.string
+            PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])),
+            PropTypes.object,
+            PropTypes.string,
         ]),
         select: PropTypes.func,
         children: PropTypes.func.isRequired,

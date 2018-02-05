@@ -26,24 +26,27 @@ function subscribe() {
   // Filter undefined args (can happen if Subscribe injects them)
   args = args.filter(function (a) {
     return a;
-  }); // Get context refs
+  });
 
-  var contextRefs = args.find(function (arg) {
-    return typeof arg !== 'function';
-  }) || _context.default; // Get mapping function
-
-
-  var mapContextToProps = args.find(function (arg) {
-    return typeof arg === 'function';
-  }) || function (props) {
+  var contextRefs = _context.default,
+      mapContextToProps = function mapContextToProps(props) {
     return props;
   };
+
+  if (args.length === 1) {
+    // subscribe(mapContextToProps): default context, custom mapContextToProps
+    mapContextToProps = args[0];
+  } else if (args.length === 2) {
+    // subscribe(Context, mapContextToProps): custom context, custom mapContextToProps
+    contextRefs = args[0];
+    mapContextToProps = args[1];
+  }
 
   return function (Wrapped) {
     return function (props) {
       var isArray = Array.isArray(contextRefs);
       var array = (isArray ? contextRefs : [contextRefs]).map(function (context) {
-        return typeof context === 'string' ? (0, _context.getNamedContext)(context) : context;
+        if (typeof context === 'string') return (0, _context.getNamedContext)(context);else if (typeof context === 'function') return (0, _context.getNamedContext)(context(props));else return context;
       });
       var values = [];
       return array.concat([Wrapped]).reduceRight(function (accumulator, Context) {
