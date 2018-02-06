@@ -1,6 +1,6 @@
 {
   "name": "react-contextual",
-  "version": "3.3.5",
+  "version": "3.3.5-beta.0",
   "description": "store and hoc patterns for react 16s new context model",
   "main": "dist/react-contextual",
   "module": "dist/react-contextual.es",
@@ -40,10 +40,7 @@
   },
   "peerDependencies": {
     "prop-types": "15.x.x",
-    "react": "16.x.x",
-    "react-dom": "16.x.x"
-  },
-  "dependencies": {
-    "react-broadcast": "^0.7.0-rc.3"
+    "react": ">= 16.3.0",
+    "react-dom": ">= 16.3.0"
   }
 }
