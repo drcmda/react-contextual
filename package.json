@@ -2,9 +2,13 @@
   "name": "react-contextual",
   "version": "3.3.4",
   "description": "store and hoc patterns for react 16s new context model",
-  "module": "dist/index.js",
+  "main": "dist/react-contextual",
+  "module": "dist/react-contextual.es",
+  "sideEffects": false,
   "scripts": {
-    "babel": "babel src --out-dir dist"
+    "prebuild": "rimraf dist",
+    "build": "rollup -c",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,12 +28,15 @@
   },
   "homepage": "https://github.com/drcmda/react-contextual#readme",
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.39",
-    "@babel/core": "^7.0.0-beta.39",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.39",
-    "@babel/preset-env": "^7.0.0-beta.39",
-    "@babel/preset-react": "^7.0.0-beta.39",
-    "@babel/preset-stage-2": "^7.0.0-beta.39"
+    "@babel/core": "7.0.0-beta.39",
+    "@babel/preset-env": "7.0.0-beta.39",
+    "@babel/preset-react": "7.0.0-beta.39",
+    "@babel/preset-stage-2": "7.0.0-beta.39",
+    "babel-plugin-annotate-pure-calls": "0.3.0-beta.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.55.3",
+    "rollup-plugin-babel": "4.0.0-beta.1"
   },
   "peerDependencies": {
     "prop-types": "15.x.x",
@@ -37,7 +44,6 @@
     "react-dom": "16.x.x"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.39",
     "react-broadcast": "^0.7.0-rc.3"
   }
 }
