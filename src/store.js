@@ -16,9 +16,9 @@ export class Provider extends React.Component {
         id: PropTypes.string,
         initialState: PropTypes.object.isRequired,
         actions: PropTypes.object,
-        renderOnce: PropTypes.bool,
+        renderAlways: PropTypes.bool,
     }
-    static defaultProps = { renderOnce: true }
+    static defaultProps = { renderAlways: false }
     constructor(props) {
         super()
         this.state = props.initialState || {}
@@ -42,7 +42,7 @@ export class Provider extends React.Component {
         const value = { ...state, ...(actions ? { actions } : {}) }
         return (
             <Context.Provider value={value}>
-                {props.renderOnce ? <RenderOnce children={props.children} /> : props.children}
+                {props.renderAlways ? props.children : <RenderOnce children={props.children} />}
             </Context.Provider>
         )
     }

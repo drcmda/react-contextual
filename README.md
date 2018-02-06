@@ -39,7 +39,7 @@ import { subscribe, Subscribe, Provider, namedContext } from 'react-contextual'
 
 # If you just need a light-weight, no-frills store ...
 
-Provide state and actions, wrap everything that is supposed to access or mutate it within.
+Provide state and actions, wrap everything that is supposed to access or mutate it within. Actions can be simple merges, functions, or async functions.
 
 Example: https://codesandbox.io/s/ywyr3q5n4z
 

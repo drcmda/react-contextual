@@ -60,25 +60,28 @@ The same as the higher-order-component above, but as a component: `<Subscribe to
 import { Provider } from 'react-contextual'
 ```
 
-A small Redux-like store. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. The provider will distribute `{ ...state, actions }` to listening components which either use Reacts API directly or contextuals `subscribe` hoc to consume it. There is an additional prop `renderOnce` that is `true` by default, it will prevent the sub-tree from rendering on state-changes so that you can safely wrap your app into the provider. Children otherwise behave normal. Any change to the store caused by an action will trigger consuming components.
+A small Redux-like store. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. The provider will distribute `{ ...state, actions }` to listening components which either use Reacts API directly or contextuals `subscribe` hoc to consume it. There is an additional prop `renderAlways` that is `false` by default, it will prevent the sub-tree from rendering on state-changes so that you can safely wrap your app into the provider. Children otherwise behave normal. Any change to the store caused by an action will trigger consuming components.
 
 Actions are made of a collection of functions which return an object that is going to be merged back into the state using regular `setState` semantics.
 
 They can be simple ...
 
 ```js
-{
-    setName: name => ({ name }),
-    setAge: age => ({ age }),
-}
+setName: name => ({ name }),
 ```
 
 Or slightly more complex when you pass functions instead, which allow you to access the stores state, useful for computed/derived props, composition, deep-merging or memoization:
 
 ```js
-{
-    setName: name => state => ({ name: `${state.title} ${state.surname}` },
-    setAge: age => state => ({ age: state.age + 1 }),
+increaseCount: by => state => ({ count: state.count + by }),
+```
+
+Or async actions, which are supported out of the box:
+
+```js
+setColor: backgroundColor => async state => {
+    await delay(1000)
+    return { backgroundColor }
 }
 ```
 
