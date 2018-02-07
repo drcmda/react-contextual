@@ -41,7 +41,9 @@ import { subscribe, Subscribe, Provider, namedContext } from 'react-contextual'
 
 Provide state and actions, wrap everything that is supposed to access or mutate it within. Actions can be simple merges, functions, or async functions.
 
-Example: https://codesandbox.io/s/ywyr3q5n4z
+Example 1: https://codesandbox.io/s/ywyr3q5n4z (basic example)
+
+Example 2: https://codesandbox.io/s/lxly45lvkl (async actions)
 
 ![](assets/example-1.jpg)
 
