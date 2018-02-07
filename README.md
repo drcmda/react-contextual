@@ -37,11 +37,13 @@ import { subscribe, Subscribe, Provider, namedContext } from 'react-contextual'
 
     Higher-order component that creates and injects a named context into the component you wrap. It will remove the context itself when it unmounts. `contextName` can either be a string id or a function that returns a string id, for instance `props => props.id`.
 
-# If you just need a light-weight, no-frills store ...
+# If you just need a light-weight no-frills store
 
 Provide state and actions, wrap everything that is supposed to access or mutate it within. Actions can be simple merges, functions, or async functions.
 
-Example: https://codesandbox.io/s/ywyr3q5n4z
+Example 1: https://codesandbox.io/s/ywyr3q5n4z (basic example)
+
+Example 2: https://codesandbox.io/s/lxly45lvkl (async actions)
 
 ![](assets/example-1.jpg)
 
@@ -59,7 +61,7 @@ Example: https://codesandbox.io/s/p9p6jq60lx
 
 ![](assets/example-3.jpg)
 
-# If you're dealing with context providers of any kind
+# If you are dealing with context providers of any kind
 
 `subscribe` helps you to consume *any* React context. Soon libs like react-router, redux, etc. will likely start serving context. Look into the examples to see how easy it is to create a context provider in order to distribute dynamic data.
 
@@ -79,7 +81,7 @@ Example: https://codesandbox.io/s/m7q5z407p9
 
 ![](assets/example-7.jpg)
 
-# If you like to consume context but dislike HOC's
+# If you like to consume context but dislike HOCs
 
 Use `<Subscribe to={} select={}/>` to do the same as above with render props.
 
