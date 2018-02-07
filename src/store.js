@@ -25,14 +25,20 @@ export class Provider extends React.Component {
         this.Context = props.id ? createNamedContext(props.id) : DefaultContext
         if (props.actions) {
             this.actions = Object.keys(props.actions).reduce(
-                (acc, name) => ({ ...acc, [name]: (...args) => this.setAsync(props.actions[name](...args)) }),
+                (acc, name) => ({
+                    ...acc,
+                    [name]: (...args) => {
+                        let result = props.actions[name](...args)
+                        if (typeof result === 'function')
+                            return new Promise(res =>
+                                Promise.resolve(result(this.state)).then(state => this.setState(state, res)),
+                            )
+                        this.setState(result)
+                    },
+                }),
                 {},
             )
         }
-    }
-    setAsync(arg) {
-        if (typeof arg === 'function') return Promise.resolve(arg(this.state)).then(state => this.setState(state))
-        else this.setState(arg)
     }
     componentWillUnmount() {
         if (this.props.id) removeNamedContext(this.props.id)
