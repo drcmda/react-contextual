@@ -43,7 +43,7 @@ Used raw the api will cause heavy nesting, every time you tap into a consumers v
 ### react-contextual
 
 ```js
-@subscribe(
+subscribe(
     [ThemeContext, UserContext, LanguageContext],
     ([theme, user, language]) => ({ theme, user, language })
 )(Component)
