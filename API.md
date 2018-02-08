@@ -103,6 +103,30 @@ import { namedContext } from 'react-contextual'
 
 The context will be dynamically created when the wrapped component mounts and will be removed once it unmounts. The actual context will be inject as prop (`context`) so it is available for the wrapped component which can now render its Provider.
 
+```js
+@namedContext(props => props.id)
+class Theme extends React.PureComponent {
+    render() {
+        const { context: Context, children } = this.props
+        return <Contest.Provider value="red" children={children} />
+    }
+}
+
+@subscribe(props => props.id, theme => ({ theme }))
+class Header extends React.PureComponent {
+    render() {
+        return <h1 style={{ color: theme }}>hello</h1>
+    }
+}
+
+ReactDOM.render((
+    <Theme id="main-theme">
+        <Header id="main-theme"/>
+    </Theme>,
+    document.getElementById('root')
+)
+```
+
 # moduleContext
 
 ## moduleContext(defaultValue)
