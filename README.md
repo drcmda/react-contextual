@@ -80,3 +80,8 @@ https://github.com/drcmda/react-contextual/blob/master/API.md
 # Changelog
 
 https://github.com/drcmda/react-contextual/blob/master/CHANGELOG.md
+
+# Pitfalls when using the context api raw
+
+https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md
+
