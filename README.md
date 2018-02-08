@@ -15,28 +15,6 @@ Reacts new API for dynamic context distribution is built on render props. While 
 
     npm install react-contextual
 
-# How to use ...
-
-```js
-import { subscribe, Subscribe, Provider, namedContext } from 'react-contextual'
-```
-
-1. `subscribe(providers, selector)(AnyComponent)`
-
-    Higher-order component to consume context. `providers` points to one or many contexts (can be context objects, string-id's, or functions that take component props and return a context object). `selector` maps the provider values into component props. Ommit `providers` and it will use `react-contextual`'s own context for the store (the one down below, number 3 in this list). Ommit `selector` and it will default to `props => props`, so all the contexts props will be merged to the wrapped components props.
-
-2. `<Subscribe to={providers} select={selector}>{renderFunction}</Subscribe>`
-
-    The same as above as a component that passes selected props via render function.
-
-3. `<Provider initialState={state} actions={actions}>...</Provider>`
-
-    A small store with central actions.
-
-4. `namedContext(contextName, initialState)(AnyComponent)`
-
-    Higher-order component that creates and injects a named context into the component you wrap. It will remove the context itself when it unmounts. `contextName` can either be a string id or a function that returns a string id, for instance `props => props.id`.
-
 # If you just need a light-weight no-frills store
 
 Provide state and actions, wrap everything that is supposed to access or mutate it within. Actions can be simple merges, functions, or async functions.

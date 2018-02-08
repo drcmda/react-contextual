@@ -15,7 +15,6 @@ export function subscribe(...args) {
         contextRefs = args[0]
         mapContextToProps = args[1]
     }
-
     return Wrapped => props => {
         const isArray = Array.isArray(contextRefs)
         const array = (isArray ? contextRefs : [contextRefs]).map(context => resolveContext(context, props))
