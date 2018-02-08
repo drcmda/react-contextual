@@ -10,11 +10,11 @@ A context provider will re-render its sub-tree every time it changes. It is a co
 
 react-contextual prevents its store from re-rendering its contents, which remain reactive of course. You use it in the same way you use reduxes `Provider`.
 
-### Consuming context will trigger render
+### Consuming context will trigger unnecessary renders
 
-A context consumer will trigger a re-render even if the state is the same. It gets more complex if you are reading from several consumers or your component happens to be in a sub-tree whose context is not of particular interest.
+A context consumer wrapped in one, or worse-multiple providers, can render needlessly, even if the state it is interested in is the same.
 
-react-contextuals selects state, [similar to reduxes connect](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe), simply make your component a `React.PureComponent` and it will only render if the particular state it selected has changed, even if is nested into multiple consumers.
+react-contextuals selects state, [similar to reduxes connect](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe), simply make your component a `React.PureComponent` and it will fill out shouldComponentUpdate with reference-equality checks against its props. Hence, it will only render if the particular state it has selected did actually change, even if it sits deeply nested in multiple privider & consumers.
 
 ## Nesting
 
