@@ -1,16 +1,16 @@
 # subscribe
 
-## subscribe(consumers, mapContextToProps)(AnyComponent)
+## subscribe(providers, mapContextToProps)(AnyComponent)
 
 ```js
 import { subscribe } from 'react-contextual'
 ```
 
-`subscribe` can be used as a functionwrapper or decorator, it generally works with any Context consumer, it isn't bound to contextuals store model. A consumer can be the following:
+`subscribe` can be used as a functionwrapper or decorator, it generally works with any context, it isn't bound to contextuals store model. A provider can be the following:
 
-1. ObjectContext - any React context
-2. "myContextId" - any string id of a regeistered provider
-3. props => props.id - a function that returns a context object
+1. any React context
+2. any string key of a [registered provider](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext)
+3. a function that returns a context object or key
 
 Example 1: Mapping a single context value as a prop.
 
@@ -30,9 +30,15 @@ Example 3: Mapping several contexts is also possible, just wrap them into an arr
 subscribe([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(AnyComponent)
 ```
 
+Example 3: You can also pass a function which should return either a context object or key. You'll be able to access the components props here as well.
+
+```js
+subscribe(props => props.id, theme => ({ theme }))(AnyComponent)
+```
+
 ## subscribe(mapContextToProps)(AnyComponent)
 
-If you skip the context `subscribe` will fetch `react-contextuals` default context, which is used by its provider. It is basically a short cut for:
+If you skip the providers `subscribe` will fetch `react-contextuals` default context for its [own store](https://github.com/drcmda/react-contextual/blob/master/API.md#provider). It is basically a short cut for:
 
 ```js
 import { subscribe, Context } from 'react-contextual'
@@ -101,11 +107,13 @@ The context will be dynamically created when the wrapped component mounts and wi
 
 ## moduleContext(defaultValue)
 
+```js
+import { moduleContext } from 'react-contextual'
+```
+
 Creates a global module-scoped context object and injects it both as `this.props.context` into the wrapped component, as well as `Component.Context`, so consumers can import the component and readily use it:
 
 ```js
-import { moduleContext } from 'react-contextual'
-
 @moduleContext()
 class Theme extends React.PureComponent {
     render() {
