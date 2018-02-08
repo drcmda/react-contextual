@@ -10,7 +10,7 @@ A context provider will re-render its sub-tree every time it changes. It is a co
 
 react-contextual prevents its store from re-rendering its contents, which remain reactive of course. You use it in the same way you use reduxes `Provider`.
 
-### Consuming context will trigger unnecessary renders
+### Consuming context can trigger unnecessary renders
 
 A context consumer wrapped in one, or worse-multiple providers, can render needlessly, even if the state it is interested in is the same.
 
