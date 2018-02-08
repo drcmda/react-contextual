@@ -6,7 +6,7 @@
 import { subscribe } from 'react-contextual'
 ```
 
-`subscribe` can be used as a functionwrapper or decorator, it generally works with any context, it isn't bound to contextuals store model. A provider can be the following:
+`subscribe` can be used as a functionwrapper or decorator, it generally works with any context, it is not bound to contextuals store model. A provider can be the following:
 
 1. any React context
 2. any string key of a [registered provider](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext)
@@ -30,7 +30,7 @@ Example 3: Mapping several contexts is also possible, just wrap them into an arr
 subscribe([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(AnyComponent)
 ```
 
-Example 3: You can also pass a function which should return either a context object or key. You'll be able to access the components props here as well.
+Example 3: You can also pass a function which should return either a context object or key. You will be able to access the components props here as well.
 
 ```js
 subscribe(props => props.id, theme => ({ theme }))(AnyComponent)

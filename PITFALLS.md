@@ -8,15 +8,17 @@ The context api is deliberately kept low-level, which makes it very powerful and
 
 A context provider will re-render its sub-tree every time it changes. It is a component after all. If you plan to wrap your app in a provider like you would normally do with something like redux you need to be aware of it.
 
+react-contextual prevents its store from re-rendering its contents, which remain reactive of course. You use it in the same way you use reduxes `Provider`.
+
 ### Consuming context will trigger render
 
-A context consumer will trigger a render, even if the state is the same. It gets more complex if you're reading from several consumers or your component just happens to be in a sub-tree whose context isn't of particular interest.
+A context consumer will trigger a re-render even if the state is the same. It gets more complex if you are reading from several consumers or your component happens to be in a sub-tree whose context is not of particular interest.
 
 react-contextuals selects state, [similar to reduxes connect](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe), simply make your component a `React.PureComponent` and it will only render if the particular state it selected has changed, even if is nested into multiple consumers.
 
 ## Nesting
 
-Used raw the api will cause heavy nesting, every time you tap into a consumers value.
+Used raw the api will cause heavy nesting, every time you tap into a consumers value, and worse if you have to read out many.
 
 ### Used raw
 
@@ -42,7 +44,7 @@ Used raw the api will cause heavy nesting, every time you tap into a consumers v
 
 ```js
 @subscribe(
-    [ThemeContext, UserContext, LanguageContext], 
+    [ThemeContext, UserContext, LanguageContext],
     ([theme, user, language]) => ({ theme, user, language })
 )(Component)
 ```
