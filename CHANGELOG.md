@@ -8,6 +8,9 @@
 
     // Make multiple context providers available under the following names in their respective order
     subscribe([Theme, User, Language], ['theme', 'user', 'language'])
+    
+    // Make multiple context providers available under the prop 'values'
+    subscribe([Theme, User, Language], 'values')
     ```
 
     That applies to `<Subscribe select={...}>` as well of course.
