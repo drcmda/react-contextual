@@ -17,7 +17,7 @@ Reacts new API for dynamic context distribution is built on render props. While 
 
 # If you just need a light-weight no-frills store
 
-Provide state and actions, wrap everything that is supposed to access or mutate it within. Actions can be simple merges, functions, or async functions.
+Use the [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md#provider) to distribute state and actions, wrap consumers within, use [subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) to connect components.
 
 Example 1: https://codesandbox.io/s/ywyr3q5n4z (basic example)
 
@@ -33,7 +33,7 @@ But use with care as the spec may still change any time!
 
 ### What about multiple stores?
 
-You can have as many as you like, just name them. `subscribe` also accepts your keys.
+You can have as many as you like, just name them. [subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) also accepts your keys.
 
 Example: https://codesandbox.io/s/p9p6jq60lx
 
@@ -41,7 +41,7 @@ Example: https://codesandbox.io/s/p9p6jq60lx
 
 # If you are dealing with context providers of any kind
 
-`subscribe` helps you to consume *any* React context. Soon libs like react-router, redux, etc. will likely start serving context. Look into the examples to see how easy it is to create a context provider in order to distribute dynamic data.
+[subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) helps you to consume *any* React context. Soon libs like react-router, redux, etc. will likely start serving context. Look into the examples to see how easy it is to create a context provider in order to distribute dynamic data.
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
@@ -53,7 +53,7 @@ Example: https://codesandbox.io/s/5v7n6k8j5p
 
 # If you like to create context providers
 
-Reacts default api works with singletons, that makes it tough to create multi-purpose, nestable providers. Use the `namedContext` to create dynamic context objects and `moduleContext` for module-scoped context. 
+Reacts default api works with singletons, that makes it tough to create multi-purpose, nestable providers. Use the [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext) to create dynamic context objects and [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) for module-scoped context. 
 
 Example1: https://codesandbox.io/s/m7q5z407p9 (namedContext)
 
@@ -65,7 +65,7 @@ Example3: https://codesandbox.io/s/30ql1rxzlq (imperate API)
 
 # If you like to consume context but dislike HOCs
 
-Use `<Subscribe to={} select={}/>` to do the same as above with render props.
+Use [Subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component) (a component) to do the same as above with render props.
 
 Example 1: https://codesandbox.io/s/wo28o5y1y5 (Multiple providers)
 
