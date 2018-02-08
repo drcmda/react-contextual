@@ -1,6 +1,6 @@
 ![](assets/logo.jpg)
 
-`react-contextual` is a tiny (~1KB) helper around [React 16's new context API](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md).
+`react-contextual` is a tiny (less than 1KB) helper around [React 16's new context api](https://github.com/acdlite/rfcs/blob/new-version-of-context/text/0000-new-version-of-context.md).
 
 It provides two things:
 
@@ -9,7 +9,7 @@ It provides two things:
 
 # Why
 
-Reacts new API for dynamic context distribution is built on render props. While it is very powerful it may be a little too low-level due to nesting and efficiency. `react-contextual` maps context values to component props, similar to how Redux operates. That takes cares of nesting and allows you to render only when necessary. It also provides a small store for state distribution. It could well be [the smallest flux-store yet](https://github.com/drcmda/react-contextual/blob/master/src/store.js). `react-contextual` also takes care of context creation, which is harder with the default api due to the singleton pattern.
+Reacts new context api is very powerful, albeit very low-level as it doesn't prescribe patterns and can cause [some issues](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md) if used raw. `react-contextual` makes creating and reading context easier, maps context values to component props, similar to how Redux operates, takes cares of nesting, render only when necessary and provides a small store for state distribution.
 
 # Installation
 
