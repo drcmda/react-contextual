@@ -41,4 +41,17 @@ export function namedContext(contextName, initialState) {
         }
 }
 
+export function moduleContext(initialState) {
+    const context = createContext(initialState)
+    return Wrapped => {
+        const Hoc = class extends React.PureComponent {
+            render() {
+                return <Wrapped {...this.props} context={context} />
+            }
+        }
+        Hoc.Context = Wrapped.Context = context
+        return Hoc
+    }
+}
+
 export default Context

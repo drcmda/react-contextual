@@ -2,6 +2,7 @@ import { subscribe, Subscribe } from './subscribe'
 import { RenderOnce, Provider } from './store'
 import Context, {
     namedContext,
+    moduleContext,
     createNamedContext,
     removeNamedContext,
     getNamedContext,
@@ -15,6 +16,7 @@ export {
     RenderOnce,
     Provider,
     namedContext,
+    moduleContext,
     createNamedContext,
     removeNamedContext,
     getNamedContext,

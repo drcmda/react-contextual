@@ -601,9 +601,9 @@ babel-plugin-annotate-pure-calls@0.3.0-beta.0:
     "@babel/helper-annotate-as-pure" "^7.0.0-beta.31"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0-beta.31"
 
-babel-plugin-transform-react-remove-prop-types@^0.4.12:
-  version "0.4.12"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-remove-prop-types/-/babel-plugin-transform-react-remove-prop-types-0.4.12.tgz#a382c27c42d6580748c80caf8c3d5091edbb60b8"
+babel-plugin-transform-react-remove-prop-types@^0.4.13:
+  version "0.4.13"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-remove-prop-types/-/babel-plugin-transform-react-remove-prop-types-0.4.13.tgz#331cfc05099a808238311d78319c27460d481189"
 
 babylon@7.0.0-beta.39:
   version "7.0.0-beta.39"
@@ -1019,9 +1019,9 @@ randomatic@^1.1.3:
     is-number "^3.0.0"
     kind-of "^4.0.0"
 
-react-broadcast@^0.7.0-rc.3:
-  version "0.7.0-rc.3"
-  resolved "https://registry.yarnpkg.com/react-broadcast/-/react-broadcast-0.7.0-rc.3.tgz#a93216af367162c3f1e298b88f96f5072152eca6"
+react-broadcast@^0.7.0-rc.4:
+  version "0.7.0-rc.4"
+  resolved "https://registry.yarnpkg.com/react-broadcast/-/react-broadcast-0.7.0-rc.4.tgz#10a0132a287baa81041f2208e75c9b55a6542ea8"
   dependencies:
     prop-types "^15.6.0"
     warning "^3.0.0"

@@ -94,3 +94,26 @@ import { namedContext } from 'react-contextual'
 `name` can either be a string, in that case a context will be created under that name and you can refer it as such in `subscribe`. You can also pass a function, for instance `props => props.id`. It has to return a string which will be the name of the created context.
 
 The context will be dynamically created when the wrapped component mounts and will be removed once it unmounts. The actual context will be inject as prop (`context`) so it is available for the wrapped component which can now render its Provider.
+
+## moduleContext(defaultValue)
+
+Creates a global module-scoped context object and injects it both as `this.props.context` into the wrapped component, as well as `Component.Context`, so consumers can import the component and readily use it:
+
+```js
+import { moduleContext } from 'react-contextual'
+
+@moduleContext()
+class Theme extends React.PureComponent {
+    render() {
+        const { context: Context, children } = this.props
+        return <Contest.Provider value="red" children={children} />
+    }
+}
+
+@subscribe(Theme.Context, theme => ({ theme }))
+class Header extends React.PureComponent {
+    render() {
+        return <h1 style={{ color: theme }}>hello</h1>
+    }
+}
+```

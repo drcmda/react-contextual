@@ -73,11 +73,15 @@ Example: https://codesandbox.io/s/5v7n6k8j5p
 
 ![](assets/example-5.jpg)
 
-# If you like to create unique context providers
+# If you like to create context providers
 
-Reacts default api works with singletons, that makes it tough to create multi-purpose, nestable providers. Use the `namedContext` HOC to fix it. `subscribe` can also accept a function, so you can pass one or many dynamic context objects.
+Reacts default api works with singletons, that makes it tough to create multi-purpose, nestable providers. Use the `namedContext` to create dynamic context objects and `moduleContext` for module-scoped context. 
 
-Example: https://codesandbox.io/s/m7q5z407p9
+Example1: https://codesandbox.io/s/m7q5z407p9 (namedContext)
+
+Example2: https://codesandbox.io/s/v8pn13nq77 (moduleContext)
+
+Example3: https://codesandbox.io/s/30ql1rxzlq (imperate API)
 
 ![](assets/example-7.jpg)
 
@@ -94,3 +98,7 @@ Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
 # API
 
 https://github.com/drcmda/react-contextual/blob/master/API.md
+
+# Changelog
+
+https://github.com/drcmda/react-contextual/blob/master/CHANGELOG.md
