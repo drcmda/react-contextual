@@ -12,9 +12,9 @@ react-contextual prevents its store from re-rendering its contents, which remain
 
 ### Consuming context can trigger unnecessary renders
 
-A context consumer wrapped in one, or worse-multiple providers, can render needlessly, even if the state it is interested in is the same.
+A context consumer wrapped in one or multiple providers can render needlessly, even if the state it is interested in remains the same.
 
-react-contextuals selects state, [similar to reduxes connect](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe), simply make your component a `React.PureComponent` and it will fill out shouldComponentUpdate with reference-equality checks against its props. Hence, it will only render if the particular state it has selected did actually change, even if it sits deeply nested in multiple privider & consumers.
+react-contextual selects state, [similar to reduxes connect](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe). Simply make your component a `React.PureComponent` and it will only render if the state it has selected has actually changed, even if it sits deeply nested in multiple prividers & consumers.
 
 ## Nesting
 

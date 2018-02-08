@@ -15,6 +15,15 @@ export function subscribe(...args) {
         contextRefs = args[0]
         mapContextToProps = args[1]
     }
+    if (typeof mapContextToProps !== 'function') {
+        // 'theme' or ['theme', 'user', 'language']
+        const values = mapContextToProps
+        mapContextToProps = args => {
+            return Array.isArray(args)
+                ? values.reduce((acc, key, index) => ({ ...acc, [key]: args[index] }), {})
+                : { [values]: args }
+        }
+    }
     return Wrapped => props => {
         const isArray = Array.isArray(contextRefs)
         const array = (isArray ? contextRefs : [contextRefs]).map(context => resolveContext(context, props))
@@ -42,7 +51,7 @@ export class Subscribe extends React.PureComponent {
             PropTypes.string,
             PropTypes.func,
         ]),
-        select: PropTypes.func,
+        select: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
         children: PropTypes.func.isRequired,
     }
     static defaultProps = { to: DefaultContext, select: props => props }

@@ -1,3 +1,17 @@
+## 3.5.0
+
+* mapContextToState accepts strings
+
+    ```js
+    // Make context available under the prop 'theme'
+    subscribe(Context, 'theme')
+
+    // Make multiple context providers available under the following names in their respective order
+    subscribe([Theme, User, Language], ['theme', 'user', 'language'])
+    ```
+
+    That applies to `<Subscribe pick={...}>` as well of course.
+
 ## 3.4.0
 
 * moduleContext

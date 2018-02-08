@@ -30,6 +30,12 @@ Example 3: Mapping several contexts is also possible, just wrap them into an arr
 subscribe([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(AnyComponent)
 ```
 
+You can also pass strings to mapContextToProps to make it shorter:
+
+```js
+subscribe([ThemeContext, CountContext], ['theme', 'count'])(AnyComponent)
+```
+
 Example 3: You can also pass a function which should return either a context object or key. You will be able to access the components props here as well.
 
 ```js
