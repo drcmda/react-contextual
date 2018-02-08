@@ -9,7 +9,7 @@ It provides two things:
 
 # Why
 
-Reacts new context api is very powerful, albeit very low-level as it doesn't prescribe patterns and can cause [some issues](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md) if used raw. `react-contextual` makes creating and reading context easier, maps context values to component props, similar to how Redux operates, takes cares of nesting, render only when necessary and provides a small store for state distribution.
+Reacts new context api is very powerful albeit very low-level as it doesn't prescribe patterns and can cause [some issues](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md) if used naively. `react-contextual` makes creating, sharing and consuming context easier, maps context values to component props similar to how redux operates, takes care of nesting, renders only when necessary and provides a small store for state distribution.
 
 # Installation
 
