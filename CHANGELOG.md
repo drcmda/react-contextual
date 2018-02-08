@@ -10,7 +10,7 @@
     subscribe([Theme, User, Language], ['theme', 'user', 'language'])
     ```
 
-    That applies to `<Subscribe pick={...}>` as well of course.
+    That applies to `<Subscribe select={...}>` as well of course.
 
 ## 3.4.0
 
