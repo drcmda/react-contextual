@@ -153,3 +153,21 @@ class Header extends React.PureComponent {
     }
 }
 ```
+
+# imperative context handling
+
+```js
+import { getNamedContext, createNameContext, removeNamedContext } from 'react-contextual'
+```
+
+*  createNameContext(name)
+
+    Registers and returns a context.
+
+* getNamedContext(name)
+
+    Returns a context.
+
+* removeNamedContext(name)
+
+    Removes the context from the internal map.
