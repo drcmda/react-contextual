@@ -33,6 +33,7 @@ subscribe([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(
 You can also pass strings to mapContextToProps to make it shorter:
 
 ```js
+subscribe(ThemeContext, 'theme')(AnyComponent)
 subscribe([ThemeContext, CountContext], ['theme', 'count'])(AnyComponent)
 ```
 
