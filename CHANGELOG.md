@@ -1,3 +1,24 @@
+## 3.6.0
+
+* moduleContext
+
+    moduleContext *will not* inject `.Context` any longer, which was kind of dirty. It will use the symbol of the *wrapped component* as a reference. Consumers are allowed to simply pass component.
+
+    ```js
+    import { moduleContext } from 'react-contextual'
+
+    @moduleContext()
+    class Theme extends React.PureComponent {
+        // ...
+    }
+
+    // Previously: @subscribe(Theme.Context ...
+    @subscribe(Theme, theme => ({ theme }))
+    class Header extends React.PureComponent {
+        // ...
+    }
+    ```
+
 ## 3.5.0
 
 * mapContextToState accepts strings

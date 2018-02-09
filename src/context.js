@@ -19,9 +19,14 @@ export function removeNamedContext(name) {
 }
 
 export function resolveContext(context, props) {
-    if (typeof context === 'string') return getNamedContext(context) || context
-    else if (typeof context === 'function') return resolveContext(context(props))
-    else return context
+    let result
+    if (typeof context === 'function') {
+        // Test against component-symbol first, then assume a user function
+        result = getNamedContext(context) || resolveContext(context(props))
+    } else if (typeof context === 'string') {
+        result = getNamedContext(context)
+    }
+    return result || context
 }
 
 export function namedContext(contextName, initialState) {
@@ -42,14 +47,14 @@ export function namedContext(contextName, initialState) {
 }
 
 export function moduleContext(initialState) {
-    const context = createContext(initialState)
     return Wrapped => {
+        let context = undefined
         const Hoc = class extends React.PureComponent {
             render() {
                 return <Wrapped {...this.props} context={context} />
             }
         }
-        Hoc.Context = Wrapped.Context = context
+        context = createNamedContext(Hoc, initialState)
         return Hoc
     }
 }

@@ -142,7 +142,7 @@ ReactDOM.render((
 import { moduleContext } from 'react-contextual'
 ```
 
-Creates a global module-scoped context object and injects it both as `this.props.context` into the wrapped component, as well as `Component.Context`, so consumers can import the component and readily use it:
+Creates a global module-scoped context object and injects it both as `this.props.context` into the wrapped component. Consumers can import the component and readily use it as a context provider:
 
 ```js
 @moduleContext()
@@ -153,7 +153,7 @@ class Theme extends React.PureComponent {
     }
 }
 
-@subscribe(Theme.Context, theme => ({ theme }))
+@subscribe(Theme, theme => ({ theme }))
 class Header extends React.PureComponent {
     render() {
         return <h1 style={{ color: theme }}>hello</h1>

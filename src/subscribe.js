@@ -28,6 +28,9 @@ export function subscribe(...args) {
         const isArray = Array.isArray(contextRefs)
         const array = (isArray ? contextRefs : [contextRefs]).map(context => resolveContext(context, props))
         let result, values = []
+        if (array.find(a => !a)) {
+            debugger
+        }
         return [...array, Wrapped].reduceRight((accumulator, Context) => (
             <Context.Consumer>
                 {value => {
