@@ -1,5 +1,5 @@
 import { subscribe, Subscribe } from './subscribe'
-import { RenderOnce, Provider } from './store'
+import { RenderPure, Provider } from './store'
 import Context, {
     namedContext,
     moduleContext,
@@ -13,7 +13,7 @@ export {
     Context,
     subscribe,
     Subscribe,
-    RenderOnce,
+    RenderPure,
     Provider,
     namedContext,
     moduleContext,

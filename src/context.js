@@ -34,11 +34,11 @@ export function namedContext(contextName, initialState) {
         class extends React.PureComponent {
             constructor(props) {
                 super()
-                const name = resolveContext(contextName, props)
-                this.state = { context: createNamedContext(name, initialState), name }
+                this.name = resolveContext(contextName, props)
+                this.state = { context: createNamedContext(this.namename, initialState) }
             }
             componentWillUnmount() {
-                removeNamedContext(this.state.name)
+                removeNamedContext(this.name)
             }
             render() {
                 return <Wrapped {...this.props} context={this.state.context} />

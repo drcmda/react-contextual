@@ -1,46 +1,28 @@
 # Reacts new context api
 
-The context api is deliberately kept low-level, which makes it very powerful and flexible, but at the same time hard if you plan to use it raw. There are a couple of pitfalls you could run into if the api is used naively.
+The context api is deliberately kept low-level, which makes it very powerful and flexible, but at the same time there are a couple of pitfalls you could run into if the api is used naively.
 
 ## Performance
 
 ### Sub-tree re-rendering
 
-A context provider will re-render its sub-tree every time it changes. It is a component after all. If you plan to wrap your app in a provider like you would normally do with something like redux you need to be aware of it.
+A context provider will re-render its sub-tree every time it changes. It is a component after all. If you plan to wrap your app in a provider like you would normally do with something like redux you need to be aware of it (using PureComponents or employ strategies from shouldComponentUpdate).
 
 react-contextual prevents its store from re-rendering its contents, which remain reactive of course. You use it in the same way you use reduxes `Provider`.
 
 ### Consuming context can trigger unnecessary renders
 
-A context consumer wrapped in one or multiple providers can render needlessly, even if the state it is interested in remains the same.
+A context consumer wrapped in one or multiple providers can render needlessly, even if the state it is interested in remains the same. Safeguarding against it [brings its own pitfalls](https://github.com/facebook/react/issues/12185).
 
-react-contextual selects state, [similar to reduxes connect](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe). Simply make your component a `React.PureComponent` and it will only render if the state it has selected has actually changed, even if it sits deeply nested in multiple prividers & consumers.
+react-contextual selects state, [similar to reduxes connect](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe). Extend your wrapped components from `React.PureComponent` and they will only render if the selected state has actually changed, even if components sit deeply nested in multiple prividers & consumers.
 
 ## Nesting
 
 Used raw the api will cause heavy nesting, every time you tap into a consumers value, and worse if you have to read out many.
 
-### Used raw
+![](/assets/nesting.png)
 
-```
-<ThemeContext.Consumer>
-    {theme => (
-        <UserContext.Consumer>
-             {user => (
-                <LanguageContext.Consumer>
-                     {language => (
-                         <div>
-                            {theme}, {user}, {language}
-                         <div>
-                     )}
-                </LanguageContext.Consumer>
-             )}
-        </UserContext.Consumer>
-    )}
-</ThemeContext.Consumer>
-```
-
-### react-contextual
+react-contextual on the other hand supports both render props and traditional HOC patterns, while allowing you to select from multiple context providers in one strike.
 
 ```js
 subscribe(

@@ -2,23 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import DefaultContext, { createNamedContext, removeNamedContext } from './context'
 
-export class RenderOnce extends React.Component {
-    shouldComponentUpdate() {
-        return false
-    }
+export class RenderPure extends React.PureComponent {
     render() {
         return this.props.children
     }
 }
 
-export class Provider extends React.Component {
+export class Provider extends React.PureComponent {
     static propTypes = {
         id: PropTypes.string,
         initialState: PropTypes.object.isRequired,
         actions: PropTypes.object,
-        renderAlways: PropTypes.bool,
     }
-    static defaultProps = { renderAlways: false }
     constructor(props) {
         super()
         this.state = props.initialState || {}
@@ -46,10 +41,6 @@ export class Provider extends React.Component {
     render() {
         const { state, actions, props, Context } = this
         const value = { ...state, ...(actions ? { actions } : {}) }
-        return (
-            <Context.Provider value={value}>
-                {props.renderAlways ? props.children : <RenderOnce children={props.children} />}
-            </Context.Provider>
-        )
+        return <Context.Provider value={value} children={<RenderPure children={props.children} />} />
     }
 }
