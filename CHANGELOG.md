@@ -5,8 +5,6 @@
     moduleContext *will not* inject `.Context` any longer, which was kind of dirty. It will use the symbol of the *wrapped component* as a reference. Consumers are allowed to simply pass component.
 
     ```js
-    import { moduleContext } from 'react-contextual'
-
     @moduleContext()
     class Theme extends React.PureComponent {
         // ...
