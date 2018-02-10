@@ -23,10 +23,9 @@ Used raw the api can [cause heavy nesting](/assets/nesting.png), every time you 
 react-contextual on the other hand supports both render props and traditional HOC patterns, while allowing you to select from multiple context providers in one strike.
 
 ```js
-subscribe(
-    [ThemeContext, UserContext, LanguageContext],
-    ([theme, user, language]) => ({ theme, user, language })
-)(Component)
+subscribe([ThemeContext, UserContext, LanguageContext], ([theme, user, language]) => ({ theme, user, language }))(
+    Component,
+)
 ```
 
 ## Creating context
@@ -37,6 +36,31 @@ react-contextual solves this by offering a couple of higher order components lik
 
 ## Sharing context
 
-There are no prescriptions on how to share or distribute context. Do you add it to a components prototype? Do you export it next to your component? Will the end user by fine with conflicting standards on how or where to fetch context in order to consume it?
+There are no prescriptions on how to share or distribute context. Do you add it to a components prototype? Do you export it next to your component? Will the end user by fine with conflicting standards on how or where to fetch context in order to consume it? Will end-users consume context at all or is it better to write bindings around it?
 
-react-contextual either maps keyed, unique contexts internally or injects module-scoped context as `Component.Context`.
+react-contextual makes sharing easy. It maps keyed, unique contexts internally and allows global, module-scoped context to be refered by the component that instanciates it.
+
+```js
+@moduleContext()
+class ThemeProvider extends React.PureComponent {
+    render() {
+        const { context, children } = this.props
+        return <context.Provider value="red" children={children} />
+    }
+}
+
+@subscribe(ThemeProvider, theme => ({ theme }))
+class Header extends React.PureComponent {
+    render() {
+        return <h1 style={{ color: theme }}>hello</h1>
+    }
+}
+
+/*
+@namedContext('name')
+@subscribe('name', theme => ({ theme }))
+
+@namedContext(props => props.id)
+@subscribe(props => props.id, theme => ({ theme }))
+*/
+```
