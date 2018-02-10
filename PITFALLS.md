@@ -58,10 +58,12 @@ class Header extends React.PureComponent {
 }
 
 /*
-@namedContext('name')
-@subscribe('name', theme => ({ theme }))
+@subscribe(GenericReactContext, value => ({ value }))
 
-@namedContext(props => props.id)
-@subscribe(props => props.id, theme => ({ theme }))
+@namedContext('uniquelyNamedContext')
+@subscribe('uniquelyNamedContext', value => ({ value }))
+
+@namedContext(props => props.dynamicallyDerivedKey)
+@subscribe(props => props.dynamicallyDerivedKey, value => ({ value }))
 */
 ```
