@@ -11,7 +11,7 @@ It provides two things:
 
 Reacts new context api is very powerful albeit very low-level as it does not prescribe patterns and can cause some issues if used naively. `react-contextual` makes creating, sharing and consuming context easier, maps context values to component props similar to how redux operates, takes care of nesting, renders only when necessary and provides a small store for state distribution.
 
-Click [this link](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md) for as more detailed explanation.
+Click [this link](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md) for a detailed explanation.
 
 # Installation
 
