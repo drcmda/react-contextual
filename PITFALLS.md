@@ -23,9 +23,10 @@ Used raw the api can [cause heavy nesting](/assets/nesting.png), every time you 
 react-contextual on the other hand supports both render props and traditional HOC patterns, while allowing you to select from multiple context providers in one strike.
 
 ```js
-subscribe([ThemeContext, UserContext, LanguageContext], ([theme, user, language]) => ({ theme, user, language }))(
-    Component,
-)
+subscribe(
+    [ThemeContext, UserContext, LanguageContext], 
+    ([theme, user, language]) => ({ theme, user, language })
+)(Component)
 ```
 
 ## Creating context
