@@ -25,13 +25,13 @@ Example 1: https://codesandbox.io/s/ywyr3q5n4z (basic example)
 
 Example 2: https://codesandbox.io/s/lxly45lvkl (async actions)
 
-![](assets/store.png)
+![](assets/store.jpg)
 
 ### With decorator
 
 But use with care as the spec may still change any time!
 
-![](assets/store-decorator.png)
+![](assets/store-decorator.jpg)
 
 ### What about multiple stores?
 
@@ -39,7 +39,7 @@ You can have as many as you like, just name them. [subscribe](https://github.com
 
 Example: https://codesandbox.io/s/p9p6jq60lx
 
-![](assets/multi-store.png)
+![](assets/multi-store.jpg)
 
 # If you are dealing with context providers of any kind
 
@@ -47,11 +47,11 @@ Example: https://codesandbox.io/s/p9p6jq60lx
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
-![](assets/multi-context.png)
+![](assets/multi-context.jpg)
 
 ### With decorator
 
-![](assets/multi-context-decorator.png)
+![](assets/multi-context-decorator.jpg)
 
 # If you like to create context providers
 
@@ -63,11 +63,11 @@ Example2: https://codesandbox.io/s/v8pn13nq77 (moduleContext)
 
 Example3: https://codesandbox.io/s/30ql1rxzlq (imperate API)
 
-![](assets/named.png)
+![](assets/module-context.jpg)
 
 ### With decorator
 
-![](assets/named-decorator.png)
+![](assets/module-context-decorator.jpg)
 
 
 # If you like to consume context but dislike HOCs
@@ -78,7 +78,7 @@ Example 1: https://codesandbox.io/s/wo28o5y1y5 (Multiple providers)
 
 Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
 
-![](assets/render-props.png)
+![](assets/render-props.jpg)
 
 # API
 
