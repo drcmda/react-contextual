@@ -35,7 +35,7 @@
     "babel-plugin-annotate-pure-calls": "0.3.0-beta.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
     "rimraf": "^2.6.2",
-    "rollup": "^0.55.3",
+    "rollup": "^0.55.5",
     "rollup-plugin-babel": "4.0.0-beta.1"
   },
   "peerDependencies": {
