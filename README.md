@@ -61,7 +61,7 @@ Example1: https://codesandbox.io/s/m7q5z407p9 (namedContext)
 
 Example2: https://codesandbox.io/s/v8pn13nq77 (moduleContext)
 
-Example3: https://codesandbox.io/s/30ql1rxzlq (imperate API)
+Example3: https://codesandbox.io/s/30ql1rxzlq (imperative API)
 
 ![](assets/module-context.jpg)
 
