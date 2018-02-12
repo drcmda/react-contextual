@@ -35,7 +35,7 @@ export function namedContext(contextName, initialState) {
             constructor(props) {
                 super()
                 this.name = resolveContext(contextName, props)
-                this.state = { context: createNamedContext(this.namename, initialState) }
+                this.state = { context: createNamedContext(this.name, initialState) }
             }
             componentWillUnmount() {
                 removeNamedContext(this.name)
