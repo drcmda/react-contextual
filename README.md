@@ -25,13 +25,13 @@ Example 1: https://codesandbox.io/s/ywyr3q5n4z (basic example)
 
 Example 2: https://codesandbox.io/s/lxly45lvkl (async actions)
 
-![](assets/store.jpg)
+[![](assets/store.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/store.js)
 
 ### With decorator
 
 But use with care as the spec may still change any time!
 
-![](assets/store-decorator.jpg)
+[![](assets/store-decorator.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/store-decorator.js)
 
 ### What about multiple stores?
 
@@ -39,7 +39,7 @@ You can have as many as you like, just name them. [subscribe](https://github.com
 
 Example: https://codesandbox.io/s/p9p6jq60lx
 
-![](assets/multi-store.jpg)
+[![](assets/multi-store.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/multi-store.js)
 
 # If you are dealing with context providers of any kind
 
@@ -47,11 +47,11 @@ Example: https://codesandbox.io/s/p9p6jq60lx
 
 Example: https://codesandbox.io/s/5v7n6k8j5p
 
-![](assets/multi-context.jpg)
+[![](assets/multi-context.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/multi-context.js)
 
 ### With decorator
 
-![](assets/multi-context-decorator.jpg)
+[![](assets/multi-context-decorator.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/multi-context-decorator.js)
 
 # If you like to create context providers
 
@@ -63,11 +63,11 @@ Example2: https://codesandbox.io/s/v8pn13nq77 (moduleContext)
 
 Example3: https://codesandbox.io/s/30ql1rxzlq (imperative API)
 
-![](assets/module-context.jpg)
+[![](assets/module-context.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/module-context.js)
 
 ### With decorator
 
-![](assets/module-context-decorator.jpg)
+[![](assets/module-context-decorator.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/module-context-decorator.js)
 
 
 # If you like to consume context but dislike HOCs
@@ -78,7 +78,7 @@ Example 1: https://codesandbox.io/s/wo28o5y1y5 (Multiple providers)
 
 Example 2: https://codesandbox.io/s/ko1nz4j2r (Store as default provider)
 
-![](assets/render-props.jpg)
+[![](assets/render-props.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/render-props.js)
 
 # API
 
