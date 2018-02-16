@@ -29,44 +29,4 @@ export function resolveContext(context, props) {
     return result || context
 }
 
-export function namedContext(contextName, initialState) {
-    return Wrapped =>
-        class extends React.PureComponent {
-            constructor(props) {
-                super()
-                this.name = resolveContext(contextName, props)
-                this.state = { context: createNamedContext(this.name, initialState) }
-            }
-            componentWillUnmount() {
-                removeNamedContext(this.name)
-            }
-            render() {
-                return <Wrapped {...this.props} context={this.state.context} />
-            }
-        }
-}
-
-export function moduleContext(initialState) {
-    return Wrapped => {
-        let context = undefined
-        const Hoc = class extends React.PureComponent {
-            render() {
-                return <Wrapped {...this.props} context={context} />
-            }
-        }
-        context = createNamedContext(Hoc, initialState)
-        return Hoc
-    }
-}
-
-export function transformContext(context) {
-    return Wrapped => {
-        return class extends React.PureComponent {
-            render() {
-                return <Wrapped {...this.props} context={getNamedContext(context)} />
-            }
-        }
-    }
-}
-
 export default Context
