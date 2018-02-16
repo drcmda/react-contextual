@@ -3,6 +3,7 @@ import { RenderPure, Provider } from './store'
 import Context, {
     namedContext,
     moduleContext,
+    transformContext,
     createNamedContext,
     removeNamedContext,
     getNamedContext,
@@ -17,6 +18,7 @@ export {
     Provider,
     namedContext,
     moduleContext,
+    transformContext,
     createNamedContext,
     removeNamedContext,
     getNamedContext,
