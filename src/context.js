@@ -26,7 +26,7 @@ export function resolveContext(context, props) {
     } else if (typeof context === 'string') {
         result = getNamedContext(context)
     }
-    return result || context
+    return result || context
 }
 
 export function namedContext(contextName, initialState) {
@@ -56,6 +56,16 @@ export function moduleContext(initialState) {
         }
         context = createNamedContext(Hoc, initialState)
         return Hoc
+    }
+}
+
+export function transformContext(context) {
+    return Wrapped => {
+        return class extends React.PureComponent {
+            render() {
+                return <Wrapped {...this.props} context={getNamedContext(context)} />
+            }
+        }
     }
 }
 
