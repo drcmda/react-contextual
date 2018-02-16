@@ -1,3 +1,27 @@
+## 3.7.0
+
+* transformContext
+
+    Reads a previous context provider and provides a transformed version of its value. Think of it as a middleware.
+
+    ```js
+    @moduleContext()
+    class Theme extends React.PureComponent {
+        render() {
+            const { context, color, children } = this.props
+            return <context.Provider value={color} children={children} />
+        }
+    }
+
+    @transformContext(Theme, color => ({ color }))
+    class InvertTheme extends React.PureComponent {
+        render() {
+            const { context, color, children } = this.props
+            return <context.Provider value={0xffffff ^ color} children={children} />
+        }
+    }
+    ```
+
 ## 3.6.0
 
 * moduleContext

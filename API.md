@@ -161,13 +161,62 @@ class Header extends React.PureComponent {
 }
 ```
 
+# transformContext
+
+## transformContext(context, transform)
+
+```js
+import { transformContext } from 'react-contextual'
+```
+
+Reads a previous context provider and provides a transformed version of its value. Think of it as a middleware.
+
+```js
+@moduleContext()
+class Theme extends React.PureComponent {
+    render() {
+        const { context, color, children } = this.props
+        return <context.Provider value={color} children={children} />
+    }
+}
+
+@transformContext(Theme, color => ({ color }))
+class InvertTheme extends React.PureComponent {
+    render() {
+        const { context, color, children } = this.props
+        return <context.Provider value={0xffffff ^ color} children={children} />
+    }
+}
+
+@subscribe(Theme, color => ({ color }))
+class Say extends React.PureComponent {
+    render() {
+        const { color, text } = this.props
+        return <span style={{ color: '#' + ('000000' + color.toString(16)).substr(-6) }}>{text}</span>
+    }
+}
+
+ReactDOM.render(
+    <Theme color={0xff0000}>
+        <Say text="all " />
+        <Theme color={0x00ff00}>
+            <Say text="is " />
+            <InvertTheme>
+                <Say text="well" />
+            </InvertTheme>
+        </Theme>
+    </Theme>,
+    document.getElementById('root'),
+)
+```
+
 # imperative context handling
 
 ```js
 import { getNamedContext, createNameContext, removeNamedContext } from 'react-contextual'
 ```
 
-*  createNameContext(name)
+* createNameContext(name)
 
     Registers and returns a context.
 
