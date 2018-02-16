@@ -18,7 +18,7 @@ react-contextual selects state, [similar to reduxes connect](https://github.com/
 
 ## Nesting
 
-Used raw the api can [cause heavy nesting](/assets/nesting.png), every time you tap into a providers value, and worse if you have to read out several.
+Used raw the api can [cause heavy nesting](https://user-images.githubusercontent.com/810438/36044918-090ab492-0dcc-11e8-9535-26495e3c8778.png), every time you tap into a providers value, and worse if you have to read out several.
 
 react-contextual on the other hand supports both render props and traditional HOC patterns, while allowing you to select from multiple context providers in one strike.
 
