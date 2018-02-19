@@ -25,6 +25,8 @@ Example 1: https://codesandbox.io/embed/ywyr3q5n4z (basic example)
 
 Example 2: https://codesandbox.io/embed/lxly45lvkl (async actions)
 
+Example 3: https://codesandbox.io/embed/yvx9my007z (memoization)
+
 [![](assets/store.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/store.js)
 
 ### With decorator
