@@ -40,7 +40,8 @@ export class Provider extends React.PureComponent {
     }
     render() {
         const { state, actions, props, Context } = this
-        const value = { ...state, ...(actions ? { actions } : {}) }
-        return <Context.Provider value={value} children={<RenderPure children={props.children} />} />
+        const { children, id, actions: _, initialState, ...rest } = props
+        const value = { ...state, ...(actions ? { actions } : {}), ...rest }
+        return <Context.Provider value={value} children={<RenderPure children={children} />} />
     }
 }
