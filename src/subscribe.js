@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DefaultContext, { getNamedContext, resolveContext } from './context'
+import ProviderContext, { getNamedContext, resolveContext } from './context'
 
 export function subscribe(...args) {
     // Filter undefined args (can happen if Subscribe injects them)
     args = args.filter(a => a)
-    let contextRefs = DefaultContext,
+    let contextRefs = ProviderContext,
         mapContextToProps = props => props
     if (args.length === 1) {
         // subscribe(mapContextToProps): default context, custom mapContextToProps
@@ -53,7 +53,7 @@ export class Subscribe extends React.PureComponent {
         select: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
         children: PropTypes.func.isRequired,
     }
-    static defaultProps = { to: DefaultContext, select: props => props }
+    static defaultProps = { to: ProviderContext, select: props => props }
     render() {
         const { to, select, children } = this.props
         const Sub = subscribe(to, select)(props => children(props))

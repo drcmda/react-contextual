@@ -416,7 +416,7 @@ exports[`subscribe([a,b], (a,b) => props) 2`] = `
 </Provider>
 `;
 
-exports[`subscribe(Context, props => props) 1`] = `
+exports[`subscribe(ProviderContext, props => props) 1`] = `
 <Provider
   actions={
     Object {
@@ -491,7 +491,7 @@ exports[`subscribe(Context, props => props) 1`] = `
 </Provider>
 `;
 
-exports[`subscribe(Context, props => props) 2`] = `
+exports[`subscribe(ProviderContext, props => props) 2`] = `
 <Provider
   actions={
     Object {

@@ -48,9 +48,9 @@ subscribe(props => props.id, theme => ({ theme }))(AnyComponent)
 If you skip the providers `subscribe` will fetch `react-contextuals` default context for its [own store](https://github.com/drcmda/react-contextual/blob/master/API.md#provider). It is basically a short cut for:
 
 ```js
-import { subscribe, Context } from 'react-contextual'
+import { subscribe, ProviderContext } from 'react-contextual'
 
-subscribe(Context, mapContextToProps)(AnyComponent)
+subscribe(ProviderContext, mapContextToProps)(AnyComponent)
 ```
 
 # Subscribe as a component
@@ -59,10 +59,10 @@ subscribe(Context, mapContextToProps)(AnyComponent)
 import { Subscribe } from 'react-contextual'
 ```
 
-The same as the higher-order-component above, but as a component: `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. The context that you have mapped to props will be passed as a render prop. Just like `subscribe` can skip the first argument and use `react-contextuals` default context, so can `Subscribe` if you omitt the `to` property.
+The same as the higher-order-component above, but as a component: `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. Mapped context will be passed as a render prop. Just like `subscribe` can skip the first argument and use `react-contextuals` default context, so can `Subscribe` if you omitt the `to` property.
 
 ```
-<Subscribe to={Context} select={({ state }) => state}>
+<Subscribe to={ProviderContext} select={({ state }) => state}>
     {state => <div>hi there {state.name}</div>}
 </Subscribe>
 ```

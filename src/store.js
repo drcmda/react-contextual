@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DefaultContext, { createNamedContext, removeNamedContext } from './context'
+import ProviderContext, { createNamedContext, removeNamedContext } from './context'
 
 export class RenderPure extends React.PureComponent {
     render() {
@@ -17,7 +17,7 @@ export class Provider extends React.PureComponent {
     constructor(props) {
         super()
         this.state = props.initialState || {}
-        this.Context = props.id ? createNamedContext(props.id) : DefaultContext
+        this.Context = props.id ? createNamedContext(props.id) : ProviderContext
         if (props.actions) {
             this.actions = Object.keys(props.actions).reduce(
                 (acc, name) => ({

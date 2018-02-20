@@ -1,8 +1,8 @@
 import React from 'react'
-import { createContext } from 'react-broadcast'
 
+const createContext = React.createContext ? React.createContext : require('react-broadcast').createContext
 const providers = new Map()
-const Context = createContext()
+const ProviderContext = createContext()
 
 export function createNamedContext(name, initialState) {
     const context = createContext(initialState)
@@ -26,7 +26,7 @@ export function resolveContext(context, props) {
     } else if (typeof context === 'string') {
         result = getNamedContext(context)
     }
-    return result || context || Context
+    return result || context || ProviderContext
 }
 
-export default Context
+export default ProviderContext
