@@ -1,49 +1,65 @@
 {
-  "name": "react-contextual",
-  "version": "3.6.7",
-  "description": "store and hoc patterns for react 16s new context model",
-  "main": "dist/react-contextual",
-  "module": "dist/react-contextual.es",
-  "sideEffects": false,
-  "scripts": {
-    "prebuild": "rimraf dist",
-    "build": "rollup -c",
-    "prepare": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/drcmda/react-contextual.git"
-  },
-  "keywords": [
-    "react",
-    "context",
-    "store",
-    "hoc",
-    "redux"
-  ],
-  "author": "Paul Henschel",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/drcmda/react-contextual/issues"
-  },
-  "homepage": "https://github.com/drcmda/react-contextual#readme",
-  "devDependencies": {
-    "@babel/core": "7.0.0-beta.39",
-    "@babel/preset-env": "7.0.0-beta.39",
-    "@babel/preset-react": "7.0.0-beta.39",
-    "@babel/preset-stage-2": "7.0.0-beta.39",
-    "babel-plugin-annotate-pure-calls": "0.3.0-beta.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.55.5",
-    "rollup-plugin-babel": "4.0.0-beta.1"
-  },
-  "peerDependencies": {
-    "prop-types": "15.x.x",
-    "react": ">= 16.0.0",
-    "react-dom": ">= 16.0.0"
-  },
-  "dependencies": {
-    "react-broadcast": "^0.7.0-rc.4"
-  }
+    "name": "react-contextual",
+    "version": "3.7.1",
+    "description": "store and hoc patterns for react 16s new context model",
+    "main": "dist/react-contextual",
+    "module": "dist/react-contextual.es",
+    "sideEffects": false,
+    "scripts": {
+        "prebuild": "rimraf dist",
+        "build": "rollup -c",
+        "prepare": "npm run test && npm run build",
+        "test": "jest --verbose"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/drcmda/react-contextual.git"
+    },
+    "keywords": [
+        "react",
+        "context",
+        "store",
+        "hoc",
+        "redux"
+    ],
+    "author": "Paul Henschel",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/drcmda/react-contextual/issues"
+    },
+    "homepage": "https://github.com/drcmda/react-contextual#readme",
+    "devDependencies": {
+        "@babel/core": "^7.0.0-beta.40",
+        "@babel/preset-env": "7.0.0-beta.39",
+        "@babel/preset-react": "7.0.0-beta.39",
+        "@babel/preset-stage-2": "7.0.0-beta.39",
+        "babel-core": "7.0.0-bridge.0",
+        "babel-jest": "^22.2.2",
+        "babel-plugin-annotate-pure-calls": "0.3.0-beta.0",
+        "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
+        "delay": "^2.0.0",
+        "enzyme": "^3.3.0",
+        "enzyme-adapter-react-16": "^1.1.1",
+        "enzyme-to-json": "^3.3.1",
+        "jest": "^22.3.0",
+        "raf": "^3.4.0",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "rimraf": "^2.6.2",
+        "rollup": "^0.55.5",
+        "rollup-plugin-babel": "4.0.0-beta.1"
+    },
+    "peerDependencies": {
+        "prop-types": "15.x.x",
+        "react": ">= 16.0.0",
+        "react-dom": ">= 16.0.0"
+    },
+    "dependencies": {
+        "react-broadcast": "^0.7.0-rc.4"
+    },
+    "jest": {
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ]
+    }
 }

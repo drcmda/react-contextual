@@ -25,17 +25,16 @@ export function subscribe(...args) {
         }
     }
     return Wrapped => props => {
-        const isArray = Array.isArray(contextRefs)
-        const array = (isArray ? contextRefs : [contextRefs]).map(context => resolveContext(context, props))
+        const array = (Array.isArray(contextRefs) ? contextRefs : [contextRefs]).map(context => resolveContext(context, props))
         let result, values = []
         return [...array, Wrapped].reduceRight((accumulator, Context) => (
             <Context.Consumer>
                 {value => {
-                    isArray && values.push(value)
+                    values.push(value)
                     result = accumulator === Wrapped 
-                        ? <Wrapped {...props} {...mapContextToProps(isArray ? values : value, props)} />
+                        ? <Wrapped {...props} {...mapContextToProps(...values, props)} />
                         : accumulator
-                    if (isArray && accumulator === Wrapped) values = []
+                    if (accumulator === Wrapped) values = []
                     return result
                 }}
             </Context.Consumer>

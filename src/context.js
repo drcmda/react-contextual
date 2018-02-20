@@ -26,7 +26,7 @@ export function resolveContext(context, props) {
     } else if (typeof context === 'string') {
         result = getNamedContext(context)
     }
-    return result || context
+    return result || context || Context
 }
 
 export default Context
