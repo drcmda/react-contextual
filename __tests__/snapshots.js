@@ -7,21 +7,23 @@ import { Provider, Context, Subscribe, subscribe } from '../src/'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-async function snapshot(Root, mutation, done) {
-    const tree = mount(Root)
-    expect(tree).toMatchSnapshot()
-    mutation(tree)
-    await delay(30)
-    tree.update()
-    expect(tree).toMatchSnapshot()
-}
-
 const store = {
     initialState: { count: 0 },
     actions: { up: () => state => ({ count: state.count + 1 }) },
 }
 
-it('subscribe()', async () => {
+async function snapshot(Root, mutation) {
+    const tree = mount(Root)
+    expect(tree).toMatchSnapshot()
+    if (mutation) {
+        mutation(tree)
+        await delay(30)
+        tree.update()
+        expect(tree).toMatchSnapshot()
+    }
+}
+
+test('subscribe()', async () => {
     const Test = subscribe()(props => <button onClick={props.actions.up}>{props.count}</button>)
     await snapshot(
         <Provider {...store}>
@@ -32,7 +34,7 @@ it('subscribe()', async () => {
     )
 })
 
-it('subscribe(props => props)', async () => {
+test('subscribe(props => props)', async () => {
     const Test = subscribe(props => props)(props => <button onClick={props.actions.up}>{props.count}</button>)
     await snapshot(
         <Provider {...store}>
@@ -43,7 +45,7 @@ it('subscribe(props => props)', async () => {
     )
 })
 
-it('subscribe(id, props => props)', async () => {
+test('subscribe(id, props => props)', async () => {
     const Test = subscribe('id', props => props)(props => <button onClick={props.actions.up}>{props.count}</button>)
     await snapshot(
         <Provider id="id" {...store}>
@@ -54,7 +56,7 @@ it('subscribe(id, props => props)', async () => {
     )
 })
 
-it('subscribe(props => props.id, props => props)', async () => {
+test('subscribe(props => props.id, props => props)', async () => {
     const Test = subscribe(props => props.id, props => props)(props => (
         <button onClick={props.actions.up}>{props.count}</button>
     ))
@@ -67,7 +69,7 @@ it('subscribe(props => props.id, props => props)', async () => {
     )
 })
 
-it('subscribe(Context, props => props)', async () => {
+test('subscribe(Context, props => props)', async () => {
     const Test = subscribe(Context, props => props)(props => <button onClick={props.actions.up}>{props.count}</button>)
     await snapshot(
         <Provider {...store}>
@@ -78,7 +80,7 @@ it('subscribe(Context, props => props)', async () => {
     )
 })
 
-it('subscribe([a,b], (a,b) => props)', async () => {
+test('subscribe([a,b], (a,b) => props)', async () => {
     const Test = subscribe(['id1', 'id2'], (store1, store2) => ({ store1, store2 }))(props => (
         <button onClick={() => props.store1.actions.up() && props.store2.actions.up()}>
             {props.store1.count} {props.store2.count}
