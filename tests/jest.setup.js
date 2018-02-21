@@ -9,8 +9,9 @@ global.snapshot = async function(Root, mutation) {
     expect(tree).toMatchSnapshot()
     if (mutation) {
         mutation(tree)
-        await delay(30)
+        await delay(25)
         tree.update()
         expect(tree).toMatchSnapshot()
     }
+    tree.unmount()
 }

@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`functional context 1`] = `
+<_class
+  id="testFunc"
+>
+  <Component
+    context={
+      Object {
+        "Consumer": [Function],
+        "Provider": [Function],
+      }
+    }
+    id="testFunc"
+  >
+    <Provider
+      value="1"
+    >
+      <Component
+        id="testFunc"
+      >
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            count="1"
+            id="testFunc"
+          >
+            1
+          </Component>
+        </Consumer>
+      </Component>
+      <Subscribe
+        select="count"
+        to="testFunc"
+      >
+        <Component>
+          <Consumer
+            quiet={false}
+          >
+            <Component
+              count="1"
+            >
+              1
+            </Component>
+          </Consumer>
+        </Component>
+      </Subscribe>
+    </Provider>
+  </Component>
+</_class>
+`;
+
+exports[`keyed context 1`] = `
+<_class>
+  <Component
+    context={
+      Object {
+        "Consumer": [Function],
+        "Provider": [Function],
+      }
+    }
+  >
+    <Provider
+      value="1"
+    >
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            count="1"
+          >
+            1
+          </Component>
+        </Consumer>
+      </Component>
+      <Subscribe
+        select="count"
+        to="testKeyed"
+      >
+        <Component>
+          <Consumer
+            quiet={false}
+          >
+            <Component
+              count="1"
+            >
+              1
+            </Component>
+          </Consumer>
+        </Component>
+      </Subscribe>
+    </Provider>
+  </Component>
+</_class>
+`;

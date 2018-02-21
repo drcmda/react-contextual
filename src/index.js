@@ -17,4 +17,5 @@ export {
     createNamedContext,
     removeNamedContext,
     getNamedContext,
+    resolveContext,
 }

@@ -16,20 +16,19 @@ export class Provider extends React.PureComponent {
     }
     constructor(props) {
         super()
-        this.state = props.initialState || {}
+        this.state = props.initialState
         this.Context = props.id ? createNamedContext(props.id) : ProviderContext
         if (props.actions) {
             this.actions = Object.keys(props.actions).reduce(
                 (acc, name) => ({
                     ...acc,
-                    [name]: (...args) => {
-                        let result = props.actions[name](...args)
-                        if (typeof result === 'function')
-                            return new Promise(res =>
-                                Promise.resolve(result(this.state)).then(state => this.setState(state, res)),
-                            )
-                        this.setState(result)
-                    },
+                    [name]: (...args) =>
+                        new Promise(res => {
+                            let result = props.actions[name](...args)
+                            if (typeof result === 'function')
+                                Promise.resolve(result(this.state)).then(state => this.setState(state, res))
+                            else this.setState(result, res)
+                        }),
                 }),
                 {},
             )

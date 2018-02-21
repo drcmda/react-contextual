@@ -1,0 +1,477 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`async action 1`] = `
+<Provider
+  actions={
+    Object {
+      "async": [Function],
+      "functional": [Function],
+      "simple": [Function],
+    }
+  }
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "async": [Function],
+          "functional": [Function],
+          "simple": [Function],
+        },
+        "count": 0,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            actions={
+              Object {
+                "async": [Function],
+                "functional": [Function],
+                "simple": [Function],
+              }
+            }
+            count={0}
+          >
+            <button
+              onClick={[Function]}
+            >
+              0
+            </button>
+          </Component>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`async action 2`] = `
+<Provider
+  actions={
+    Object {
+      "async": [Function],
+      "functional": [Function],
+      "simple": [Function],
+    }
+  }
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "async": [Function],
+          "functional": [Function],
+          "simple": [Function],
+        },
+        "count": 1,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            actions={
+              Object {
+                "async": [Function],
+                "functional": [Function],
+                "simple": [Function],
+              }
+            }
+            count={1}
+          >
+            <button
+              onClick={[Function]}
+            >
+              1
+            </button>
+          </Component>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`await actions & access state 1`] = `
+<Provider
+  actions={
+    Object {
+      "async": [Function],
+      "functional": [Function],
+      "simple": [Function],
+    }
+  }
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "async": [Function],
+          "functional": [Function],
+          "simple": [Function],
+        },
+        "count": 0,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <_class2
+            actions={
+              Object {
+                "async": [Function],
+                "functional": [Function],
+                "simple": [Function],
+              }
+            }
+            count={0}
+          >
+            <div>
+              0
+              <button
+                onClick={[Function]}
+              />
+            </div>
+          </_class2>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`await actions & access state 2`] = `
+<Provider
+  actions={
+    Object {
+      "async": [Function],
+      "functional": [Function],
+      "simple": [Function],
+    }
+  }
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "async": [Function],
+          "functional": [Function],
+          "simple": [Function],
+        },
+        "count": 4,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <_class2
+            actions={
+              Object {
+                "async": [Function],
+                "functional": [Function],
+                "simple": [Function],
+              }
+            }
+            count={4}
+          >
+            <div>
+              4
+              <button
+                onClick={[Function]}
+              />
+            </div>
+          </_class2>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`functional action 1`] = `
+<Provider
+  actions={
+    Object {
+      "async": [Function],
+      "functional": [Function],
+      "simple": [Function],
+    }
+  }
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "async": [Function],
+          "functional": [Function],
+          "simple": [Function],
+        },
+        "count": 0,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            actions={
+              Object {
+                "async": [Function],
+                "functional": [Function],
+                "simple": [Function],
+              }
+            }
+            count={0}
+          >
+            <button
+              onClick={[Function]}
+            >
+              0
+            </button>
+          </Component>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`functional action 2`] = `
+<Provider
+  actions={
+    Object {
+      "async": [Function],
+      "functional": [Function],
+      "simple": [Function],
+    }
+  }
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "async": [Function],
+          "functional": [Function],
+          "simple": [Function],
+        },
+        "count": 1,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            actions={
+              Object {
+                "async": [Function],
+                "functional": [Function],
+                "simple": [Function],
+              }
+            }
+            count={1}
+          >
+            <button
+              onClick={[Function]}
+            >
+              1
+            </button>
+          </Component>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`mount/unmount 1`] = `<App />`;
+
+exports[`renders properly 1`] = `
+<Provider
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "count": 0,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            count={0}
+          >
+            0
+          </Component>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`simple action 1`] = `
+<Provider
+  actions={
+    Object {
+      "async": [Function],
+      "functional": [Function],
+      "simple": [Function],
+    }
+  }
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "async": [Function],
+          "functional": [Function],
+          "simple": [Function],
+        },
+        "count": 0,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            actions={
+              Object {
+                "async": [Function],
+                "functional": [Function],
+                "simple": [Function],
+              }
+            }
+            count={0}
+          >
+            <button
+              onClick={[Function]}
+            >
+              0
+            </button>
+          </Component>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`simple action 2`] = `
+<Provider
+  actions={
+    Object {
+      "async": [Function],
+      "functional": [Function],
+      "simple": [Function],
+    }
+  }
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "async": [Function],
+          "functional": [Function],
+          "simple": [Function],
+        },
+        "count": 1,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            actions={
+              Object {
+                "async": [Function],
+                "functional": [Function],
+                "simple": [Function],
+              }
+            }
+            count={1}
+          >
+            <button
+              onClick={[Function]}
+            >
+              1
+            </button>
+          </Component>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;

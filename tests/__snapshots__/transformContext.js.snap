@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Hoc
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  <_class
+    context={
+      Object {
+        "Consumer": [Function],
+        "Provider": [Function],
+      }
+    }
+    style={
+      Object {
+        "color": "red",
+      }
+    }
+  >
+    <Provider
+      value={
+        Object {
+          "backgroundColor": "pink",
+          "color": "red",
+        }
+      }
+    >
+      <Component
+        text="is"
+      >
+        <Consumer
+          quiet={false}
+        >
+          <_class3
+            text="is"
+            theme={
+              Object {
+                "backgroundColor": "pink",
+                "color": "red",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "backgroundColor": "pink",
+                  "color": "red",
+                  "padding": 10,
+                }
+              }
+            >
+              is
+            </span>
+          </_class3>
+        </Consumer>
+      </Component>
+      <Hoc
+        style={
+          Object {
+            "color": "green",
+          }
+        }
+      >
+        <_class
+          context={
+            Object {
+              "Consumer": [Function],
+              "Provider": [Function],
+            }
+          }
+          style={
+            Object {
+              "color": "green",
+            }
+          }
+        >
+          <Provider
+            value={
+              Object {
+                "backgroundColor": "pink",
+                "color": "green",
+              }
+            }
+          >
+            <Component
+              text="it"
+            >
+              <Consumer
+                quiet={false}
+              >
+                <_class3
+                  text="it"
+                  theme={
+                    Object {
+                      "backgroundColor": "pink",
+                      "color": "green",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "backgroundColor": "pink",
+                        "color": "green",
+                        "padding": 10,
+                      }
+                    }
+                  >
+                    it
+                  </span>
+                </_class3>
+              </Consumer>
+            </Component>
+            <Component>
+              <Consumer
+                quiet={false}
+              >
+                <_class
+                  theme={
+                    Object {
+                      "backgroundColor": "pink",
+                      "color": "green",
+                    }
+                  }
+                >
+                  <_class2
+                    context={
+                      Object {
+                        "Consumer": [Function],
+                        "Provider": [Function],
+                      }
+                    }
+                    theme={
+                      Object {
+                        "backgroundColor": "pink",
+                        "color": "green",
+                      }
+                    }
+                  >
+                    <Provider
+                      value={
+                        Object {
+                          "backgroundColor": "rgb(0, 63, 52)",
+                          "color": "rgb(255, 127, 255)",
+                        }
+                      }
+                    >
+                      <Component
+                        text="friday"
+                      >
+                        <Consumer
+                          quiet={false}
+                        >
+                          <_class3
+                            text="friday"
+                            theme={
+                              Object {
+                                "backgroundColor": "rgb(0, 63, 52)",
+                                "color": "rgb(255, 127, 255)",
+                              }
+                            }
+                          >
+                            <span
+                              style={
+                                Object {
+                                  "backgroundColor": "rgb(0, 63, 52)",
+                                  "color": "rgb(255, 127, 255)",
+                                  "padding": 10,
+                                }
+                              }
+                            >
+                              friday
+                            </span>
+                          </_class3>
+                        </Consumer>
+                      </Component>
+                      <Component>
+                        <Consumer
+                          quiet={false}
+                        >
+                          <_class
+                            theme={
+                              Object {
+                                "backgroundColor": "rgb(0, 63, 52)",
+                                "color": "rgb(255, 127, 255)",
+                              }
+                            }
+                          >
+                            <_class2
+                              context={
+                                Object {
+                                  "Consumer": [Function],
+                                  "Provider": [Function],
+                                }
+                              }
+                              theme={
+                                Object {
+                                  "backgroundColor": "rgb(0, 63, 52)",
+                                  "color": "rgb(255, 127, 255)",
+                                }
+                              }
+                            >
+                              <Provider
+                                value={
+                                  Object {
+                                    "backgroundColor": "rgb(255, 192, 203)",
+                                    "color": "rgb(0, 128, 0)",
+                                  }
+                                }
+                              >
+                                <Component
+                                  text="yet"
+                                >
+                                  <Consumer
+                                    quiet={false}
+                                  >
+                                    <_class3
+                                      text="yet"
+                                      theme={
+                                        Object {
+                                          "backgroundColor": "rgb(255, 192, 203)",
+                                          "color": "rgb(0, 128, 0)",
+                                        }
+                                      }
+                                    >
+                                      <span
+                                        style={
+                                          Object {
+                                            "backgroundColor": "rgb(255, 192, 203)",
+                                            "color": "rgb(0, 128, 0)",
+                                            "padding": 10,
+                                          }
+                                        }
+                                      >
+                                        yet
+                                      </span>
+                                    </_class3>
+                                  </Consumer>
+                                </Component>
+                              </Provider>
+                            </_class2>
+                          </_class>
+                        </Consumer>
+                      </Component>
+                    </Provider>
+                  </_class2>
+                </_class>
+              </Consumer>
+            </Component>
+          </Provider>
+        </_class>
+      </Hoc>
+    </Provider>
+  </_class>
+</Hoc>
+`;

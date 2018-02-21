@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders properly 1`] = `
+<Hoc>
+  <Component
+    context={
+      Object {
+        "Consumer": [Function],
+        "Provider": [Function],
+      }
+    }
+  >
+    <Provider
+      value="1"
+    >
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            count="1"
+          >
+            1
+          </Component>
+        </Consumer>
+      </Component>
+      <Subscribe
+        select="count"
+        to={[Function]}
+      >
+        <Component>
+          <Consumer
+            quiet={false}
+          >
+            <Component
+              count="1"
+            >
+              1
+            </Component>
+          </Consumer>
+        </Component>
+      </Subscribe>
+    </Provider>
+  </Component>
+</Hoc>
+`;

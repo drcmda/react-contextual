@@ -15,23 +15,26 @@ export function subscribe(...args) {
         contextRefs = args[0]
         mapContextToProps = args[1]
     }
+
     if (typeof mapContextToProps !== 'function') {
         // 'theme' or ['theme', 'user', 'language']
         const values = mapContextToProps
-        mapContextToProps = args => {
-            return Array.isArray(args)
+        mapContextToProps = (...args) =>
+            Array.isArray(values)
                 ? values.reduce((acc, key, index) => ({ ...acc, [key]: args[index] }), {})
-                : { [values]: args }
-        }
+                : { [values]: args[0] }
     }
     return Wrapped => props => {
-        const array = (Array.isArray(contextRefs) ? contextRefs : [contextRefs]).map(context => resolveContext(context, props))
-        let result, values = []
+        const array = (Array.isArray(contextRefs) ? contextRefs : [contextRefs]).map(context =>
+            resolveContext(context, props),
+        )
+        let result,
+            values = []
         return [...array, Wrapped].reduceRight((accumulator, Context) => (
             <Context.Consumer>
                 {value => {
                     values.push(value)
-                    result = accumulator === Wrapped 
+                    result = accumulator === Wrapped
                         ? <Wrapped {...props} {...mapContextToProps(...values, props)} />
                         : accumulator
                     if (accumulator === Wrapped) values = []

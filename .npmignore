@@ -1,4 +1,5 @@
 /node_modules/
+/coverage/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
