@@ -1,4 +1,6 @@
-![](assets/logo.jpg)
+<p align="center">
+  <img width="300" height="300" src="assets/logo.png">
+</p>
 
 [![Build Status](https://travis-ci.org/drcmda/react-contextual.svg?branch=master)](https://travis-ci.org/drcmda/react-contextual) [![codecov](https://codecov.io/gh/drcmda/react-contextual/branch/master/graph/badge.svg)](https://codecov.io/gh/drcmda/react-contextual) [![npm version](https://badge.fury.io/js/react-contextual.svg)](https://badge.fury.io/js/react-contextual)
 
