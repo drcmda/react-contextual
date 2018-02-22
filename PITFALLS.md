@@ -2,7 +2,7 @@
 
 The context api has been kept low-level which makes it very powerful and flexible, but at the same time there are a couple of annoyances you could run into if the api is used naively.
 
-## Ease of use
+## Ease of use
 
 React always had a nice and simple api to communicate changes: setState. Unfortunately it never was feasible for sub-tree changes. Neither passing state down the tree nor compound components could really fix it. Unfortunately there weren't any easy alternatives, and state managers like redux and mobX changed everything you know, so you go from simple setState to boilerplate heavy action-creators and intricate observable systems. The old context api was stale, it couldn't communicate changes made to the original object so many libs had to ship their own broadcast mechanisms: redux, mobx, react-router, they all carry that overhead.
 
