@@ -31,6 +31,8 @@ Example 2: https://codesandbox.io/embed/lxly45lvkl (async actions)
 
 Example 3: https://codesandbox.io/embed/yvx9my007z (memoization)
 
+Example 4: https://codesandbox.io/embed/p9p6jq60lx (multiple stores)
+
 [![](assets/store.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/store.js)
 
 ### With decorator
@@ -38,14 +40,6 @@ Example 3: https://codesandbox.io/embed/yvx9my007z (memoization)
 But use with care as the spec may still change any time!
 
 [![](assets/store-decorator.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/store-decorator.js)
-
-### What about multiple stores?
-
-You can have as many as you like, just name them. [subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) also accepts your keys.
-
-Example: https://codesandbox.io/embed/p9p6jq60lx
-
-[![](assets/multi-store.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/multi-store.js)
 
 # If you are dealing with context providers of any kind
 
