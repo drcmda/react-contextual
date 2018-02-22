@@ -4,11 +4,9 @@ The context api has been kept low-level which makes it very powerful and flexibl
 
 ## Ease of use
 
-React always had a nice and simple api to communicate changes: setState. Unfortunately it never was feasible for sub-tree changes. Neither passing state down the tree nor compound components could really fix it. Unfortunately there weren't any easy alternatives, and state managers like redux and mobX changed everything you know, so you go from simple setState to boilerplate heavy action-creators and intricate observable systems. The old context api was stale, it couldn't communicate changes made to the original object so many libs had to ship their own broadcast mechanisms: redux, mobx, react-router, they all carry that overhead.
+React always had a simple api to communicate changes: setState. Unfortunately it never was feasible for sub-tree changes. Neither passing state down the tree nor compound components could really fix it and there weren't any alternatives. State managers like redux and mobX, valuable in complex situations, changed everything you knew. So you go from simple setState to boilerplate heavy action-creators and intricate observable systems. The old context api was stale, it couldn't communicate changes made to the original object, therefore many libs had to ship their own broadcast mechanisms: redux, mobx, react-router, they all carry that overhead.
 
-The new context api does not solve the problem, it is too low-level and abstract to be easily applicable to component-to-component communication as well as something like global setState for application state (reasons below).
-
-But, it pretty much paves the way for abstractions that can delegate the workload to React. react-contextual doesn't need broadcasters, scu fillers, diffing engine, bindings, etc. The overhead is actually minimal to elevate setState.
+The new context api isn't exactly "comfortable" to use (see below), but at least it pretty much paves the way for abstractions that can delegate the workload to React. react-contextual doesn't need broadcasters, scu fillers, diffing engine, bindings, etc. The overhead is actually minimal to elevate setState.
 
 ## Performance
 
