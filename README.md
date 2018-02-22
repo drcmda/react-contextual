@@ -124,7 +124,7 @@ const Test = subscribe(store, props => props)(
 * [transformContext](https://github.com/drcmda/react-contextual/blob/master/API.md#transformcontext) transforms existing providers (like a declarative middleware)
 * [helper functions](https://github.com/drcmda/react-contextual/blob/master/API.md#imperative-context-handling) allow you to control a context by yourself
 
-<b>Examples</b>: [Unique context](https://codesandbox.io/embed/ox405qqopy) | [Global context](https://codesandbox.io/embed/v8pn13nq77) | [Imperative context](https://codesandbox.io/embed/30ql1rxzlq) | [Generic React Context](https://codesandbox.io/embed/55wp11lv4) | [Transforms](https://codesandbox.io/embed/mjv84k1kn9)
+<b>Examples</b>: [Global context](https://codesandbox.io/embed/v8pn13nq77) | [Transforms](https://codesandbox.io/embed/mjv84k1kn9) | [Unique context](https://codesandbox.io/embed/ox405qqopy) | [Imperative context](https://codesandbox.io/embed/30ql1rxzlq) | [Generic React Context](https://codesandbox.io/embed/55wp11lv4)
 
 #### Custom providers & transforms
 
