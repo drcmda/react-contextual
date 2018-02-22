@@ -35,15 +35,17 @@ Example 4: https://codesandbox.io/embed/p9p6jq60lx (multiple stores)
 
 ### Render props
 
-[![](assets/render-props.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/store.js)
+[![](assets/render-props.jpg)](https://codesandbox.io/embed/3vo9164z25)
 
 ### Higher Order Component
+
+[![](assets/higher-order.jpg)](https://codesandbox.io/embed/3ykqjvznwq)
 
 ### With decorator
 
 But use with care as the spec may still change any time!
 
-[![](assets/store-decorator.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/store-decorator.js)
+![](assets/higher-order-decorator.jpg)
 
 # If you like to provide context
 
@@ -59,11 +61,11 @@ Example4: https://codesandbox.io/embed/30ql1rxzlq (imperative API)
 
 Example5: https://codesandbox.io/embed/55wp11lv4 (generic React context)
 
-[![](assets/module-context.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/module-context.js)
+[![](assets/context.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/context.js)
 
 ### With decorator
 
-[![](assets/module-context-decorator.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/module-context-decorator.js)
+![](assets/context-decorator.jpg)
 
 # API
 
