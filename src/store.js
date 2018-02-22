@@ -6,7 +6,7 @@ import ProviderContext, { createNamedContext, removeNamedContext } from './conte
 export function createStore(data, id = uuid()) {
     const { initialState, actions, ...props } = data
     const subscriptions = new Set()
-    return {
+    const result = {
         subscriptions,
         initialState,
         state: initialState,
@@ -22,7 +22,9 @@ export function createStore(data, id = uuid()) {
             subscriptions.add(callback)
             return () => subscriptions.delete(callback)
         },
+        getState: () => result.state
     }
+    return result
 }
 
 export class RenderPure extends React.PureComponent {

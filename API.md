@@ -98,7 +98,7 @@ setColor: backgroundColor => async state => {
 }
 ```
 
-# createStore(data)
+# createStore
 
 ```jsx
 import { createStore } from 'react-contextual'
@@ -114,6 +114,7 @@ Creates an external store. `data` takes an object that needs to provide `initial
 ```jsx
 const remove = externalStore.subscribe(state => console.log(state))
 externalStore.actions.up()
+const count = externalStore.getState().count
 remove()
 ```
 

@@ -115,7 +115,7 @@ test('external store', async () => {
         </Provider>,
         async () => {
             await externalStore.actions.async(1)
-            expect(externalStore.state.count).toBe(1)
+            expect(externalStore.getState().count).toBe(1)
             const remove = externalStore.subscribe(state => expect(state.count).toBe(2))
             await externalStore.actions.async(1)
             remove()

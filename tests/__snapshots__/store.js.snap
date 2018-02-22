@@ -236,6 +236,7 @@ exports[`external store 1`] = `
         "Provider": [Function],
       },
       "destroy": [Function],
+      "getState": [Function],
       "id": "externalTest",
       "initialState": Object {
         "count": 0,
@@ -296,6 +297,7 @@ exports[`external store 2`] = `
         "Provider": [Function],
       },
       "destroy": [Function],
+      "getState": [Function],
       "id": "externalTest",
       "initialState": Object {
         "count": 0,
