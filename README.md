@@ -117,7 +117,12 @@ const Test = subscribe(store, props => props)(
 
 # If you like to provide context 🚀
 
-Use [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext) to create context bound to a components lifecycle,  [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) for global context and [transformContext](https://github.com/drcmda/react-contextual/blob/master/API.md#transformcontext) to transform existing providers (like a declarative middleware). Use [helper functions](https://github.com/drcmda/react-contextual/blob/master/API.md#imperative-context-handling) if you want to control the lifecycle of a context by yourself.
+[subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) works with any generic React context, even polyfills. But contextual isn't limited to reading context and store patterns.
+
+* [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) creates a global provider and injects it into a component
+* [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext) creates a unique provider bound to a components lifecycle
+* [transformContext](https://github.com/drcmda/react-contextual/blob/master/API.md#transformcontext) transforms existing providers (like a declarative middleware)
+* [helper functions](https://github.com/drcmda/react-contextual/blob/master/API.md#imperative-context-handling) allow you to control a context by yourself
 
 <b>Examples</b>: [Unique context](https://codesandbox.io/embed/ox405qqopy) | [Global context](https://codesandbox.io/embed/v8pn13nq77) | [Imperative context](https://codesandbox.io/embed/30ql1rxzlq) | [Generic React Context](https://codesandbox.io/embed/55wp11lv4) | [Transforms](https://codesandbox.io/embed/mjv84k1kn9)
 
