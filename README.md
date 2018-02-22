@@ -43,8 +43,6 @@ Example 4: https://codesandbox.io/embed/p9p6jq60lx (multiple stores)
 
 ### With decorator
 
-But use with care as the spec may still change any time!
-
 ![](assets/higher-order-decorator.jpg)
 
 # If you like to provide context
