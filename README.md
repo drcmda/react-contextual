@@ -25,18 +25,66 @@ Click [this link](https://github.com/drcmda/react-contextual/blob/master/PITFALL
 
 Use the [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md#provider) to distribute state and actions, wrap consumers within. Read by using the [subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) HOC or the [Subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component) component.
 
-[![](assets/render-props.jpg)](https://codesandbox.io/embed/3vo9164z25)
+### Render props
+
+```jsx
+import { Provider, Subscribe } from 'react-contextual'
+
+const store = {
+    initialState: { count: 0 },
+    actions: {
+        up: () => state => ({ count: state.count + 1 }),
+        down: () => state => ({ count: state.count - 1 }),
+    },
+}
+
+ReactDOM.render(
+    <Provider {...store}>
+        <Subscribe>
+            {props => (
+                <div>
+                    <h1>{props.count}</h1>
+                    <button onClick={props.actions.up}>Up</button>
+                    <button onClick={props.actions.down}>Down</button>
+                </div>
+            )}
+        </Subscribe>
+    </Provider>,
+    document.getElementById('root'),
+)
+```
 
 ### Higher Order Component
 
-[![](assets/higher-order.jpg)](https://codesandbox.io/embed/3ykqjvznwq)
+```jsx
+const View = subscribe()(props => (
+    <div>
+        <h1>{props.count}</h1>
+        <button onClick={props.actions.up}>Up</button>
+        <button onClick={props.actions.down}>Down</button>
+    </div>
+))
+
+ReactDOM.render(
+    <Provider {...store}>
+        <View />
+    </Provider>,
+    document.getElementById('root'),
+)
+```
 
 ### With decorator
 
-![](assets/higher-order-decorator.jpg)
+```jsx
+@subscribe()
+class View extends React.PureComponent {
+    // ...
+}
+```
 
 ### Examples
 
+* [Counter](https://codesandbox.io/embed/3vo9164z25)
 * [Basic example](https://codesandbox.io/embed/lxly45lvkl)
 * [Async actions](https://codesandbox.io/embed/ywyr3q5n4z)
 * [Memoization/Reselect](https://codesandbox.io/embed/yvx9my007z)
@@ -46,11 +94,50 @@ Use the [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md
 
 Reacts default api works with singletons, that makes it tough to create multi-purpose, nestable providers. Use [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext) to create unique context bound to a components lifecycle, [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) for module-scoped context and [transformContext](https://github.com/drcmda/react-contextual/blob/master/API.md#transformcontext) to transform existing context providers (like a declarative middleware). Use [helper functions](https://github.com/drcmda/react-contextual/blob/master/API.md#imperative-context-handling) if you want to control the lifecycle of a context by yourself.
 
-[![](assets/context.jpg)](https://codesandbox.io/embed/mjv84k1kn9)
+```jsx
+import { subscribe, moduleContext, transformContext } from 'react-contextual'
+
+const Theme = moduleContext()(
+    ({ context, color, children }) => <context.Provider value={color} children={children} />
+)
+
+const Invert = transformContext(Theme, 'color')(
+    ({ context, color, children }) => <context.Provider value={invert(color)} children={children} />
+)
+
+const Write = subscribe(Theme, 'color')(
+    ({ color, text }) => <span style={{ color }}>{text}</span>
+)
+
+ReactDOM.render(
+    <Theme color="red">
+        <Write text="hello" />
+        <Invert>
+            <Write text="world" />
+        </Invert>
+    </Theme>,
+    document.getElementById('root'),
+)
+```
 
 ### With decorator
 
-![](assets/context-decorator.jpg)
+```jsx
+@moduleContext()
+class Theme extends React.PureComponent {
+    // ...
+}
+
+@transformContext(ThemeProvider, 'color')
+class Invert extends React.PureComponent {
+    // ...
+}
+
+@subscribe(ThemeProvider, 'color')
+class Say extends React.PureComponent {
+    // ...
+}
+```
 
 ### Examples
 
