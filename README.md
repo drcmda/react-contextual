@@ -6,14 +6,14 @@
 
     npm install react-contextual
 
-# Why
+# Why 🤔
 
 * consume (and create) context with ease, every kind of context, no matter which or whose or how many providers
 * a minimal redux-like store pattern with setState semantics and central actions
 
 Reacts new context api is very powerful albeit low-level as it does not prescribe patterns and can cause some issues if used naively. `react-contextual` makes creating, sharing and consuming context easier, maps context values to component props similar to how redux operates, takes care of nesting, renders only when necessary and provides a small store for state distribution. Click [this link](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md) for a detailed explanation.
 
-# If you just need a light-weight no-frills store
+# If you just need a light-weight no-frills store 🎰
 
 Use the [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md#provider) to distribute state and actions, wrap consumers within. Read by using the [subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) HOC or the [Subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component) component.
 
@@ -82,7 +82,7 @@ class View extends React.PureComponent {
 * [Memoization/Reselect](https://codesandbox.io/embed/yvx9my007z)
 * [Multiple stores](https://codesandbox.io/embed/0o8pj1jz7v)
 
-# If you like to provide context
+# If you like to provide context 🚀
 
 Reacts default api works with singletons, that makes it tough to create multi-purpose, nestable providers. Use [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext) to create unique context bound to a components lifecycle, [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) for module-scoped context and [transformContext](https://github.com/drcmda/react-contextual/blob/master/API.md#transformcontext) to transform existing context providers (like a declarative middleware). Use [helper functions](https://github.com/drcmda/react-contextual/blob/master/API.md#imperative-context-handling) if you want to control the lifecycle of a context by yourself.
 
@@ -141,11 +141,7 @@ class Say extends React.PureComponent {
 
 ***
 
-API: https://github.com/drcmda/react-contextual/blob/master/API.md
-
-Changelog: https://github.com/drcmda/react-contextual/blob/master/CHANGELOG.md
-
-Pitfalls using context raw: https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md
+[API](https://github.com/drcmda/react-contextual/blob/master/API.md) | [Changelog](https://github.com/drcmda/react-contextual/blob/master/CHANGELOG.md) | [Pitfalls using context raw](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md)
 
 ## Who is using it
 
