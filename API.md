@@ -12,10 +12,10 @@ import { subscribe } from 'react-contextual'
 2. any string key of a [registered provider](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext)
 3. a function that returns a context object or key
 
-Example 1: Mapping a single context value as a prop.
+Example 1: Mapping a single context value as a prop. Mapping helps performance. If you only pick the props your component is interested in it will only render when necessary and ignore context changes otherwise.
 
 ```js
-subscribe(ThemeContext, theme => ({ theme }))(AnyComponent)
+subscribe(Store, store => ({ theme: store.theme }))(AnyComponent)
 ```
 
 Example 2: mapContextToProps behaves similar to Reduxes mapStateToProps, the components own props can always be used as well.
@@ -24,10 +24,10 @@ Example 2: mapContextToProps behaves similar to Reduxes mapStateToProps, the com
 subscribe(UsersContext, (users, props) => ({ user: users[props.id] }))(AnyComponent)
 ```
 
-Example 3: Mapping several contexts is also possible, just wrap them into an array. The props you receive in the selector (the 2nd argument) will also be wrapped as an array, where the order of props matches the order of the providers.
+Example 3: Mapping several contexts is also possible, just wrap them into an array. The props you receive in the 2nd argument will be in the same order.
 
 ```js
-subscribe([ThemeContext, CountContext], ([theme, count]) => ({ theme, count }))(AnyComponent)
+subscribe([ThemeContext, CountContext], (theme, count) => ({ theme, count }))(AnyComponent)
 ```
 
 You can also pass strings to mapContextToProps to make it shorter:
