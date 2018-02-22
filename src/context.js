@@ -25,6 +25,8 @@ export function resolveContext(context, props) {
         result = getNamedContext(context) || resolveContext(context(props))
     } else if (typeof context === 'string') {
         result = getNamedContext(context)
+    } else if (typeof context === 'object') {
+        result = context.context
     }
     return result || context || ProviderContext
 }

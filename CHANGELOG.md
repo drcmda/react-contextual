@@ -1,3 +1,29 @@
+## 3.8.0
+
+* createStore
+
+    Maintains an [external store](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore), which is a valid reference to `subscribe`. This store is fully reactive and you can trigger actions and read state. It also features a basic subscription model, similar to a redux store.
+
+    ```jsx
+    import { Provider, createStore, subscribe } from 'react-contextual'
+
+    const externalStore = createStore({
+        initialState: { count: 1 },
+        actions: { up: () => state => ({ count: state.count + 1 }) },
+    })
+
+    const Test = subscribe(externalStore, props => ({ count: props.count }))(
+        props => <button onClick={() => externalStore.actions.up()}>{props.count}</button>,
+    )
+
+    render(
+        <Provider store={externalStore}>
+            <Test />
+        </Provider>,
+        document.getElementById('root'),
+    )
+    ```
+
 ## 3.7.0
 
 * transformContext

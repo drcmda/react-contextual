@@ -222,6 +222,126 @@ exports[`await actions & access state 2`] = `
 </Provider>
 `;
 
+exports[`external store 1`] = `
+<Provider
+  store={
+    Object {
+      "actions": Object {
+        "async": [Function],
+        "functional": [Function],
+        "simple": [Function],
+      },
+      "context": Object {
+        "Consumer": [Function],
+        "Provider": [Function],
+      },
+      "destroy": [Function],
+      "id": "externalTest",
+      "initialState": Object {
+        "count": 0,
+      },
+      "props": Object {},
+      "state": Object {
+        "count": 0,
+      },
+      "subscribe": [Function],
+      "subscriptions": Set {},
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "async": [Function],
+          "functional": [Function],
+          "simple": [Function],
+        },
+        "count": 0,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            count={0}
+          >
+            <button
+              onClick={[Function]}
+            >
+              0
+            </button>
+          </Component>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`external store 2`] = `
+<Provider
+  store={
+    Object {
+      "actions": Object {
+        "async": [Function],
+        "functional": [Function],
+        "simple": [Function],
+      },
+      "context": Object {
+        "Consumer": [Function],
+        "Provider": [Function],
+      },
+      "destroy": [Function],
+      "id": "externalTest",
+      "initialState": Object {
+        "count": 0,
+      },
+      "props": Object {},
+      "state": Object {
+        "count": 2,
+      },
+      "subscribe": [Function],
+      "subscriptions": Set {},
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "async": [Function],
+          "functional": [Function],
+          "simple": [Function],
+        },
+        "count": 2,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            count={2}
+          >
+            <button
+              onClick={[Function]}
+            >
+              2
+            </button>
+          </Component>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
 exports[`functional action 1`] = `
 <Provider
   actions={

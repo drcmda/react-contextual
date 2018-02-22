@@ -49,6 +49,8 @@ ReactDOM.render(
 ### Higher Order Component
 
 ```jsx
+import { Provider, subscribe } from 'react-contextual'
+
 const View = subscribe()(props => (
     <div>
         <h1>{props.count}</h1>
@@ -74,6 +76,30 @@ class View extends React.PureComponent {
 }
 ```
 
+### External store
+
+Alternatively you can maintain an [external store](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore), which is a valid reference to `subscribe`. This store is fully reactive and you can trigger actions and read state. It also features a basic subscription model, similar to a redux store.
+
+```jsx
+import { Provider, createStore, subscribe } from 'react-contextual'
+
+const externalStore = createStore({
+    initialState: { count: 1 },
+    actions: { up: () => state => ({ count: state.count + 1 }) },
+})
+
+const Test = subscribe(externalStore, props => ({ count: props.count }))(
+    props => <button onClick={() => externalStore.actions.up()}>{props.count}</button>,
+)
+
+render(
+    <Provider store={externalStore}>
+        <Test />
+    </Provider>,
+    document.getElementById('root'),
+)
+```
+
 ### Examples
 
 * [Counter](https://codesandbox.io/embed/3vo9164z25)
@@ -81,6 +107,7 @@ class View extends React.PureComponent {
 * [Async actions](https://codesandbox.io/embed/ywyr3q5n4z)
 * [Memoization/Reselect](https://codesandbox.io/embed/yvx9my007z)
 * [Multiple stores](https://codesandbox.io/embed/0o8pj1jz7v)
+* [External store](https://codesandbox.io/embed/3vo9164z25)
 
 # If you like to provide context 🚀
 
@@ -89,17 +116,13 @@ Reacts default api works with singletons, that makes it tough to create multi-pu
 ```jsx
 import { subscribe, moduleContext, transformContext } from 'react-contextual'
 
-const Theme = moduleContext()(
-    ({ context, color, children }) => <context.Provider value={color} children={children} />
-)
+const Theme = moduleContext()(({ context, color, children }) => <context.Provider value={color} children={children} />)
 
-const Invert = transformContext(Theme, 'color')(
-    ({ context, color, children }) => <context.Provider value={invert(color)} children={children} />
-)
+const Invert = transformContext(Theme, 'color')(({ context, color, children }) => (
+    <context.Provider value={invert(color)} children={children} />
+))
 
-const Write = subscribe(Theme, 'color')(
-    ({ color, text }) => <span style={{ color }}>{text}</span>
-)
+const Write = subscribe(Theme, 'color')(({ color, text }) => <span style={{ color }}>{text}</span>)
 
 ReactDOM.render(
     <Theme color="red">
@@ -139,11 +162,10 @@ class Say extends React.PureComponent {
 * [Generic React Context](https://codesandbox.io/embed/55wp11lv4)
 * [Transforms](https://codesandbox.io/embed/mjv84k1kn9)
 
-***
+---
 
 [API](https://github.com/drcmda/react-contextual/blob/master/API.md) | [Changelog](https://github.com/drcmda/react-contextual/blob/master/CHANGELOG.md) | [Pitfalls using context raw](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md)
 
 ## Who is using it
 
 [![AWV](/assets/corp-awv.png)](https://github.com/awv-informatik)
-

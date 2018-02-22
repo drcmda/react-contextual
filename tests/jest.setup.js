@@ -8,7 +8,7 @@ global.snapshot = async function(Root, mutation) {
     const tree = mount(Root)
     expect(tree).toMatchSnapshot()
     if (mutation) {
-        mutation(tree)
+        await mutation(tree)
         await delay(25)
         tree.update()
         expect(tree).toMatchSnapshot()

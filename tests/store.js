@@ -1,6 +1,6 @@
 import React from 'react'
 import delay from 'delay'
-import { Provider, ProviderContext, Subscribe, subscribe, getNamedContext } from '../src/'
+import { createStore, Provider, ProviderContext, Subscribe, subscribe, getNamedContext } from '../src/'
 
 const store = {
     initialState: { count: 0 },
@@ -28,11 +28,11 @@ test('mount/unmount', async () => {
     const App = class extends React.PureComponent {
         state = { show: true }
         componentDidMount() {
-            expect(getNamedContext("store")).toBeTruthy()
+            expect(getNamedContext('store')).toBeTruthy()
             this.setState({ show: false })
         }
         componentDidUpdate() {
-            expect(getNamedContext("store")).toBe(undefined)
+            expect(getNamedContext('store')).toBe(undefined)
         }
         render() {
             return this.state.show ? (
@@ -101,5 +101,27 @@ test('await actions & access state', async () => {
             <Test />
         </Provider>,
         tree => tree.find('button').simulate('click'),
+    )
+})
+
+test('external store', async () => {
+    const externalStore = createStore(store, 'externalTest')
+    const Test = subscribe(externalStore, props => ({ count: props.count }))(props => (
+        <button onClick={() => externalStore.actions.async(1)}>{props.count}</button>
+    ))
+    await snapshot(
+        <Provider store={externalStore}>
+            <Test />
+        </Provider>,
+        async () => {
+            await externalStore.actions.async(1)
+            expect(externalStore.state.count).toBe(1)
+            const remove = externalStore.subscribe(state => expect(state.count).toBe(2))
+            await externalStore.actions.async(1)
+            remove()
+            externalStore.destroy()
+            expect(externalStore.subscriptions.size).toBe(0)
+            expect(getNamedContext('externalTest')).toBeUndefined()
+        },
     )
 })

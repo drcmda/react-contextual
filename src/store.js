@@ -1,6 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import uuid from 'tiny-uuid'
 import ProviderContext, { createNamedContext, removeNamedContext } from './context'
+
+export function createStore(data, id = uuid()) {
+    const { initialState, actions, ...props } = data
+    const subscriptions = new Set()
+    return {
+        subscriptions,
+        initialState,
+        state: initialState,
+        actions,
+        props,
+        id,
+        context: createNamedContext(id),
+        destroy: () => {
+            removeNamedContext(id)
+            subscriptions.clear()
+        },
+        subscribe: callback => {
+            subscriptions.add(callback)
+            return () => subscriptions.delete(callback)
+        },
+    }
+}
 
 export class RenderPure extends React.PureComponent {
     render() {
@@ -11,36 +34,53 @@ export class RenderPure extends React.PureComponent {
 export class Provider extends React.PureComponent {
     static propTypes = {
         id: PropTypes.string,
-        initialState: PropTypes.object.isRequired,
+        initialState: PropTypes.object,
         actions: PropTypes.object,
+        store: PropTypes.object,
     }
+
+    update = done => {
+        // Update store
+        this.store.state = this.state
+        // Call subscribers
+        this.store.subscriptions.forEach(value => value(this.store.state))
+        // Resolve
+        done()
+    }
+
     constructor(props) {
         super()
-        this.state = props.initialState
-        this.Context = props.id ? createNamedContext(props.id) : ProviderContext
-        if (props.actions) {
-            this.actions = Object.keys(props.actions).reduce(
+        const { store, children, id, actions, initialState, ...rest } = props
+        this.store = store || createStore({ ...rest, initialState, actions }, id)
+        // When no store is given, create context by id or refer to the default context
+        if (!store) this.store.context = id ? createNamedContext(id) : ProviderContext
+        // Bind actions to setState
+        if (this.store.actions) {
+            const actions = this.store.actions
+            this.store.actions = Object.keys(actions).reduce(
                 (acc, name) => ({
                     ...acc,
                     [name]: (...args) =>
                         new Promise(res => {
-                            let result = props.actions[name](...args)
+                            let result = actions[name](...args)
                             if (typeof result === 'function')
-                                Promise.resolve(result(this.state)).then(state => this.setState(state, res))
-                            else this.setState(result, res)
+                                Promise.resolve(result(this.state)).then(state =>
+                                    this.setState(state, () => this.update(res)),
+                                )
+                            else this.setState(result, () => this.update(res))
                         }),
                 }),
                 {},
             )
         }
+        this.state = this.store.initialState
     }
     componentWillUnmount() {
         if (this.props.id) removeNamedContext(this.props.id)
     }
     render() {
-        const { state, actions, props, Context } = this
-        const { children, id, actions: _, initialState, ...rest } = props
-        const value = { ...state, ...(actions ? { actions } : {}), ...rest }
-        return <Context.Provider value={value} children={<RenderPure children={children} />} />
+        const { actions, props } = this.store
+        const value = { ...props, ...this.state, ...(actions ? { actions } : {}) }
+        return <this.store.context.Provider value={value} children={<RenderPure children={this.props.children} />} />
     }
 }
