@@ -121,12 +121,12 @@ const Test = subscribe(store, props => props)(
 ### Examples
 
 * [Counter](https://codesandbox.io/embed/3vo9164z25)
+* [Global setState](https://codesandbox.io/embed/01l8z634qn)
 * [Basic example](https://codesandbox.io/embed/lxly45lvkl)
 * [Async actions](https://codesandbox.io/embed/ywyr3q5n4z)
 * [Memoization/Reselect](https://codesandbox.io/embed/yvx9my007z)
 * [Multiple stores](https://codesandbox.io/embed/0o8pj1jz7v)
 * [External store](https://codesandbox.io/embed/jzwv46729y)
-* [Global setState](https://codesandbox.io/embed/01l8z634qn)
 
 # If you like to provide context 🚀
 
