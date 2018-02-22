@@ -25,7 +25,7 @@ react-contextual on the other hand supports both render props and traditional HO
 ```js
 subscribe(
     [ThemeContext, UserContext, LanguageContext], 
-    ([theme, user, language]) => ({ theme, user, language })
+    (theme, user, language) => ({ theme, user, language })
 )(Component)
 ```
 
@@ -43,17 +43,18 @@ react-contextual makes sharing easy. It maps keyed, unique contexts internally a
 
 ```js
 @moduleContext()
-class ThemeProvider extends React.PureComponent {
+class Theme extends React.PureComponent {
     render() {
         const { context, children } = this.props
-        return <context.Provider value="red" children={children} />
+        return <context.Provider value={{ color: "red", backgroundColor: "yellow" }} children={children} />
     }
 }
 
-@subscribe(ThemeProvider, theme => ({ theme }))
+@subscribe(Theme, theme => ({ color: theme.color }))
 class Header extends React.PureComponent {
     render() {
-        return <h1 style={{ color: theme }}>hello</h1>
+        // renders only when theme.color changes ...
+        return <h1 style={{ color: this.props.color }}>hello</h1>
     }
 }
 
