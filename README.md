@@ -33,7 +33,11 @@ Example 3: https://codesandbox.io/embed/yvx9my007z (memoization)
 
 Example 4: https://codesandbox.io/embed/p9p6jq60lx (multiple stores)
 
+### Render props
+
 [![](assets/store.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/store.js)
+
+### Higher Order Component
 
 ### With decorator
 
@@ -60,17 +64,6 @@ Example5: https://codesandbox.io/embed/55wp11lv4 (generic React context)
 ### With decorator
 
 [![](assets/module-context-decorator.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/module-context-decorator.js)
-
-
-# If you like to consume context but dislike HOCs
-
-Use [Subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component) (a component) to do the same as above with render props.
-
-Example 1: https://codesandbox.io/embed/wo28o5y1y5 (Multiple providers)
-
-Example 2: https://codesandbox.io/embed/ko1nz4j2r (Store as default provider)
-
-[![](assets/render-props.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/render-props.js)
 
 # API
 

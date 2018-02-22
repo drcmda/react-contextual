@@ -1,29 +1,24 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
 import { Provider, subscribe } from 'react-contextual'
 
-const Counter = subscribe()(
-    ({ count, actions }) => <button onClick={() => actions.increaseCount()}>Click {count}</button>
-)
+const store = {
+    initialState: { count: 0 },
+    actions: {
+        up: () => state => ({ count: state.count + 1 }),
+        down: () => state => ({ count: state.count - 1 }),
+    },
+}
 
-const Message = subscribe(({ message, actions }) => ({ message, setMessage: actions.setMessage }))(
-    ({ message, setMessage }) => (
-        <span>
-            <input value={message} onChange={e => setMessage(e.target.value)} />
-            {message}
-        </span>
-    ),
-)
+const View = subscribe()(props => (
+    <div>
+        <h1>{props.count}</h1>
+        <button onClick={props.actions.up}>Up</button>
+        <button onClick={props.actions.down}>Down</button>
+    </div>
+))
 
 ReactDOM.render(
-    <Provider
-        initialState={{ message: 'hello', count: 0 }}
-        actions={{
-            setMessage: message => ({ message }),
-            increaseCount: () => state => ({ count: state.count + 1 }),
-        }}>
-        <Counter />
-        <Message />
+    <Provider {...store}>
+        <View />
     </Provider>,
     document.getElementById('root'),
 )

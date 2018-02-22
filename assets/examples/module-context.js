@@ -1,21 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { moduleContext, subscribe } from 'react-contextual'
+import { subscribe, moduleContext, transformContext } from 'react-contextual'
 
-const ThemeProvider = moduleContext()(
+const Theme = moduleContext()(
     ({ context, color, children }) => <context.Provider value={color} children={children} />
 )
 
-const Say = subscribe(ThemeProvider, 'color')(
+const Invert = transformContext(Theme, 'color')(
+    ({ context, color, children }) => <context.Provider value={invert(color)} children={children} />
+)
+
+const Write = subscribe(Theme, 'color')(
     ({ color, text }) => <span style={{ color }}>{text}</span>
-}
+)
 
 ReactDOM.render(
-    <ThemeProvider color="red">
-        <Say text="hello" />
-        <ThemeProvider color="green">
-            <Say text="world" />
-        </ThemeProvider>
-    </ThemeProvider>,
+    <Theme>
+        <Write text="hello" />
+        <Invert>
+            <Write text="world" />
+        </Invert>
+    </Theme>,
     document.getElementById('root'),
 )
