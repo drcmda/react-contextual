@@ -35,7 +35,7 @@ Example 4: https://codesandbox.io/embed/p9p6jq60lx (multiple stores)
 
 ### Render props
 
-[![](assets/store.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/store.js)
+[![](assets/render-props.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/store.js)
 
 ### Higher Order Component
 
