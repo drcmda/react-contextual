@@ -116,13 +116,17 @@ Reacts default api works with singletons, that makes it tough to create multi-pu
 ```jsx
 import { subscribe, moduleContext, transformContext } from 'react-contextual'
 
-const Theme = moduleContext()(({ context, color, children }) => <context.Provider value={color} children={children} />)
+const Theme = moduleContext()(
+    ({ context, color, children }) => <context.Provider value={color} children={children} />
+)
 
-const Invert = transformContext(Theme, 'color')(({ context, color, children }) => (
-    <context.Provider value={invert(color)} children={children} />
-))
+const Invert = transformContext(Theme, 'color')(
+    ({ context, color, children }) => <context.Provider value={invert(color)} children={children} />
+)
 
-const Write = subscribe(Theme, 'color')(({ color, text }) => <span style={{ color }}>{text}</span>)
+const Write = subscribe(Theme, 'color')(
+    ({ color, text }) => <span style={{ color }}>{text}</span>
+)
 
 ReactDOM.render(
     <Theme color="red">
