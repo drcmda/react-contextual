@@ -50,6 +50,7 @@ class Theme extends React.PureComponent {
     }
 }
 
+// Refers to the actual class above, no need for a separate context-handle
 @subscribe(Theme, theme => ({ color: theme.color }))
 class Header extends React.PureComponent {
     render() {
