@@ -84,7 +84,7 @@ Alternatively you can maintain an [external store](https://github.com/drcmda/rea
 import { Provider, createStore, subscribe } from 'react-contextual'
 
 const externalStore = createStore({
-    initialState: { count: 1 },
+    initialState: { count: 0 },
     actions: { up: () => state => ({ count: state.count + 1 }) },
 })
 
@@ -92,7 +92,7 @@ const Test = subscribe(externalStore, props => ({ count: props.count }))(
     props => <button onClick={() => externalStore.actions.up()}>{props.count}</button>,
 )
 
-render(
+ReactDOM.render(
     <Provider store={externalStore}>
         <Test />
     </Provider>,
