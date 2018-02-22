@@ -17,6 +17,16 @@ Reacts new context api is very powerful albeit low-level as it does not prescrib
 
 Use the [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md#provider) to distribute state and actions, wrap consumers within. Read by using the [subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) HOC or the [Subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component) component.
 
+### Examples
+
+* [Counter](https://codesandbox.io/embed/3vo9164z25)
+* [Global setState](https://codesandbox.io/embed/01l8z634qn)
+* [Basic example](https://codesandbox.io/embed/lxly45lvkl)
+* [Async actions](https://codesandbox.io/embed/ywyr3q5n4z)
+* [Memoization/Reselect](https://codesandbox.io/embed/yvx9my007z)
+* [Multiple stores](https://codesandbox.io/embed/0o8pj1jz7v)
+* [External store](https://codesandbox.io/embed/jzwv46729y)
+
 ### Render props
 
 ```jsx
@@ -102,12 +112,10 @@ ReactDOM.render(
 
 ### Global setState
 
+If you do not supply actions [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) will add the following by default: `actions: { setState: props => props }` which translates to a global setState.
+
 ```jsx
-const store = createStore({
-  initialState: { count: 0 }
-  // if actions are left undefined createStore will add the following: 
-  // actions: { setState: props => props }
-})
+const store = createStore({ initialState: { count: 0 } })
 
 // Mergers can be outside the store
 const up = state => ({ count: state.count + 1 })
@@ -118,19 +126,17 @@ const Test = subscribe(store, props => props)(
 )
 ```
 
-### Examples
-
-* [Counter](https://codesandbox.io/embed/3vo9164z25)
-* [Global setState](https://codesandbox.io/embed/01l8z634qn)
-* [Basic example](https://codesandbox.io/embed/lxly45lvkl)
-* [Async actions](https://codesandbox.io/embed/ywyr3q5n4z)
-* [Memoization/Reselect](https://codesandbox.io/embed/yvx9my007z)
-* [Multiple stores](https://codesandbox.io/embed/0o8pj1jz7v)
-* [External store](https://codesandbox.io/embed/jzwv46729y)
-
 # If you like to provide context 🚀
 
 Reacts default api works with singletons, that makes it tough to create multi-purpose, nestable providers. Use [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext) to create unique context bound to a components lifecycle, [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) for module-scoped context and [transformContext](https://github.com/drcmda/react-contextual/blob/master/API.md#transformcontext) to transform existing context providers (like a declarative middleware). Use [helper functions](https://github.com/drcmda/react-contextual/blob/master/API.md#imperative-context-handling) if you want to control the lifecycle of a context by yourself.
+
+### Examples
+
+* [Unique context](https://codesandbox.io/embed/ox405qqopy)
+* [Global context](https://codesandbox.io/embed/v8pn13nq77)
+* [Imperative context](https://codesandbox.io/embed/30ql1rxzlq)
+* [Generic React Context](https://codesandbox.io/embed/55wp11lv4)
+* [Transforms](https://codesandbox.io/embed/mjv84k1kn9)
 
 ```jsx
 import { subscribe, moduleContext, transformContext } from 'react-contextual'
@@ -176,14 +182,6 @@ class Say extends React.PureComponent {
     // ...
 }
 ```
-
-### Examples
-
-* [Unique context](https://codesandbox.io/embed/ox405qqopy)
-* [Global context](https://codesandbox.io/embed/v8pn13nq77)
-* [Imperative context](https://codesandbox.io/embed/30ql1rxzlq)
-* [Generic React Context](https://codesandbox.io/embed/55wp11lv4)
-* [Transforms](https://codesandbox.io/embed/mjv84k1kn9)
 
 ---
 
