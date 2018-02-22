@@ -47,7 +47,7 @@ Example 4: https://codesandbox.io/embed/0o8pj1jz7v (multiple stores)
 
 Reacts default api works with singletons, that makes it tough to create multi-purpose, nestable providers. Use [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext) to create unique context bound to a components lifecycle, [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) for module-scoped context and [transformContext](https://github.com/drcmda/react-contextual/blob/master/API.md#transformcontext) to transform existing context providers (like a declarative middleware). Use [helper functions](https://github.com/drcmda/react-contextual/blob/master/API.md#imperative-context-handling) if you want to control the lifecycle of a context by yourself.
 
-[![](assets/context.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/context.js)
+[![](assets/context.jpg)](https://codesandbox.io/embed/mjv84k1kn9)
 
 Example1: https://codesandbox.io/embed/ox405qqopy (namedContext)
 
