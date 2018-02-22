@@ -13,7 +13,7 @@ const Write = subscribe(Theme, 'color')(
 )
 
 ReactDOM.render(
-    <Theme>
+    <Theme color="red">
         <Write text="hello" />
         <Invert>
             <Write text="world" />
