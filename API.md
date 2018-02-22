@@ -109,7 +109,7 @@ const externalStore = createStore({
 })
 ```
 
-Creates an external store. `data` takes an object that needs to provide `initialState` and `actions`. This store is fully reactive. Call `subscribe` to get called back on changes:
+Creates an external store. `data` takes an object that needs to provide `initialState` and `actions`. This store is fully reactive. Call `subscribe` to get called back on changes. If you do not pass actions, it will create actions.setState with Reacts semantics by default.
 
 ```jsx
 const remove = externalStore.subscribe(state => console.log(state))
