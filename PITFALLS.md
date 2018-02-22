@@ -2,6 +2,14 @@
 
 The context api has been kept low-level which makes it very powerful and flexible, but at the same time there are a couple of annoyances you could run into if the api is used naively.
 
+## Ease of use
+
+React always had a nice and simple api to communicate changes: setState. Unfortunately it never was feasible for sub-tree changes. Neither passing state down the tree nor compound components could really fix it. Unfortunately there weren't any easy alternatives, and state managers like redux and mobX changed everything you know, so you go from simple setState to boilerplate heavy action-creators and intricate observable systems. The old context api was stale, it couldn't communicate changes made to the original object so many libs had to ship their own broadcast mechanisms: redux, mobx, react-router, they all carry that overhead.
+
+The new context api does not solve the problem, it is too low-level and abstract to be easily applicable to component-to-component communication as well as something like global setState for application state (reasons below).
+
+But, it pretty much paves the way for abstractions that can delegate the workload to React. react-contextual doesn't need broadcasters, scu fillers, diffing engine, bindings, etc. The overhead is actually minimal to elevate setState.
+
 ## Performance
 
 ### Sub-tree re-rendering
@@ -28,6 +36,10 @@ subscribe(
     (theme, user, language) => ({ theme, user, language })
 )(Component)
 ```
+
+## Render props
+
+As powerful as they might be, they can stretch code and maybe sometimes you'd rather have connected components instead that you can simply place without having to wrap everything. Both have their props and cons, react-contextual offers better, more selective render props and higher order components with the same semantics you know from redux.
 
 ## Creating context
 
