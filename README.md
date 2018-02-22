@@ -117,7 +117,7 @@ const Test = subscribe(store, props => props)(
 
 # If you like to provide context 🚀
 
-[subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) works with any generic React context, even polyfills. But contextual isn't limited to reading context and store patterns.
+[subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) works with any React context, even polyfills. But contextual isn't limited to reading context and store patterns.
 
 * [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) creates a global provider and injects it into a component
 * [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext) creates a unique provider bound to a components lifecycle
