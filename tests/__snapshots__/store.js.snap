@@ -344,6 +344,130 @@ exports[`external store 2`] = `
 </Provider>
 `;
 
+exports[`external store, setState 1`] = `
+<Provider
+  store={
+    Object {
+      "actions": Object {
+        "setState": [Function],
+      },
+      "context": Object {
+        "Consumer": [Function],
+        "Provider": [Function],
+      },
+      "destroy": [Function],
+      "getState": [Function],
+      "id": "externalTest2",
+      "initialState": Object {
+        "count": 0,
+      },
+      "props": Object {},
+      "state": Object {
+        "count": 0,
+      },
+      "subscribe": [Function],
+      "subscriptions": Set {},
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "setState": [Function],
+        },
+        "count": 0,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            actions={
+              Object {
+                "setState": [Function],
+              }
+            }
+            count={0}
+          >
+            <button
+              onClick={[Function]}
+            >
+              0
+            </button>
+          </Component>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`external store, setState 2`] = `
+<Provider
+  store={
+    Object {
+      "actions": Object {
+        "setState": [Function],
+      },
+      "context": Object {
+        "Consumer": [Function],
+        "Provider": [Function],
+      },
+      "destroy": [Function],
+      "getState": [Function],
+      "id": "externalTest2",
+      "initialState": Object {
+        "count": 0,
+      },
+      "props": Object {},
+      "state": Object {
+        "count": 1,
+      },
+      "subscribe": [Function],
+      "subscriptions": Set {},
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "setState": [Function],
+        },
+        "count": 1,
+      }
+    }
+  >
+    <RenderPure>
+      <Component>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            actions={
+              Object {
+                "setState": [Function],
+              }
+            }
+            count={1}
+          >
+            <button
+              onClick={[Function]}
+            >
+              1
+            </button>
+          </Component>
+        </Consumer>
+      </Component>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
 exports[`functional action 1`] = `
 <Provider
   actions={
@@ -467,6 +591,9 @@ exports[`renders properly 1`] = `
   <Provider
     value={
       Object {
+        "actions": Object {
+          "setState": [Function],
+        },
         "count": 0,
       }
     }
@@ -477,6 +604,11 @@ exports[`renders properly 1`] = `
           quiet={false}
         >
           <Component
+            actions={
+              Object {
+                "setState": [Function],
+              }
+            }
             count={0}
           >
             0

@@ -4,7 +4,7 @@ import uuid from 'tiny-uuid'
 import ProviderContext, { createNamedContext, removeNamedContext } from './context'
 
 export function createStore(data, id = uuid()) {
-    const { initialState, actions, ...props } = data
+    const { initialState, actions = { setState: props => props }, ...props } = data
     const subscriptions = new Set()
     const result = {
         subscriptions,
@@ -22,7 +22,7 @@ export function createStore(data, id = uuid()) {
             subscriptions.add(callback)
             return () => subscriptions.delete(callback)
         },
-        getState: () => result.state
+        getState: () => result.state,
     }
     return result
 }

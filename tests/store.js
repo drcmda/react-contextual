@@ -125,3 +125,16 @@ test('external store', async () => {
         },
     )
 })
+
+test('external store, setState', async () => {
+    const externalStore = createStore({ initialState: { count: 0 } }, 'externalTest2')
+    const Test = subscribe(externalStore, props => props)(props => (
+        <button onClick={() => props.actions.setState(state => ({ count: state.count + 1 }))}>{props.count}</button>
+    ))
+    await snapshot(
+        <Provider store={externalStore}>
+            <Test />
+        </Provider>,
+        tree => tree.find('button').simulate('click'),
+    )
+})
