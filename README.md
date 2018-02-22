@@ -4,16 +4,14 @@
 
 [![Build Status](https://travis-ci.org/drcmda/react-contextual.svg?branch=master)](https://travis-ci.org/drcmda/react-contextual) [![codecov](https://codecov.io/gh/drcmda/react-contextual/branch/master/graph/badge.svg)](https://codecov.io/gh/drcmda/react-contextual) [![npm version](https://badge.fury.io/js/react-contextual.svg)](https://badge.fury.io/js/react-contextual)
 
-* consume (and create) context with ease, every kind of context, no matter which or whose or how many providers
-* a minimal redux-like store pattern with setState semantics and central actions
+    npm install react-contextual
 
 # Why
 
+* consume (and create) context with ease, every kind of context, no matter which or whose or how many providers
+* a minimal redux-like store pattern with setState semantics and central actions
+
 Reacts new context api is very powerful albeit low-level as it does not prescribe patterns and can cause some issues if used naively. `react-contextual` makes creating, sharing and consuming context easier, maps context values to component props similar to how redux operates, takes care of nesting, renders only when necessary and provides a small store for state distribution. Click [this link](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md) for a detailed explanation.
-
-# Installation
-
-    npm install react-contextual
 
 # If you just need a light-weight no-frills store
 
