@@ -63,19 +63,15 @@ Example5: https://codesandbox.io/embed/55wp11lv4 (generic React context)
 
 ![](assets/context-decorator.jpg)
 
-# API
+***
 
-https://github.com/drcmda/react-contextual/blob/master/API.md
+API: https://github.com/drcmda/react-contextual/blob/master/API.md
 
-# Changelog
+Changelog: https://github.com/drcmda/react-contextual/blob/master/CHANGELOG.md
 
-https://github.com/drcmda/react-contextual/blob/master/CHANGELOG.md
+Pitfalls using context raw: https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md
 
-# Pitfalls when using the context api raw
-
-https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md
-
-# Who is using it
+## Who is using it
 
 [![AWV](/assets/corp-awv.png)](https://github.com/awv-informatik)
 
