@@ -100,6 +100,24 @@ ReactDOM.render(
 )
 ```
 
+### Global setState
+
+```jsx
+const store = createStore({
+  initialState: { count: 0 }
+  // if actions are left undefined createStore will add the following: 
+  // actions: { setState: props => props }
+})
+
+// Mergers can be outside the store
+const up = state => ({ count: state.count + 1 })
+const dn = state => ({ count: state.count - 1 })
+
+const Test = subscribe(store, props => props)(
+    props => <button onClick={() => store.actions.setState(up)}>{props.count}</button>,
+)
+```
+
 ### Examples
 
 * [Counter](https://codesandbox.io/embed/3vo9164z25)
