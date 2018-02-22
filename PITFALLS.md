@@ -37,7 +37,7 @@ subscribe(
 
 ## Render props
 
-As powerful as they might be, they can stretch code and maybe sometimes you'd rather have connected components instead that you can simply place without having to wrap everything. Both have their props and cons, react-contextual offers better, more selective render props and higher order components with the same semantics you know from redux.
+As powerful as they might be, they can stretch code and maybe sometimes you'd rather have connected components instead that you can simply place without having to wrap everything. Both have their pros and cons. react-contextual offers better, more selective render props as well as higher order components with the same semantics you know from redux.
 
 ## Creating context
 
