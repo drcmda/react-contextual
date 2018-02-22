@@ -1,26 +1,26 @@
 # Reacts new context api
 
-The context api is deliberately kept low-level, which makes it very powerful and flexible, but at the same time there are a couple of pitfalls you could run into if the api is used naively.
+The context api has been kept low-level which makes it very powerful and flexible, but at the same time there are a couple of annoyances you could run into if the api is used naively.
 
 ## Performance
 
 ### Sub-tree re-rendering
 
-A context provider will re-render its sub-tree every time it changes. It is a component after all. If you plan to wrap your app in a provider like you would normally do with something like redux you need to be aware of it (using PureComponents or employ strategies from shouldComponentUpdate).
+A context provider will re-render its sub-tree every time it changes, it is a component after all. If you plan to wrap your app in a provider like you would do with something like reduxes Provider you need to be aware of it, either using PureComponent or filling shouldComponentUpdate.
 
-react-contextual prevents its store from re-rendering its contents, which remain reactive of course. You use it in the same way you use reduxes `Provider`.
+react-contextuals `Provider` behaves like reduxes in that it communicates changes down its sub-trees without causing components to re-render that shouldn't.
 
 ### Consuming context can trigger unnecessary renders
 
-A context consumer wrapped in one or multiple providers can render needlessly, even if the state it is interested in remains the same. Safeguarding against it [brings its own pitfalls](https://github.com/facebook/react/issues/12185).
+A context consumer wrapped in one or multiple providers can render needlessly, even if the state it is interested in remains the same. Again, safeguarding against it [brings its own pitfalls](https://github.com/facebook/react/issues/12185) you would have to be aware of.
 
-react-contextual selects state, [similar to reduxes connect](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe). Extend your wrapped components from `React.PureComponent` and they will only render if the selected state has actually changed, even if components sit deeply nested in multiple prividers & consumers.
+react-contextual maps context state to component props, [similar to reduxes connect](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe). That means you can pick properties or even use [memoized selectors](https://codesandbox.io/embed/yvx9my007z). Extending the wrapped component from `React.PureComponent` will only render if the selected state has actually changed, even if components sit deeply nested in multiple prividers & consumers that trigger on various state changes.
 
 ## Nesting
 
-Used raw the api can [cause heavy nesting](https://user-images.githubusercontent.com/810438/36044918-090ab492-0dcc-11e8-9535-26495e3c8778.png), every time you tap into a providers value, and worse if you have to read out several.
+Used raw the api can [cause heavy, visual nesting](https://user-images.githubusercontent.com/810438/36044918-090ab492-0dcc-11e8-9535-26495e3c8778.png), every time you consume a providers value, worse if you have to read out several.
 
-react-contextual on the other hand supports both render props and traditional HOC patterns, while allowing you to select from multiple context providers in one strike.
+react-contextual supports both render props and HOCs, allowing you to select multiple providers at once.
 
 ```js
 subscribe(
@@ -31,15 +31,15 @@ subscribe(
 
 ## Creating context
 
-Context is just an object that is not tied to a component any longer. That makes it harder if you want to have component-bound or dynamic context. If you plan to re-use a provider class it would overwrite values set by previous instances.
+React.createContext creates an object that is not tied to a component any longer. Usually it's used as a singleton. That makes it harder if you want to have component-bound (like it used to be with the old api) or dynamic context. That also means you can't re-use a provider in a nested tree as it would overwrite values set by previous instances.
 
-react-contextual solves this by offering a couple of higher order components like [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext), [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) and some [helper functions](https://github.com/drcmda/react-contextual/blob/master/API.md#imperative-context-handling).
+react-contextual solves this by offering a couple of higher order components like [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext), [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext), [transformContext](https://github.com/drcmda/react-contextual/blob/master/API.md#transformcontext) and some [helper functions](https://github.com/drcmda/react-contextual/blob/master/API.md#imperative-context-handling).
 
 ## Sharing context
 
-There are no prescriptions on how to share or distribute context. Do you add it to a components prototype? Do you export it next to your component? Will the end user by fine with conflicting standards on how or where to fetch context in order to consume it? Will end-users consume context at all or is it better to write bindings around it?
+There are no prescriptions on how to share or distribute context. If you have a provider-component, how do you pass on its context so users can consume it? Do you add it to a components prototype? Do you export it next to your component? It's questionable if the api is meant for sharing at all as there will be conflicting standards on how or where to fetch context.
 
-react-contextual makes sharing easy. It maps keyed, unique contexts internally and allows global, module-scoped context to be refered by the component that instanciates it.
+react-contextual makes sharing straight forward. It maps context internally and allows various ways to reference it: unique keys, component references, dynamic functions that determine context at runtime, and regular React context objects. In most of all cases you would probably want to use `moduleContext` and simlpy use the component itself as a reference for `subscribe`.
 
 ```js
 @moduleContext()
@@ -60,12 +60,19 @@ class Header extends React.PureComponent {
 }
 
 /*
+// Any React context, polyfills work, too (react-broadcast, create-react-context, etc)
 @subscribe(GenericReactContext, value => ({ value }))
 
+// Any keyed context (creates by the namedContext hoc)
 @namedContext('uniquelyNamedContext')
 @subscribe('uniquelyNamedContext', value => ({ value }))
 
+// Any dynamic context
 @namedContext(props => props.dynamicallyDerivedKey)
 @subscribe(props => props.dynamicallyDerivedKey, value => ({ value }))
+
+// Any created store
+const store = createStore(...)
+@subscribe(store, value => ({ value }))
 */
 ```
