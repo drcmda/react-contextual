@@ -15,11 +15,9 @@ Click [this link](https://github.com/drcmda/react-contextual/blob/master/PITFALL
 
 # If you just need a light-weight no-frills store 🎰
 
-Use [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md#provider) to distribute state and actions. Connect components either by using a [HOC](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) or the [render-props](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component).
+Use [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md#provider) to distribute state and actions. Connect components either by using a [HOC](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) or [render-props](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component).
 
-#### Examples
-
-[Counter](https://codesandbox.io/embed/3vo9164z25) | [Global setState](https://codesandbox.io/embed/01l8z634qn) | [Async actions](https://codesandbox.io/embed/ywyr3q5n4z) | [Memoization/Reselect](https://codesandbox.io/embed/yvx9my007z) | [Multiple stores](https://codesandbox.io/embed/0o8pj1jz7v) | [External store](https://codesandbox.io/embed/jzwv46729y)
+<b>Examples</b>: [Counter](https://codesandbox.io/embed/3vo9164z25) | [Global setState](https://codesandbox.io/embed/01l8z634qn) | [Async actions](https://codesandbox.io/embed/ywyr3q5n4z) | [Memoization/Reselect](https://codesandbox.io/embed/yvx9my007z) | [Multiple stores](https://codesandbox.io/embed/0o8pj1jz7v) | [External store](https://codesandbox.io/embed/jzwv46729y)
 
 #### Render props
 
@@ -121,9 +119,7 @@ const Test = subscribe(store, props => props)(
 
 Use [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext) to create context bound to a components lifecycle,  [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) for global context and [transformContext](https://github.com/drcmda/react-contextual/blob/master/API.md#transformcontext) to transform existing providers (like a declarative middleware). Use [helper functions](https://github.com/drcmda/react-contextual/blob/master/API.md#imperative-context-handling) if you want to control the lifecycle of a context by yourself.
 
-#### Examples
-
-[Unique context](https://codesandbox.io/embed/ox405qqopy) | [Global context](https://codesandbox.io/embed/v8pn13nq77) | [Imperative context](https://codesandbox.io/embed/30ql1rxzlq) | [Generic React Context](https://codesandbox.io/embed/55wp11lv4) | [Transforms](https://codesandbox.io/embed/mjv84k1kn9)
+<b>Examples</b>: [Unique context](https://codesandbox.io/embed/ox405qqopy) | [Global context](https://codesandbox.io/embed/v8pn13nq77) | [Imperative context](https://codesandbox.io/embed/30ql1rxzlq) | [Generic React Context](https://codesandbox.io/embed/55wp11lv4) | [Transforms](https://codesandbox.io/embed/mjv84k1kn9)
 
 #### Custom providers & transforms
 
