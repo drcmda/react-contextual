@@ -45,7 +45,7 @@ But use with care as the spec may still change any time!
 
 [subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) helps you to consume *any* React context. Soon libs like react-router, redux, etc. will likely start serving context. Look into the examples to see how easy it is to create a context provider in order to distribute dynamic data.
 
-Example: https://codesandbox.io/embed/5v7n6k8j5p
+Example: https://codesandbox.io/embed/55wp11lv4
 
 [![](assets/multi-context.jpg)](https://github.com/drcmda/react-contextual/blob/master/assets/examples/multi-context.js)
 
