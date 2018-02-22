@@ -17,7 +17,7 @@ Reacts new context api is very powerful albeit low-level as it does not prescrib
 
 Use the [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md#provider) to distribute state and actions, wrap consumers within. Read by using the [subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) HOC or the [Subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component) component.
 
-### Examples
+#### Examples
 
 * [Counter](https://codesandbox.io/embed/3vo9164z25)
 * [Global setState](https://codesandbox.io/embed/01l8z634qn)
@@ -27,7 +27,7 @@ Use the [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md
 * [Multiple stores](https://codesandbox.io/embed/0o8pj1jz7v)
 * [External store](https://codesandbox.io/embed/jzwv46729y)
 
-### Render props
+#### Render props
 
 ```jsx
 import { Provider, Subscribe } from 'react-contextual'
@@ -56,7 +56,7 @@ ReactDOM.render(
 )
 ```
 
-### Higher Order Component
+#### Higher Order Component
 
 ```jsx
 import { Provider, subscribe } from 'react-contextual'
@@ -77,7 +77,7 @@ ReactDOM.render(
 )
 ```
 
-### With decorator
+#### With decorator
 
 ```jsx
 @subscribe()
@@ -86,7 +86,7 @@ class View extends React.PureComponent {
 }
 ```
 
-### External store
+#### External store
 
 Alternatively you can maintain an [external store](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore), which is a valid reference to `subscribe`. This store is fully reactive and you can trigger actions and read state. It also features a basic subscription model, similar to a redux store.
 
@@ -110,7 +110,7 @@ ReactDOM.render(
 )
 ```
 
-### Global setState
+#### Global setState
 
 If you do not supply actions [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) will add the following by default: `actions: { setState: props => props }` which translates to a global setState.
 
@@ -130,7 +130,7 @@ const Test = subscribe(store, props => props)(
 
 Reacts default api works with singletons, that makes it tough to create multi-purpose, nestable providers. Use [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext) to create unique context bound to a components lifecycle, [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) for module-scoped context and [transformContext](https://github.com/drcmda/react-contextual/blob/master/API.md#transformcontext) to transform existing context providers (like a declarative middleware). Use [helper functions](https://github.com/drcmda/react-contextual/blob/master/API.md#imperative-context-handling) if you want to control the lifecycle of a context by yourself.
 
-### Examples
+#### Examples
 
 * [Unique context](https://codesandbox.io/embed/ox405qqopy)
 * [Global context](https://codesandbox.io/embed/v8pn13nq77)
@@ -164,7 +164,7 @@ ReactDOM.render(
 )
 ```
 
-### With decorator
+#### With decorator
 
 ```jsx
 @moduleContext()
