@@ -19,13 +19,7 @@ Use the [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md
 
 #### Examples
 
-* [Counter](https://codesandbox.io/embed/3vo9164z25)
-* [Global setState](https://codesandbox.io/embed/01l8z634qn)
-* [Basic example](https://codesandbox.io/embed/lxly45lvkl)
-* [Async actions](https://codesandbox.io/embed/ywyr3q5n4z)
-* [Memoization/Reselect](https://codesandbox.io/embed/yvx9my007z)
-* [Multiple stores](https://codesandbox.io/embed/0o8pj1jz7v)
-* [External store](https://codesandbox.io/embed/jzwv46729y)
+[Counter](https://codesandbox.io/embed/3vo9164z25) | [Global setState](https://codesandbox.io/embed/01l8z634qn) | [Basic example](https://codesandbox.io/embed/lxly45lvkl) | [Async actions](https://codesandbox.io/embed/ywyr3q5n4z) | [Memoization/Reselect](https://codesandbox.io/embed/yvx9my007z) | [Multiple stores](https://codesandbox.io/embed/0o8pj1jz7v) | [External store](https://codesandbox.io/embed/jzwv46729y)
 
 #### Render props
 
@@ -132,11 +126,9 @@ Reacts default api works with singletons, that makes it tough to create multi-pu
 
 #### Examples
 
-* [Unique context](https://codesandbox.io/embed/ox405qqopy)
-* [Global context](https://codesandbox.io/embed/v8pn13nq77)
-* [Imperative context](https://codesandbox.io/embed/30ql1rxzlq)
-* [Generic React Context](https://codesandbox.io/embed/55wp11lv4)
-* [Transforms](https://codesandbox.io/embed/mjv84k1kn9)
+[Unique context](https://codesandbox.io/embed/ox405qqopy) | [Global context](https://codesandbox.io/embed/v8pn13nq77) | [Imperative context](https://codesandbox.io/embed/30ql1rxzlq) | [Generic React Context](https://codesandbox.io/embed/55wp11lv4) | [Transforms](https://codesandbox.io/embed/mjv84k1kn9)
+
+#### Custom providers & transforms
 
 ```jsx
 import { subscribe, moduleContext, transformContext } from 'react-contextual'
