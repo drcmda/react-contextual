@@ -33,7 +33,7 @@ Example 2: https://codesandbox.io/embed/lxly45lvkl (async actions)
 
 Example 3: https://codesandbox.io/embed/yvx9my007z (memoization)
 
-Example 4: https://codesandbox.io/embed/p9p6jq60lx (multiple stores)
+Example 4: https://codesandbox.io/embed/0o8pj1jz7v (multiple stores)
 
 ### Higher Order Component
 
