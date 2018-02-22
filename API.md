@@ -67,7 +67,7 @@ The same as the higher-order-component above, but as a component: `<Subscribe to
 </Subscribe>
 ```
 
-## Provider
+# Provider
 
 ```js
 import { Provider } from 'react-contextual'
