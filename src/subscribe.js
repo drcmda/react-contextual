@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ProviderContext, { getNamedContext, resolveContext } from './context'
 
+const toArray = obj => Array.isArray(obj) ? obj : [obj]
+
 export function subscribe(...args) {
     return Wrapped =>
         function SubscribeWrap(props) {
@@ -22,21 +24,19 @@ export function subscribe(...args) {
                 // 'theme' or ['theme', 'user', 'language']
                 const values = mapContextToProps
                 mapContextToProps = (...args) =>
-                    Array.isArray(values)
-                        ? values.reduce((acc, key, index) => ({ ...acc, [key]: args[index] }), {})
-                        : { [values]: args[0] }
+                    toArray(values).reduce((acc, key, index) => ({ ...acc, [key]: args[index] }), {})
             }
-            contextRefs = (Array.isArray(contextRefs) ? contextRefs : [contextRefs]).map(context =>
-                resolveContext(context, props),
-            )
+            contextRefs = toArray(contextRefs).map(context => resolveContext(context, props))
             let values = []
             return [...contextRefs, Wrapped].reduceRight((accumulator, Context) => (
                 <Context.Consumer>
                     {value => {
                         values.push(value)
                         if (accumulator === Wrapped) {
-                            const wrap = <Wrapped {...props} {...mapContextToProps(...values, props)} />
-                            return (values = []) && wrap
+                            let context = mapContextToProps(...values, props)
+                            context = typeof context === 'object' ? context : { context }
+                            values = []
+                            return <Wrapped {...props} {...context} />
                         } else return accumulator
                     }}
                 </Context.Consumer>
@@ -58,7 +58,6 @@ export class Subscribe extends React.PureComponent {
     static defaultProps = { to: ProviderContext, select: props => props }
     render() {
         const { to, select, children } = this.props
-        const Sub = subscribe(to, select)(props => children(props))
-        return <Sub />
+        return React.createElement(subscribe(to, select)(props => children(props)))
     }
 }

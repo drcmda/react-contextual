@@ -44,3 +44,48 @@ exports[`renders properly 1`] = `
   </Component>
 </ModuleContext>
 `;
+
+exports[`unnamed context 1`] = `
+<ModuleContext>
+  <Component
+    context={
+      Object {
+        "Consumer": [Function],
+        "Provider": [Function],
+      }
+    }
+  >
+    <Provider
+      value="1"
+    >
+      <SubscribeWrap>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            context="1"
+          >
+            1
+          </Component>
+        </Consumer>
+      </SubscribeWrap>
+      <Subscribe
+        select={[Function]}
+        to={[Function]}
+      >
+        <SubscribeWrap>
+          <Consumer
+            quiet={false}
+          >
+            <Component
+              context="1"
+            >
+              1
+            </Component>
+          </Consumer>
+        </SubscribeWrap>
+      </Subscribe>
+    </Provider>
+  </Component>
+</ModuleContext>
+`;

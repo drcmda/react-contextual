@@ -11,3 +11,14 @@ it('renders properly', async () => {
         </Provider>,
     )
 })
+
+test('unnamed context', async () => {
+    const Provider = moduleContext()(({ context, children }) => <context.Provider value="1" children={children} />)
+    const Test = subscribe(Provider)(props => props.context)
+    await snapshot(
+        <Provider>
+            <Test />
+            <Subscribe to={Provider} children={props => props.context} />
+        </Provider>,
+    )
+})
