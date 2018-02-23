@@ -3,46 +3,45 @@ import PropTypes from 'prop-types'
 import ProviderContext, { getNamedContext, resolveContext } from './context'
 
 export function subscribe(...args) {
-    // Filter undefined args (can happen if Subscribe injects them)
-    args = args.filter(a => a)
-    let contextRefs = ProviderContext,
-        mapContextToProps = props => props
-    if (args.length === 1) {
-        // subscribe(mapContextToProps): default context, custom mapContextToProps
-        mapContextToProps = args[0]
-    } else if (args.length === 2) {
-        // subscribe(Context, mapContextToProps): custom context, custom mapContextToProps
-        contextRefs = args[0]
-        mapContextToProps = args[1]
-    }
-
-    if (typeof mapContextToProps !== 'function') {
-        // 'theme' or ['theme', 'user', 'language']
-        const values = mapContextToProps
-        mapContextToProps = (...args) =>
-            Array.isArray(values)
-                ? values.reduce((acc, key, index) => ({ ...acc, [key]: args[index] }), {})
-                : { [values]: args[0] }
-    }
-    return Wrapped => function SubscribeWrap(props) {
-        const array = (Array.isArray(contextRefs) ? contextRefs : [contextRefs]).map(context =>
-            resolveContext(context, props),
-        )
-        let result,
-            values = []
-        return [...array, Wrapped].reduceRight((accumulator, Context) => (
-            <Context.Consumer>
-                {value => {
-                    values.push(value)
-                    result = accumulator === Wrapped
-                        ? <Wrapped {...props} {...mapContextToProps(...values, props)} />
-                        : accumulator
-                    if (accumulator === Wrapped) values = []
-                    return result
-                }}
-            </Context.Consumer>
-        ))
-    }
+    return Wrapped =>
+        function SubscribeWrap(props) {
+            // Filter undefined args (can happen if Subscribe injects them)
+            args = args.filter(a => a)
+            let contextRefs = ProviderContext,
+                mapContextToProps = props => props
+            if (args.length === 1) {
+                // Check if the argument is a valid context first, if not, assume mapContextToProps
+                if (resolveContext(args[0], props, null)) contextRefs = args[0]
+                else mapContextToProps = args[0]
+            } else if (args.length === 2) {
+                // subscribe(Context, mapContextToProps)
+                contextRefs = args[0]
+                mapContextToProps = args[1]
+            }
+            if (typeof mapContextToProps !== 'function') {
+                // 'theme' or ['theme', 'user', 'language']
+                const values = mapContextToProps
+                mapContextToProps = (...args) =>
+                    Array.isArray(values)
+                        ? values.reduce((acc, key, index) => ({ ...acc, [key]: args[index] }), {})
+                        : { [values]: args[0] }
+            }
+            contextRefs = (Array.isArray(contextRefs) ? contextRefs : [contextRefs]).map(context =>
+                resolveContext(context, props),
+            )
+            let values = []
+            return [...contextRefs, Wrapped].reduceRight((accumulator, Context) => (
+                <Context.Consumer>
+                    {value => {
+                        values.push(value)
+                        if (accumulator === Wrapped) {
+                            const wrap = <Wrapped {...props} {...mapContextToProps(...values, props)} />
+                            return (values = []) && wrap
+                        } else return accumulator
+                    }}
+                </Context.Consumer>
+            ))
+        }
 }
 
 export class Subscribe extends React.PureComponent {

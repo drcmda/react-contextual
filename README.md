@@ -88,8 +88,8 @@ const externalStore = createStore({
     actions: { up: () => state => ({ count: state.count + 1 }) },
 })
 
-const Test = subscribe(externalStore, props => ({ count: props.count }))(
-    props => <button onClick={() => externalStore.actions.up()}>{props.count}</button>,
+const Test = subscribe(externalStore)(
+    props => <button onClick={() => props.actions.up()}>{props.count}</button>,
 )
 
 const App = () => (
@@ -110,9 +110,28 @@ const store = createStore({ initialState: { count: 0 } })
 const up = state => ({ count: state.count + 1 })
 const dn = state => ({ count: state.count - 1 })
 
-const Test = subscribe(store, props => props)(
+const Test = subscribe(store)(
     props => <button onClick={() => store.actions.setState(up)}>{props.count}</button>,
 )
+```
+
+#### mapContextToProps
+
+subscribe picks prividers and selects state (mapContextToProps). If you extend the wrapped component from React.PureComponent it will only render if the props it picked have actually changed, ignoring state changes that do not concern it. You can even use [momorized selectors]((https://codesandbox.io/embed/yvx9my007z)) if you like.
+
+```jsx
+// Making store context available under the 'theme' prop
+subscribe(store, 'theme')(AnyComponent)
+// Picking a variable from the store, the component will only render when it changes ...
+subscribe(store, store => ({ loggedIn: store.loggedIn }))(AnyComponent)
+// Picking a variable from the store using the components own props
+subscribe(store, (store, props) => ({ user: store.users[props.id] }))(AnyComponent)
+// Selecting several providers
+subscribe([theme, store], (theme, store) => ({ theme, store }))(AnyComponent)
+// Selecting several providers using the components own props
+subscribe([theme, store], (theme, store, props) => ({ store, theme: store1.colors[props.id] }))(AnyComponent)
+// Shortcut, making two providers available under the props 'theme' and 'store'
+subscribe([theme, store], ['theme', 'store'])(AnyComponent)
 ```
 
 # If you like to provide context 🚀
@@ -132,14 +151,14 @@ const Test = subscribe(store, props => props)(
 import { subscribe, moduleContext, transformContext } from 'react-contextual'
 
 const Theme = moduleContext()(
-    ({ context, color, children }) => <context.Provider value={color} children={children} />
+    ({ context, color, children }) => <context.Provider value={{ color }} children={children} />
 )
 
-const Invert = transformContext(Theme, 'color')(
+const Invert = transformContext(Theme)(
     ({ context, color, children }) => <context.Provider value={invert(color)} children={children} />
 )
 
-const Write = subscribe(Theme, 'color')(
+const Write = subscribe(Theme)(
     ({ color, text }) => <span style={{ color }}>{text}</span>
 )
 

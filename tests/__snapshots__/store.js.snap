@@ -9,6 +9,7 @@ exports[`async action 1`] = `
       "simple": [Function],
     }
   }
+  extra={100}
   initialState={
     Object {
       "count": 0,
@@ -24,6 +25,7 @@ exports[`async action 1`] = `
           "simple": [Function],
         },
         "count": 0,
+        "extra": 100,
       }
     }
   >
@@ -41,6 +43,7 @@ exports[`async action 1`] = `
               }
             }
             count={0}
+            extra={100}
           >
             <button
               onClick={[Function]}
@@ -64,6 +67,7 @@ exports[`async action 2`] = `
       "simple": [Function],
     }
   }
+  extra={100}
   initialState={
     Object {
       "count": 0,
@@ -79,6 +83,7 @@ exports[`async action 2`] = `
           "simple": [Function],
         },
         "count": 1,
+        "extra": 100,
       }
     }
   >
@@ -96,6 +101,7 @@ exports[`async action 2`] = `
               }
             }
             count={1}
+            extra={100}
           >
             <button
               onClick={[Function]}
@@ -119,6 +125,7 @@ exports[`await actions & access state 1`] = `
       "simple": [Function],
     }
   }
+  extra={100}
   initialState={
     Object {
       "count": 0,
@@ -134,6 +141,7 @@ exports[`await actions & access state 1`] = `
           "simple": [Function],
         },
         "count": 0,
+        "extra": 100,
       }
     }
   >
@@ -151,6 +159,7 @@ exports[`await actions & access state 1`] = `
               }
             }
             count={0}
+            extra={100}
           >
             <div>
               0
@@ -175,6 +184,7 @@ exports[`await actions & access state 2`] = `
       "simple": [Function],
     }
   }
+  extra={100}
   initialState={
     Object {
       "count": 0,
@@ -190,6 +200,7 @@ exports[`await actions & access state 2`] = `
           "simple": [Function],
         },
         "count": 4,
+        "extra": 100,
       }
     }
   >
@@ -207,6 +218,7 @@ exports[`await actions & access state 2`] = `
               }
             }
             count={4}
+            extra={100}
           >
             <div>
               4
@@ -241,7 +253,9 @@ exports[`external store 1`] = `
       "initialState": Object {
         "count": 0,
       },
-      "props": Object {},
+      "props": Object {
+        "extra": 100,
+      },
       "state": Object {
         "count": 0,
       },
@@ -259,6 +273,7 @@ exports[`external store 1`] = `
           "simple": [Function],
         },
         "count": 0,
+        "extra": 100,
       }
     }
   >
@@ -302,7 +317,9 @@ exports[`external store 2`] = `
       "initialState": Object {
         "count": 0,
       },
-      "props": Object {},
+      "props": Object {
+        "extra": 100,
+      },
       "state": Object {
         "count": 2,
       },
@@ -320,6 +337,7 @@ exports[`external store 2`] = `
           "simple": [Function],
         },
         "count": 2,
+        "extra": 100,
       }
     }
   >
@@ -468,7 +486,7 @@ exports[`external store, setState 2`] = `
 </Provider>
 `;
 
-exports[`functional action 1`] = `
+exports[`extras 1`] = `
 <Provider
   actions={
     Object {
@@ -477,6 +495,7 @@ exports[`functional action 1`] = `
       "simple": [Function],
     }
   }
+  extra={100}
   initialState={
     Object {
       "count": 0,
@@ -492,6 +511,118 @@ exports[`functional action 1`] = `
           "simple": [Function],
         },
         "count": 0,
+        "extra": 100,
+      }
+    }
+  >
+    <RenderPure>
+      <Provider
+        store={
+          Object {
+            "actions": Object {
+              "setState": [Function],
+            },
+            "context": Object {
+              "Consumer": [Function],
+              "Provider": [Function],
+            },
+            "destroy": [Function],
+            "getState": [Function],
+            "id": "externalTest3",
+            "initialState": Object {
+              "count": 5,
+            },
+            "props": Object {
+              "extra": 1000,
+            },
+            "state": Object {
+              "count": 5,
+            },
+            "subscribe": [Function],
+            "subscriptions": Set {},
+          }
+        }
+      >
+        <Provider
+          value={
+            Object {
+              "actions": Object {
+                "setState": [Function],
+              },
+              "count": 5,
+              "extra": 1000,
+            }
+          }
+        >
+          <RenderPure>
+            <SubscribeWrap>
+              <Consumer
+                quiet={false}
+              >
+                <Consumer
+                  quiet={false}
+                >
+                  <Component
+                    a={
+                      Object {
+                        "actions": Object {
+                          "async": [Function],
+                          "functional": [Function],
+                          "simple": [Function],
+                        },
+                        "count": 0,
+                        "extra": 100,
+                      }
+                    }
+                    b={
+                      Object {
+                        "actions": Object {
+                          "setState": [Function],
+                        },
+                        "count": 5,
+                        "extra": 1000,
+                      }
+                    }
+                  >
+                    1105
+                  </Component>
+                </Consumer>
+              </Consumer>
+            </SubscribeWrap>
+          </RenderPure>
+        </Provider>
+      </Provider>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`functional action 1`] = `
+<Provider
+  actions={
+    Object {
+      "async": [Function],
+      "functional": [Function],
+      "simple": [Function],
+    }
+  }
+  extra={100}
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "async": [Function],
+          "functional": [Function],
+          "simple": [Function],
+        },
+        "count": 0,
+        "extra": 100,
       }
     }
   >
@@ -509,6 +640,7 @@ exports[`functional action 1`] = `
               }
             }
             count={0}
+            extra={100}
           >
             <button
               onClick={[Function]}
@@ -532,6 +664,7 @@ exports[`functional action 2`] = `
       "simple": [Function],
     }
   }
+  extra={100}
   initialState={
     Object {
       "count": 0,
@@ -547,6 +680,7 @@ exports[`functional action 2`] = `
           "simple": [Function],
         },
         "count": 1,
+        "extra": 100,
       }
     }
   >
@@ -564,6 +698,7 @@ exports[`functional action 2`] = `
               }
             }
             count={1}
+            extra={100}
           >
             <button
               onClick={[Function]}
@@ -579,6 +714,127 @@ exports[`functional action 2`] = `
 `;
 
 exports[`mount/unmount 1`] = `<App />`;
+
+exports[`no actions 1`] = `
+<Provider
+  actions={null}
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "count": 0,
+      }
+    }
+  >
+    <RenderPure>
+      <SubscribeWrap>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            count={0}
+          >
+            0
+          </Component>
+        </Consumer>
+      </SubscribeWrap>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`no actions, setState 1`] = `
+<Provider
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "setState": [Function],
+        },
+        "count": 0,
+      }
+    }
+  >
+    <RenderPure>
+      <SubscribeWrap>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            actions={
+              Object {
+                "setState": [Function],
+              }
+            }
+            count={0}
+          >
+            <button
+              onClick={[Function]}
+            >
+              0
+            </button>
+          </Component>
+        </Consumer>
+      </SubscribeWrap>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
+
+exports[`no actions, setState 2`] = `
+<Provider
+  initialState={
+    Object {
+      "count": 0,
+    }
+  }
+>
+  <Provider
+    value={
+      Object {
+        "actions": Object {
+          "setState": [Function],
+        },
+        "count": 1,
+      }
+    }
+  >
+    <RenderPure>
+      <SubscribeWrap>
+        <Consumer
+          quiet={false}
+        >
+          <Component
+            actions={
+              Object {
+                "setState": [Function],
+              }
+            }
+            count={1}
+          >
+            <button
+              onClick={[Function]}
+            >
+              1
+            </button>
+          </Component>
+        </Consumer>
+      </SubscribeWrap>
+    </RenderPure>
+  </Provider>
+</Provider>
+`;
 
 exports[`renders properly 1`] = `
 <Provider
@@ -629,6 +885,7 @@ exports[`simple action 1`] = `
       "simple": [Function],
     }
   }
+  extra={100}
   initialState={
     Object {
       "count": 0,
@@ -644,6 +901,7 @@ exports[`simple action 1`] = `
           "simple": [Function],
         },
         "count": 0,
+        "extra": 100,
       }
     }
   >
@@ -661,6 +919,7 @@ exports[`simple action 1`] = `
               }
             }
             count={0}
+            extra={100}
           >
             <button
               onClick={[Function]}
@@ -684,6 +943,7 @@ exports[`simple action 2`] = `
       "simple": [Function],
     }
   }
+  extra={100}
   initialState={
     Object {
       "count": 0,
@@ -699,6 +959,7 @@ exports[`simple action 2`] = `
           "simple": [Function],
         },
         "count": 1,
+        "extra": 100,
       }
     }
   >
@@ -716,6 +977,7 @@ exports[`simple action 2`] = `
               }
             }
             count={1}
+            extra={100}
           >
             <button
               onClick={[Function]}

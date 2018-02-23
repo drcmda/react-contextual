@@ -28,6 +28,17 @@ test('subscribe(props => props)', async () => {
     )
 })
 
+test('subscribe(id)', async () => {
+    const Test = subscribe('id')(props => <button onClick={props.actions.up}>{props.count}</button>)
+    await snapshot(
+        <Provider id="id" {...store}>
+            <Test />
+            <Subscribe to="id" children={props => props.count} />
+        </Provider>,
+        tree => tree.find('button').simulate('click'),
+    )
+})
+
 test('subscribe(id, props => props)', async () => {
     const Test = subscribe('id', props => props)(props => <button onClick={props.actions.up}>{props.count}</button>)
     await snapshot(
@@ -52,6 +63,19 @@ test('subscribe(id, name)', async () => {
     )
 })
 
+test('subscribe(props => props.id)', async () => {
+    const Test = subscribe(props => props.id)(props => (
+        <button onClick={props.actions.up}>{props.count}</button>
+    ))
+    await snapshot(
+        <Provider id="id" {...store}>
+            <Test id="id" />
+            <Subscribe to="id" children={props => props.count} />
+        </Provider>,
+        tree => tree.find('button').simulate('click'),
+    )
+})
+
 test('subscribe(props => props.id, props => props)', async () => {
     const Test = subscribe(props => props.id, props => props)(props => (
         <button onClick={props.actions.up}>{props.count}</button>
@@ -60,6 +84,19 @@ test('subscribe(props => props.id, props => props)', async () => {
         <Provider id="id" {...store}>
             <Test id="id" />
             <Subscribe to="id" select={props => props} children={props => props.count} />
+        </Provider>,
+        tree => tree.find('button').simulate('click'),
+    )
+})
+
+test('subscribe(ProviderContext)', async () => {
+    const Test = subscribe(ProviderContext)(props => (
+        <button onClick={props.actions.up}>{props.count}</button>
+    ))
+    await snapshot(
+        <Provider {...store}>
+            <Test />
+            <Subscribe to={ProviderContext} children={props => props.count} />
         </Provider>,
         tree => tree.find('button').simulate('click'),
     )

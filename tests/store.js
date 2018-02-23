@@ -12,6 +12,7 @@ const store = {
             return { count: state.count + arg }
         },
     },
+    extra: 100,
 }
 
 it('renders properly', async () => {
@@ -45,6 +46,27 @@ test('mount/unmount', async () => {
         }
     }
     await snapshot(<App />)
+})
+
+test('no actions', async () => {
+    const Test = subscribe()(props => props.count)
+    await snapshot(
+        <Provider initialState={{ count: 0 }} actions={null}>
+            <Test />
+        </Provider>,
+    )
+})
+
+test('no actions, setState', async () => {
+    const Test = subscribe()(props => (
+        <button onClick={() => props.actions.setState(state => ({ count: state.count + 1 }))}>{props.count}</button>
+    ))
+    await snapshot(
+        <Provider initialState={{ count: 0 }}>
+            <Test />
+        </Provider>,
+        tree => tree.find('button').simulate('click'),
+    )
 })
 
 test('simple action', async () => {
@@ -128,7 +150,7 @@ test('external store', async () => {
 
 test('external store, setState', async () => {
     const externalStore = createStore({ initialState: { count: 0 } }, 'externalTest2')
-    const Test = subscribe(externalStore, props => props)(props => (
+    const Test = subscribe(externalStore)(props => (
         <button onClick={() => props.actions.setState(state => ({ count: state.count + 1 }))}>{props.count}</button>
     ))
     await snapshot(
@@ -136,5 +158,19 @@ test('external store, setState', async () => {
             <Test />
         </Provider>,
         tree => tree.find('button').simulate('click'),
+    )
+})
+
+test('extras', async () => {
+    const externalStore = createStore({ initialState: { count: 5 }, extra: 1000 }, 'externalTest3')
+    const Test = subscribe([ProviderContext, externalStore], (a, b) => ({ a, b }))(
+        props => props.a.count + props.a.extra + props.b.count + props.b.extra,
+    )
+    await snapshot(
+        <Provider {...store}>
+            <Provider store={externalStore}>
+                <Test />
+            </Provider>
+        </Provider>,
     )
 })
