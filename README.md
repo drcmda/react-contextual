@@ -115,30 +115,32 @@ const Test = subscribe(store)(
 )
 ```
 
-#### mapContextToProps(providers, mapContextToProps)
+#### mapContextToProps
 
-subscribe picks providers and selects state. If you extend the wrapped component from React.PureComponent it will only render if the state you pick has changed, ignoring state-changes that do not concern it. You can even use [memoized selectors](https://codesandbox.io/embed/yvx9my007z) if you like.
+[subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) works with any React context, even polyfills. It picks providers and selects state. Best extend the wrapped component from React.PureComponent and it will only render if the state you pick has changed.
 
 ```jsx
+// Subscribes to all contents of the provider
+subscribe(context)
 // Picking a variable from the store, the component will only render when it changes ...
-subscribe(store, store => ({ loggedIn: store.loggedIn }))
+subscribe(context, store => ({ loggedIn: store.loggedIn }))
 // Picking a variable from the store using the components own props
-subscribe(store, (store, props) => ({ user: store.users[props.id] }))
+subscribe(context, (store, props) => ({ user: store.users[props.id] }))
 // Making store context available under the 'store' prop
-subscribe(store, 'store')
+subscribe(context, 'store')
 // Selecting several providers
-subscribe([theme, store], (theme, store) => ({ theme, store }))
+subscribe([Theme, Store], (theme, store) => ({ theme, store }))
 // Selecting several providers using the components own props
-subscribe([theme, store], (theme, store, props) => ({ store, theme: theme.colors[props.id] }))
+subscribe([Theme, Store], (theme, store, props) => ({ store, theme: theme.colors[props.id] }))
 // Making two providers available under the props 'theme' and 'store'
-subscribe([theme, store], ['theme', 'store'])
+subscribe([Theme, Store], ['theme', 'store'])
 ```
 
 # If you like to provide context 🚀
 
 <b>Examples</b>: [Global context](https://codesandbox.io/embed/v8pn13nq77) | [Transforms](https://codesandbox.io/embed/mjv84k1kn9) | [Unique context](https://codesandbox.io/embed/ox405qqopy) | [Imperative context](https://codesandbox.io/embed/30ql1rxzlq) | [Generic React Context](https://codesandbox.io/embed/55wp11lv4)
 
-[subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) works with any React context, even polyfills. But contextual isn't limited to reading context and store patterns.
+Contextual isn't limited to reading context and store patterns, it also helps you to create and share providers.
 
 * [moduleContext](https://github.com/drcmda/react-contextual/blob/master/API.md#modulecontext) creates a global provider and injects it into a component
 * [namedContext](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext) creates a unique provider bound to a components lifecycle
