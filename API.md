@@ -135,7 +135,7 @@ The context will be dynamically created when the wrapped component mounts and wi
 class Theme extends React.PureComponent {
     render() {
         const { context: Context, children } = this.props
-        return <Contest.Provider value="red" children={children} />
+        return <Context.Provider value="red" children={children} />
     }
 }
 
@@ -169,7 +169,7 @@ Creates a global module-scoped context object and injects it both as `this.props
 class Theme extends React.PureComponent {
     render() {
         const { context: Context, children } = this.props
-        return <Contest.Provider value="red" children={children} />
+        return <Context.Provider value="red" children={children} />
     }
 }
 
