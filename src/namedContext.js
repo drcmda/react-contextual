@@ -3,7 +3,7 @@ import { resolveContext, createNamedContext, removeNamedContext } from './contex
 
 export default function namedContext(contextName, initialState) {
     return Wrapped =>
-        class extends React.PureComponent {
+        class NamedContext extends React.PureComponent {
             constructor(props) {
                 super()
                 this.name = resolveContext(contextName, props)

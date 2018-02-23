@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`functional context 1`] = `
-<_class
+<NamedContext
   id="testFunc"
 >
   <Component
@@ -16,7 +16,7 @@ exports[`functional context 1`] = `
     <Provider
       value="1"
     >
-      <Component
+      <SubscribeWrap
         id="testFunc"
       >
         <Consumer
@@ -29,12 +29,12 @@ exports[`functional context 1`] = `
             1
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
       <Subscribe
         select="count"
         to="testFunc"
       >
-        <Component>
+        <SubscribeWrap>
           <Consumer
             quiet={false}
           >
@@ -44,15 +44,15 @@ exports[`functional context 1`] = `
               1
             </Component>
           </Consumer>
-        </Component>
+        </SubscribeWrap>
       </Subscribe>
     </Provider>
   </Component>
-</_class>
+</NamedContext>
 `;
 
 exports[`keyed context 1`] = `
-<_class>
+<NamedContext>
   <Component
     context={
       Object {
@@ -64,7 +64,7 @@ exports[`keyed context 1`] = `
     <Provider
       value="1"
     >
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -74,12 +74,12 @@ exports[`keyed context 1`] = `
             1
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
       <Subscribe
         select="count"
         to="testKeyed"
       >
-        <Component>
+        <SubscribeWrap>
           <Consumer
             quiet={false}
           >
@@ -89,9 +89,9 @@ exports[`keyed context 1`] = `
               1
             </Component>
           </Consumer>
-        </Component>
+        </SubscribeWrap>
       </Subscribe>
     </Provider>
   </Component>
-</_class>
+</NamedContext>
 `;

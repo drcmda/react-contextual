@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-<Hoc>
+<ModuleContext>
   <Component
     context={
       Object {
@@ -13,7 +13,7 @@ exports[`renders properly 1`] = `
     <Provider
       value="1"
     >
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -23,12 +23,12 @@ exports[`renders properly 1`] = `
             1
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
       <Subscribe
         select="count"
         to={[Function]}
       >
-        <Component>
+        <SubscribeWrap>
           <Consumer
             quiet={false}
           >
@@ -38,9 +38,9 @@ exports[`renders properly 1`] = `
               1
             </Component>
           </Consumer>
-        </Component>
+        </SubscribeWrap>
       </Subscribe>
     </Provider>
   </Component>
-</Hoc>
+</ModuleContext>
 `;

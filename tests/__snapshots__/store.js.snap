@@ -28,7 +28,7 @@ exports[`async action 1`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -49,7 +49,7 @@ exports[`async action 1`] = `
             </button>
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -83,7 +83,7 @@ exports[`async action 2`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -104,7 +104,7 @@ exports[`async action 2`] = `
             </button>
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -138,7 +138,7 @@ exports[`await actions & access state 1`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -160,7 +160,7 @@ exports[`await actions & access state 1`] = `
             </div>
           </_class2>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -194,7 +194,7 @@ exports[`await actions & access state 2`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -216,7 +216,7 @@ exports[`await actions & access state 2`] = `
             </div>
           </_class2>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -263,7 +263,7 @@ exports[`external store 1`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -277,7 +277,7 @@ exports[`external store 1`] = `
             </button>
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -324,7 +324,7 @@ exports[`external store 2`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -338,7 +338,7 @@ exports[`external store 2`] = `
             </button>
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -381,7 +381,7 @@ exports[`external store, setState 1`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -400,7 +400,7 @@ exports[`external store, setState 1`] = `
             </button>
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -443,7 +443,7 @@ exports[`external store, setState 2`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -462,7 +462,7 @@ exports[`external store, setState 2`] = `
             </button>
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -496,7 +496,7 @@ exports[`functional action 1`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -517,7 +517,7 @@ exports[`functional action 1`] = `
             </button>
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -551,7 +551,7 @@ exports[`functional action 2`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -572,7 +572,7 @@ exports[`functional action 2`] = `
             </button>
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -599,7 +599,7 @@ exports[`renders properly 1`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -614,7 +614,7 @@ exports[`renders properly 1`] = `
             0
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -648,7 +648,7 @@ exports[`simple action 1`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -669,7 +669,7 @@ exports[`simple action 1`] = `
             </button>
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>
@@ -703,7 +703,7 @@ exports[`simple action 2`] = `
     }
   >
     <RenderPure>
-      <Component>
+      <SubscribeWrap>
         <Consumer
           quiet={false}
         >
@@ -724,7 +724,7 @@ exports[`simple action 2`] = `
             </button>
           </Component>
         </Consumer>
-      </Component>
+      </SubscribeWrap>
     </RenderPure>
   </Provider>
 </Provider>

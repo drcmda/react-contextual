@@ -24,7 +24,7 @@ export function subscribe(...args) {
                 ? values.reduce((acc, key, index) => ({ ...acc, [key]: args[index] }), {})
                 : { [values]: args[0] }
     }
-    return Wrapped => props => {
+    return Wrapped => function SubscribeWrap(props) {
         const array = (Array.isArray(contextRefs) ? contextRefs : [contextRefs]).map(context =>
             resolveContext(context, props),
         )
