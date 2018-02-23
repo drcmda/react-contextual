@@ -115,9 +115,9 @@ const Test = subscribe(store)(
 )
 ```
 
-#### mapContextToProps
+#### mapContextToProps(providers, mapContextToProps)
 
-subscribe picks prividers and selects state (mapContextToProps). If you extend the wrapped component from React.PureComponent it will only render if the props it picked have actually changed, ignoring state changes that do not concern it. You can even use [momorized selectors]((https://codesandbox.io/embed/yvx9my007z)) if you like.
+subscribe picks providers and selects state. If you extend the wrapped component from React.PureComponent it will only render if the state it picked has changed, ignoring state-changes that do not concern it. You can even use [memoized selectors](https://codesandbox.io/embed/yvx9my007z) if you like.
 
 ```jsx
 // Making store context available under the 'theme' prop
