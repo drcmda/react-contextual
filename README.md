@@ -117,7 +117,7 @@ const Test = subscribe(store)(
 
 #### mapContextToProps
 
-[subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) and [Subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component) works with any React context, even polyfills. It picks providers and selects state. Best extend the wrapped component from `React.PureComponent` and it will only render if the state you pick has changed.
+[subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) and [Subscribe](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component) (the component) work with any React context, even polyfills. They pick providers and select state. Extend wrapped components from `React.PureComponent` and they will only render when the picked state has changed.
 
 ```jsx
 // Subscribes to all contents of the provider
