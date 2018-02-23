@@ -117,21 +117,21 @@ const Test = subscribe(store)(
 
 #### mapContextToProps(providers, mapContextToProps)
 
-subscribe picks providers and selects state. If you extend the wrapped component from React.PureComponent it will only render if the state it picked has changed, ignoring state-changes that do not concern it. You can even use [memoized selectors](https://codesandbox.io/embed/yvx9my007z) if you like.
+subscribe picks providers and selects state. If you extend the wrapped component from React.PureComponent it will only render if the state you pick has changed, ignoring state-changes that do not concern it. You can even use [memoized selectors](https://codesandbox.io/embed/yvx9my007z) if you like.
 
 ```jsx
-// Making store context available under the 'theme' prop
-subscribe(store, 'theme')(AnyComponent)
 // Picking a variable from the store, the component will only render when it changes ...
-subscribe(store, store => ({ loggedIn: store.loggedIn }))(AnyComponent)
+subscribe(store, store => ({ loggedIn: store.loggedIn }))
 // Picking a variable from the store using the components own props
-subscribe(store, (store, props) => ({ user: store.users[props.id] }))(AnyComponent)
+subscribe(store, (store, props) => ({ user: store.users[props.id] }))
+// Making store context available under the 'store' prop
+subscribe(store, 'store')
 // Selecting several providers
-subscribe([theme, store], (theme, store) => ({ theme, store }))(AnyComponent)
+subscribe([theme, store], (theme, store) => ({ theme, store }))
 // Selecting several providers using the components own props
-subscribe([theme, store], (theme, store, props) => ({ store, theme: store1.colors[props.id] }))(AnyComponent)
-// Shortcut, making two providers available under the props 'theme' and 'store'
-subscribe([theme, store], ['theme', 'store'])(AnyComponent)
+subscribe([theme, store], (theme, store, props) => ({ store, theme: theme.colors[props.id] }))
+// Making two providers available under the props 'theme' and 'store'
+subscribe([theme, store], ['theme', 'store'])
 ```
 
 # If you like to provide context 🚀
