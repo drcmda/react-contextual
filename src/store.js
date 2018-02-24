@@ -62,15 +62,13 @@ export class Provider extends React.PureComponent {
             this.store.actions = Object.keys(actions).reduce(
                 (acc, name) => ({
                     ...acc,
-                    [name]: (...args) =>
-                        new Promise(res => {
-                            let result = actions[name](...args)
-                            if (typeof result === 'function')
-                                Promise.resolve(result(this.state)).then(state =>
-                                    this.setState(state, () => this.update(res)),
-                                )
-                            else this.setState(result, () => this.update(res))
-                        }),
+                    [name]: (...args) => {
+                        let result = actions[name](...args)
+                        if (typeof result === 'function') result = result(this.state)
+                        return new Promise(res =>
+                            Promise.resolve(result).then(state => this.setState(state, () => this.update(res))),
+                        )
+                    },
                 }),
                 {},
             )
