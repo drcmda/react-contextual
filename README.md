@@ -111,7 +111,7 @@ const up = state => ({ count: state.count + 1 })
 const dn = state => ({ count: state.count - 1 })
 
 const Test = subscribe(store)(
-    props => <button onClick={() => store.actions.setState(up)}>{props.count}</button>,
+    props => <button onClick={() => props.actions.setState(up)}>{props.count}</button>,
 )
 ```
 

@@ -6,11 +6,13 @@
 import { subscribe } from 'react-contextual'
 ```
 
-`subscribe` can be used as a functionwrapper or decorator, it generally works with any context, it is not bound to contextuals store model. A provider can be the following:
+`subscribe` can be used as a functionwrapper or decorator, it generally works with any context, it is not bound to contextuals store model. A provider can one of the following:
 
 1. any React context
 2. any string key of a [registered provider](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext)
-3. a function that returns a context object or key
+3. any function that returns a context object or key
+4. any reference to a moduleContext/namedContext provider
+4. any reference to a store created with createStore
 
 Example 1: Mapping a single context value as a prop. Mapping helps performance. If you only pick the props your component is interested in it will only render when necessary and ignore context changes otherwise.
 
