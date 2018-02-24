@@ -5,22 +5,21 @@ import ProviderContext, { createNamedContext, removeNamedContext } from './conte
 
 export function createStore(data, id = uuid()) {
     const { initialState, actions = { setState: props => props }, ...props } = data
-    const subscriptions = new Set()
     const result = {
-        subscriptions,
+        props,
+        id,
         initialState,
         state: initialState,
         actions,
-        props,
-        id,
+        subscriptions: new Set(),
         context: createNamedContext(id),
         destroy: () => {
             removeNamedContext(id)
-            subscriptions.clear()
+            result.subscriptions.clear()
         },
         subscribe: callback => {
-            subscriptions.add(callback)
-            return () => subscriptions.delete(callback)
+            result.subscriptions.add(callback)
+            return () => result.subscriptions.delete(callback)
         },
         getState: () => result.state,
     }

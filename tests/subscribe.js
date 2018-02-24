@@ -57,3 +57,47 @@ Object.entries({
         )
     }),
 )
+
+test('subscribe([a,b], (a,b) => props)', async () => {
+    const store = { initialState: { count: 0 },  actions: { up: () => state => ({ count: state.count + 1 }) } }
+    const Test = subscribe(['id1', 'id2'], (store1, store2) => ({ store1, store2 }))(props => (
+        <button onClick={() => props.store1.actions.up() && props.store2.actions.up()}>
+            {props.store1.count} {props.store2.count}
+        </button>
+    ))
+    await snapshot(
+        <Provider id="id1" {...store}>
+            <Provider id="id2" {...store}>
+                <Test />
+                <Subscribe
+                    to={['id1', 'id2']}
+                    select={(store1, store2) => ({ store1, store2 })}
+                    children={props => props.store1.count + ' ' + props.store2.count}
+                />
+            </Provider>
+        </Provider>,
+        tree => tree.find('button').simulate('click'),
+    )
+})
+
+test('subscribe([a,b], [a,b])', async () => {
+    const store = { initialState: { count: 0 },  actions: { up: () => state => ({ count: state.count + 1 }) } }
+    const Test = subscribe(['id1', 'id2'], ['store1', 'store2'])(props => (
+        <button onClick={() => props.store1.actions.up() && props.store2.actions.up()}>
+            {props.store1.count} {props.store2.count}
+        </button>
+    ))
+    await snapshot(
+        <Provider id="id1" {...store}>
+            <Provider id="id2" {...store}>
+                <Test />
+                <Subscribe
+                    to={['id1', 'id2']}
+                    select={['store1', 'store2']}
+                    children={props => props.store1.count + ' ' + props.store2.count}
+                />
+            </Provider>
+        </Provider>,
+        tree => tree.find('button').simulate('click'),
+    )
+})
