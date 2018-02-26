@@ -182,12 +182,12 @@ class Theme extends React.PureComponent {
     // ...
 }
 
-@transformContext(ThemeProvider, 'color')
+@transformContext(Theme)
 class Invert extends React.PureComponent {
     // ...
 }
 
-@subscribe(ThemeProvider, 'color')
+@subscribe(Theme)
 class Say extends React.PureComponent {
     // ...
 }
