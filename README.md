@@ -106,12 +106,12 @@ If you do not supply actions [createStore](https://github.com/drcmda/react-conte
 ```jsx
 const store = createStore({ initialState: { count: 0 } })
 
-// Mergers can be outside the store
-const up = state => ({ count: state.count + 1 })
-const dn = state => ({ count: state.count - 1 })
-
 const Test = subscribe(store)(
-    props => <button onClick={() => props.actions.setState(up)}>{props.count}</button>,
+    props => (
+        <button onClick={() => props.actions.setState(state => ({ count: state.count + 1 }))}>
+            {props.count}
+        </button>
+    ),
 )
 ```
 
