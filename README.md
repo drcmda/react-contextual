@@ -78,7 +78,7 @@ class View extends React.PureComponent {
 
 #### External store
 
-Maintain your own store via [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore). It is fully reactive and features a basic subscription model, similar to a redux store.
+If you prefer, maintain your own store via [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore). It is fully reactive and features a basic subscription model, similar to a redux store. You can use it as reference for consumers as well. 
 
 ```jsx
 import { Provider, createStore, subscribe } from 'react-contextual'
