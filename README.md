@@ -101,7 +101,7 @@ const App = () => (
 
 #### Global setState
 
-If you do not supply actions [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) will add setState by default.
+If you do not supply actions [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) will add setState by default. This applies to both createStore and the Provider above.
 
 ```jsx
 const store = createStore({ initialState: { count: 0 } })
