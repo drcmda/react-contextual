@@ -1,7 +1,3 @@
-<p align="center">
-  <img width="500" height="314" src="assets/logo-3d-flat.png">
-</p>
-
 [![Build Status](https://travis-ci.org/drcmda/react-contextual.svg?branch=master)](https://travis-ci.org/drcmda/react-contextual) [![codecov](https://codecov.io/gh/drcmda/react-contextual/branch/master/graph/badge.svg)](https://codecov.io/gh/drcmda/react-contextual) [![npm version](https://badge.fury.io/js/react-contextual.svg)](https://badge.fury.io/js/react-contextual)
 
     npm install react-contextual
