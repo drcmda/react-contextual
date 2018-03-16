@@ -5,7 +5,7 @@
 # Why 🤔
 
 * consume (and create) context with ease, every kind of context, no matter which or whose or how many providers
-* a minimal redux-like store pattern with setState semantics and central actions
+* a cooked down redux-like store pattern with setState semantics and central actions
 
 Click [this link](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md) for a detailed explanation.
 
