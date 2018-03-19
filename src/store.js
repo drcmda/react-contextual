@@ -58,7 +58,7 @@ export class Provider extends React.PureComponent {
                         return new Promise(res =>
                             Promise.resolve(result).then(state => {
                                 // Update store
-                                this.store.state = state
+                                this.store.state = { ...this.store.state, ...state }
                                 // Call subscribers
                                 this.store.subscriptions.forEach(callback => callback(state))
                                 // Update local state
