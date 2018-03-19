@@ -1,7 +1,3 @@
-<p align="center">
-  <img width="500" height="314" src="assets/logo-3d-flat.png">
-</p>
-
 [![Build Status](https://travis-ci.org/drcmda/react-contextual.svg?branch=master)](https://travis-ci.org/drcmda/react-contextual) [![codecov](https://codecov.io/gh/drcmda/react-contextual/branch/master/graph/badge.svg)](https://codecov.io/gh/drcmda/react-contextual) [![npm version](https://badge.fury.io/js/react-contextual.svg)](https://badge.fury.io/js/react-contextual)
 
     npm install react-contextual
@@ -9,7 +5,7 @@
 # Why 🤔
 
 * consume (and create) context with ease, every kind of context, no matter which or whose or how many providers
-* a minimal redux-like store pattern with setState semantics and central actions
+* a cooked down redux-like store pattern with setState semantics and central actions
 
 Click [this link](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md) for a detailed explanation.
 
@@ -78,7 +74,7 @@ class View extends React.PureComponent {
 
 #### External store
 
-Maintain your own store via [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore). It is fully reactive and features a basic subscription model, similar to a redux store.
+If you prefer, maintain your own store via [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore). It is fully reactive and features a basic subscription model, similar to a redux store. You can use it as reference for consumers as well. 
 
 ```jsx
 import { Provider, createStore, subscribe } from 'react-contextual'
@@ -101,7 +97,7 @@ const App = () => (
 
 #### Global setState
 
-If you do not supply actions [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) will add setState by default.
+If you do not supply actions [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) will add setState by default. This applies to both createStore and the Provider above.
 
 ```jsx
 const store = createStore({ initialState: { count: 0 } })
