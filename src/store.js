@@ -40,15 +40,6 @@ export class Provider extends React.PureComponent {
         store: PropTypes.object,
     }
 
-    update = done => {
-        // Update store
-        this.store.state = this.state
-        // Call subscribers
-        this.store.subscriptions.forEach(value => value(this.store.state))
-        // Resolve
-        done()
-    }
-
     constructor(props) {
         super()
         const { store, children, id, actions, initialState, ...rest } = props
@@ -65,7 +56,14 @@ export class Provider extends React.PureComponent {
                         let result = actions[name](...args)
                         if (typeof result === 'function') result = result(this.state)
                         return new Promise(res =>
-                            Promise.resolve(result).then(state => this.setState(state, () => this.update(res))),
+                            Promise.resolve(result).then(state => {
+                                // Update store
+                                this.store.state = state
+                                // Call subscribers
+                                this.store.subscriptions.forEach(callback => callback(state))
+                                // Update local state
+                                this.setState(state, res)
+                            }),
                         )
                     },
                 }),
