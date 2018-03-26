@@ -1,6 +1,6 @@
 {
     "name": "react-contextual",
-    "version": "3.9.3",
+    "version": "3.9.4",
     "description": "store and hoc patterns for react 16s new context model",
     "main": "dist/react-contextual",
     "module": "dist/react-contextual.es",
