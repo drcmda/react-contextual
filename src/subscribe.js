@@ -28,10 +28,10 @@ export function subscribe(...args) {
             }
             contextRefs = toArray(contextRefs).map(context => resolveContext(context, props))
             let values = []
-            return [...contextRefs, Wrapped].reduceRight((accumulator, Context) => (
+            return [...contextRefs, Wrapped].reduceRight((accumulator, Context, i) => (
                 <Context.Consumer>
                     {value => {
-                        values.push(value)
+                        values[i] = value
                         if (accumulator === Wrapped) {
                             let context = mapContextToProps(...values, props)
                             context = typeof context === 'object' ? context : { context }
