@@ -72,28 +72,84 @@ class View extends React.PureComponent {
 }
 ```
 
-#### External store
+#### Default store vs External store
 
-If you prefer, maintain your own store via [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore). It is fully reactive and features a basic subscription model, similar to a redux store. You can use it as reference for consumers as well. 
+If you declare your store as following (without `createStore`) : 
+```jsx
+const store = {
+    initialState: { count: 1 },
+    actions: {
+        up: () => state => ({ count: state.count + 1 }),
+        down: () => state => ({ count: state.count - 1 })
+    }
+})
+```
+and you pass the store properties directly to the provider :
+```jsx
+const App = () => (
+    // here we merge the store properties in the provider :
+    <Provider {...store}>
+    <Subscribe>
+            {props => (
+                <div>
+                    <h1>{props.count}</h1>
+                    <button onClick={props.actions.up}>Up</button>
+                    <button onClick={props.actions.down}>Down</button>
+                </div>
+            )}
+        </Subscribe>
+    </Provider>
+)
+```
+
+then, for convenience, this store becomes the default internal context, and is available by default for all components who subscribe, so there's no need to set the first argument of `subscribe` (or `to` prop for Subscribe component) : 
+```jsx
+// there's no property `to` needed here to access state :
+<Subscribe>
+    {props => (
+        <div>
+            <h1>{props.count}</h1>
+            <button onClick={props.actions.up}>Up</button>
+            <button onClick={props.actions.down}>Down</button>
+        </div>
+    )}
+</Subscribe>
+```
+
+Otherwise, you can declare an (or several) "external" store via [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore). The store created is fully reactive and features a basic subscription model, similar to a redux store. You can use it as reference for consumers as well. 
+
+There are a few differences in the API to provide and consume external stores :
+- the store must be passed to its provider with the `store` property
+- the store must be explicitly set in the subscribe component with the `to` property (or passed as first argument to function `subscribe`)
 
 ```jsx
 import { Provider, createStore, subscribe } from 'react-contextual'
 
+// here we use `createStore` : an external store is created
 const externalStore = createStore({
     initialState: { count: 0 },
-    actions: { up: () => state => ({ count: state.count + 1 }) },
+    actions: {
+        up: () => state => ({ count: state.count + 1 }),
+        down: () => state => ({ count: state.count - 1 })
+    }
 })
 
-const Test = subscribe(externalStore)(
-    props => <button onClick={() => props.actions.up()}>{props.count}</button>,
-)
-
 const App = () => (
-    <Provider store={externalStore}>
-        <Test />
-    </Provider>,
+    <Provider store={store}>
+    <Subscribe to={store}>
+            {props => (
+                <div>
+                    <h1>{props.count}</h1>
+                    <button onClick={props.actions.up}>Up</button>
+                    <button onClick={props.actions.down}>Down</button>
+                </div>
+            )}
+        </Subscribe>
+    </Provider>
 )
 ```
+
+By using `createStore`, you are able to declare several differents stores and use anyone of them in the application with the `store` and `to` properties.
 
 #### Global setState
 
