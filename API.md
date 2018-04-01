@@ -6,7 +6,7 @@
 import { subscribe } from 'react-contextual'
 ```
 
-`subscribe` can be used as a functionwrapper or decorator, it generally works with any context, it is not bound to contextuals store model. A provider can one of the following:
+`subscribe` can be used as a functionwrapper or decorator, it generally works with any context, it is not bound to contextual's store model. A provider can one of the following:
 
 1. any React context
 2. any string key of a [registered provider](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext)
@@ -20,7 +20,7 @@ Example 1: Mapping a single context value as a prop. Mapping helps performance. 
 subscribe(Store, store => ({ theme: store.theme }))(AnyComponent)
 ```
 
-Example 2: mapContextToProps behaves similar to Reduxes mapStateToProps, the components own props can always be used as well.
+Example 2: mapContextToProps behaves similar to Reduxes mapStateToProps. The component's own props can always be used as well.
 
 ```js
 subscribe(UsersContext, (users, props) => ({ user: users[props.id] }))(AnyComponent)
@@ -61,7 +61,7 @@ subscribe(ProviderContext, mapContextToProps)(AnyComponent)
 import { Subscribe } from 'react-contextual'
 ```
 
-The same as the higher-order-component above, but as a component: `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. Mapped context will be passed as a render prop. Just like `subscribe` can skip the first argument and use `react-contextuals` default context, so can `Subscribe` if you omitt the `to` property.
+The same as the higher-order-component above, but as a component: `<Subscribe to={} select={}/>`. The semantics are the same, it can digest one or multiple contexts. Mapped context will be passed as a render prop. Just like `subscribe` can skip the first argument and use `react-contextuals` default context, so can `Subscribe` if you omit the `to` property.
 
 ```
 <Subscribe to={ProviderContext} select={({ state }) => state}>
@@ -75,7 +75,7 @@ The same as the higher-order-component above, but as a component: `<Subscribe to
 import { Provider } from 'react-contextual'
 ```
 
-A small Redux-like store. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. The provider will distribute `{ ...state, actions }` to listening components which either use Reacts API directly or contextuals `subscribe` hoc to consume it. Alternatively you can pass an [external store](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) by the `store` props.
+A small Redux-like store. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. The provider will distribute `{ ...state, actions }` to listening components which either use React's API directly or contextual's `subscribe` hoc to consume it. Alternatively you can pass an [external store](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) by the `store` props.
 
 Actions are made of a collection of functions which return an object that is going to be merged back into the state using regular `setState` semantics.
 
@@ -115,7 +115,7 @@ const externalStore = createStore({
 })
 ```
 
-Creates an external store. It takes an object that needs to provide `initialState` and `actions`. The store is fully reactive, that means you can read out state (`store.getState()`) and call actions (`store.actions.up()`) as well as `store.subscribe(callback)` to it whenever it changes. If you do not pass actions, it will create `actions.setState` with Reacts semantics by default. Note: the store will only be alive once it has been tied to a provider, it won't function on its own.
+Creates an external store. It takes an object that needs to provide `initialState` and `actions`. The store is fully reactive, that means you can read out state (`store.getState()`) and call actions (`store.actions.up()`) as well as `store.subscribe(callback)` to it whenever it changes. If you do not pass actions, it will create `actions.setState` with React's semantics by default. Note: the store will only be alive once it has been tied to a provider, it won't function on its own.
 
 ```jsx
 const remove = externalStore.subscribe(state => console.log(state))
@@ -132,9 +132,9 @@ remove()
 import { namedContext } from 'react-contextual'
 ```
 
-`name` can either be a string, in that case a context will be created under that name and you can refer it as such in `subscribe`. You can also pass a function, for instance `props => props.id`. It has to return a string which will be the name of the created context.
+`name` can either be a string, in which case a context will be created under that name and you can to refer it as such in `subscribe`. You can also pass a function, for instance `props => props.id`. It has to return a string which will be the name of the created context.
 
-The context will be dynamically created when the wrapped component mounts and will be removed once it unmounts. The actual context will be inject as prop (`context`) so it is available for the wrapped component which can now render its Provider.
+The context will be dynamically created when the wrapped component mounts and will be removed once it unmounts. The actual context will be injected as prop (`context`) so it is available for the wrapped component which can now render its Provider.
 
 ```js
 @namedContext(props => props.id)
