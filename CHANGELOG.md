@@ -1,3 +1,7 @@
+## 4.0.0
+
+react-broadcast has been removed. react-contextual is now at the least reliant upon react@16.3.1.
+
 ## 3.8.0
 
 * createStore
