@@ -12,6 +12,7 @@ test('keyed context', async () => {
     )
 })
 
+/*
 test('functional context', async () => {
     const Provider = namedContext(props => props.id)(({ context, children }) => <context.Provider value="1" children={children} />)
     const Test = subscribe(props => props.id, 'count')(props => props.count)
@@ -21,4 +22,4 @@ test('functional context', async () => {
             <Subscribe to="testFunc" select="count" children={props => props.count} />
         </Provider>,
     )
-})
+})*/

@@ -24,7 +24,7 @@ export function resolveContext(context, props, defaultContext = ProviderContext)
     let result
     if (typeof context === 'function') {
         // Test against component-symbol first, then assume a user function
-        result = getNamedContext(context) || resolveContext(context(props), props, defaultContext)
+        result = getNamedContext(context) /*|| resolveContext(context(props), props, defaultContext)*/
     } else if (typeof context === 'string') {
         result = getNamedContext(context)
     } else if (typeof context === 'object') {

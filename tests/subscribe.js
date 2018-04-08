@@ -16,9 +16,9 @@ Object.entries({
     'subscribe(store)': { store, to: store },
     'subscribe(store, context => context)': { store, to: store, select: context => context },
     'subscribe(store, "state")': { store, to: store, select: 'state' },
-    'subscribe(props => props.id)': { id: 'key', to: props => props.id, select: 'state' },
+    /*'subscribe(props => props.id)': { id: 'key', to: props => props.id, select: 'state' },
     'subscribe(props => props.id, store => store)': { id: 'key', to: props => props.id, select: store => store },
-    'subscribe(props => props.id, "state")': { id: 'key', to: props => props.id, select: 'state' },
+    'subscribe(props => props.id, "state")': { id: 'key', to: props => props.id, select: 'state' },*/
 }).forEach(([key, value]) =>
     test(key, async () => {
         let { id, to, select, ...rest } = value

@@ -6,7 +6,7 @@ export default function namedContext(contextName, initialState) {
         class NamedContext extends React.PureComponent {
             constructor(props) {
                 super()
-                this.name = typeof contextName === 'function' ? contextName(props) : contextName
+                this.name = contextName
                 this.state = { context: createNamedContext(this.name, initialState) }
             }
             componentWillUnmount() {
