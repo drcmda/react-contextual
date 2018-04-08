@@ -80,7 +80,7 @@ If you declare your store as an object:
 const store = {
     initialState: { text: 'Hello' },
     actions: { setText: text => ({ text }) }
-})
+}
 ```
 
 and you pass its properties directly to the provider:
@@ -89,12 +89,10 @@ and you pass its properties directly to the provider:
 <Provider {...store}>
 ```
 
-then, for convenience, this store becomes the default internal context, and is available by default to all subscribers. There is no need to set the first argument of `subscribe` (or the `to` prop for the Subscribe component): 
+then, for convenience, this store becomes the default internal context, and is available by default to all subscribers. There is no need to explicitely refer to it when you subscribe to it. 
 
 ```jsx
-<Subscribe>
-    {props => <div>{props.text}</div>}
-</Subscribe>
+<Subscribe>{props => <div>{props.text}</div>}</Subscribe>
 ```
 
 Otherwise, you can declare one (or several) "external" stores via [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore). The store created is fully reactive and features a basic subscription model, similar to a redux store. You can use it as reference for consumers as well. 
