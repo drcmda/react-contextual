@@ -74,82 +74,52 @@ class View extends React.PureComponent {
 
 #### Default store vs External store
 
-If you declare your store as following (without `createStore`) : 
+If you declare your store as an object:
+
 ```jsx
 const store = {
-    initialState: { count: 1 },
-    actions: {
-        up: () => state => ({ count: state.count + 1 }),
-        down: () => state => ({ count: state.count - 1 })
-    }
+    initialState: { text: 'Hello' },
+    actions: { setText: text => ({ text }) }
 })
 ```
-and you pass the store properties directly to the provider :
+
+and you pass its properties directly to the provider:
+
 ```jsx
-const App = () => (
-    // here we merge the store properties in the provider :
-    <Provider {...store}>
-    <Subscribe>
-            {props => (
-                <div>
-                    <h1>{props.count}</h1>
-                    <button onClick={props.actions.up}>Up</button>
-                    <button onClick={props.actions.down}>Down</button>
-                </div>
-            )}
-        </Subscribe>
-    </Provider>
-)
+<Provider {...store}>
 ```
 
-then, for convenience, this store becomes the default internal context, and is available by default for all components who subscribe, so there's no need to set the first argument of `subscribe` (or `to` prop for Subscribe component) : 
+then, for convenience, this store becomes the default internal context, and is available by default to all subscribers. There is no need to set the first argument of `subscribe` (or the `to` prop for the Subscribe component): 
+
 ```jsx
-// there's no property `to` needed here to access state :
 <Subscribe>
-    {props => (
-        <div>
-            <h1>{props.count}</h1>
-            <button onClick={props.actions.up}>Up</button>
-            <button onClick={props.actions.down}>Down</button>
-        </div>
-    )}
+    {props => <div>{props.text}</div>}
 </Subscribe>
 ```
 
-Otherwise, you can declare an (or several) "external" store via [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore). The store created is fully reactive and features a basic subscription model, similar to a redux store. You can use it as reference for consumers as well. 
+Otherwise, you can declare one (or several) "external" stores via [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore). The store created is fully reactive and features a basic subscription model, similar to a redux store. You can use it as reference for consumers as well. 
 
-There are a few differences in the API to provide and consume external stores :
-- the store must be passed to its provider with the `store` property
-- the store must be explicitly set in the subscribe component with the `to` property (or passed as first argument to function `subscribe`)
+There are a few differences in the API:
+
+* the store must be passed to its provider with the `store` property
+* it must be referred to either as first argument in `subscribe` or the `to` prop in `Subscribe`
 
 ```jsx
 import { Provider, createStore, subscribe } from 'react-contextual'
 
-// here we use `createStore` : an external store is created
 const externalStore = createStore({
-    initialState: { count: 0 },
-    actions: {
-        up: () => state => ({ count: state.count + 1 }),
-        down: () => state => ({ count: state.count - 1 })
-    }
+    initialState: { text: 'Hello' },
+    actions: { setText: text => ({ text }) }
 })
 
 const App = () => (
     <Provider store={store}>
-    <Subscribe to={store}>
-            {props => (
-                <div>
-                    <h1>{props.count}</h1>
-                    <button onClick={props.actions.up}>Up</button>
-                    <button onClick={props.actions.down}>Down</button>
-                </div>
-            )}
+        <Subscribe to={store}>
+            {props => <div>{props.text}</div>}
         </Subscribe>
     </Provider>
 )
 ```
-
-By using `createStore`, you are able to declare several differents stores and use anyone of them in the application with the `store` and `to` properties.
 
 #### Global setState
 
