@@ -1,6 +1,6 @@
 # Reacts new context api
 
-The context api has been kept low-level which makes it very powerful and flexible, but at the same time there are a couple of annoyances you could run into if the api is used naively.
+[Reacts new context api](https://reactjs.org/blog/2018/03/29/react-v-16-3.html#official-context-api) has been merged in 16.3.1 and has been kept low-level which makes it very powerful and flexible, but at the same time there are a couple of annoyances you could run into if the api is used naively.
 
 ## Ease of use
 
