@@ -1,5 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`functional context 1`] = `
+<NamedContext
+  id="testFunc"
+>
+  <Component
+    context={
+      Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_changedBits": 0,
+        "_currentRenderer": Object {},
+        "_currentValue": undefined,
+        "_defaultValue": undefined,
+      }
+    }
+    id="testFunc"
+  >
+    <Subscribe
+      select="count"
+      to="testFunc"
+    >
+      <SubscribeWrap>
+        <Component
+          count="1"
+        >
+          1
+        </Component>
+      </SubscribeWrap>
+    </Subscribe>
+  </Component>
+</NamedContext>
+`;
+
 exports[`keyed context 1`] = `
 <NamedContext>
   <Component
