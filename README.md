@@ -74,30 +74,11 @@ class View extends React.PureComponent {
 
 #### Default store vs External store
 
-If you declare your store as an object:
+If you declare your store like above it becomes the default internal context, and is available by default to all subscribers. There is no need to explicitely refer to it when you subscribe to it. 
 
-```jsx
-const store = {
-    initialState: { text: 'Hello' },
-    actions: { setText: text => ({ text }) }
-}
-```
+When you need your store to be "external" so that you can refer to it and/or change its props from anywhere, you can declare it via [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore). This also comes in handy when you need multiple stores.
 
-and you pass its properties directly to the provider:
-
-```jsx
-<Provider {...store}>
-```
-
-then, for convenience, this store becomes the default internal context, and is available by default to all subscribers. There is no need to explicitely refer to it when you subscribe to it. 
-
-```jsx
-<Subscribe>{props => <div>{props.text}</div>}</Subscribe>
-```
-
-Otherwise, you can declare one (or several) "external" stores via [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore). The store created is fully reactive and features a basic subscription model, similar to a redux store. You can use it as reference for consumers as well. 
-
-There are a few differences in the API:
+There are a few key differences:
 
 * the store must be passed to its provider with the `store` property
 * it must be referred to either as first argument in `subscribe` or the `to` prop in `Subscribe`
