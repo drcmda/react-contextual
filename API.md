@@ -132,12 +132,12 @@ remove()
 import { namedContext } from 'react-contextual'
 ```
 
-`name` must be a string, in which case a context will be created under that name and you can to refer it as such in `subscribe`. 
+`name` can either be a string, in which case a context will be created under that name and you can to refer it as such in `subscribe`. You can also pass a function, for instance `props => props.id`. It has to return a string which will be the name of the created context.
 
 The context will be dynamically created when the wrapped component mounts and will be removed once it unmounts. The actual context will be injected as prop (`context`) so it is available for the wrapped component which can now render its Provider.
 
 ```js
-@namedContext("main-theme")
+@namedContext(props => props.id)
 class Theme extends React.PureComponent {
     render() {
         const { context: Context, children } = this.props
@@ -145,16 +145,9 @@ class Theme extends React.PureComponent {
     }
 }
 
-@subscribe("main-theme", theme => ({ theme }))
-class Header extends React.PureComponent {
-    render() {
-        return <h1 style={{ color: theme }}>hello</h1>
-    }
-}
-
 ReactDOM.render((
-    <Theme>
-        <Header />
+    <Theme id="main-theme">
+        <Subscribe to="main-theme" select="color">{props => props.color}</Subscribe>
     </Theme>,
     document.getElementById('root')
 )
