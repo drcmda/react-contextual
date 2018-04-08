@@ -1,5 +1,5 @@
 import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import Adapter from './jest.react.16.adapter'
 import delay from 'delay'
 
 Enzyme.configure({ adapter: new Adapter() })

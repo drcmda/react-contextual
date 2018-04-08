@@ -5,42 +5,39 @@ exports[`renders properly 1`] = `
   <Component
     context={
       Object {
-        "Consumer": [Function],
-        "Provider": [Function],
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_changedBits": 0,
+        "_currentRenderer": Object {},
+        "_currentValue": undefined,
+        "_defaultValue": undefined,
       }
     }
   >
-    <Provider
-      value="1"
+    <SubscribeWrap>
+      <Component
+        count="1"
+      >
+        1
+      </Component>
+    </SubscribeWrap>
+    <Subscribe
+      select="count"
+      to={[Function]}
     >
       <SubscribeWrap>
-        <Consumer
-          quiet={false}
+        <Component
+          count="1"
         >
-          <Component
-            count="1"
-          >
-            1
-          </Component>
-        </Consumer>
+          1
+        </Component>
       </SubscribeWrap>
-      <Subscribe
-        select="count"
-        to={[Function]}
-      >
-        <SubscribeWrap>
-          <Consumer
-            quiet={false}
-          >
-            <Component
-              count="1"
-            >
-              1
-            </Component>
-          </Consumer>
-        </SubscribeWrap>
-      </Subscribe>
-    </Provider>
+    </Subscribe>
   </Component>
 </ModuleContext>
 `;
@@ -50,42 +47,39 @@ exports[`unnamed context 1`] = `
   <Component
     context={
       Object {
-        "Consumer": [Function],
-        "Provider": [Function],
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_changedBits": 0,
+        "_currentRenderer": Object {},
+        "_currentValue": undefined,
+        "_defaultValue": undefined,
       }
     }
   >
-    <Provider
-      value="1"
+    <SubscribeWrap>
+      <Component
+        context="1"
+      >
+        1
+      </Component>
+    </SubscribeWrap>
+    <Subscribe
+      select={[Function]}
+      to={[Function]}
     >
       <SubscribeWrap>
-        <Consumer
-          quiet={false}
+        <Component
+          context="1"
         >
-          <Component
-            context="1"
-          >
-            1
-          </Component>
-        </Consumer>
+          1
+        </Component>
       </SubscribeWrap>
-      <Subscribe
-        select={[Function]}
-        to={[Function]}
-      >
-        <SubscribeWrap>
-          <Consumer
-            quiet={false}
-          >
-            <Component
-              context="1"
-            >
-              1
-            </Component>
-          </Consumer>
-        </SubscribeWrap>
-      </Subscribe>
-    </Provider>
+    </Subscribe>
   </Component>
 </ModuleContext>
 `;

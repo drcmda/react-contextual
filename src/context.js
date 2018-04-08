@@ -1,6 +1,6 @@
 import React from 'react'
 
-const createContext = React.createContext ? React.createContext : require('react-broadcast').createContext
+const createContext = React.createContext
 const providers = new Map()
 const ProviderContext = createContext()
 

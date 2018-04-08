@@ -11,8 +11,17 @@ exports[`renders correctly 1`] = `
   <_class
     context={
       Object {
-        "Consumer": [Function],
-        "Provider": [Function],
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_changedBits": 0,
+        "_currentRenderer": Object {},
+        "_currentValue": undefined,
+        "_defaultValue": undefined,
       }
     }
     style={
@@ -21,26 +30,69 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <Provider
-      value={
+    <SubscribeWrap
+      text="is"
+    >
+      <_class3
+        text="is"
+        theme={
+          Object {
+            "backgroundColor": "pink",
+            "color": "red",
+          }
+        }
+      >
+        <span
+          style={
+            Object {
+              "backgroundColor": "pink",
+              "color": "red",
+              "padding": 10,
+            }
+          }
+        >
+          is
+        </span>
+      </_class3>
+    </SubscribeWrap>
+    <ModuleContext
+      style={
         Object {
-          "backgroundColor": "pink",
-          "color": "red",
+          "color": "green",
         }
       }
     >
-      <SubscribeWrap
-        text="is"
+      <_class
+        context={
+          Object {
+            "$$typeof": Symbol(react.context),
+            "Consumer": [Circular],
+            "Provider": Object {
+              "$$typeof": Symbol(react.provider),
+              "_context": [Circular],
+            },
+            "_calculateChangedBits": null,
+            "_changedBits": 0,
+            "_currentRenderer": Object {},
+            "_currentValue": undefined,
+            "_defaultValue": undefined,
+          }
+        }
+        style={
+          Object {
+            "color": "green",
+          }
+        }
       >
-        <Consumer
-          quiet={false}
+        <SubscribeWrap
+          text="it"
         >
           <_class3
-            text="is"
+            text="it"
             theme={
               Object {
                 "backgroundColor": "pink",
-                "color": "red",
+                "color": "green",
               }
             }
           >
@@ -48,213 +100,137 @@ exports[`renders correctly 1`] = `
               style={
                 Object {
                   "backgroundColor": "pink",
-                  "color": "red",
+                  "color": "green",
                   "padding": 10,
                 }
               }
             >
-              is
+              it
             </span>
           </_class3>
-        </Consumer>
-      </SubscribeWrap>
-      <ModuleContext
-        style={
-          Object {
-            "color": "green",
-          }
-        }
-      >
-        <_class
-          context={
-            Object {
-              "Consumer": [Function],
-              "Provider": [Function],
-            }
-          }
-          style={
-            Object {
-              "color": "green",
-            }
-          }
-        >
-          <Provider
-            value={
+        </SubscribeWrap>
+        <SubscribeWrap>
+          <TransformContext
+            theme={
               Object {
                 "backgroundColor": "pink",
                 "color": "green",
               }
             }
           >
-            <SubscribeWrap
-              text="it"
+            <_class2
+              context={
+                Object {
+                  "$$typeof": Symbol(react.context),
+                  "Consumer": [Circular],
+                  "Provider": Object {
+                    "$$typeof": Symbol(react.provider),
+                    "_context": [Circular],
+                  },
+                  "_calculateChangedBits": null,
+                  "_changedBits": 0,
+                  "_currentRenderer": Object {},
+                  "_currentValue": undefined,
+                  "_defaultValue": undefined,
+                }
+              }
+              theme={
+                Object {
+                  "backgroundColor": "pink",
+                  "color": "green",
+                }
+              }
             >
-              <Consumer
-                quiet={false}
+              <SubscribeWrap
+                text="friday"
               >
                 <_class3
-                  text="it"
+                  text="friday"
                   theme={
                     Object {
-                      "backgroundColor": "pink",
-                      "color": "green",
+                      "backgroundColor": "rgb(0, 63, 52)",
+                      "color": "rgb(255, 127, 255)",
                     }
                   }
                 >
                   <span
                     style={
                       Object {
-                        "backgroundColor": "pink",
-                        "color": "green",
+                        "backgroundColor": "rgb(0, 63, 52)",
+                        "color": "rgb(255, 127, 255)",
                         "padding": 10,
                       }
                     }
                   >
-                    it
+                    friday
                   </span>
                 </_class3>
-              </Consumer>
-            </SubscribeWrap>
-            <SubscribeWrap>
-              <Consumer
-                quiet={false}
-              >
+              </SubscribeWrap>
+              <SubscribeWrap>
                 <TransformContext
                   theme={
                     Object {
-                      "backgroundColor": "pink",
-                      "color": "green",
+                      "backgroundColor": "rgb(0, 63, 52)",
+                      "color": "rgb(255, 127, 255)",
                     }
                   }
                 >
                   <_class2
                     context={
                       Object {
-                        "Consumer": [Function],
-                        "Provider": [Function],
+                        "$$typeof": Symbol(react.context),
+                        "Consumer": [Circular],
+                        "Provider": Object {
+                          "$$typeof": Symbol(react.provider),
+                          "_context": [Circular],
+                        },
+                        "_calculateChangedBits": null,
+                        "_changedBits": 0,
+                        "_currentRenderer": Object {},
+                        "_currentValue": undefined,
+                        "_defaultValue": undefined,
                       }
                     }
                     theme={
                       Object {
-                        "backgroundColor": "pink",
-                        "color": "green",
+                        "backgroundColor": "rgb(0, 63, 52)",
+                        "color": "rgb(255, 127, 255)",
                       }
                     }
                   >
-                    <Provider
-                      value={
-                        Object {
-                          "backgroundColor": "rgb(0, 63, 52)",
-                          "color": "rgb(255, 127, 255)",
-                        }
-                      }
+                    <SubscribeWrap
+                      text="yet"
                     >
-                      <SubscribeWrap
-                        text="friday"
+                      <_class3
+                        text="yet"
+                        theme={
+                          Object {
+                            "backgroundColor": "rgb(255, 192, 203)",
+                            "color": "rgb(0, 128, 0)",
+                          }
+                        }
                       >
-                        <Consumer
-                          quiet={false}
-                        >
-                          <_class3
-                            text="friday"
-                            theme={
-                              Object {
-                                "backgroundColor": "rgb(0, 63, 52)",
-                                "color": "rgb(255, 127, 255)",
-                              }
+                        <span
+                          style={
+                            Object {
+                              "backgroundColor": "rgb(255, 192, 203)",
+                              "color": "rgb(0, 128, 0)",
+                              "padding": 10,
                             }
-                          >
-                            <span
-                              style={
-                                Object {
-                                  "backgroundColor": "rgb(0, 63, 52)",
-                                  "color": "rgb(255, 127, 255)",
-                                  "padding": 10,
-                                }
-                              }
-                            >
-                              friday
-                            </span>
-                          </_class3>
-                        </Consumer>
-                      </SubscribeWrap>
-                      <SubscribeWrap>
-                        <Consumer
-                          quiet={false}
+                          }
                         >
-                          <TransformContext
-                            theme={
-                              Object {
-                                "backgroundColor": "rgb(0, 63, 52)",
-                                "color": "rgb(255, 127, 255)",
-                              }
-                            }
-                          >
-                            <_class2
-                              context={
-                                Object {
-                                  "Consumer": [Function],
-                                  "Provider": [Function],
-                                }
-                              }
-                              theme={
-                                Object {
-                                  "backgroundColor": "rgb(0, 63, 52)",
-                                  "color": "rgb(255, 127, 255)",
-                                }
-                              }
-                            >
-                              <Provider
-                                value={
-                                  Object {
-                                    "backgroundColor": "rgb(255, 192, 203)",
-                                    "color": "rgb(0, 128, 0)",
-                                  }
-                                }
-                              >
-                                <SubscribeWrap
-                                  text="yet"
-                                >
-                                  <Consumer
-                                    quiet={false}
-                                  >
-                                    <_class3
-                                      text="yet"
-                                      theme={
-                                        Object {
-                                          "backgroundColor": "rgb(255, 192, 203)",
-                                          "color": "rgb(0, 128, 0)",
-                                        }
-                                      }
-                                    >
-                                      <span
-                                        style={
-                                          Object {
-                                            "backgroundColor": "rgb(255, 192, 203)",
-                                            "color": "rgb(0, 128, 0)",
-                                            "padding": 10,
-                                          }
-                                        }
-                                      >
-                                        yet
-                                      </span>
-                                    </_class3>
-                                  </Consumer>
-                                </SubscribeWrap>
-                              </Provider>
-                            </_class2>
-                          </TransformContext>
-                        </Consumer>
-                      </SubscribeWrap>
-                    </Provider>
+                          yet
+                        </span>
+                      </_class3>
+                    </SubscribeWrap>
                   </_class2>
                 </TransformContext>
-              </Consumer>
-            </SubscribeWrap>
-          </Provider>
-        </_class>
-      </ModuleContext>
-    </Provider>
+              </SubscribeWrap>
+            </_class2>
+          </TransformContext>
+        </SubscribeWrap>
+      </_class>
+    </ModuleContext>
   </_class>
 </ModuleContext>
 `;

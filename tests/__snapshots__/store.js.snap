@@ -16,45 +16,27 @@ exports[`async action 1`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "async": [Function],
-          "functional": [Function],
-          "simple": [Function],
-        },
-        "count": 0,
-        "extra": 100,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        actions={
+          Object {
+            "async": [Function],
+            "functional": [Function],
+            "simple": [Function],
+          }
+        }
+        count={0}
+        extra={100}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            actions={
-              Object {
-                "async": [Function],
-                "functional": [Function],
-                "simple": [Function],
-              }
-            }
-            count={0}
-            extra={100}
-          >
-            <button
-              onClick={[Function]}
-            >
-              0
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          0
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -74,45 +56,27 @@ exports[`async action 2`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "async": [Function],
-          "functional": [Function],
-          "simple": [Function],
-        },
-        "count": 1,
-        "extra": 100,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        actions={
+          Object {
+            "async": [Function],
+            "functional": [Function],
+            "simple": [Function],
+          }
+        }
+        count={1}
+        extra={100}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            actions={
-              Object {
-                "async": [Function],
-                "functional": [Function],
-                "simple": [Function],
-              }
-            }
-            count={1}
-            extra={100}
-          >
-            <button
-              onClick={[Function]}
-            >
-              1
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          1
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -132,46 +96,28 @@ exports[`await actions & access state 1`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "async": [Function],
-          "functional": [Function],
-          "simple": [Function],
-        },
-        "count": 0,
-        "extra": 100,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
-        >
-          <_class2
-            actions={
-              Object {
-                "async": [Function],
-                "functional": [Function],
-                "simple": [Function],
-              }
-            }
-            count={0}
-            extra={100}
-          >
-            <div>
-              0
-              <button
-                onClick={[Function]}
-              />
-            </div>
-          </_class2>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+  <RenderPure>
+    <SubscribeWrap>
+      <_class2
+        actions={
+          Object {
+            "async": [Function],
+            "functional": [Function],
+            "simple": [Function],
+          }
+        }
+        count={0}
+        extra={100}
+      >
+        <div>
+          0
+          <button
+            onClick={[Function]}
+          />
+        </div>
+      </_class2>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -191,46 +137,28 @@ exports[`await actions & access state 2`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "async": [Function],
-          "functional": [Function],
-          "simple": [Function],
-        },
-        "count": 4,
-        "extra": 100,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
-        >
-          <_class2
-            actions={
-              Object {
-                "async": [Function],
-                "functional": [Function],
-                "simple": [Function],
-              }
-            }
-            count={4}
-            extra={100}
-          >
-            <div>
-              4
-              <button
-                onClick={[Function]}
-              />
-            </div>
-          </_class2>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+  <RenderPure>
+    <SubscribeWrap>
+      <_class2
+        actions={
+          Object {
+            "async": [Function],
+            "functional": [Function],
+            "simple": [Function],
+          }
+        }
+        count={4}
+        extra={100}
+      >
+        <div>
+          4
+          <button
+            onClick={[Function]}
+          />
+        </div>
+      </_class2>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -244,8 +172,17 @@ exports[`external store 1`] = `
         "simple": [Function],
       },
       "context": Object {
-        "Consumer": [Function],
-        "Provider": [Function],
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_changedBits": 0,
+        "_currentRenderer": Object {},
+        "_currentValue": undefined,
+        "_defaultValue": undefined,
       },
       "destroy": [Function],
       "getState": [Function],
@@ -264,37 +201,19 @@ exports[`external store 1`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "async": [Function],
-          "functional": [Function],
-          "simple": [Function],
-        },
-        "count": 0,
-        "extra": 100,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        count={0}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            count={0}
-          >
-            <button
-              onClick={[Function]}
-            >
-              0
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          0
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -308,8 +227,17 @@ exports[`external store 2`] = `
         "simple": [Function],
       },
       "context": Object {
-        "Consumer": [Function],
-        "Provider": [Function],
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_changedBits": 0,
+        "_currentRenderer": Object {},
+        "_currentValue": undefined,
+        "_defaultValue": undefined,
       },
       "destroy": [Function],
       "getState": [Function],
@@ -328,37 +256,19 @@ exports[`external store 2`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "async": [Function],
-          "functional": [Function],
-          "simple": [Function],
-        },
-        "count": 2,
-        "extra": 100,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        count={2}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            count={2}
-          >
-            <button
-              onClick={[Function]}
-            >
-              2
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          2
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -370,8 +280,17 @@ exports[`external store, setState 1`] = `
         "setState": [Function],
       },
       "context": Object {
-        "Consumer": [Function],
-        "Provider": [Function],
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_changedBits": 0,
+        "_currentRenderer": Object {},
+        "_currentValue": undefined,
+        "_defaultValue": undefined,
       },
       "destroy": [Function],
       "getState": [Function],
@@ -388,39 +307,24 @@ exports[`external store, setState 1`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "setState": [Function],
-        },
-        "count": 0,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        actions={
+          Object {
+            "setState": [Function],
+          }
+        }
+        count={0}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            actions={
-              Object {
-                "setState": [Function],
-              }
-            }
-            count={0}
-          >
-            <button
-              onClick={[Function]}
-            >
-              0
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          0
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -432,8 +336,17 @@ exports[`external store, setState 2`] = `
         "setState": [Function],
       },
       "context": Object {
-        "Consumer": [Function],
-        "Provider": [Function],
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_changedBits": 0,
+        "_currentRenderer": Object {},
+        "_currentValue": undefined,
+        "_defaultValue": undefined,
       },
       "destroy": [Function],
       "getState": [Function],
@@ -450,39 +363,24 @@ exports[`external store, setState 2`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "setState": [Function],
-        },
-        "count": 1,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        actions={
+          Object {
+            "setState": [Function],
+          }
+        }
+        count={1}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            actions={
-              Object {
-                "setState": [Function],
-              }
-            }
-            count={1}
-          >
-            <button
-              onClick={[Function]}
-            >
-              1
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          1
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -502,98 +400,73 @@ exports[`extras 1`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "async": [Function],
-          "functional": [Function],
-          "simple": [Function],
-        },
-        "count": 0,
-        "extra": 100,
-      }
-    }
-  >
-    <RenderPure>
-      <Provider
-        store={
-          Object {
-            "actions": Object {
-              "setState": [Function],
+  <RenderPure>
+    <Provider
+      store={
+        Object {
+          "actions": Object {
+            "setState": [Function],
+          },
+          "context": Object {
+            "$$typeof": Symbol(react.context),
+            "Consumer": [Circular],
+            "Provider": Object {
+              "$$typeof": Symbol(react.provider),
+              "_context": [Circular],
             },
-            "context": Object {
-              "Consumer": [Function],
-              "Provider": [Function],
-            },
-            "destroy": [Function],
-            "getState": [Function],
-            "id": "externalTest3",
-            "initialState": Object {
-              "count": 5,
-            },
-            "props": Object {
-              "extra": 1000,
-            },
-            "state": Object {
-              "count": 5,
-            },
-            "subscribe": [Function],
-            "subscriptions": Set {},
-          }
+            "_calculateChangedBits": null,
+            "_changedBits": 0,
+            "_currentRenderer": Object {},
+            "_currentValue": undefined,
+            "_defaultValue": undefined,
+          },
+          "destroy": [Function],
+          "getState": [Function],
+          "id": "externalTest3",
+          "initialState": Object {
+            "count": 5,
+          },
+          "props": Object {
+            "extra": 1000,
+          },
+          "state": Object {
+            "count": 5,
+          },
+          "subscribe": [Function],
+          "subscriptions": Set {},
         }
-      >
-        <Provider
-          value={
-            Object {
-              "actions": Object {
-                "setState": [Function],
-              },
-              "count": 5,
-              "extra": 1000,
+      }
+    >
+      <RenderPure>
+        <SubscribeWrap>
+          <Component
+            a={
+              Object {
+                "actions": Object {
+                  "async": [Function],
+                  "functional": [Function],
+                  "simple": [Function],
+                },
+                "count": 0,
+                "extra": 100,
+              }
             }
-          }
-        >
-          <RenderPure>
-            <SubscribeWrap>
-              <Consumer
-                quiet={false}
-              >
-                <Consumer
-                  quiet={false}
-                >
-                  <Component
-                    a={
-                      Object {
-                        "actions": Object {
-                          "async": [Function],
-                          "functional": [Function],
-                          "simple": [Function],
-                        },
-                        "count": 0,
-                        "extra": 100,
-                      }
-                    }
-                    b={
-                      Object {
-                        "actions": Object {
-                          "setState": [Function],
-                        },
-                        "count": 5,
-                        "extra": 1000,
-                      }
-                    }
-                  >
-                    1105
-                  </Component>
-                </Consumer>
-              </Consumer>
-            </SubscribeWrap>
-          </RenderPure>
-        </Provider>
-      </Provider>
-    </RenderPure>
-  </Provider>
+            b={
+              Object {
+                "actions": Object {
+                  "setState": [Function],
+                },
+                "count": 5,
+                "extra": 1000,
+              }
+            }
+          >
+            1105
+          </Component>
+        </SubscribeWrap>
+      </RenderPure>
+    </Provider>
+  </RenderPure>
 </Provider>
 `;
 
@@ -613,45 +486,27 @@ exports[`functional action 1`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "async": [Function],
-          "functional": [Function],
-          "simple": [Function],
-        },
-        "count": 0,
-        "extra": 100,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        actions={
+          Object {
+            "async": [Function],
+            "functional": [Function],
+            "simple": [Function],
+          }
+        }
+        count={0}
+        extra={100}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            actions={
-              Object {
-                "async": [Function],
-                "functional": [Function],
-                "simple": [Function],
-              }
-            }
-            count={0}
-            extra={100}
-          >
-            <button
-              onClick={[Function]}
-            >
-              0
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          0
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -671,45 +526,27 @@ exports[`functional action 2`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "async": [Function],
-          "functional": [Function],
-          "simple": [Function],
-        },
-        "count": 1,
-        "extra": 100,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        actions={
+          Object {
+            "async": [Function],
+            "functional": [Function],
+            "simple": [Function],
+          }
+        }
+        count={1}
+        extra={100}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            actions={
-              Object {
-                "async": [Function],
-                "functional": [Function],
-                "simple": [Function],
-              }
-            }
-            count={1}
-            extra={100}
-          >
-            <button
-              onClick={[Function]}
-            >
-              1
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          1
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -724,27 +561,15 @@ exports[`no actions 1`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "count": 0,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
-        >
-          <Component
-            count={0}
-          >
-            0
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        count={0}
+      >
+        0
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -756,39 +581,24 @@ exports[`no actions, setState 1`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "setState": [Function],
-        },
-        "count": 0,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        actions={
+          Object {
+            "setState": [Function],
+          }
+        }
+        count={0}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            actions={
-              Object {
-                "setState": [Function],
-              }
-            }
-            count={0}
-          >
-            <button
-              onClick={[Function]}
-            >
-              0
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          0
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -800,39 +610,24 @@ exports[`no actions, setState 2`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "setState": [Function],
-        },
-        "count": 1,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        actions={
+          Object {
+            "setState": [Function],
+          }
+        }
+        count={1}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            actions={
-              Object {
-                "setState": [Function],
-              }
-            }
-            count={1}
-          >
-            <button
-              onClick={[Function]}
-            >
-              1
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          1
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -844,35 +639,20 @@ exports[`renders properly 1`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "setState": [Function],
-        },
-        "count": 0,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
-        >
-          <Component
-            actions={
-              Object {
-                "setState": [Function],
-              }
-            }
-            count={0}
-          >
-            0
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        actions={
+          Object {
+            "setState": [Function],
+          }
+        }
+        count={0}
+      >
+        0
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -892,45 +672,27 @@ exports[`simple action 1`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "async": [Function],
-          "functional": [Function],
-          "simple": [Function],
-        },
-        "count": 0,
-        "extra": 100,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        actions={
+          Object {
+            "async": [Function],
+            "functional": [Function],
+            "simple": [Function],
+          }
+        }
+        count={0}
+        extra={100}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            actions={
-              Object {
-                "async": [Function],
-                "functional": [Function],
-                "simple": [Function],
-              }
-            }
-            count={0}
-            extra={100}
-          >
-            <button
-              onClick={[Function]}
-            >
-              0
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          0
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
 
@@ -950,44 +712,26 @@ exports[`simple action 2`] = `
     }
   }
 >
-  <Provider
-    value={
-      Object {
-        "actions": Object {
-          "async": [Function],
-          "functional": [Function],
-          "simple": [Function],
-        },
-        "count": 1,
-        "extra": 100,
-      }
-    }
-  >
-    <RenderPure>
-      <SubscribeWrap>
-        <Consumer
-          quiet={false}
+  <RenderPure>
+    <SubscribeWrap>
+      <Component
+        actions={
+          Object {
+            "async": [Function],
+            "functional": [Function],
+            "simple": [Function],
+          }
+        }
+        count={1}
+        extra={100}
+      >
+        <button
+          onClick={[Function]}
         >
-          <Component
-            actions={
-              Object {
-                "async": [Function],
-                "functional": [Function],
-                "simple": [Function],
-              }
-            }
-            count={1}
-            extra={100}
-          >
-            <button
-              onClick={[Function]}
-            >
-              1
-            </button>
-          </Component>
-        </Consumer>
-      </SubscribeWrap>
-    </RenderPure>
-  </Provider>
+          1
+        </button>
+      </Component>
+    </SubscribeWrap>
+  </RenderPure>
 </Provider>
 `;
