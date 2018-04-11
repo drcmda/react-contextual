@@ -35,7 +35,6 @@ export function subscribe(...args) {
                         if (accumulator === Wrapped) {
                             let context = mapContextToProps(...values, props)
                             context = typeof context === 'object' ? context : { context }
-                            values = []
                             return <Wrapped {...props} {...context} />
                         } else return accumulator
                     }}
