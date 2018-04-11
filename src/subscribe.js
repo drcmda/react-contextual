@@ -3,21 +3,6 @@ import PropTypes from 'prop-types'
 import ProviderContext, { getNamedContext, resolveContext } from './context'
 
 const toArray = obj => (Array.isArray(obj) ? obj : [obj])
-const reduce = (array, View, values, props, mapContextToProps, index = 0) => {
-    const Context = array[0]
-    return (
-        <Context.Consumer>
-            {value => {
-                values[index] = value
-                if (array.length === 1) {
-                    let context = mapContextToProps(...values, props)
-                    context = typeof context === 'object' ? context : { context }
-                    return <View {...props} {...context} />
-                } else return reduce(array.slice(1), View, values, props, mapContextToProps, index + 1)
-            }}
-        </Context.Consumer>
-    )
-}
 
 export function subscribe(...args) {
     return Wrapped =>
@@ -41,8 +26,15 @@ export function subscribe(...args) {
                 mapContextToProps = (...args) => toArray(values).reduce((acc, key, index) => ({ ...acc, [key]: args[index] }), {})
             }
             contextRefs = toArray(contextRefs).map(context => resolveContext(context, props))
-            let values = []
-            return reduce(contextRefs, Wrapped, values, props, mapContextToProps)
+
+            const reducer = (acc, component) => (...propsList) =>
+                React.createElement(component.Consumer, { children: props => acc(...propsList.concat(props)) })
+
+            return contextRefs.reduceRight(reducer, (...values) => {
+                let context = mapContextToProps(...values, props)
+                context = typeof context === 'object' ? context : { context }
+                return <Wrapped {...props} {...context} />
+            })()
         }
 }
 
