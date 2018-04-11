@@ -39,7 +39,7 @@ const App = () => (
                 </div>
             )}
         </Subscribe>
-    </Provider>,
+    </Provider>
 )
 ```
 
@@ -59,7 +59,7 @@ const View = subscribe()(props => (
 const App = () => (
     <Provider {...store}>
         <View />
-    </Provider>,
+    </Provider>
 )
 ```
 
@@ -171,7 +171,7 @@ const App = () => (
         <Invert>
             <Write text="world" />
         </Invert>
-    </Theme>,
+    </Theme>
 )
 ```
 
