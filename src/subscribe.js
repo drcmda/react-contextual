@@ -2,7 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ProviderContext, { getNamedContext, resolveContext } from './context'
 
-const toArray = obj => Array.isArray(obj) ? obj : [obj]
+const toArray = obj => (Array.isArray(obj) ? obj : [obj])
+const reduce = (array, View, values, props, mapContextToProps, index = 0) => {
+    const Context = array[0]
+    return (
+        <Context.Consumer>
+            {value => {
+                values[index] = value
+                if (array.length === 1) {
+                    let context = mapContextToProps(...values, props)
+                    context = typeof context === 'object' ? context : { context }
+                    return <View {...props} {...context} />
+                } else return reduce(array.slice(1), View, values, props, mapContextToProps, index + 1)
+            }}
+        </Context.Consumer>
+    )
+}
 
 export function subscribe(...args) {
     return Wrapped =>
@@ -23,23 +38,11 @@ export function subscribe(...args) {
             if (typeof mapContextToProps !== 'function') {
                 // 'theme' or ['theme', 'user', 'language']
                 const values = mapContextToProps
-                mapContextToProps = (...args) =>
-                    toArray(values).reduce((acc, key, index) => ({ ...acc, [key]: args[index] }), {})
+                mapContextToProps = (...args) => toArray(values).reduce((acc, key, index) => ({ ...acc, [key]: args[index] }), {})
             }
             contextRefs = toArray(contextRefs).map(context => resolveContext(context, props))
             let values = []
-            return [...contextRefs, Wrapped].reduceRight((accumulator, Context, i) => (
-                <Context.Consumer>
-                    {value => {
-                        values[i] = value
-                        if (accumulator === Wrapped) {
-                            let context = mapContextToProps(...values, props)
-                            context = typeof context === 'object' ? context : { context }
-                            return <Wrapped {...props} {...context} />
-                        } else return accumulator
-                    }}
-                </Context.Consumer>
-            ))
+            return reduce(contextRefs, Wrapped, values, props, mapContextToProps)
         }
 }
 
