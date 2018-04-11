@@ -26,15 +26,14 @@ export function subscribe(...args) {
                 mapContextToProps = (...args) => toArray(values).reduce((acc, key, index) => ({ ...acc, [key]: args[index] }), {})
             }
             contextRefs = toArray(contextRefs).map(context => resolveContext(context, props))
-
-            const reducer = (acc, component) => (...propsList) =>
-                React.createElement(component.Consumer, { children: props => acc(...propsList.concat(props)) })
-
-            return contextRefs.reduceRight(reducer, (...values) => {
-                let context = mapContextToProps(...values, props)
-                context = typeof context === 'object' ? context : { context }
-                return <Wrapped {...props} {...context} />
-            })()
+            return contextRefs.reduceRight(
+                (inner, ctx) => (...args) => <ctx.Consumer>{value => inner(...args, value)}</ctx.Consumer>,
+                (...values) => {
+                    let context = mapContextToProps(...values, props)
+                    context = typeof context === 'object' ? context : { context }
+                    return <Wrapped {...props} {...context} />
+                },
+            )()
         }
 }
 
