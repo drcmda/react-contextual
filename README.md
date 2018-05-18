@@ -136,7 +136,7 @@ subscribe([Theme, Store], ['theme', 'store'])
 
 # If you like to provide context 🚀
 
-<b>Examples</b>: [Global context](https://codesandbox.io/embed/v8pn13nq77) | [Transforms](https://codesandbox.io/embed/mjv84k1kn9) | [Unique context](https://codesandbox.io/embed/ox405qqopy) | [Imperative context](https://codesandbox.io/embed/30ql1rxzlq) | [Generic React Context](https://codesandbox.io/embed/55wp11lv4)
+<b>Examples</b>: [Global context](https://codesandbox.io/embed/v8pn13nq77) | [Transforms](https://codesandbox.io/embed/mjv84k1kn9) | [Unique context](https://codesandbox.io/embed/ox405qqopy) | [Generic React Context](https://codesandbox.io/embed/55wp11lv4)
 
 Contextual isn't limited to reading context and store patterns, it also helps you to create and share providers.
 

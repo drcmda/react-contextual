@@ -67,10 +67,16 @@ export class Subscribe extends React.PureComponent {
     children: PropTypes.func.isRequired,
   }
   static defaultProps = { to: ProviderContext, select: props => props }
+
   render() {
-    const { to, select, children, ...rest } = this.props
+    const { to, select, children, render, ...rest } = this.props
     return React.createElement(
-      subscribe(to, select)(props => children(props)),
+      subscribe(to, select)(
+        props =>
+          render
+            ? render({ ...props, ...rest, children })
+            : children({ ...props, ...rest })
+      ),
       rest
     )
   }
