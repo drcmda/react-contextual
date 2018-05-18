@@ -13,7 +13,7 @@ Click [this link](https://github.com/drcmda/react-contextual/blob/master/PITFALL
 
 <b>Examples</b>: [Counter](https://codesandbox.io/embed/3vo9164z25) | [Global setState](https://codesandbox.io/embed/01l8z634qn) | [Async actions](https://codesandbox.io/embed/lxly45lvkl) | [Memoization/Reselect](https://codesandbox.io/embed/yvx9my007z) | [Multiple stores](https://codesandbox.io/embed/0o8pj1jz7v) | [External store](https://codesandbox.io/embed/jzwv46729y)
 
-Use [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md#provider) to distribute state and actions. Connect components either by using a [HOC](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) or [render-props](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component).
+Pass a `store` (which stores some state and actions to update the state) to [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md#provider). Then receive the props in the store either by using a [HOC](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe) or [render-props](https://github.com/drcmda/react-contextual/blob/master/API.md#subscribe-as-a-component).
 
 #### Render props
 
@@ -21,11 +21,9 @@ Use [Provider](https://github.com/drcmda/react-contextual/blob/master/API.md#pro
 import { Provider, Subscribe } from 'react-contextual'
 
 const store = {
-    initialState: { count: 0 },
-    actions: {
-        up: () => state => ({ count: state.count + 1 }),
-        down: () => state => ({ count: state.count - 1 }),
-    },
+    count: 0,
+    up: () => state => ({ count: state.count + 1 }),
+    down: () => state => ({ count: state.count - 1 }),
 }
 
 const App = () => (
@@ -34,8 +32,8 @@ const App = () => (
             {props => (
                 <div>
                     <h1>{props.count}</h1>
-                    <button onClick={props.actions.up}>Up</button>
-                    <button onClick={props.actions.down}>Down</button>
+                    <button onClick={props.up}>Up</button>
+                    <button onClick={props.down}>Down</button>
                 </div>
             )}
         </Subscribe>
@@ -51,8 +49,8 @@ import { Provider, subscribe } from 'react-contextual'
 const View = subscribe()(props => (
     <div>
         <h1>{props.count}</h1>
-        <button onClick={props.actions.up}>Up</button>
-        <button onClick={props.actions.down}>Down</button>
+        <button onClick={props.up}>Up</button>
+        <button onClick={props.down}>Down</button>
     </div>
 ))
 
@@ -87,8 +85,8 @@ There are a few key differences:
 import { Provider, createStore, subscribe } from 'react-contextual'
 
 const externalStore = createStore({
-    initialState: { text: 'Hello' },
-    actions: { setText: text => ({ text }) }
+    text: 'Hello',
+    setText: text => ({ text })
 })
 
 const App = () => (
@@ -102,14 +100,14 @@ const App = () => (
 
 #### Global setState
 
-If you do not supply actions [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) will add setState by default. This applies to both createStore and the Provider above.
+If you do not supply any functions in the object passed to [createStore](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore), a `setState` function would be added automatically for you. This applies to both `createStore` and the `Provider` above.
 
 ```jsx
-const store = createStore({ initialState: { count: 0 } })
+const store = createStore({ count: 0 })
 
 const Test = subscribe(store)(
     props => (
-        <button onClick={() => props.actions.setState(state => ({ count: state.count + 1 }))}>
+        <button onClick={() => props.setState(state => ({ count: state.count + 1 }))}>
             {props.count}
         </button>
     ),

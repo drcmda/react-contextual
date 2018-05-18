@@ -74,9 +74,9 @@ The same as the higher-order-component above, but as a component: `<Subscribe to
 import { Provider } from 'react-contextual'
 ```
 
-A small Redux-like store. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. The provider will distribute `{ ...state, actions }` to listening components which either use React's API directly or contextual's `subscribe` hoc to consume it. Alternatively you can pass an [external store](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) by the `store` props.
+A small Redux-like store. Declare props that represents the state and actions on the state. The provider will distribute the state and actions as props to listening components which either use React's API directly or contextual's `subscribe` hoc to consume it. Alternatively you can pass an [external store](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) by the `store` props.
 
-Actions are made of a collection of functions which return an object that is going to be merged back into the state using regular `setState` semantics.
+The actions on the state are basically functions which return an object that is going to be merged back into the state using regular `setState` semantics.
 
 They can be simple ...
 
@@ -105,20 +105,16 @@ setColor: backgroundColor => async state => {
 import { createStore } from 'react-contextual'
 
 const externalStore = createStore({
-    initialState: { count: 1 },
-    actions: { up: () => state => ({ count: state.count + 1 }) },
-    // Everything you add on top will be available to components that subscribe to it:
-    personalStuff: {
-        something: 123
-    }
+    count: 1,
+    up: () => state => ({ count: state.count + 1 })
 })
 ```
 
-Creates an external store. It takes an object that needs to provide `initialState` and `actions`. The store is fully reactive, that means you can read out state (`store.getState()`) and call actions (`store.actions.up()`) as well as `store.subscribe(callback)` to it whenever it changes. If you do not pass actions, it will create `actions.setState` with React's semantics by default. Note: the store will only be alive once it has been tied to a provider, it won't function on its own.
+Creates an external store. It takes an object that needs to specify some state and actions on the state. The store is fully reactive, that means you can read out state (`store.getState()`) and call actions (`store.getState().up()`) as well as `store.subscribe(callback)` to it whenever it changes. If you do not specify any actions in the object passed to `createStore`, a default action `setState` will be created with React's semantics by default. Note: the store will only be alive once it has been tied to a provider, it won't function on its own.
 
 ```jsx
 const remove = externalStore.subscribe(state => console.log(state))
-externalStore.actions.up()
+externalStore.getState().up()
 const count = externalStore.getState().count
 remove()
 ```

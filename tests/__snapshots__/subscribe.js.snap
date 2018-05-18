@@ -3,11 +3,7 @@
 exports[`subscribe("key") 1`] = `
 <Provider
   id="key"
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
+  message="success!"
 >
   <RenderPure>
     <SubscribeWrap
@@ -15,21 +11,15 @@ exports[`subscribe("key") 1`] = `
     >
       <Component
         id="key"
-        state={
-          Object {
-            "actions": Object {
-              "setState": [Function],
-            },
-            "message": "success!",
-          }
-        }
+        message="success!"
+        setState={[Function]}
       >
         success!
       </Component>
     </SubscribeWrap>
     <Subscribe
       id="key"
-      select="state"
+      select={[Function]}
       to="key"
     >
       <SubscribeWrap
@@ -37,14 +27,8 @@ exports[`subscribe("key") 1`] = `
       >
         <Component
           id="key"
-          state={
-            Object {
-              "actions": Object {
-                "setState": [Function],
-              },
-              "message": "success!",
-            }
-          }
+          message="success!"
+          setState={[Function]}
         >
           success!
         </Component>
@@ -57,11 +41,7 @@ exports[`subscribe("key") 1`] = `
 exports[`subscribe("key", "state") 1`] = `
 <Provider
   id="key"
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
+  message="success!"
 >
   <RenderPure>
     <SubscribeWrap
@@ -71,10 +51,8 @@ exports[`subscribe("key", "state") 1`] = `
         id="key"
         state={
           Object {
-            "actions": Object {
-              "setState": [Function],
-            },
             "message": "success!",
+            "setState": [Function],
           }
         }
       >
@@ -93,10 +71,8 @@ exports[`subscribe("key", "state") 1`] = `
           id="key"
           state={
             Object {
-              "actions": Object {
-                "setState": [Function],
-              },
               "message": "success!",
+              "setState": [Function],
             }
           }
         >
@@ -111,24 +87,16 @@ exports[`subscribe("key", "state") 1`] = `
 exports[`subscribe("key", store => store) 1`] = `
 <Provider
   id="key"
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
+  message="success!"
 >
   <RenderPure>
     <SubscribeWrap
       id="key"
     >
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         id="key"
         message="success!"
+        setState={[Function]}
       >
         success!
       </Component>
@@ -142,13 +110,9 @@ exports[`subscribe("key", store => store) 1`] = `
         id="key"
       >
         <Component
-          actions={
-            Object {
-              "setState": [Function],
-            }
-          }
           id="key"
           message="success!"
+          setState={[Function]}
         >
           success!
         </Component>
@@ -160,21 +124,15 @@ exports[`subscribe("key", store => store) 1`] = `
 
 exports[`subscribe("state") 1`] = `
 <Provider
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
+  message="success!"
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
         state={
           Object {
-            "actions": Object {
-              "setState": [Function],
-            },
             "message": "success!",
+            "setState": [Function],
           }
         }
       >
@@ -203,10 +161,8 @@ exports[`subscribe("state") 1`] = `
         <Component
           state={
             Object {
-              "actions": Object {
-                "setState": [Function],
-              },
               "message": "success!",
+              "setState": [Function],
             }
           }
         >
@@ -220,21 +176,13 @@ exports[`subscribe("state") 1`] = `
 
 exports[`subscribe() 1`] = `
 <Provider
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
+  message="success!"
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         message="success!"
+        setState={[Function]}
       >
         success!
       </Component>
@@ -259,12 +207,8 @@ exports[`subscribe() 1`] = `
     >
       <SubscribeWrap>
         <Component
-          actions={
-            Object {
-              "setState": [Function],
-            }
-          }
           message="success!"
+          setState={[Function]}
         >
           success!
         </Component>
@@ -276,49 +220,31 @@ exports[`subscribe() 1`] = `
 
 exports[`subscribe([a,b], (a,b) => props) 1`] = `
 <Provider
-  actions={
-    Object {
-      "up": [Function],
-    }
-  }
+  count={0}
   id="id1"
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  up={[Function]}
 >
   <RenderPure>
     <Provider
-      actions={
-        Object {
-          "up": [Function],
-        }
-      }
+      count={0}
       id="id2"
-      initialState={
-        Object {
-          "count": 0,
-        }
-      }
+      up={[Function]}
     >
       <RenderPure>
         <SubscribeWrap>
           <Component
             store1={
               Object {
-                "actions": Object {
-                  "up": [Function],
-                },
                 "count": 0,
+                "setState": [Function],
+                "up": [Function],
               }
             }
             store2={
               Object {
-                "actions": Object {
-                  "up": [Function],
-                },
                 "count": 0,
+                "setState": [Function],
+                "up": [Function],
               }
             }
           >
@@ -344,18 +270,16 @@ exports[`subscribe([a,b], (a,b) => props) 1`] = `
             <Component
               store1={
                 Object {
-                  "actions": Object {
-                    "up": [Function],
-                  },
                   "count": 0,
+                  "setState": [Function],
+                  "up": [Function],
                 }
               }
               store2={
                 Object {
-                  "actions": Object {
-                    "up": [Function],
-                  },
                   "count": 0,
+                  "setState": [Function],
+                  "up": [Function],
                 }
               }
             >
@@ -371,49 +295,31 @@ exports[`subscribe([a,b], (a,b) => props) 1`] = `
 
 exports[`subscribe([a,b], (a,b) => props) 2`] = `
 <Provider
-  actions={
-    Object {
-      "up": [Function],
-    }
-  }
+  count={0}
   id="id1"
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  up={[Function]}
 >
   <RenderPure>
     <Provider
-      actions={
-        Object {
-          "up": [Function],
-        }
-      }
+      count={0}
       id="id2"
-      initialState={
-        Object {
-          "count": 0,
-        }
-      }
+      up={[Function]}
     >
       <RenderPure>
         <SubscribeWrap>
           <Component
             store1={
               Object {
-                "actions": Object {
-                  "up": [Function],
-                },
                 "count": 1,
+                "setState": [Function],
+                "up": [Function],
               }
             }
             store2={
               Object {
-                "actions": Object {
-                  "up": [Function],
-                },
                 "count": 1,
+                "setState": [Function],
+                "up": [Function],
               }
             }
           >
@@ -439,18 +345,16 @@ exports[`subscribe([a,b], (a,b) => props) 2`] = `
             <Component
               store1={
                 Object {
-                  "actions": Object {
-                    "up": [Function],
-                  },
                   "count": 1,
+                  "setState": [Function],
+                  "up": [Function],
                 }
               }
               store2={
                 Object {
-                  "actions": Object {
-                    "up": [Function],
-                  },
                   "count": 1,
+                  "setState": [Function],
+                  "up": [Function],
                 }
               }
             >
@@ -466,49 +370,31 @@ exports[`subscribe([a,b], (a,b) => props) 2`] = `
 
 exports[`subscribe([a,b], [a,b]) 1`] = `
 <Provider
-  actions={
-    Object {
-      "up": [Function],
-    }
-  }
+  count={0}
   id="id1"
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  up={[Function]}
 >
   <RenderPure>
     <Provider
-      actions={
-        Object {
-          "up": [Function],
-        }
-      }
+      count={0}
       id="id2"
-      initialState={
-        Object {
-          "count": 0,
-        }
-      }
+      up={[Function]}
     >
       <RenderPure>
         <SubscribeWrap>
           <Component
             store1={
               Object {
-                "actions": Object {
-                  "up": [Function],
-                },
                 "count": 0,
+                "setState": [Function],
+                "up": [Function],
               }
             }
             store2={
               Object {
-                "actions": Object {
-                  "up": [Function],
-                },
                 "count": 0,
+                "setState": [Function],
+                "up": [Function],
               }
             }
           >
@@ -539,18 +425,16 @@ exports[`subscribe([a,b], [a,b]) 1`] = `
             <Component
               store1={
                 Object {
-                  "actions": Object {
-                    "up": [Function],
-                  },
                   "count": 0,
+                  "setState": [Function],
+                  "up": [Function],
                 }
               }
               store2={
                 Object {
-                  "actions": Object {
-                    "up": [Function],
-                  },
                   "count": 0,
+                  "setState": [Function],
+                  "up": [Function],
                 }
               }
             >
@@ -566,49 +450,31 @@ exports[`subscribe([a,b], [a,b]) 1`] = `
 
 exports[`subscribe([a,b], [a,b]) 2`] = `
 <Provider
-  actions={
-    Object {
-      "up": [Function],
-    }
-  }
+  count={0}
   id="id1"
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  up={[Function]}
 >
   <RenderPure>
     <Provider
-      actions={
-        Object {
-          "up": [Function],
-        }
-      }
+      count={0}
       id="id2"
-      initialState={
-        Object {
-          "count": 0,
-        }
-      }
+      up={[Function]}
     >
       <RenderPure>
         <SubscribeWrap>
           <Component
             store1={
               Object {
-                "actions": Object {
-                  "up": [Function],
-                },
                 "count": 1,
+                "setState": [Function],
+                "up": [Function],
               }
             }
             store2={
               Object {
-                "actions": Object {
-                  "up": [Function],
-                },
                 "count": 1,
+                "setState": [Function],
+                "up": [Function],
               }
             }
           >
@@ -639,18 +505,16 @@ exports[`subscribe([a,b], [a,b]) 2`] = `
             <Component
               store1={
                 Object {
-                  "actions": Object {
-                    "up": [Function],
-                  },
                   "count": 1,
+                  "setState": [Function],
+                  "up": [Function],
                 }
               }
               store2={
                 Object {
-                  "actions": Object {
-                    "up": [Function],
-                  },
                   "count": 1,
+                  "setState": [Function],
+                  "up": [Function],
                 }
               }
             >
@@ -842,21 +706,13 @@ exports[`subscribe(AnyContextSingleValue) 1`] = `
 
 exports[`subscribe(ProviderContext) 1`] = `
 <Provider
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
+  message="success!"
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         message="success!"
+        setState={[Function]}
       >
         success!
       </Component>
@@ -881,12 +737,8 @@ exports[`subscribe(ProviderContext) 1`] = `
     >
       <SubscribeWrap>
         <Component
-          actions={
-            Object {
-              "setState": [Function],
-            }
-          }
           message="success!"
+          setState={[Function]}
         >
           success!
         </Component>
@@ -898,21 +750,15 @@ exports[`subscribe(ProviderContext) 1`] = `
 
 exports[`subscribe(ProviderContext, "state") 1`] = `
 <Provider
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
+  message="success!"
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
         state={
           Object {
-            "actions": Object {
-              "setState": [Function],
-            },
             "message": "success!",
+            "setState": [Function],
           }
         }
       >
@@ -941,10 +787,8 @@ exports[`subscribe(ProviderContext, "state") 1`] = `
         <Component
           state={
             Object {
-              "actions": Object {
-                "setState": [Function],
-              },
               "message": "success!",
+              "setState": [Function],
             }
           }
         >
@@ -958,21 +802,13 @@ exports[`subscribe(ProviderContext, "state") 1`] = `
 
 exports[`subscribe(ProviderContext, context => context) 1`] = `
 <Provider
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
+  message="success!"
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         message="success!"
+        setState={[Function]}
       >
         success!
       </Component>
@@ -997,12 +833,8 @@ exports[`subscribe(ProviderContext, context => context) 1`] = `
     >
       <SubscribeWrap>
         <Component
-          actions={
-            Object {
-              "setState": [Function],
-            }
-          }
           message="success!"
+          setState={[Function]}
         >
           success!
         </Component>
@@ -1014,21 +846,13 @@ exports[`subscribe(ProviderContext, context => context) 1`] = `
 
 exports[`subscribe(store => store) 1`] = `
 <Provider
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
+  message="success!"
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         message="success!"
+        setState={[Function]}
       >
         success!
       </Component>
@@ -1053,12 +877,8 @@ exports[`subscribe(store => store) 1`] = `
     >
       <SubscribeWrap>
         <Component
-          actions={
-            Object {
-              "setState": [Function],
-            }
-          }
           message="success!"
+          setState={[Function]}
         >
           success!
         </Component>
@@ -1070,16 +890,8 @@ exports[`subscribe(store => store) 1`] = `
 
 exports[`subscribe(store) 1`] = `
 <Provider
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
   store={
     Object {
-      "actions": Object {
-        "setState": [Function],
-      },
       "context": Object {
         "$$typeof": Symbol(react.context),
         "Consumer": [Circular],
@@ -1096,12 +908,9 @@ exports[`subscribe(store) 1`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "testStore",
-      "initialState": Object {
-        "message": "success!",
-      },
-      "props": Object {},
       "state": Object {
         "message": "success!",
+        "setState": [Function],
       },
       "subscribe": [Function],
       "subscriptions": Set {},
@@ -1111,12 +920,8 @@ exports[`subscribe(store) 1`] = `
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         message="success!"
+        setState={[Function]}
       >
         success!
       </Component>
@@ -1125,9 +930,6 @@ exports[`subscribe(store) 1`] = `
       select={[Function]}
       to={
         Object {
-          "actions": Object {
-            "setState": [Function],
-          },
           "context": Object {
             "$$typeof": Symbol(react.context),
             "Consumer": [Circular],
@@ -1144,12 +946,9 @@ exports[`subscribe(store) 1`] = `
           "destroy": [Function],
           "getState": [Function],
           "id": "testStore",
-          "initialState": Object {
-            "message": "success!",
-          },
-          "props": Object {},
           "state": Object {
             "message": "success!",
+            "setState": [Function],
           },
           "subscribe": [Function],
           "subscriptions": Set {},
@@ -1158,12 +957,8 @@ exports[`subscribe(store) 1`] = `
     >
       <SubscribeWrap>
         <Component
-          actions={
-            Object {
-              "setState": [Function],
-            }
-          }
           message="success!"
+          setState={[Function]}
         >
           success!
         </Component>
@@ -1175,16 +970,8 @@ exports[`subscribe(store) 1`] = `
 
 exports[`subscribe(store, "state") 1`] = `
 <Provider
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
   store={
     Object {
-      "actions": Object {
-        "setState": [Function],
-      },
       "context": Object {
         "$$typeof": Symbol(react.context),
         "Consumer": [Circular],
@@ -1201,12 +988,9 @@ exports[`subscribe(store, "state") 1`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "testStore",
-      "initialState": Object {
-        "message": "success!",
-      },
-      "props": Object {},
       "state": Object {
         "message": "success!",
+        "setState": [Function],
       },
       "subscribe": [Function],
       "subscriptions": Set {},
@@ -1218,10 +1002,8 @@ exports[`subscribe(store, "state") 1`] = `
       <Component
         state={
           Object {
-            "actions": Object {
-              "setState": [Function],
-            },
             "message": "success!",
+            "setState": [Function],
           }
         }
       >
@@ -1232,9 +1014,6 @@ exports[`subscribe(store, "state") 1`] = `
       select="state"
       to={
         Object {
-          "actions": Object {
-            "setState": [Function],
-          },
           "context": Object {
             "$$typeof": Symbol(react.context),
             "Consumer": [Circular],
@@ -1251,12 +1030,9 @@ exports[`subscribe(store, "state") 1`] = `
           "destroy": [Function],
           "getState": [Function],
           "id": "testStore",
-          "initialState": Object {
-            "message": "success!",
-          },
-          "props": Object {},
           "state": Object {
             "message": "success!",
+            "setState": [Function],
           },
           "subscribe": [Function],
           "subscriptions": Set {},
@@ -1267,10 +1043,8 @@ exports[`subscribe(store, "state") 1`] = `
         <Component
           state={
             Object {
-              "actions": Object {
-                "setState": [Function],
-              },
               "message": "success!",
+              "setState": [Function],
             }
           }
         >
@@ -1284,16 +1058,8 @@ exports[`subscribe(store, "state") 1`] = `
 
 exports[`subscribe(store, context => context) 1`] = `
 <Provider
-  initialState={
-    Object {
-      "message": "success!",
-    }
-  }
   store={
     Object {
-      "actions": Object {
-        "setState": [Function],
-      },
       "context": Object {
         "$$typeof": Symbol(react.context),
         "Consumer": [Circular],
@@ -1310,12 +1076,9 @@ exports[`subscribe(store, context => context) 1`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "testStore",
-      "initialState": Object {
-        "message": "success!",
-      },
-      "props": Object {},
       "state": Object {
         "message": "success!",
+        "setState": [Function],
       },
       "subscribe": [Function],
       "subscriptions": Set {},
@@ -1325,12 +1088,8 @@ exports[`subscribe(store, context => context) 1`] = `
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         message="success!"
+        setState={[Function]}
       >
         success!
       </Component>
@@ -1339,9 +1098,6 @@ exports[`subscribe(store, context => context) 1`] = `
       select={[Function]}
       to={
         Object {
-          "actions": Object {
-            "setState": [Function],
-          },
           "context": Object {
             "$$typeof": Symbol(react.context),
             "Consumer": [Circular],
@@ -1358,12 +1114,9 @@ exports[`subscribe(store, context => context) 1`] = `
           "destroy": [Function],
           "getState": [Function],
           "id": "testStore",
-          "initialState": Object {
-            "message": "success!",
-          },
-          "props": Object {},
           "state": Object {
             "message": "success!",
+            "setState": [Function],
           },
           "subscribe": [Function],
           "subscriptions": Set {},
@@ -1372,12 +1125,8 @@ exports[`subscribe(store, context => context) 1`] = `
     >
       <SubscribeWrap>
         <Component
-          actions={
-            Object {
-              "setState": [Function],
-            }
-          }
           message="success!"
+          setState={[Function]}
         >
           success!
         </Component>
