@@ -8,10 +8,10 @@ import { subscribe } from 'react-contextual'
 
 `subscribe` can be used as a functionwrapper or decorator, it generally works with any context, it is not bound to contextual's store model. A provider can one of the following:
 
-1. any React context
-2. any string key of a [registered provider](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext)
-3. any reference to a moduleContext/namedContext provider
-4. any reference to a store created with createStore
+1.  any React context
+2.  any string key of a [registered provider](https://github.com/drcmda/react-contextual/blob/master/API.md#namedcontext)
+3.  any reference to a moduleContext/namedContext provider
+4.  any reference to a store created with createStore
 
 Example 1: Mapping a single context value as a prop. Mapping helps performance. If you only pick the props your component is interested in it will only render when necessary and ignore context changes otherwise.
 
@@ -22,13 +22,17 @@ subscribe(Store, store => ({ theme: store.theme }))(AnyComponent)
 Example 2: mapContextToProps behaves similar to Reduxes mapStateToProps. The component's own props can always be used as well.
 
 ```js
-subscribe(UsersContext, (users, props) => ({ user: users[props.id] }))(AnyComponent)
+subscribe(UsersContext, (users, props) => ({ user: users[props.id] }))(
+  AnyComponent
+)
 ```
 
 Example 3: Mapping several contexts is also possible, just wrap them into an array. The props you receive in the 2nd argument will be in the same order.
 
 ```js
-subscribe([ThemeContext, CountContext], (theme, count) => ({ theme, count }))(AnyComponent)
+subscribe([ThemeContext, CountContext], (theme, count) => ({ theme, count }))(
+  AnyComponent
+)
 ```
 
 You can also pass strings to mapContextToProps to make it shorter:
@@ -74,9 +78,9 @@ The same as the higher-order-component above, but as a component: `<Subscribe to
 import { Provider } from 'react-contextual'
 ```
 
-A small Redux-like store. Declare the initial state with the `initialState` prop, and actions with the `actions` prop. The provider will distribute `{ ...state, actions }` to listening components which either use React's API directly or contextual's `subscribe` hoc to consume it. Alternatively you can pass an [external store](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) by the `store` props.
+A small Redux-like store. Declare props that represents the state and actions on the state. The provider will distribute the state and actions as props to listening components which either use React's API directly or contextual's `subscribe` hoc to consume it. Alternatively you can pass an [external store](https://github.com/drcmda/react-contextual/blob/master/API.md#createstore) by the `store` props.
 
-Actions are made of a collection of functions which return an object that is going to be merged back into the state using regular `setState` semantics.
+The actions on the state are basically functions which return an object that is going to be merged back into the state using regular `setState` semantics.
 
 They can be simple ...
 
@@ -94,8 +98,8 @@ Or async actions, which are supported out of the box:
 
 ```js
 setColor: backgroundColor => async state => {
-    await delay(1000)
-    return { backgroundColor }
+  await delay(1000)
+  return { backgroundColor }
 }
 ```
 
@@ -105,20 +109,16 @@ setColor: backgroundColor => async state => {
 import { createStore } from 'react-contextual'
 
 const externalStore = createStore({
-    initialState: { count: 1 },
-    actions: { up: () => state => ({ count: state.count + 1 }) },
-    // Everything you add on top will be available to components that subscribe to it:
-    personalStuff: {
-        something: 123
-    }
+  count: 1,
+  up: () => state => ({ count: state.count + 1 }),
 })
 ```
 
-Creates an external store. It takes an object that needs to provide `initialState` and `actions`. The store is fully reactive, that means you can read out state (`store.getState()`) and call actions (`store.actions.up()`) as well as `store.subscribe(callback)` to it whenever it changes. If you do not pass actions, it will create `actions.setState` with React's semantics by default. Note: the store will only be alive once it has been tied to a provider, it won't function on its own.
+Creates an external store. It takes an object that needs to specify some state and actions on the state. The store is fully reactive, that means you can read out state (`store.getState()`) and call actions (`store.getState().up()`) as well as `store.subscribe(callback)` to it whenever it changes. If you do not specify any actions in the object passed to `createStore`, a default action `setState` will be created with React's semantics by default. Note: the store will only be alive once it has been tied to a provider, it won't function on its own.
 
 ```jsx
 const remove = externalStore.subscribe(state => console.log(state))
-externalStore.actions.up()
+externalStore.getState().up()
 const count = externalStore.getState().count
 remove()
 ```
@@ -165,17 +165,17 @@ Creates a global module-scoped context object and injects it both as `this.props
 ```js
 @moduleContext()
 class Theme extends React.PureComponent {
-    render() {
-        const { context: Context, children } = this.props
-        return <Context.Provider value="red" children={children} />
-    }
+  render() {
+    const { context: Context, children } = this.props
+    return <Context.Provider value="red" children={children} />
+  }
 }
 
 @subscribe(Theme, theme => ({ theme }))
 class Header extends React.PureComponent {
-    render() {
-        return <h1 style={{ color: theme }}>hello</h1>
-    }
+  render() {
+    return <h1 style={{ color: theme }}>hello</h1>
+  }
 }
 ```
 
@@ -192,56 +192,64 @@ Reads a previous context provider and provides a transformed version of its valu
 ```js
 @moduleContext()
 class Theme extends React.PureComponent {
-    render() {
-        const { context, color, children } = this.props
-        return <context.Provider value={color} children={children} />
-    }
+  render() {
+    const { context, color, children } = this.props
+    return <context.Provider value={color} children={children} />
+  }
 }
 
 @transformContext(Theme, color => ({ color }))
 class InvertTheme extends React.PureComponent {
-    render() {
-        const { context, color, children } = this.props
-        return <context.Provider value={0xffffff ^ color} children={children} />
-    }
+  render() {
+    const { context, color, children } = this.props
+    return <context.Provider value={0xffffff ^ color} children={children} />
+  }
 }
 
 @subscribe(Theme, color => ({ color }))
 class Say extends React.PureComponent {
-    render() {
-        const { color, text } = this.props
-        return <span style={{ color: '#' + ('000000' + color.toString(16)).substr(-6) }}>{text}</span>
-    }
+  render() {
+    const { color, text } = this.props
+    return (
+      <span style={{ color: '#' + ('000000' + color.toString(16)).substr(-6) }}>
+        {text}
+      </span>
+    )
+  }
 }
 
 ReactDOM.render(
-    <Theme color={0xff0000}>
-        <Say text="all " />
-        <Theme color={0x00ff00}>
-            <Say text="is " />
-            <InvertTheme>
-                <Say text="well" />
-            </InvertTheme>
-        </Theme>
-    </Theme>,
-    document.getElementById('root'),
+  <Theme color={0xff0000}>
+    <Say text="all " />
+    <Theme color={0x00ff00}>
+      <Say text="is " />
+      <InvertTheme>
+        <Say text="well" />
+      </InvertTheme>
+    </Theme>
+  </Theme>,
+  document.getElementById('root')
 )
 ```
 
 # imperative context handling
 
 ```js
-import { getNamedContext, createNameContext, removeNamedContext } from 'react-contextual'
+import {
+  getNamedContext,
+  createNameContext,
+  removeNamedContext,
+} from 'react-contextual'
 ```
 
 * createNameContext(name)
 
-    Registers and returns a context.
+  Registers and returns a context.
 
 * getNamedContext(name)
 
-    Returns a context.
+  Returns a context.
 
 * removeNamedContext(name)
 
-    Removes the context from the internal map.
+  Removes the context from the internal map.

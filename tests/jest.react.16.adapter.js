@@ -19,7 +19,7 @@ import {
 import { findCurrentFiberUsingSlowPath } from 'react-reconciler/reflection'
 
 function ensureKeyOrUndefined(key) {
-  return key || (key === '' ? '' : undefined);
+  return key || (key === '' ? '' : undefined)
 }
 
 const HostRoot = 3
@@ -120,7 +120,7 @@ function toTree(vnode) {
       return childrenToTree(node.child)
     default:
       throw new Error(
-        `Enzyme Internal Error: unknown node with tag ${node.tag}`,
+        `Enzyme Internal Error: unknown node with tag ${node.tag}`
       )
   }
 }
@@ -200,7 +200,7 @@ class ReactSixteenAdapter extends EnzymeAdapter {
         const eventFn = TestUtils.Simulate[mappedEvent]
         if (!eventFn) {
           throw new TypeError(
-            `ReactWrapper::simulate() event '${event}' does not exist`,
+            `ReactWrapper::simulate() event '${event}' does not exist`
           )
         }
         // eslint-disable-next-line react/no-find-dom-node
@@ -281,10 +281,10 @@ class ReactSixteenAdapter extends EnzymeAdapter {
           const ContextWrapper = createRenderWrapper(
             el,
             context,
-            childContextTypes,
+            childContextTypes
           )
           return ReactDOMServer.renderToStaticMarkup(
-            React.createElement(ContextWrapper),
+            React.createElement(ContextWrapper)
           )
         }
         return ReactDOMServer.renderToStaticMarkup(el)
@@ -305,7 +305,7 @@ class ReactSixteenAdapter extends EnzymeAdapter {
         return this.createStringRenderer(options)
       default:
         throw new Error(
-          `Enzyme Internal Error: Unrecognized mode: ${options.mode}`,
+          `Enzyme Internal Error: Unrecognized mode: ${options.mode}`
         )
     }
   }

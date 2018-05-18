@@ -2,32 +2,19 @@
 
 exports[`async action 1`] = `
 <Provider
-  actions={
-    Object {
-      "async": [Function],
-      "functional": [Function],
-      "simple": [Function],
-    }
-  }
-  extra={100}
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  async={[Function]}
+  count={0}
+  functional={[Function]}
+  simple={[Function]}
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "async": [Function],
-            "functional": [Function],
-            "simple": [Function],
-          }
-        }
+        async={[Function]}
         count={0}
-        extra={100}
+        functional={[Function]}
+        setState={[Function]}
+        simple={[Function]}
       >
         <button
           onClick={[Function]}
@@ -42,32 +29,19 @@ exports[`async action 1`] = `
 
 exports[`async action 2`] = `
 <Provider
-  actions={
-    Object {
-      "async": [Function],
-      "functional": [Function],
-      "simple": [Function],
-    }
-  }
-  extra={100}
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  async={[Function]}
+  count={0}
+  functional={[Function]}
+  simple={[Function]}
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "async": [Function],
-            "functional": [Function],
-            "simple": [Function],
-          }
-        }
+        async={[Function]}
         count={1}
-        extra={100}
+        functional={[Function]}
+        setState={[Function]}
+        simple={[Function]}
       >
         <button
           onClick={[Function]}
@@ -82,32 +56,19 @@ exports[`async action 2`] = `
 
 exports[`await actions & access state 1`] = `
 <Provider
-  actions={
-    Object {
-      "async": [Function],
-      "functional": [Function],
-      "simple": [Function],
-    }
-  }
-  extra={100}
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  async={[Function]}
+  count={0}
+  functional={[Function]}
+  simple={[Function]}
 >
   <RenderPure>
     <SubscribeWrap>
       <_class2
-        actions={
-          Object {
-            "async": [Function],
-            "functional": [Function],
-            "simple": [Function],
-          }
-        }
+        async={[Function]}
         count={0}
-        extra={100}
+        functional={[Function]}
+        setState={[Function]}
+        simple={[Function]}
       >
         <div>
           0
@@ -123,32 +84,19 @@ exports[`await actions & access state 1`] = `
 
 exports[`await actions & access state 2`] = `
 <Provider
-  actions={
-    Object {
-      "async": [Function],
-      "functional": [Function],
-      "simple": [Function],
-    }
-  }
-  extra={100}
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  async={[Function]}
+  count={0}
+  functional={[Function]}
+  simple={[Function]}
 >
   <RenderPure>
     <SubscribeWrap>
       <_class2
-        actions={
-          Object {
-            "async": [Function],
-            "functional": [Function],
-            "simple": [Function],
-          }
-        }
+        async={[Function]}
         count={4}
-        extra={100}
+        functional={[Function]}
+        setState={[Function]}
+        simple={[Function]}
       >
         <div>
           4
@@ -166,11 +114,6 @@ exports[`external store 1`] = `
 <Provider
   store={
     Object {
-      "actions": Object {
-        "async": [Function],
-        "functional": [Function],
-        "simple": [Function],
-      },
       "context": Object {
         "$$typeof": Symbol(react.context),
         "Consumer": [Circular],
@@ -187,14 +130,12 @@ exports[`external store 1`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "externalTest",
-      "initialState": Object {
-        "count": 0,
-      },
-      "props": Object {
-        "extra": 100,
-      },
       "state": Object {
+        "async": [Function],
         "count": 0,
+        "functional": [Function],
+        "setState": [Function],
+        "simple": [Function],
       },
       "subscribe": [Function],
       "subscriptions": Set {},
@@ -204,7 +145,11 @@ exports[`external store 1`] = `
   <RenderPure>
     <SubscribeWrap>
       <Component
+        async={[Function]}
         count={0}
+        functional={[Function]}
+        setState={[Function]}
+        simple={[Function]}
       >
         <button
           onClick={[Function]}
@@ -221,11 +166,6 @@ exports[`external store 2`] = `
 <Provider
   store={
     Object {
-      "actions": Object {
-        "async": [Function],
-        "functional": [Function],
-        "simple": [Function],
-      },
       "context": Object {
         "$$typeof": Symbol(react.context),
         "Consumer": [Circular],
@@ -242,14 +182,12 @@ exports[`external store 2`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "externalTest",
-      "initialState": Object {
-        "count": 0,
-      },
-      "props": Object {
-        "extra": 100,
-      },
       "state": Object {
+        "async": [Function],
         "count": 2,
+        "functional": [Function],
+        "setState": [Function],
+        "simple": [Function],
       },
       "subscribe": [Function],
       "subscriptions": Set {},
@@ -259,7 +197,11 @@ exports[`external store 2`] = `
   <RenderPure>
     <SubscribeWrap>
       <Component
+        async={[Function]}
         count={2}
+        functional={[Function]}
+        setState={[Function]}
+        simple={[Function]}
       >
         <button
           onClick={[Function]}
@@ -276,9 +218,6 @@ exports[`external store, setState 1`] = `
 <Provider
   store={
     Object {
-      "actions": Object {
-        "setState": [Function],
-      },
       "context": Object {
         "$$typeof": Symbol(react.context),
         "Consumer": [Circular],
@@ -295,12 +234,9 @@ exports[`external store, setState 1`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "externalTest2",
-      "initialState": Object {
-        "count": 0,
-      },
-      "props": Object {},
       "state": Object {
         "count": 0,
+        "setState": [Function],
       },
       "subscribe": [Function],
       "subscriptions": Set {},
@@ -310,12 +246,8 @@ exports[`external store, setState 1`] = `
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         count={0}
+        setState={[Function]}
       >
         <button
           onClick={[Function]}
@@ -332,9 +264,6 @@ exports[`external store, setState 2`] = `
 <Provider
   store={
     Object {
-      "actions": Object {
-        "setState": [Function],
-      },
       "context": Object {
         "$$typeof": Symbol(react.context),
         "Consumer": [Circular],
@@ -351,12 +280,9 @@ exports[`external store, setState 2`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "externalTest2",
-      "initialState": Object {
-        "count": 0,
-      },
-      "props": Object {},
       "state": Object {
         "count": 1,
+        "setState": [Function],
       },
       "subscribe": [Function],
       "subscriptions": Set {},
@@ -366,12 +292,8 @@ exports[`external store, setState 2`] = `
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         count={1}
+        setState={[Function]}
       >
         <button
           onClick={[Function]}
@@ -384,120 +306,21 @@ exports[`external store, setState 2`] = `
 </Provider>
 `;
 
-exports[`extras 1`] = `
-<Provider
-  actions={
-    Object {
-      "async": [Function],
-      "functional": [Function],
-      "simple": [Function],
-    }
-  }
-  extra={100}
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
->
-  <RenderPure>
-    <Provider
-      store={
-        Object {
-          "actions": Object {
-            "setState": [Function],
-          },
-          "context": Object {
-            "$$typeof": Symbol(react.context),
-            "Consumer": [Circular],
-            "Provider": Object {
-              "$$typeof": Symbol(react.provider),
-              "_context": [Circular],
-            },
-            "_calculateChangedBits": null,
-            "_changedBits": 0,
-            "_currentRenderer": Object {},
-            "_currentValue": undefined,
-            "_defaultValue": undefined,
-          },
-          "destroy": [Function],
-          "getState": [Function],
-          "id": "externalTest3",
-          "initialState": Object {
-            "count": 5,
-          },
-          "props": Object {
-            "extra": 1000,
-          },
-          "state": Object {
-            "count": 5,
-          },
-          "subscribe": [Function],
-          "subscriptions": Set {},
-        }
-      }
-    >
-      <RenderPure>
-        <SubscribeWrap>
-          <Component
-            a={
-              Object {
-                "actions": Object {
-                  "async": [Function],
-                  "functional": [Function],
-                  "simple": [Function],
-                },
-                "count": 0,
-                "extra": 100,
-              }
-            }
-            b={
-              Object {
-                "actions": Object {
-                  "setState": [Function],
-                },
-                "count": 5,
-                "extra": 1000,
-              }
-            }
-          >
-            1105
-          </Component>
-        </SubscribeWrap>
-      </RenderPure>
-    </Provider>
-  </RenderPure>
-</Provider>
-`;
-
 exports[`functional action 1`] = `
 <Provider
-  actions={
-    Object {
-      "async": [Function],
-      "functional": [Function],
-      "simple": [Function],
-    }
-  }
-  extra={100}
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  async={[Function]}
+  count={0}
+  functional={[Function]}
+  simple={[Function]}
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "async": [Function],
-            "functional": [Function],
-            "simple": [Function],
-          }
-        }
+        async={[Function]}
         count={0}
-        extra={100}
+        functional={[Function]}
+        setState={[Function]}
+        simple={[Function]}
       >
         <button
           onClick={[Function]}
@@ -512,32 +335,19 @@ exports[`functional action 1`] = `
 
 exports[`functional action 2`] = `
 <Provider
-  actions={
-    Object {
-      "async": [Function],
-      "functional": [Function],
-      "simple": [Function],
-    }
-  }
-  extra={100}
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  async={[Function]}
+  count={0}
+  functional={[Function]}
+  simple={[Function]}
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "async": [Function],
-            "functional": [Function],
-            "simple": [Function],
-          }
-        }
+        async={[Function]}
         count={1}
-        extra={100}
+        functional={[Function]}
+        setState={[Function]}
+        simple={[Function]}
       >
         <button
           onClick={[Function]}
@@ -552,44 +362,15 @@ exports[`functional action 2`] = `
 
 exports[`mount/unmount 1`] = `<App />`;
 
-exports[`no actions 1`] = `
-<Provider
-  actions={null}
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
->
-  <RenderPure>
-    <SubscribeWrap>
-      <Component
-        count={0}
-      >
-        0
-      </Component>
-    </SubscribeWrap>
-  </RenderPure>
-</Provider>
-`;
-
 exports[`no actions, setState 1`] = `
 <Provider
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  count={0}
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         count={0}
+        setState={[Function]}
       >
         <button
           onClick={[Function]}
@@ -604,21 +385,13 @@ exports[`no actions, setState 1`] = `
 
 exports[`no actions, setState 2`] = `
 <Provider
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  count={0}
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         count={1}
+        setState={[Function]}
       >
         <button
           onClick={[Function]}
@@ -633,21 +406,13 @@ exports[`no actions, setState 2`] = `
 
 exports[`renders properly 1`] = `
 <Provider
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  count={0}
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "setState": [Function],
-          }
-        }
         count={0}
+        setState={[Function]}
       >
         0
       </Component>
@@ -658,32 +423,19 @@ exports[`renders properly 1`] = `
 
 exports[`simple action 1`] = `
 <Provider
-  actions={
-    Object {
-      "async": [Function],
-      "functional": [Function],
-      "simple": [Function],
-    }
-  }
-  extra={100}
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  async={[Function]}
+  count={0}
+  functional={[Function]}
+  simple={[Function]}
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "async": [Function],
-            "functional": [Function],
-            "simple": [Function],
-          }
-        }
+        async={[Function]}
         count={0}
-        extra={100}
+        functional={[Function]}
+        setState={[Function]}
+        simple={[Function]}
       >
         <button
           onClick={[Function]}
@@ -698,32 +450,19 @@ exports[`simple action 1`] = `
 
 exports[`simple action 2`] = `
 <Provider
-  actions={
-    Object {
-      "async": [Function],
-      "functional": [Function],
-      "simple": [Function],
-    }
-  }
-  extra={100}
-  initialState={
-    Object {
-      "count": 0,
-    }
-  }
+  async={[Function]}
+  count={0}
+  functional={[Function]}
+  simple={[Function]}
 >
   <RenderPure>
     <SubscribeWrap>
       <Component
-        actions={
-          Object {
-            "async": [Function],
-            "functional": [Function],
-            "simple": [Function],
-          }
-        }
+        async={[Function]}
         count={1}
-        extra={100}
+        functional={[Function]}
+        setState={[Function]}
+        simple={[Function]}
       >
         <button
           onClick={[Function]}
