@@ -194,7 +194,3 @@ class Say extends React.PureComponent {
 ---
 
 [API](https://github.com/drcmda/react-contextual/blob/master/API.md) | [Changelog](https://github.com/drcmda/react-contextual/blob/master/CHANGELOG.md) | [Pitfalls using context raw](https://github.com/drcmda/react-contextual/blob/master/PITFALLS.md)
-
-## Who is using it
-
-[![AWV](/assets/corp-awv.png)](https://github.com/awv-informatik)
