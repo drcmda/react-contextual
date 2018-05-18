@@ -1,6 +1,6 @@
 {
     "name": "react-contextual",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "description": "store and hoc patterns for react 16s new context model",
     "main": "dist/react-contextual",
     "module": "dist/react-contextual.es",
@@ -12,7 +12,6 @@
         "test": "jest",
         "precommit": "lint-staged"
     },
-
     "prettier": {
         "semi": false,
         "trailingComma": "es5",
@@ -22,13 +21,22 @@
         "printWidth": 80
     },
     "lint-staged": {
-        "*.{js,md}": ["prettier --write", "git add"]
+        "*.{js,md}": [
+            "prettier --write",
+            "git add"
+        ]
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/drcmda/react-contextual.git"
     },
-    "keywords": ["react", "context", "store", "hoc", "redux"],
+    "keywords": [
+        "react",
+        "context",
+        "store",
+        "hoc",
+        "redux"
+    ],
     "author": "Paul Henschel",
     "license": "ISC",
     "bugs": {
@@ -70,10 +78,17 @@
         "tiny-uuid": "^1.0.0"
     },
     "jest": {
-        "setupFiles": ["./tests/jest.setup.js"],
-        "testPathIgnorePatterns": ["/node_modules/", "jest"],
+        "setupFiles": [
+            "./tests/jest.setup.js"
+        ],
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "jest"
+        ],
         "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
-        "snapshotSerializers": ["enzyme-to-json/serializer"],
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ],
         "coverageDirectory": "./coverage/",
         "collectCoverage": true
     }
