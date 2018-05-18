@@ -54,17 +54,27 @@ export class Provider extends React.PureComponent {
                     ...acc,
                     [name]: (...args) => {
                         let result = actions[name](...args)
-                        if (typeof result === 'function') result = result(this.state)
-                        return new Promise(res =>
-                            Promise.resolve(result).then(state => {
-                                // Update store
-                                this.store.state = { ...this.store.state, ...state }
-                                // Call subscribers
-                                this.store.subscriptions.forEach(callback => callback(state))
-                                // Update local state
-                                this.setState(state, res)
-                            }),
-                        )
+                        let isFunc = typeof result === 'function'
+                        if (isFunc) result = result(this.state)
+                        if (isFunc && result.then) {
+                            return new Promise(res =>
+                                Promise.resolve(result).then(state => {
+                                    // Update store
+                                    this.store.state = { ...this.store.state, ...state }
+                                    // Call subscribers
+                                    this.store.subscriptions.forEach(callback => callback(state))
+                                    // Update local state
+                                    this.setState(state, res)
+                                }),
+                            )
+                        } else {
+                            // Update store in sync
+                            this.store.state = { ...this.store.state, ...result }
+                            this.store.subscriptions.forEach(callback => callback(result))
+                            this.setState(result)
+                            return true
+                        }
+
                     },
                 }),
                 {},
