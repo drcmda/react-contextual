@@ -14,7 +14,7 @@ the `initialState` and `actions` properties have been deprecated from `Provider`
 ```
 
 ```diff
-- <Provider initialState={ count: 1 } actions={ up: () => state => ({ count: state.count + 1 }) }>
+- <Provider initialState={{ count: 1 }} actions={{ up: () => state => ({ count: state.count + 1 }) }}>
 + <Provider count={1} up={() => state => ({ count: state.count + 1 })} }>
 ```
 
