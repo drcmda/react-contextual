@@ -1,8 +1,22 @@
-## 5.0.0
+## 5.0.0
 
-Breaking changes!
+the `initialState` and `actions` properties have been deprecated from `Provider` and `createStore`. State values and actions are now passed directly as properties:
 
-initialState and actions are both deprecated. State and actions now both go right into the store side by side.
+```diff
+- const externalStore = createStore({
+-     initialState: { count: 1 },
+-     actions: { up: () => state => ({ count: state.count + 1 }) },
+-   })
++ const externalStore = createStore({
++     count: 1,
++     up: () => state => ({ count: state.count + 1 }),
++   })
+```
+
+```diff
+- <Provider initialState={ count: 1 } actions={ up: () => state => ({ count: state.count + 1 }) }>
++ <Provider count={1} up={() => state => ({ count: state.count + 1 })} }>
+```
 
 ## 4.0.0
 
