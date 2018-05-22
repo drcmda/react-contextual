@@ -58,10 +58,13 @@ function wrapStateUpdateFunctions(state, store, callback) {
       let isFunc = typeof result === 'function'
       if (isFunc) result = result(store.state)
       if (result.then) {
-        return new Promise(res => Promise.resolve(result).then(callback))
+        return new Promise(res =>
+          Promise.resolve(result)
+            .then(callback)
+            .then(res)
+        )
       } else {
-        callback(result)
-        return true
+        return callback(result)
       }
     }
 
