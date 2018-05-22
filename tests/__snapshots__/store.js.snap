@@ -130,6 +130,12 @@ exports[`external store 1`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "externalTest",
+      "initialState": Object {
+        "async": [Function],
+        "count": 0,
+        "functional": [Function],
+        "simple": [Function],
+      },
       "state": Object {
         "async": [Function],
         "count": 0,
@@ -182,6 +188,12 @@ exports[`external store 2`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "externalTest",
+      "initialState": Object {
+        "async": [Function],
+        "count": 0,
+        "functional": [Function],
+        "simple": [Function],
+      },
       "state": Object {
         "async": [Function],
         "count": 2,
@@ -234,6 +246,9 @@ exports[`external store, setState 1`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "externalTest2",
+      "initialState": Object {
+        "count": 0,
+      },
       "state": Object {
         "count": 0,
         "setState": [Function],
@@ -280,6 +295,9 @@ exports[`external store, setState 2`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "externalTest2",
+      "initialState": Object {
+        "count": 0,
+      },
       "state": Object {
         "count": 1,
         "setState": [Function],
