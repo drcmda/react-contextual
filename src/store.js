@@ -60,11 +60,11 @@ function wrapStateUpdateFunctions(state, store, callback) {
       if (result.then) {
         return new Promise(res =>
           Promise.resolve(result)
-            .then(callback)
+            .then(value => callback(value, name))
             .then(res)
         )
       } else {
-        return callback(result)
+        return callback(result, name)
       }
     }
 
