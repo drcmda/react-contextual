@@ -9,7 +9,6 @@ import ProviderContext, {
 export function createStore(state, id = uuid()) {
   const result = {
     id,
-    initialState: { ...state },
     state,
     subscriptions: new Set(),
     context: createNamedContext(id),
@@ -60,41 +59,42 @@ export class Provider extends React.PureComponent {
     // When no store is given, create context by id or refer to the default context
     if (!store)
       this.store.context = id ? createNamedContext(id) : ProviderContext
-    // Overwrite the functions in store.state to update the state of this Provider
-    const actions = getStateUpdateFunctions(this.store.initialState)
-    Object.assign(
-      this.store.state,
-      Object.keys(actions).reduce(
-        (acc, name) => ({
-          ...acc,
-          [name]: (...args) => {
-            let result = actions[name](...args)
-            let isFunc = typeof result === 'function'
-            if (isFunc) result = result(this.state)
-            if (result.then) {
-              return new Promise(res =>
-                Promise.resolve(result).then(state => {
-                  // Update store
-                  this.store.state = { ...this.store.state, ...state }
-                  // Call subscribers
-                  this.store.subscriptions.forEach(callback => callback(state))
-                  // Update local state
-                  this.setState(state, res)
-                })
-              )
-            } else {
-              // Update store in sync
-              this.store.state = { ...this.store.state, ...result }
-              this.store.subscriptions.forEach(callback => callback(result))
-              this.setState(result)
-              return true
-            }
-          },
-        }),
-        {}
-      )
+    // Map the functions in store.state to update the state of this Provider
+    const actions = getStateUpdateFunctions(this.store.state)
+    const mappedActions = Object.keys(actions).reduce(
+      (acc, name) => ({
+        ...acc,
+        [name]: (...args) => {
+          let result = actions[name](...args)
+          let isFunc = typeof result === 'function'
+          if (isFunc) result = result(this.state)
+          if (result.then) {
+            return new Promise(res =>
+              Promise.resolve(result).then(state => {
+                // Update store
+                this.store.state = { ...this.store.state, ...state }
+                // Call subscribers
+                this.store.subscriptions.forEach(callback => callback(state))
+                // Update local state
+                this.setState(state, res)
+              })
+            )
+          } else {
+            // Update store in sync
+            this.store.state = { ...this.store.state, ...result }
+            this.store.subscriptions.forEach(callback => callback(result))
+            this.setState(result)
+            return true
+          }
+        },
+      }),
+      {}
     )
-    this.state = this.store.state
+
+    this.state = {
+      ...this.store.state,
+      ...mappedActions,
+    }
   }
 
   componentWillUnmount() {
