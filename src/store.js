@@ -9,10 +9,6 @@ import ProviderContext, {
 export function createStore(state, id = uuid()) {
   const result = {
     id,
-    state: {
-      setState: props => props,
-      ...state,
-    },
     subscriptions: new Set(),
     context: createNamedContext(id),
     destroy: () => {
@@ -24,21 +20,27 @@ export function createStore(state, id = uuid()) {
       return () => result.subscriptions.delete(callback)
     },
     getState: () => result.state,
-    setState: changes => {
-      result.state = { ...result.state, ...changes }
-      result.subscriptions.forEach(callback => callback(result.state))
-    },
-    wrapActions: next => {
-      result.state = {
-        ...result.state,
-        ...wrapStateUpdateFunctions(result.state, result, next),
-      }
-    },
   }
 
-  result.wrapActions(result.setState)
+  result.state = createState(result, {
+    setState: props => props,
+    ...state,
+  })
 
   return result
+}
+
+function createState(store, initialState) {
+  const setState = changes => {
+    store.state = { ...store.state, ...changes }
+    store.subscriptions.forEach(callback => callback(store.state))
+    return true
+  }
+
+  return {
+    ...initialState,
+    ...wrapStateUpdateFunctions(initialState, store, setState),
+  }
 }
 
 function getStateUpdateFunctions(state) {
@@ -53,18 +55,15 @@ function getStateUpdateFunctions(state) {
 function wrapStateUpdateFunctions(state, store, callback) {
   const actions = getStateUpdateFunctions(state)
   return Object.keys(actions).reduce((acc, name) => {
+    const wrapped = actions[name]
     acc[name] = (...args) => {
-      let result = actions[name](...args)
+      let result = wrapped(...args)
       let isFunc = typeof result === 'function'
       if (isFunc) result = result(store.state)
       if (result.then) {
-        return new Promise(res =>
-          Promise.resolve(result)
-            .then(value => callback(value, name))
-            .then(res)
-        )
+        return Promise.resolve(result).then(callback)
       } else {
-        return callback(result, name)
+        return callback(result)
       }
     }
 
