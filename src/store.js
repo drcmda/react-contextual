@@ -97,30 +97,27 @@ export class Provider extends React.PureComponent {
 
     let internalState = this.store.state
 
-    // When a store was given
+    // When a store was given,
     // additional state is a different "initialState"
     if (store) {
       internalState = {
         ...internalState,
         ...state,
+        // TODO: Should this try to update the store?
+        // Changes to shadowed values in internal state won't propagate
+        // to the external store
+        ...wrapStateUpdateFunctions(state, this, changes =>
+          this.setState(changes)
+        ),
       }
     }
 
-    // Changes to shadowed values in internal state will still propagate
-    // to the external store
-    const boundActions = wrapStateUpdateFunctions(
-      internalState,
-      this,
-      changes => this.setState(changes)
-    )
-
-    this.state = {
-      ...internalState,
-      ...boundActions,
-    }
+    this.state = internalState
+    this.unsubscribe = this.store.subscribe(state => this.setState(state))
   }
 
   componentWillUnmount() {
+    this.unsubscribe()
     if (this.props.id) removeNamedContext(this.props.id)
   }
 
