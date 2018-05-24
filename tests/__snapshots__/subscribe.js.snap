@@ -908,15 +908,14 @@ exports[`subscribe(store) 1`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "testStore",
-      "initialState": Object {
-        "message": "success!",
-      },
       "state": Object {
         "message": "success!",
         "setState": [Function],
       },
       "subscribe": [Function],
-      "subscriptions": Set {},
+      "subscriptions": Set {
+        [Function],
+      },
     }
   }
 >
@@ -949,15 +948,14 @@ exports[`subscribe(store) 1`] = `
           "destroy": [Function],
           "getState": [Function],
           "id": "testStore",
-          "initialState": Object {
-            "message": "success!",
-          },
           "state": Object {
             "message": "success!",
             "setState": [Function],
           },
           "subscribe": [Function],
-          "subscriptions": Set {},
+          "subscriptions": Set {
+            [Function],
+          },
         }
       }
     >
@@ -994,15 +992,14 @@ exports[`subscribe(store, "state") 1`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "testStore",
-      "initialState": Object {
-        "message": "success!",
-      },
       "state": Object {
         "message": "success!",
         "setState": [Function],
       },
       "subscribe": [Function],
-      "subscriptions": Set {},
+      "subscriptions": Set {
+        [Function],
+      },
     }
   }
 >
@@ -1039,15 +1036,14 @@ exports[`subscribe(store, "state") 1`] = `
           "destroy": [Function],
           "getState": [Function],
           "id": "testStore",
-          "initialState": Object {
-            "message": "success!",
-          },
           "state": Object {
             "message": "success!",
             "setState": [Function],
           },
           "subscribe": [Function],
-          "subscriptions": Set {},
+          "subscriptions": Set {
+            [Function],
+          },
         }
       }
     >
@@ -1088,15 +1084,14 @@ exports[`subscribe(store, context => context) 1`] = `
       "destroy": [Function],
       "getState": [Function],
       "id": "testStore",
-      "initialState": Object {
-        "message": "success!",
-      },
       "state": Object {
         "message": "success!",
         "setState": [Function],
       },
       "subscribe": [Function],
-      "subscriptions": Set {},
+      "subscriptions": Set {
+        [Function],
+      },
     }
   }
 >
@@ -1129,15 +1124,14 @@ exports[`subscribe(store, context => context) 1`] = `
           "destroy": [Function],
           "getState": [Function],
           "id": "testStore",
-          "initialState": Object {
-            "message": "success!",
-          },
           "state": Object {
             "message": "success!",
             "setState": [Function],
           },
           "subscribe": [Function],
-          "subscriptions": Set {},
+          "subscriptions": Set {
+            [Function],
+          },
         }
       }
     >
