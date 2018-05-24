@@ -9,6 +9,7 @@ import ProviderContext, {
 export function createStore(state, id = uuid()) {
   const result = {
     id,
+    initialState: { ...state },
     state,
     subscriptions: new Set(),
     context: createNamedContext(id),
@@ -60,7 +61,7 @@ export class Provider extends React.PureComponent {
     if (!store)
       this.store.context = id ? createNamedContext(id) : ProviderContext
     // Overwrite the functions in store.state to update the state of this Provider
-    const actions = getStateUpdateFunctions(this.store.state)
+    const actions = getStateUpdateFunctions(this.store.initialState)
     Object.assign(
       this.store.state,
       Object.keys(actions).reduce(
