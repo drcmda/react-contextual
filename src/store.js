@@ -33,7 +33,7 @@ export function createStore(state, id = uuid()) {
 function createState(store, initialState) {
   const setState = changes => {
     store.state = { ...store.state, ...changes }
-    store.subscriptions.forEach(callback => callback(store.state))
+    store.subscriptions.forEach(callback => callback(changes))
     return true
   }
 
@@ -95,24 +95,10 @@ export class Provider extends React.PureComponent {
       this.store.context = id ? createNamedContext(id) : ProviderContext
     }
 
-    let internalState = this.store.state
-
     // When a store was given,
-    // additional state is a different "initialState"
-    if (store) {
-      internalState = {
-        ...internalState,
-        ...state,
-        // TODO: Should this try to update the store?
-        // Changes to shadowed values in internal state won't propagate
-        // to the external store
-        ...wrapStateUpdateFunctions(state, this, changes =>
-          this.setState(changes)
-        ),
-      }
-    }
+    // additional state could be different "initialState"
 
-    this.state = internalState
+    this.state = this.store.state
     this.unsubscribe = this.store.subscribe(state => this.setState(state))
   }
 
