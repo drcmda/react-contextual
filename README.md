@@ -90,8 +90,8 @@ const externalStore = createStore({
 })
 
 const App = () => (
-  <Provider store={store}>
-    <Subscribe to={store}>{props => <div>{props.text}</div>}</Subscribe>
+  <Provider store={externalStore}>
+    <Subscribe to={externalStore}>{props => <div>{props.text}</div>}</Subscribe>
   </Provider>
 )
 ```
