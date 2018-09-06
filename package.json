@@ -86,6 +86,7 @@
             "jest"
         ],
         "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
+        "testURL": "http://localhost",
         "snapshotSerializers": [
             "enzyme-to-json/serializer"
         ],
