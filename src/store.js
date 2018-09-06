@@ -68,7 +68,7 @@ export class Provider extends React.PureComponent {
         (acc, name) => ({
           ...acc,
           [name]: (...args) => {
-            let result = actions[name](...args)
+            let result = actions[name].call(this.store.state, ...args)
             let isFunc = typeof result === 'function'
             if (isFunc) result = result(this.state)
             if (result.then) {
