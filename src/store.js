@@ -72,7 +72,7 @@ export class Provider extends React.PureComponent {
             let isFunc = typeof result === 'function'
             if (isFunc) result = result(this.state)
             if (result.then) {
-              return new Promise(res =>
+              return new Promise((res, rej) =>
                 Promise.resolve(result).then(state => {
                   // Update store
                   this.store.state = { ...this.store.state, ...state }
@@ -80,7 +80,7 @@ export class Provider extends React.PureComponent {
                   this.store.subscriptions.forEach(callback => callback(state))
                   // Update local state
                   this.setState(state, res)
-                })
+                }).catch(rej)
               )
             } else {
               // Update store in sync
