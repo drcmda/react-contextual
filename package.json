@@ -78,7 +78,8 @@
         "tiny-uuid": "^1.0.0"
     },
     "jest": {
-	"testURL": "http://localhost",
+	"transform": {".*": "./node_modules/babel-jest"},
+        "testURL": "http://localhost",
         "setupFiles": [
             "./tests/jest.setup.js"
         ],
